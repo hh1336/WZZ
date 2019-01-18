@@ -16,6 +16,7 @@ namespace WZZ.Controllers
             _WZZModelBLL = wZZModelBLL;
         }
 
+        //首页
         public IActionResult Index()
         {
             return View();
