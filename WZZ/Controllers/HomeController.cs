@@ -21,7 +21,12 @@ namespace WZZ.Controllers
         {
             return View();
         }
-        
+        //子页面
+        public IActionResult Index_Article()
+        {
+            return View();
+        }
+
         public IActionResult GetModel(int id)
         {
             var result = _WZZModelBLL.GetById(id);
