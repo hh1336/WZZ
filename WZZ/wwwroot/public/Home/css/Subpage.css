@@ -362,7 +362,6 @@ a:hover, a:active {
 .head_nav_met_16_3 .navlist .nav-item a.active, .head_nav_met_16_3 .navlist .nav-item a.nav-link:hover {
     background: none !important;
     color: #5e3700 !important;
-   
 }
 
 .head_nav_met_16_3 .navlist .nav-item a.nav-link {
@@ -1266,7 +1265,7 @@ a {
 
 .title-box1 {
     text-align: center;
-    padding-top:90px;
+    padding-top: 90px;
     padding-bottom: 60px;
 }
 
@@ -1320,6 +1319,8 @@ a {
 
         .in-news .col-box:last-of-type {
             margin-right: 0;
+            width: auto;
+            height: auto;
         }
 
         .in-news .col-box .hd-box {
@@ -1397,6 +1398,8 @@ a {
                 }
 
         .in-news .col-box .news-list {
+            width: auto;
+            height: auto;
             padding-top: 20px;
         }
 
