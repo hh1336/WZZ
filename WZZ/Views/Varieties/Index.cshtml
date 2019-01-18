@@ -61,8 +61,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">绿茶</h2>
-            <p>绿茶是中国六大茶类之一，属于不发酵茶，在绿茶的制作过程中，没有发酵这一工序...</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="greenTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -196,8 +196,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">红茶</h2>
-            <p>属全发酵茶，是以适宜的茶树新牙叶为原料，经萎凋、揉捻（切）、发酵、干燥等一系列工艺过程精制而成的茶。</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="redTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -299,8 +299,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">黄茶</h2>
-            <p>黄茶是中国六大茶类之一，也是我国特有的茶类，属于轻微发酵茶。黄茶最大的特点就是“黄汤黄叶”，这得益于其独特的制作工艺。</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="yellowTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -400,8 +400,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">青茶</h2>
-            <p>青茶（乌龙茶）是中国六大茶类之一，属于半发酵茶，既有绿茶的清香，又有红茶的浓郁。</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="CyanTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -504,8 +504,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">黑茶</h2>
-            <p>黑茶是中国六大茶类之一，属于后发酵茶，是我国特有的茶类。</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="blackTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -604,8 +604,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">白茶</h2>
-            <p>属微发酵茶，是汉族茶农创制的传统名茶。中国六大茶类之一。指一种采摘后，不经杀青或揉捻，只经过晒或文火干燥后加工的茶。</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="whiteTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -677,8 +677,8 @@
     <div class="container">
         <div class="blk80"></div>
         <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">花茶</h2>
-            <p>即将植物的花或叶或其果实泡制而成的茶，是中国特有的一类再加工茶。</p>
+            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" id="flowerTea"></h2>
+            <p></p>
         </div>
         <div class="pinpai row" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
             <ul>
@@ -776,3 +776,31 @@
     </div>
 </div>
 
+@section Scripts{
+    <script>
+        $(function () {
+            $.post("/Varieties/GetTea", { id: 1 }, function (result) {
+                $("#greenTea").text(result.name).next().text(result.subheading);
+            })
+            $.post("/Varieties/GetTea", { id: 2 }, function (result) {
+                $("#redTea").text(result.name).next().text(result.subheading);
+            })
+            $.post("/Varieties/GetTea", { id: 3 }, function (result) {
+                $("#yellowTea").text(result.name).next().text(result.subheading);
+            })
+            $.post("/Varieties/GetTea", { id: 4 }, function (result) {
+                $("#CyanTea").text(result.name).next().text(result.subheading);
+            })
+            $.post("/Varieties/GetTea", { id: 5 }, function (result) {
+                $("#blackTea").text(result.name).next().text(result.subheading);
+            })
+            $.post("/Varieties/GetTea", { id: 6 }, function (result) {
+                $("#whiteTea").text(result.name).next().text(result.subheading);
+            })
+            $.post("/Varieties/GetTea", { id: 7 }, function (result) {
+                $("#flowerTea").text(result.name).next().text(result.subheading);
+            })
+
+        })
+    </script>
+}
