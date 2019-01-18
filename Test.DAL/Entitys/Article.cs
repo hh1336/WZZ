@@ -41,16 +41,9 @@ namespace DAL.Entitys
         public string author { set; get; }
 
         /// <summary>
-        /// 文章内容
+        /// 来源
         /// </summary>
-        [Required]
-        public string articlecontent { set; get; }
-
-        /// <summary>
-        /// 文章副标题
-        /// </summary>
-        [StringLength(30)]
-        public string Subheading { set; get; }
+        public string source { set; get; }
 
         /// <summary>
         /// 图片路径

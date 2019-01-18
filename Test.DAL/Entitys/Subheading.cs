@@ -6,9 +6,9 @@ using System.Text;
 namespace DAL.Entitys
 {
     /// <summary>
-    /// 茶类型实体
+    /// 文章副标题实体
     /// </summary>
-    public class TeaType
+    public class Subheading
     {
         /// <summary>
         /// 主键
@@ -17,22 +17,18 @@ namespace DAL.Entitys
         public int id { set; get; }
 
         /// <summary>
-        /// 茶名
+        /// 副标题名
         /// </summary>
-        [Required]
-        [StringLength(20)]
-        public string name { set; get; }
+        public string head { set; get; }
 
         /// <summary>
-        /// 副标题
+        /// 关联文章实体
         /// </summary>
-        [StringLength(100)]
-        public string Subheading { set; get; }
+        public Article Article { set; get; }
 
         /// <summary>
-        /// 图片路径
+        /// 文章id
         /// </summary>
-        [StringLength(50)]
-        public string imgurl { set; get; }
+        public int ArticlesId { set; get; }
     }
 }

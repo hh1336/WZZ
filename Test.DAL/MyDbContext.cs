@@ -17,6 +17,8 @@ namespace DAL
         public virtual DbSet<WZZModel> WZZModels { set; get; }
         public virtual DbSet<RotationChart> RotationCharts { set; get; }
         public virtual DbSet<TeaType> TeaTypes { set; get; }
-
+        public virtual DbSet<ArticleConTent> ArticleConTents { set; get; }
+        public virtual DbSet<ArticleImage> ArticleImages { set; get; }
+        public virtual DbSet<Subheading> Subheadings { set; get; }
     }
 }
