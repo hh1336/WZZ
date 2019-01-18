@@ -1,479 +1,211 @@
 ﻿@{
     ViewData["Title"] = "首页";
 }
-<link rel="stylesheet" href="~/public/Home/css/index.css" />
-<script type="text/javascript" src="~/public/Home/js/index.js"></script>
-
-
-<!-- 外套 -->
-<div class="wrapper" style="white-space:nowrap !important;">
-
-    <!---------left  （banner）--------->
-    <div class="banner_box" style="">
-        <div class="banner">
-            <div class="item">
-                <ul>
-                    <li class="banner_li">
-                        <a href="" target="_blank"><span>六大茶类茶叶的不同功效及特点</span><img src="~/public/Home/images/index/banner1.jpg" width="100%" height="100%" /></a>
-                    </li>
-                    <li class="banner_li">
-                        <a href="" target="_blank"><span>茶叶种类划分：各茶叶分类的代表茶有哪些？</span><img src="~/public/Home/images/index/banner3.jpg" width="100%" height="100%" /></a>
-                    </li>
-                    <li class="banner_li">
-                        <a href="" target="_blank"><span>择一处清幽，斟一盏芳茗</span><img src="~/public/Home/images/index/banner2.jpg" width="100%" height="100%" /></a>
-                    </li>
-                    <li class="banner_li">
-                        <a href="" target="_blank"><span>如何成为品茶高手？学会这5个动作让你成为品茶高手！</span><img src="~/public/Home/images/index/banner4.jpg" width="100%" height="100%" /></a>
-                    </li>
-                </ul>
+@section Styles{
+    <link rel="stylesheet" href="~/public/Home/css/index.css" />
+}
+<div id="content_top" style="height:100%;width:100%; margin:0 auto; padding-top:13%;">
+    <!-- 外套 -->
+    <div class="wrapper" style="white-space:nowrap !important;">
+        <!---------left  （banner）--------->
+        <div class="banner_box" style="margin-right:20px;">
+            <div class="banner">
+                <div class="item">
+                    <ul>
+                        <li class="banner_li">
+                            <a href="" target="_blank"><span>六大茶类茶叶的不同功效及特点</span><img src="~/public/Home/images/index/banner1.jpg" width="100%" height="100%" /></a>
+                        </li>
+                        <li class="banner_li">
+                            <a href="" target="_blank"><span>茶叶种类划分：各茶叶分类的代表茶有哪些？</span><img src="~/public/Home/images/index/banner3.jpg" width="100%" height="100%" /></a>
+                        </li>
+                        <li class="banner_li">
+                            <a href="" target="_blank"><span>择一处清幽，斟一盏芳茗</span><img src="~/public/Home/images/index/banner2.jpg" width="100%" height="100%" /></a>
+                        </li>
+                        <li class="banner_li">
+                            <a href="" target="_blank"><span>如何成为品茶高手？学会这5个动作让你成为品茶高手！</span><img src="~/public/Home/images/index/banner4.jpg" width="100%" height="100%" /></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </div>
+
+        <!---------right  （Hot）--------->
+        <div class="Hot_box" >
+            <div class="hot">
+                <div class="hot_title">
+                    <h3></h3>
+                </div>
+
+                <div class="mod-info-flow" id="Hot_box">
+
+                    @*-----------*@
+                    <div class="mod-b mod-art clearfix " data-aid="267085">
+                        <!--栏目链接-->
+                        <div class="mod-thumb pull-left img1 ">
+                            <a class="transition" href="/article/267085.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" alt="珍惜与你喝茶之人" src="~/public/Home/images/index/hot/hot1.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a asp-action="/Index_Article" asp-controller="Home" class="transition msubstr-row2" target="_blank">珍惜与你喝茶之人</a></h2>
+
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1979940.html" target="_blank">
+                                    <span class="author-name ">普见茶业</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">22分钟前</span>
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                生活给了我们太多无可奈何。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+                    </div>
+                    @*-----------*@
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <!---------right  （Hot）--------->
-    <div class="Hot_box">
-        <div class="hot">
-            <div class="hot_title" style="">
+</div>
+
+
+<div id="content_foot" style="width:100%;height:100%; float:left; margin:0 auto; padding-top:30px;">
+    <!------------------------------------------------------tyle_b-------------------------------------------------->
+
+    <div class="container">
+
+
+        <div class="type_b">
+            <div class="type_b_title">
                 <h3></h3>
             </div>
-
-            <div class="mod-info-flow">
-
-                <div class="mod-b mod-art clearfix " data-aid="267085">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left img1 ">
-                        <a class="transition" href="/article/267085.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" alt="珍惜与你喝茶之人" src="~/public/Home/images/index/hot/hot1.jpg" style="display: inline;">
-                        </a>
+            <div class="mod-b mod-art mod-b-push">
+                <a class="transition" href="" target="_blank">
+                    <div class="mod-thumb">
+                        <img class="type_b_img" src="~/public/Home/images/index/type_b/t_b1.jpg" style="display: inline-block;">
                     </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a asp-action="/Index_Article" asp-controller="Home" class="transition msubstr-row2" target="_blank">珍惜与你喝茶之人</a></h2>
-
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1979940.html" target="_blank">
-                                <span class="author-name ">普见茶业</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">22分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            生活给了我们太多无可奈何。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/font/hot2.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">民间茶联欣赏</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">杨明</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            一碗喉吻润，二碗破孤闷。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267059">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267059.html" target="_blank">
-                            <!--文章图片-->
-                            <img class=" " src="~/public/Home/images/index/hot/hot3.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">感恩母亲，陪妈妈采茶</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1785733.html" target="_blank">
-                                <span class="author-name ">佚名</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <i class="i-icon icon-team-auth"></i> <span class="time">1小时前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            母亲一生勤劳，年纪大了还侍弄着小茶园。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
+                </a>
             </div>
-        </div>
-
-    </div>
-</div>
-<!-------------------------------------------------Icon（图标）---------------------------------------------------->
-
-<div class="icon_box">
-    <ul class="icon_ul">
-        <li class="icon_a">
-            <a href="#"><img src="~/public/Home/images/Icon/i005.png" width="100" height="100" style="margin: 20px 30px;" /><br><span>茶知识</span></a>
-        </li>
-        <li class="icon_a">
-            <a href="#"><img src="~/public/Home/images/Icon/i002.png" width="100" height="100" style="margin: 20px 30px;" /><br><span>茶文化</span></a>
-        </li>
-        <li class="icon_a">
-            <a href="#"><img src="~/public/Home/images/Icon/i003.png" width="100" height="100" style="margin: 20px 30px;" /><br><span>茶品牌</span></a>
-        </li>
-        <li class="icon_a">
-            <a href="#"><img src="~/public/Home/images/Icon/i004.png" width="100" height="100" style="margin: 20px 30px;" /><br><span>茶文化</span></a>
-        </li>
-    </ul>
-</div>
-
-
-
-
-<!------------------------------------------------------tyle_b-------------------------------------------------->
-
-<div class="container">
-
-
-    <div class="type_b" style=" margin-top: 56%;">
-        <div class="type_b_title">
-            <h3></h3>
-        </div>
-        <div class="mod-b mod-art mod-b-push ">
-            <a class="transition" href="" target="_blank">
-                <div class="mod-thumb ">
-                    <img class="type_b_img" src="~/public/Home/images/index/type_b/t_b1.jpg" style="display: inline;">
-                </div>
-            </a>
             <div class="mob-ctt">
-                <h2><a href="index_Article（首页文章详情）.html" class="transition msubstr-row5" target="_blank">看过来！解密都匀毛尖茶为何如此鲜爽</a></h2>
+                    <h2><a href="index_Article（首页文章详情）.html" class="transition msubstr-row5" target="_blank">看过来！解密都匀毛尖茶为何如此鲜爽</a></h2>
 
-                <div class="mob-author">
-                    <div class="author-face">
-                        <a href="/member/2021123.html" target="_blank"><img class="" src="~/public/Home/images/font/小猫.png" /></a>
+                    <div class="mob-author">
+                        <div class="author-face">
+                            <a href="/member/2021123.html" target="_blank"><img src="~/public/Home/images/font/小猫.png" /></a>
+                        </div>
+                        <a href="/member/2021123.html" target="_blank">
+                            <span class="author-name">来源：贵州日报</span>
+                        </a>
+                        <a href="/vip" target="_blank"></a>
+                        <span class="time">4小时前</span>
                     </div>
-                    <a href="/member/2021123.html" target="_blank">
-                        <span class="author-name">来源：贵州日报</span>
-                    </a>
-                    <a href="/vip" target="_blank"></a>
-                    <span class="time">4小时前</span>
+
+                    <div class="mob-sub">
+                        都匀毛尖作为中国十大名茶——都匀毛尖的主产区,都匀市毛尖镇坪阳村因地制宜...
+                    </div>
+                </div>
+                <!--文章Tag展示-->
+                <div class="column-link-box column-link-big-box">
+                    <a href="/channel/111.html" class="column-link" target="_blank">茶叶文化</a>
                 </div>
 
-                <div class="mob-sub">
-                    都匀毛尖作为中国十大名茶——都匀毛尖的主产区,都匀市毛尖镇坪阳村因地制宜...
-                </div>
-            </div>
-            <!--文章Tag展示-->
-            <div class="column-link-box column-link-big-box">
-                <a href="/channel/111.html" class="column-link" target="_blank">茶叶文化</a>
-            </div>
-        </div>
+            @*<style type="text/css">
 
 
-        <style type="text/css">
+                        .type_b .mob-author .author-face img {
+                            width: 100%;
+                            overflow: hidden;
+                            border-radius: 25px;
+                        }
 
-            /*! CSS Used from: Embedded */
-            .type_b .mob-author {
-                margin: 15px 0;
-                margin: 12px 0;
-            }
-
-                .type_b .mob-author .author-face {
-                    position: absolute;
-                    width: 25px;
-                    height: 25px;
-                }
-
-                    .type_b .mob-author .author-face img {
-                        width: 100%;
-                        overflow: hidden;
-                        border-radius: 25px;
+                    .type_b .mob-author .author-name, .mob-author .time, .mob-author em {
+                        color: #bbb;
+                        line-height: 24px;
+                        font-style: normal;
+                        word-break: break-all;
                     }
 
-                .type_b .mob-author .author-name, .mob-author .time, .mob-author em {
-                    color: #bbb;
-                    line-height: 24px;
-                    margin-left: 7px;
-                    font-style: normal;
-                    word-break: break-all;
+
+
+                .type_b .mod-thumb {
+                    width: 220px;
+                    height: 124px;
+                    overflow: hidden;
+                    background: #e7e7e7;
                 }
 
-                .type_b .mob-author .author-name {
-                    margin-left: 36px;
+                .type_b .icon-team-auth {
+                    background-position: -325px -424px;
                 }
 
-                .type_b .mob-author .time {
-                    margin-left: 20px;
+                .type_b .icon-fvr {
+                    background-position: -106px -3px;
+                    cursor: auto !important;
                 }
 
-                .type_b .mob-author em {
-                    margin-left: 5px;
+                .type_b .icon-cmt {
+                    background-position: -67px -1px;
+                    cursor: auto !important;
                 }
 
-            .type_b .mod-thumb {
-                width: 220px;
-                height: 124px;
-                overflow: hidden;
-                background: #e7e7e7;
-                margin-left: 8%;
-            }
+                .type_b .mob-author .icon {
+                    cursor: pointer;
+                }
 
-            .type_b .icon-team-auth {
-                background-position: -325px -424px;
-                margin-left: 10px;
-            }
+                .type_b .transition {
+                    -webkit-transition: all .2s ease-out;
+                    -moz-transition: all .2s ease-out;
+                    -ms-transition: all .2s ease-out;
+                    -o-transition: all .2s ease-out;
+                    transition: all .2s ease-out;
+                }
 
-            .type_b .icon-fvr {
-                background-position: -106px -3px;
-                margin-left: 15px;
-                cursor: auto !important;
-            }
+                .type_b a {
+                    cursor: pointer;
+                }
 
-            .type_b .icon-cmt {
-                background-position: -67px -1px;
-                cursor: auto !important;
-            }
+                .type_b .mod-b {
+                    position: relative;
+                }
 
-            .type_b .mob-author .icon-cmt {
-                margin-left: 20px;
-            }
+                .type_b .clearfix:after {
+                    content: '';
+                    display: block;
+                    clear: both;
+                }
+            </style>*@
 
-            .type_b .mob-author .icon {
-                cursor: pointer;
-            }
-
-            .type_b .transition {
-                -webkit-transition: all .2s ease-out;
-                -moz-transition: all .2s ease-out;
-                -ms-transition: all .2s ease-out;
-                -o-transition: all .2s ease-out;
-                transition: all .2s ease-out;
-            }
-
-            .type_b a {
-                cursor: pointer;
-            }
-
-            .type_b .mod-b {
-                position: relative;
-            }
-
-            .type_b .index-article-list-yh {
-                margin-top: 0;
-            }
-
-            .type_b .clearfix:after {
-                content: '';
-                display: block;
-                clear: both;
-            }
-        </style>
-
-
-        <div class="mod-info-flow">
-
-            <div class="mod-b mod-art clearfix " data-aid="267085">
-                <!--栏目链接-->
-
-                <div class=" pull-left ">
-                    <a class="transition" href="/article/267085.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="type_b_img_xs type_b_img_xs1" src="~/public/Home/images/index/type_b/t_b2.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt mob_ctt1 index-article-list-yh">
-                    <h2><a href="" class="transition msubstr-row2" target="_blank">龙井茶要怎么泡才能泡出一杯好茶?龙井茶的功效和禁忌</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="" target="_blank">
-                            <span class="author-name ">来源：中国防指网</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <span class="time">22分钟前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        龙井茶是浙江省名茶，属于绿茶中的一种，其历史可追溯到三国时期...
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-            <div class="mod-b mod-art clearfix " data-aid="267078">
-                <!--栏目链接-->
-
-                <div class=" pull-left ">
-                    <a class="transition" href="/article/267078.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="type_b_img_xs type_b_img_xs2" src="~/public/Home/images/index/type_b/t_b3.JPG" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt mob_ctt1 index-article-list-yh">
-                    <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">祁门红茶冲泡有讲究，不懂这些别说你爱茶</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1870827.html" target="_blank">
-                            <span class="author-name ">来源：百度</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <span class="time">53分钟前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        祁红，中国十大名茶之中唯一的红茶，与印度的大吉岭红茶、斯里兰卡的乌瓦红茶一同被誉为世界三大高香红茶。
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-            <div class="mod-b mod-art clearfix " data-aid="267059">
-                <!--栏目链接-->
-
-                <div class="pull-left ">
-                    <a class="transition" href="/article/267059.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="type_b_img_xs type_b_img_xs3" src="~/public/Home/images/index/type_b/t_b4.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt mob_ctt1 index-article-list-yh">
-                    <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">买铁观音不用愁！五招学会鉴别铁观音好坏</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1785733.html" target="_blank">
-                            <span class="author-name ">来源：中国普洱茶网 </span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <i class="i-icon icon-team-auth"></i>                                                <span class="time">1小时前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        铁观音是日常生活中，爱茶之人必不可少的饮品，但是铁观音的品种参差不齐
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-
-            <div class="mod-b mod-art clearfix " data-aid="267059">
-                <!--栏目链接-->
-
-                <div class="pull-left ">
-                    <a class="transition" href="/article/267059.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="type_b_img_xs type_b_img_xs3" src="~/public/Home/images/index/type_b/t_b5.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt mob_ctt1 index-article-list-yh">
-                    <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">为什么那么多皇帝都爱碧螺春茶 碧螺春的功效与作用</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1785733.html" target="_blank">
-                            <span class="author-name ">来源：百度</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <i class="i-icon icon-team-auth"></i>                                                <span class="time">1小时前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        碧螺春，其实作为中国十大名茶之一，爱喝茶的朋友的确很有必要试一试。碧螺春是绿茶，距今已经有一千多年的历史，因为产于江苏省苏州市的东洞庭山和西洞庭山，所以又被称为洞庭碧螺春。
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-    <!------------------------------------------------------tyle   right-------------------------------------------------->
-    <div class="type" style="">
-        <div class="type_a" style="overflow: hidden;text">
-            <div class="type_a_title">
-                <h3>百年传承</h3>
-            </div>
 
             <div class="mod-info-flow">
 
                 <div class="mod-b mod-art clearfix " data-aid="267085">
                     <!--栏目链接-->
 
-                    <div class="mod-thumb pull-left ">
+                    <div class=" pull-left ">
                         <a class="transition" href="/article/267085.html" target="_blank">
                             <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a1.jpg" style="display: inline;">
+                            <img class="type_b_img_xs type_b_img_xs1" src="~/public/Home/images/index/type_b/t_b2.jpg" style="display: inline;">
                         </a>
                     </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267085.html" class="transition msubstr-row2" target="_blank">中国茶的起源和茶文化的形成</a></h2>
+                    <div class="mob-ctt mob_ctt1 index-article-list-yh">
+                        <h2><a href="" class="transition msubstr-row2" target="_blank">龙井茶要怎么泡才能泡出一杯好茶?龙井茶的功效和禁忌</a></h2>
 
                         <div class="mob-author">
                             <div class="author-face">
-                                <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                <a href="" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
                             </div>
-                            <a href="/member/1979940.html" target="_blank">
-                                <span class="author-name ">来源：洛阳茶道</span>
+                            <a href="" target="_blank">
+                                <span class="author-name ">来源：中国防指网</span>
                             </a>
                             <a href="/vip" target="_blank"></a>
                             <span class="time">22分钟前</span>
@@ -483,7 +215,7 @@
 
                         <!--外部文章/内部文章两者取其一-->
                         <div class="mob-sub">
-                            “茶”字的起源，最早见于我国的《神农本草》一书，它是世界上最古的第一部药物书。据有关专家考证，该书为战国时代(公元前5年-一公元前221年)的著作。
+                            龙井茶是浙江省名茶，属于绿茶中的一种，其历史可追溯到三国时期...
                         </div>
                     </div>
                     <!--文章Tag展示-->
@@ -492,452 +224,23 @@
                 <div class="mod-b mod-art clearfix " data-aid="267078">
                     <!--栏目链接-->
 
-                    <div class="mod-thumb pull-left ">
+                    <div class=" pull-left ">
                         <a class="transition" href="/article/267078.html" target="_blank">
                             <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a2.jpeg" style="display: inline;">
+                            <img class="type_b_img_xs type_b_img_xs2" src="~/public/Home/images/index/type_b/t_b3.JPG" style="display: inline;">
                         </a>
                     </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">起源于中国的日本茶道 与中国茶文化有哪些区别？</a></h2>
+                    <div class="mob-ctt mob_ctt1 index-article-list-yh">
+                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">祁门红茶冲泡有讲究，不懂这些别说你爱茶</a></h2>
 
                         <div class="mob-author">
                             <div class="author-face">
                                 <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
                             </div>
                             <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：搜狐</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            源于中国的茶文化在向世界各地传播时较早地传入日本列岛，并在日本发展较为迅速，最终在日本形成了极具独特性的“茶道”。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267059">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267059.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a3.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">福建名茶大红袍历史与价值</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1785733.html" target="_blank">
-                                <span class="author-name ">来源：360星座网</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <i class="i-icon icon-team-auth"></i> <span class="time">1小时前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            要说名茶，喝过大红袍茶叶的人都会竖起大拇指。大红袍产自福建省武夷山。品种独特珍贵，有着悠久的历史。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a4.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">中国茶文化与国外区别都有哪些</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">作者：网络</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            中国是茶的发源地，世界各地的茶，最先开始的都是由中国发展出去的。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a5.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">道教与中国茶文化有什么联系</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">  作者：网络</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            道教是中国的三大宗教之一，这个宗教历史悠久。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a6.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">道茶真境 饮茶能静心，已达悟道境</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：道教之音</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            平时业余爱好甚少，唯喜喝茶，并且最爱绿茶，特别是西湖龙井茶，所谓“香色味形皆茶道，尽成文化；狮龙云虎处梅家，各有风情”。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_a/t_a7.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">禅茶一味 茶可清心</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：禅宗网</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            茶如诗词，有的婉约，有的豪放；茶如书法，有的丰润如“颜筋”，有的劲瘦如“柳骨”，有的中规中矩如隶楷，有的张扬奔放如“颠张狂素”；茶如歌，有的抒情温婉，有的激越豪迈，有的清远悠扬，有的荡气回肠。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div>
-<div class="container">
-
-    <!------------------------------------------------------tyle_c-------------------------------------------------->
-
-    <div class="type_c" style="">
-        <div class="type_c_title">
-            <h3></h3>
-        </div>
-        <div class="mod-b mod-art mod-b-push ">
-            <a class="transition" href="/article/267603.html" target="_blank">
-                <div class="mod-thumb ">
-
-                    <img class="" src="~/public/Home/images/index/type_c/t_c1.jpg" style="display: inline;">
-                </div>
-            </a>
-            <div class="mob-ctt">
-                <h2><a href="/article/267603.html" class="transition msubstr-row5" target="_blank">喝茶的好处与坏处 喝茶竟然还有讲究</a></h2>
-
-                <div class="mob-author">
-                    <div class="author-face">
-                        <a href="/member/2021123.html" target="_blank"><img class="" src="~/public/Home/images/font/小猫.png" style="display: inline;"></a>
-                    </div>
-                    <a href="/member/2021123.html" target="_blank">
-                        <span class="author-name">来源：民福康健康</span>
-                    </a>
-                    <a href="/vip" target="_blank"></a>
-                    <span class="time">4小时前</span>
-                </div>
-
-                <div class="mob-sub">
-                    现在越来越多的人喜欢喝茶，尤其是女性，因为喝茶可以减肥...
-                </div>
-            </div>
-            <!--文章Tag展示-->
-            <div class="column-link-box column-link-big-box">
-                <a href="/channel/111.html" class="column-link" target="_blank">喝茶之人</a>
-            </div>
-        </div>
-
-        <div class="mod-info-flow">
-
-            <div class="mod-b type_c_mod_b mod-art clearfix " data-aid="267085">
-                <!--栏目链接-->
-
-                <div class="mod-thumb pull-left ">
-                    <a class="transition" href="/article/267085.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="" src="~/public/Home/images/index/type_c/t_c2.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt type_c_mob-ctt index-article-list-yh">
-                    <h2><a href="/article/267085.html" class="transition msubstr-row2" target="_blank">女性春季养生喝什么茶 9种养生茶任你选择</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1979940.html" target="_blank">
-                            <span class="author-name ">来源：网络</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <span class="time">22分钟前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        春天到了，很多的人都已经开始养生了，对女性春季养生喝什么茶，该如何选择呢，茶的种类很多。
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-            <div class="mod-b type_c_mod_b mod-art clearfix " data-aid="267078">
-                <!--栏目链接-->
-
-                <div class="mod-thumb pull-left ">
-                    <a class="transition" href="/article/267078.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="" src="~/public/Home/images/index/type_c/t_c3.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt type_c_mob-ctt index-article-list-yh">
-                    <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">季喝什么养生茶好 冬季喝茶好处多</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1870827.html" target="_blank"><img src="images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1870827.html" target="_blank">
-                            <span class="author-name ">来源：网络</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <span class="time">53分钟前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        随着社会经济的不断进步，我们的生活也开始变好了起来。如今的人们也越来越注重养生，而普遍的就是喝养生茶。那你知道冬季喝什么养生茶好吗?喝养生茶的好处有哪些呢？接下来我们就来看看这些茶吧!
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-            <div class="mod-b mod-art type_c_mod_b clearfix " data-aid="267059">
-                <!--栏目链接-->
-
-                <div class="mod-thumb pull-left ">
-                    <a class="transition" href="/article/267059.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="" src="~/public/Home/images/index/type_c/t_c5.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt type_c_mob-ctt index-article-list-yh">
-                    <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">男性喝茶对身体好？其实女性喝茶也不错可以美容</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1785733.html" target="_blank">
-                            <span class="author-name ">来源：东方女性</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <i class="i-icon icon-team-auth"></i>
-                        <span class="time">1小时前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        很多男性同胞在日常生活中都有泡茶喝茶的习惯，不管是有朋友来访，还是自己一个人，都会有喝茶的习惯，因为喝茶对于身体有诸多好处;
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-            <div class="mod-b type_c_mod_b mod-art clearfix " data-aid="267059">
-                <!--栏目链接-->
-
-                <div class="mod-thumb pull-left ">
-                    <a class="transition" href="/article/267059.html" target="_blank">
-                        <!--文章图片-->
-                        <img class="" src="~/public/Home/images/index/type_c/t_c6.jpg" style="display: inline;">
-                    </a>
-                </div>
-                <div class="mob-ctt type_c_mob-ctt index-article-list-yh">
-                    <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">不可不知的茶叶小知识！</a></h2>
-
-                    <div class="mob-author">
-                        <div class="author-face">
-                            <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                        </div>
-                        <a href="/member/1785733.html" target="_blank">
-                            <span class="author-name ">来源：中国普洱茶网</span>
-                        </a>
-                        <a href="/vip" target="_blank"></a>
-                        <i class="i-icon icon-team-auth"></i>
-                        <span class="time">1小时前</span>
-
-
-                    </div>
-
-                    <!--外部文章/内部文章两者取其一-->
-                    <div class="mob-sub">
-                        对于中国人来说，喝茶养生是流传了几千年的传统。近年来关于茶叶的健康功效研究得也越来越多：抗癌、保护心血管、防辐射……
-                    </div>
-                </div>
-                <!--文章Tag展示-->
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="type" style="float: right !important;margin-top: 17%;">
-        <div class="type_d" style="margin-top: -150px;">
-            <div class="type_d_title" style="">
-                <h3></h3>
-            </div>
-
-            <div class="mod-info-flow">
-
-                <div class="mod-b mod-art clearfix " data-aid="267085">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267085.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d1.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267085.html" class="transition msubstr-row2" target="_blank">中国十种茶的传说</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1979940.html" target="_blank">
                                 <span class="author-name ">来源：百度</span>
                             </a>
                             <a href="/vip" target="_blank"></a>
-                            <span class="time">22分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            龙井茶与虎跑泉的传说 传说乾隆皇帝下江南时，来到杭州龙井狮峰山下，看乡女采茶，以示体察民情。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d2.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">中国古代“十大茶典故”，你知道多少？</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：网络</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
                             <span class="time">53分钟前</span>
 
 
@@ -945,7 +248,7 @@
 
                         <!--外部文章/内部文章两者取其一-->
                         <div class="mob-sub">
-                            茶，是中华民族的举国之饮。发于神农，闻于鲁周公，兴于唐朝，盛于宋代。中国茶文化糅合了中国儒、道、佛诸派思想，独成一体，是中国文化中的一朵奇葩，芬芳而甘醇。
+                            祁红，中国十大名茶之中唯一的红茶，与印度的大吉岭红茶、斯里兰卡的乌瓦红茶一同被誉为世界三大高香红茶。
                         </div>
                     </div>
                     <!--文章Tag展示-->
@@ -954,164 +257,392 @@
                 <div class="mod-b mod-art clearfix " data-aid="267059">
                     <!--栏目链接-->
 
-                    <div class="mod-thumb pull-left ">
+                    <div class="pull-left ">
                         <a class="transition" href="/article/267059.html" target="_blank">
                             <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d3.jpg" style="display: inline;">
+                            <img class="type_b_img_xs type_b_img_xs3" src="~/public/Home/images/index/type_b/t_b4.jpg" style="display: inline;">
                         </a>
                     </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">中国茶具的发展演变历史</a></h2>
+                    <div class="mob-ctt mob_ctt1 index-article-list-yh">
+                        <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">买铁观音不用愁！五招学会鉴别铁观音好坏</a></h2>
 
                         <div class="mob-author">
                             <div class="author-face">
                                 <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
                             </div>
                             <a href="/member/1785733.html" target="_blank">
-                                <span class="author-name ">来源：茶</span>
+                                <span class="author-name ">来源：中国普洱茶网 </span>
                             </a>
                             <a href="/vip" target="_blank"></a>
-                            <i class="i-icon icon-team-auth"></i> <span class="time">1小时前</span>
+                            <i class="i-icon icon-team-auth"></i>                                                <span class="time">1小时前</span>
 
 
                         </div>
 
                         <!--外部文章/内部文章两者取其一-->
                         <div class="mob-sub">
-                            茶的原产地就在中国，其原生地在长江上游地区。早在公元前一世纪王褒《僮约》中便有“武阳买茶”的记载。茶文化发展的同时，茶具也在随之发展，茶具的发展和对于茶叶的利用方式有着不可分割的关系。
-                        </div>
-                    </div>
-                    <!--文章Tag展示-->
-
-                </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
-
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d4.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">中国茶历史文化及茶叶种植介绍</a></h2>
-
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：搜狐</span>
-                            </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
-                        </div>
-
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            中国饮茶起源众说纷纭：追溯中国人饮茶的起源，有的认为起源于上古神农氏...
+                            铁观音是日常生活中，爱茶之人必不可少的饮品，但是铁观音的品种参差不齐
                         </div>
                     </div>
                     <!--文章Tag展示-->
 
                 </div>
 
-                <div class="mod-b mod-art clearfix " data-aid="267078">
+                <div class="mod-b mod-art clearfix " data-aid="267059">
                     <!--栏目链接-->
 
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
+                    <div class="pull-left ">
+                        <a class="transition" href="/article/267059.html" target="_blank">
                             <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d6.jpg" style="display: inline;">
+                            <img class="type_b_img_xs type_b_img_xs3" src="~/public/Home/images/index/type_b/t_b5.jpg" style="display: inline;">
                         </a>
                     </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">茶知识·日本茶的种类</a></h2>
+                    <div class="mob-ctt mob_ctt1 index-article-list-yh">
+                        <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">为什么那么多皇帝都爱碧螺春茶 碧螺春的功效与作用</a></h2>
 
                         <div class="mob-author">
                             <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
                             </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：知乎</span>
+                            <a href="/member/1785733.html" target="_blank">
+                                <span class="author-name ">来源：百度</span>
                             </a>
                             <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
+                            <i class="i-icon icon-team-auth"></i>   <span class="time">1小时前</span>
 
 
                         </div>
 
                         <!--外部文章/内部文章两者取其一-->
                         <div class="mob-sub">
-                            日本茶虽然种类繁多，但原材料都是相同的茶叶。根据制作方法的不同，而形成不同的种类....
+                            碧螺春，其实作为中国十大名茶之一，爱喝茶的朋友的确很有必要试一试。碧螺春是绿茶，距今已经有一千多年的历史，因为产于江苏省苏州市的东洞庭山和西洞庭山，所以又被称为洞庭碧螺春。
                         </div>
                     </div>
                     <!--文章Tag展示-->
 
                 </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
-                    <!--栏目链接-->
 
-                    <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
-                            <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d5.jpg" style="display: inline;">
-                        </a>
-                    </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">如何品茶？</a></h2>
 
-                        <div class="mob-author">
-                            <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
-                            </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：知乎</span>
+            </div>
+
+
+        </div>
+        <!------------------------------------------------------tyle   right-------------------------------------------------->
+        <div class="type">
+            <div class="type_a" style="overflow: hidden;">
+                <div class="type_a_title">
+                    <h3></h3>
+                </div>
+
+                <div class="mod-info-flow">
+
+                    <div class="mod-b mod-art clearfix " data-aid="267085">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267085.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a1.jpg" style="display: inline;">
                             </a>
-                            <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
-
-
                         </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267085.html" class="transition msubstr-row2" target="_blank">中国茶的起源和茶文化的形成</a></h2>
 
-                        <!--外部文章/内部文章两者取其一-->
-                        <div class="mob-sub">
-                            不同类型的茶有不同的品法，本人素爱绿茶，这里单讲绿茶的品评。虽说绿茶也有不同的细分，但是品评的原则是一致的。
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1979940.html" target="_blank">
+                                    <span class="author-name ">来源：洛阳茶道</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">22分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                “茶”字的起源，最早见于我国的《神农本草》一书，它是世界上最古的第一部药物书。据有关专家考证，该书为战国时代(公元前5年-一公元前221年)的著作。
+                            </div>
                         </div>
+                        <!--文章Tag展示-->
+
                     </div>
-                    <!--文章Tag展示-->
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a2.jpeg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">起源于中国的日本茶道 与中国茶文化有哪些区别？</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">来源：搜狐</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                源于中国的茶文化在向世界各地传播时较早地传入日本列岛，并在日本发展较为迅速，最终在日本形成了极具独特性的“茶道”。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+                    <div class="mod-b mod-art clearfix " data-aid="267059">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267059.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a3.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267059.html" class="transition msubstr-row2" target="_blank">福建名茶大红袍历史与价值</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1785733.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1785733.html" target="_blank">
+                                    <span class="author-name ">来源：360星座网</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <i class="i-icon icon-team-auth"></i> <span class="time">1小时前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                要说名茶，喝过大红袍茶叶的人都会竖起大拇指。大红袍产自福建省武夷山。品种独特珍贵，有着悠久的历史。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a4.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">中国茶文化与国外区别都有哪些</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">作者：网络</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                中国是茶的发源地，世界各地的茶，最先开始的都是由中国发展出去的。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a5.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">道教与中国茶文化有什么联系</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">  作者：网络</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                道教是中国的三大宗教之一，这个宗教历史悠久。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a6.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">道茶真境 饮茶能静心，已达悟道境</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">来源：道教之音</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                平时业余爱好甚少，唯喜喝茶，并且最爱绿茶，特别是西湖龙井茶，所谓“香色味形皆茶道，尽成文化；狮龙云虎处梅家，各有风情”。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_a/t_a7.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">禅茶一味 茶可清心</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">来源：禅宗网</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                茶如诗词，有的婉约，有的豪放；茶如书法，有的丰润如“颜筋”，有的劲瘦如“柳骨”，有的中规中矩如隶楷，有的张扬奔放如“颠张狂素”；茶如歌，有的抒情温婉，有的激越豪迈，有的清远悠扬，有的荡气回肠。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
 
                 </div>
-                <div class="mod-b mod-art clearfix " data-aid="267078">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <!------------------------------------------------------tyle_c-------------------------------------------------->
+
+        <div class="type_c" style="">
+            <div class="type_c_title">
+                <h3></h3>
+            </div>
+            <div class="mod-b mod-art mod-b-push ">
+                <a class="transition" href="/article/267603.html" target="_blank">
+                    <div class="mod-thumb ">
+
+                        <img class="" src="~/public/Home/images/index/type_c/t_c1.jpg" style="display: inline;">
+                    </div>
+                </a>
+                <div class="mob-ctt">
+                    <h2><a href="/article/267603.html" class="transition msubstr-row5" target="_blank">喝茶的好处与坏处 喝茶竟然还有讲究</a></h2>
+
+                    <div class="mob-author">
+                        <div class="author-face">
+                            <a href="/member/2021123.html" target="_blank"><img class="" src="~/public/Home/images/font/小猫.png" style="display: inline;"></a>
+                        </div>
+                        <a href="/member/2021123.html" target="_blank">
+                            <span class="author-name">来源：民福康健康</span>
+                        </a>
+                        <a href="/vip" target="_blank"></a>
+                        <span class="time">4小时前</span>
+                    </div>
+
+                    <div class="mob-sub">
+                        现在越来越多的人喜欢喝茶，尤其是女性，因为喝茶可以减肥...
+                    </div>
+                </div>
+                <!--文章Tag展示-->
+                <div class="column-link-box column-link-big-box">
+                    <a href="/channel/111.html" class="column-link" target="_blank">喝茶之人</a>
+                </div>
+            </div>
+
+            <div class="mod-info-flow">
+
+                <div class="mod-b type_c_mod_b mod-art clearfix " data-aid="267085">
                     <!--栏目链接-->
 
                     <div class="mod-thumb pull-left ">
-                        <a class="transition" href="/article/267078.html" target="_blank">
+                        <a class="transition" href="/article/267085.html" target="_blank">
                             <!--文章图片-->
-                            <img class="" src="~/public/Home/images/index/type_d/t_d7.jpg" style="display: inline;">
+                            <img class="" src="~/public/Home/images/index/type_c/t_c2.jpg" style="display: inline;">
                         </a>
                     </div>
-                    <div class="mob-ctt index-article-list-yh">
-                        <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">天气再冷也冷不过这些茶冷知识！</a></h2>
+                    <div class="mob-ctt type_c_mob-ctt index-article-list-yh">
+                        <h2><a href="/article/267085.html" class="transition msubstr-row2" target="_blank">女性春季养生喝什么茶 9种养生茶任你选择</a></h2>
 
                         <div class="mob-author">
                             <div class="author-face">
-                                <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
                             </div>
-                            <a href="/member/1870827.html" target="_blank">
-                                <span class="author-name ">来源：知乎</span>
+                            <a href="/member/1979940.html" target="_blank">
+                                <span class="author-name ">来源：网络</span>
                             </a>
                             <a href="/vip" target="_blank"></a>
-                            <span class="time">53分钟前</span>
+                            <span class="time">22分钟前</span>
 
 
                         </div>
 
                         <!--外部文章/内部文章两者取其一-->
                         <div class="mob-sub">
-                            俗话说得好古有以毒攻毒今有以冷治冷为了暖一下大家今天萌茶茶就给大家讲几个茶叶冷知识吧
+                            春天到了，很多的人都已经开始养生了，对女性春季养生喝什么茶，该如何选择呢，茶的种类很多。
                         </div>
                     </div>
                     <!--文章Tag展示-->
@@ -1119,11 +650,162 @@
                 </div>
 
             </div>
+
+
         </div>
 
+
+
+        <div class="type" style="float: right !important;">
+            <div class="type_d" >
+                <div class="type_d_title" style="">
+                    <h3></h3>
+                </div>
+
+                <div class="mod-info-flow">
+
+                    <div class="mod-b mod-art clearfix " data-aid="267085">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267085.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_d/t_d1.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267085.html" class="transition msubstr-row2" target="_blank">中国十种茶的传说</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1979940.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1979940.html" target="_blank">
+                                    <span class="author-name ">来源：百度</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">22分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                龙井茶与虎跑泉的传说 传说乾隆皇帝下江南时，来到杭州龙井狮峰山下，看乡女采茶，以示体察民情。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_d/t_d6.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">茶知识·日本茶的种类</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">来源：知乎</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                日本茶虽然种类繁多，但原材料都是相同的茶叶。根据制作方法的不同，而形成不同的种类....
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_d/t_d5.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">如何品茶？</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">来源：知乎</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                不同类型的茶有不同的品法，本人素爱绿茶，这里单讲绿茶的品评。虽说绿茶也有不同的细分，但是品评的原则是一致的。
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+                    <div class="mod-b mod-art clearfix " data-aid="267078">
+                        <!--栏目链接-->
+
+                        <div class="mod-thumb pull-left ">
+                            <a class="transition" href="/article/267078.html" target="_blank">
+                                <!--文章图片-->
+                                <img class="" src="~/public/Home/images/index/type_d/t_d7.jpg" style="display: inline;">
+                            </a>
+                        </div>
+                        <div class="mob-ctt index-article-list-yh">
+                            <h2><a href="/article/267078.html" class="transition msubstr-row2" target="_blank">天气再冷也冷不过这些茶冷知识！</a></h2>
+
+                            <div class="mob-author">
+                                <div class="author-face">
+                                    <a href="/member/1870827.html" target="_blank"><img src="~/public/Home/images/font/小猫.png"></a>
+                                </div>
+                                <a href="/member/1870827.html" target="_blank">
+                                    <span class="author-name ">来源：知乎</span>
+                                </a>
+                                <a href="/vip" target="_blank"></a>
+                                <span class="time">53分钟前</span>
+
+
+                            </div>
+
+                            <!--外部文章/内部文章两者取其一-->
+                            <div class="mob-sub">
+                                俗话说得好古有以毒攻毒今有以冷治冷为了暖一下大家今天萌茶茶就给大家讲几个茶叶冷知识吧
+                            </div>
+                        </div>
+                        <!--文章Tag展示-->
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 @section Scripts{
+    <script type="text/javascript" src="~/public/Home/js/index.js"></script>
     <script>
         //根据id获取信息
         function GetModelById(id, callback) {
