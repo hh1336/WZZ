@@ -1,0 +1,5 @@
+/*第8单元 项目8-1 Bootstrap餐饮类网站首页*/
+
+/*为页面中以下元素设置字体为Microsoft YaHei*/
+body,button, input, select, h3,  h6 { font-family: Microsoft YaHei}
+/*header部分*/

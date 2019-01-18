@@ -1,0 +1,11 @@
+G:\C#Source\WZZ\Test.DAL\bin\Debug\netcoreapp2.1\Test.DAL.deps.json
+G:\C#Source\WZZ\Test.DAL\bin\Debug\netcoreapp2.1\Test.DAL.runtimeconfig.json
+G:\C#Source\WZZ\Test.DAL\bin\Debug\netcoreapp2.1\Test.DAL.runtimeconfig.dev.json
+G:\C#Source\WZZ\Test.DAL\bin\Debug\netcoreapp2.1\Test.DAL.dll
+G:\C#Source\WZZ\Test.DAL\bin\Debug\netcoreapp2.1\Test.DAL.pdb
+G:\C#Source\WZZ\Test.DAL\obj\Debug\netcoreapp2.1\Test.DAL.csproj.CoreCompileInputs.cache
+G:\C#Source\WZZ\Test.DAL\obj\Debug\netcoreapp2.1\Test.DAL.AssemblyInfoInputs.cache
+G:\C#Source\WZZ\Test.DAL\obj\Debug\netcoreapp2.1\Test.DAL.AssemblyInfo.cs
+G:\C#Source\WZZ\Test.DAL\obj\Debug\netcoreapp2.1\Test.DAL.dll
+G:\C#Source\WZZ\Test.DAL\obj\Debug\netcoreapp2.1\Test.DAL.pdb
+G:\C#Source\WZZ\Test.DAL\obj\Debug\netcoreapp2.1\Test.DAL.csprojAssemblyReference.cache

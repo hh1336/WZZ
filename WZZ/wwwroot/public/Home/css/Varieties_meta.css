@@ -1,0 +1,177 @@
+@media (min-width:1480px){
+.footer_box{background-color:#FFFFFF;height:150px;margin-top:100px;border-top:1px solid #F0F0F0;}
+.footer_box .footer_logo{width:290px;height:119px;margin:2% 0 0 10%;border-right:2px solid #cc9d32;}
+.footer_box .introduce{width:700px;height:119px;float:right;margin-right:18% !important;margin-top:-6% !important;font-size:18px;text-align:left;text-indent:30px;padding-top:10px;color:#999999;}
+}
+@media (max-width:1320px){
+.container-fluid{width:1350px;}
+}
+/*iphoone 6 plus*/	
+            @media (max-width:420px){
+            	/*导航*/
+            	.met-head.navbar-fixed-top{widows: 100%; !important;}
+            	/*banner*/
+            	.slide{margin-top: 30% !important;}
+            	/*banner text*/
+            	.carousel-caption{font-size: 12px;}
+            	.main1 .pinpai{width: 300px !important;float: left;}
+            	.carousel-inner .carousel-item .carousel-caption h3{font-size: 12px;}
+            	
+            	            	
+            	.bg2{width: 400px !important;}
+            	.main1 .blk80{height: 50px !important;}
+            	.main1 .title{height: 50px !important;line-height: 50px !important;font-size: 16px !important;width: 415px;text-align: center;}
+            	.main1 .title>h2.has_marks{font-size: 16px !important;}
+            	.main1 .title>p{font-size: 12px !important;}
+            	.main1 .title>p{font-size: 12px !important;;color: #999999;}
+
+            	.main1 .pinpai{width: 400px !important;float: left ;margin-top: 15%;text-align: center;}
+            	.main1 .pinpai>ul{float: left;width: 400px !important;margin-left: 0px;}
+            	.main1 .pinpai>ul>li{width: 400px !important;margin-right: 0;}
+            	.main1 .pinpai>ul>li a{width: 400px !important;margin: 0 auto !important;float: left;}
+            	
+            	.main1 .pinpai>ul>li a img{margin: 0 70px !important;}      
+            	.main1 .pinpai>ul>li a>div{width: 400px !important;margin: 0 auto !important;}
+            	.main1 .pinpai>ul>li a>div b{font-size: 14px !important;text-align: center !important; width: 370px;}
+            	.main1 .pinpai>ul>li a>div p{width: 400px !important;margin: 0 auto !important; text-align: center;}
+            	.main1 .pinpai>ul>li a>div button{float:left;width:390px !important;height:30px !important;font-size: 14px !important;margin: 5px 0px !important;} 
+            	
+            	/*底部*/
+		.footer_box {
+			width: 400px !important;
+			
+		}
+		.footer_box {
+			height: auto;
+			margin-top: 10px!important;
+		}
+		.footer_box .footer_logo {
+			width: 230px;
+			height: 90px;
+			margin: 0px 0px;
+			border-right: none !important;
+		}
+		.footer_box .introduce {
+			width: 320px !important;
+			height: 100px;
+			float: none;
+			margin: 0 auto;
+			margin-top: 0% !important;
+			font-size: 9px!important;
+			text-align: center;
+			padding-top: 20px;
+			color: #999999;
+		}
+		
+		/*模态框*/
+		.modal-body{height: auto;}
+		.modal-body .modal_img{width: 100% !important;}
+		.modal-body .modal_text{width: 80% !important;margin: 0 auto !important;font-size: 20px;float: none !important;height: auto !important;}
+
+            	}
+            	
+/*iphone 6,iphone X*/
+            @media (max-width:380px){
+            	/*导航*/
+            	.met-head.navbar-fixed-top{widows: 100%; !important;}
+            	/*banner*/
+            	.slide{margin-top: 30% !important;}
+            	/*banner text*/
+            	.carousel-caption{font-size: 12px;}
+            	.main1 .pinpai{width: 300px !important;float: left;}
+            	.carousel-inner .carousel-item .carousel-caption h3{font-size: 12px;}
+            	
+            	            	
+            	.bg2{width: 310px !important;}
+            	.main1 .blk80{height: 50px !important;}
+            	.main1 .title{height: 50px !important;line-height: 50px !important;font-size: 16px !important;width: 375px;}
+            	.main1 .title>h2.has_marks{font-size: 14px !important;}
+            	.main1 .title>p{font-size: 12px !important;}
+            	.main1 .title>p{font-size: 12px !important;;color: #999999;width: 375px;}
+
+            	.main1 .pinpai{width: 370px !important;float: left ;margin-top: 15%;text-align: center;}
+            	.main1 .pinpai>ul{float: left;width: 300px !important;margin-left: -0px;}
+            	.main1 .pinpai>ul>li{width: 370px !important;margin-right: 0;}
+            	.main1 .pinpai>ul>li a{width: 370px !important;margin: 0 auto !important;float: left;}
+            	
+            	.main1 .pinpai>ul>li a img{margin: 0 70px !important;}      
+            	.main1 .pinpai>ul>li a>div{width: 370px !important;margin: 0 auto !important;}
+            	.main1 .pinpai>ul>li a>div b{font-size: 16px !important;text-align: center !important; width: 370px;}
+            	.main1 .pinpai>ul>li a>div p{width: 370px !important;margin: 0 auto !important; text-align: center;}
+            	.main1 .pinpai>ul>li a>div button{float:left;width:350px !important;height:30px !important;font-size: 14px !important;margin: 5px 2px !important;} 
+            	
+            	.footer_box {
+				width: 360px !important;
+			}
+			.footer_box {
+				height: auto;
+				margin-top: 10px!important;
+			}
+			.footer_box .footer_logo {
+				width: 200px;
+				height: 90px;
+				margin: 0px 10px;
+				border-right: none;
+			}
+			.footer_box .introduce {
+				width: 300px !important;
+				height: 100px;
+				float: none;
+				margin-top: 2% !important;
+				font-size: 9px!important;
+				text-align: center !important;
+				text-indent: 20px;
+				padding-top: 20px;
+				color: #999999;
+			}
+			/*模态框*/
+			.modal-body .modal_img{border: none !important;}
+			.modal-body .modal_img{width: 100% !important;margin-left: -10% !important;border: none;}
+            	}
+
+
+/*iphone 5*/
+            @media (max-width:325px){
+            	/*导航*/
+            	.met-head.navbar-fixed-top{width:320px !important;}
+            	/*banner*/
+            	.slide{margin-top: 30% !important;}
+            	/*banner text*/
+            	.carousel-caption{font-size: 12px;}
+            	.main1 .pinpai{width: 300px !important;float: left;}
+            	.carousel-inner .carousel-item .carousel-caption h3{font-size: 12px;}
+            	
+            	            	
+            	.bg2{width: 310px !important;}
+            	.main1 .blk80{height: 50px !important;}
+            	.main1 .title{height: 50px !important;line-height: 50px !important;font-size: 16px !important;width: 320px;}
+            	.main1 .title>h2.has_marks{font-size: 14px !important;}
+            	.main1 .title>p{font-size: 12px !important;}
+            	.main1 .title>p{font-size: 12px !important;;color: #999999;width: 320px;}
+
+            	.main1 .pinpai{width: 310px !important;float: left ;margin-top: 15%;}
+            	.main1 .pinpai>ul{float: left;width: 300px !important;margin-left: 0px;}
+            	.main1 .pinpai>ul>li{width: 300px !important;margin-right: 0;}
+            	.main1 .pinpai>ul>li a{width: 300px !important;margin: 0 auto !important;float: left;}
+            	
+            	.main1 .pinpai>ul>li a img{margin: 0 70px !important;}      
+            	.main1 .pinpai>ul>li a>div{width: 310px;margin: 0 auto !important;}
+            	.main1 .pinpai>ul>li a>div b{font-size: 16px !important;text-align: center;width: 300px;}
+            	.main1 .pinpai>ul>li a>div p{width: 300px !important;margin: 0px 0px !important;padding: 10px 0px !important;}
+            	.main1 .pinpai>ul>li a>div button.btn{width:300px !important;height:30px !important;font-size: 14px !important;margin-top: 25px;margin-left: 95px;} 
+            	
+            	/*回到顶部*/
+            	.gotoTOP{right: 10% !important;}
+            	
+            	/*模态框*/
+            	.modal{width: 310px !important;margin: 0 auto;}
+            	.modal-body{height: auto;}
+            	.modal-body .modal_img{width: 100% !important;margin-left: -10% !important;border: none;height: 200px !important;}
+            	.modal-body .modal_img img{width: 200px;height: 200px;}
+            	
+            	}
+            	
+            
+
+            
+

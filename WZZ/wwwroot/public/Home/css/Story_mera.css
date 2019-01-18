@@ -1,0 +1,373 @@
+@media (min-width:1480px){
+}
+@media (max-width:1320px){
+.container-fluid{width:1350px;}
+}
+@media (min-width:450px){
+.menu{display: none;}
+    .footer_box .introduce {
+        margin-left: 0px;
+    }
+}
+@media (max-width:414px){
+   /*轮播图*/
+   #demo{width:400px;height:200px;margin-top:15%;margin-left:-13%;}
+    #deom .carousel-indicators {
+        display:none;
+    }
+    #demo .carousel-inner {
+        width: 400px;
+        height: 200px;
+    }
+    #demo .carousel-inner .carousel-item img {
+        width: 400px;
+        height: 180px;
+    }
+    #demo .carousel-control-prev, #demo .carousel-control-next {
+        width: 10%;
+    }
+    #demo .carousel-control-prev span, #demo .carousel-control-next span {
+           display:none;
+    }
+       
+        /*hot*/
+        .hot-article {
+            width: 400px !important;
+            margin-left: -15% !important;
+            margin-top: 2%;
+        }
+.hot-article .titleR{font-size: 14px;}
+.hot-article .pic-txt h4,.hot-article .pic-txt p{font-size: 10px !important;}
+
+/*main*/
+.sohu-index-v3{width: 400px;}
+.sohu-index-v2{margin-top: 5% !important;}
+.sohu-index-v3 .area{width: 400px;}
+.sohu-index-v3 .main  .list-mun{margin-left:4% !important;}
+.sohu-index-v3 .title-cut ul li{padding: 0px 10px 0;}/**/
+.sohu-index-v3 .public .main .list16{margin-left:10%;}
+.sohu-index-v3 .title-cut ul li a{font-size: 14px;}/*分类文字*/
+/*左边框*/.sohu-index-v3 .public .main{width: 380px;}
+.sohu-index-v3 .public .main{width: 380px;margin-left:-10%;}
+.sohu-index-v3 .public .main .pic-focus{width: 380px;}/*img*/
+.sohu-index-v3 .public .main .pic-focus img{width: 380px;}/*img*/
+.sohu-index-v3 .public .main .pic-group{width: 400px;margin:5px auto;}/*小图*/
+
+/*文本*/.sohu-index-v3 .public .main .main-right{width: 400px;margin-top: 3%;}
+
+
+/*右边框*/.sohu-index-v3 .public .sidebar{width: 400px;margin-top: 3%;}
+    .sohu-index-v3 .content-business .sidebar .plugin, .sohu-index-v3 .godR {
+        margin-left: -17%;
+    }
+.stock-img{text-align: center;}
+
+/*nav*/
+.navbar-header{margin-left:0px;}
+.nav-height .navbar-collapse .navlist{display:none;}
+.nav-height .navbar-collapse .navlist1{width:120%!important;}
+.nav-height .navbar-collapse .nav-item{width:90%;text-align:center;border-bottom:1px Dotted #999999;}
+
+    /*底部*/
+    .footer_box {
+        height: auto;
+        margin-top: 10px !important;
+    }
+
+        .footer_box .footer_logo {
+            width: 180px;
+            height: 90px;
+            margin: 0px;
+            border-right: none;
+        }
+
+        .footer_box .introduce {
+            margin-left: 0px !important;
+            width: 300px;
+            height: 100px;
+            float: none;
+            margin: 0 auto;
+            margin-top: 1%;
+            font-size: 9px !important;
+            text-align: left;
+            text-indent: 20px;
+            padding-top: 20px;
+            color: #999999;
+
+        }
+
+}
+ 
+
+@media (max-width:376px){
+    .container{padding-left:7px;}
+    /*导航*/
+    .nav_aa {
+        display: none;
+        background: none;
+    }
+
+    .navbar-collapse .navbar-header {
+        margin-left: 0%;
+    }
+
+    .navbar-header {
+        width: 380px !important;
+        float: left;
+    }
+
+        .navbar-header button {
+            float: right;
+            margin-right: 100px;
+            margin-top: -60px;
+            width: 15px;
+            height: 15px;
+        }
+
+            .navbar-header button img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .navbar-header button:visited {
+                border: none;
+            }
+
+    .logo {
+        width: 100px;
+    }
+
+    #header {
+        height: 0px;
+        background: none;
+        width: 100%;
+    }
+
+        #header.header-fixed {
+            position: inherit;
+            top: 0px;
+            z-index: 0;
+            background: none;
+            opacity: 0;
+        }
+
+    #header {
+        display: none;
+    }
+
+    .head_nav_met_16_3 {
+        z-index: 2000;
+        margin-top: -20px;
+    }
+
+        .head_nav_met_16_3 .navlist {
+            float: left;
+            margin-left: 10px;
+        }
+
+    .navlist {
+        width: 350px !important;
+        display: none;
+    }
+
+        .navlist .nav-link {
+            font-size: 12px !important;
+        }
+
+    .header_menu {
+        border: none;
+        background: none;
+    }
+
+    .nav-item .nav-link {
+        text-align: center;
+        border-bottom: 1px dotted #CCCCCC;
+    }
+
+    .nav-item .nav-link {
+        padding-right: 50px;
+        width:300px;
+    }
+
+/*底部*/
+    .footer_box {
+        height: auto;
+        margin-top: 10px !important;
+    }
+
+        .footer_box .footer_logo {
+            width: 180px;
+            height: 90px;
+            margin: 0px;
+            border-right: none;
+        }
+
+        .footer_box .introduce {margin-left:0px;
+            width: 300px;
+            height: 100px;
+            float: none;
+            margin: 0 auto;
+            margin-top: 1%;
+            font-size: 9px !important;
+            text-align: left;
+            text-indent: 20px;
+            padding-top: 20px;
+            color: #999999;
+            
+        }
+
+    /*轮播图*/
+    #demo {
+        width: 370px;
+        height: 200px;
+        margin-top: 15%;
+        margin-left: -7%;
+    }
+
+    #deom .carousel-indicators {
+        display: none;
+    }
+
+    #demo .carousel-inner {
+        width: 370px;
+        height: 200px;
+    }
+
+        #demo .carousel-inner .carousel-item img {
+            width: 370px;
+            height: 180px;
+        }
+
+    #demo .carousel-control-prev, #demo .carousel-control-next {
+        width: 10%;
+    }
+
+        #demo .carousel-control-prev span, #demo .carousel-control-next span {
+            display: none;
+        }
+       
+/*hot*/
+    .hot-article {
+        width: 370px !important;
+        margin-left: -9% !important;
+        margin-top: 2%;
+    }
+
+/*main*/
+/*.sohu-index-v3{width: 360px;margin-top: 200% !important;}*/
+.sohu-index-v2{margin-top: 5% !important;}
+.sohu-index-v3 .title-cut{margin-left:10px;}
+.sohu-index-v3 .public .main .pic-focus{width: 370px;}/*img*/
+.sohu-index-v3 .public .main .pic-focus img{width: 370px;}/*img*/
+.sohu-index-v3 .public .main .pic-group{width: 370px;margin:10px 25px;}/*小图*/
+
+/*右边框*/.sohu-index-v3 .public .sidebar{width: 370px;margin-top: 3%;float: left;}
+.stock-img{text-align: center;}
+
+
+}
+
+@media (max-width:325px){
+    /*轮播图*/
+    #demo {
+        width: 300px;
+        height: 200px;
+        margin-top: -5% !important;
+        margin-left: -3%;
+    }
+
+    #deom .carousel-indicators {
+        display: none;
+    }
+
+    #demo .carousel-inner {
+        width: 300px;
+        height: 200px;
+    }
+
+        #demo .carousel-inner .carousel-item img {
+            width: 300px;
+            height: 180px;
+        }
+
+    #demo .carousel-control-prev, #demo .carousel-control-next {
+        width: 10%;
+    }
+
+        #demo .carousel-control-prev span, #demo .carousel-control-next span {
+            display: none;
+        }
+    
+
+  
+    .navbar-header {
+        margin-left: 0px;
+    }
+
+    .nav-height .navbar-collapse .navlist {
+        display: none;
+    }
+
+    .nav-height .navbar-collapse .navlist1 {
+        width: 120% !important;
+    }
+
+    .nav-height .navbar-collapse .nav-item {
+        width: 90%;
+        text-align: center;
+        border-bottom: 1px Dotted #999999;
+    }
+
+    /*main*/
+    .hot-article{margin-left:4%;width:325px !important;}
+    .sohu-index-v3 {
+        width: 90%;
+    }
+
+    .sohu-index-v2 {
+        margin-top: 5% !important;
+    }
+    .sohu-index-v3 .public .main{width:320px;}
+    .sohu-index-v3 .main .list-mun{width:320px;}
+    .sohu-index-v3 .public .main .pic-focus {
+        width: 315px;
+        margin-left:2px;
+    }
+    .sohu-index-v3 .public .main .pic-group{width:320px;margin:0 auto;}
+    .sohu-index-v3 .public .main .list16 {margin-left:20%;
+    }
+    .sohu-index-v3 .content-business .sidebar .plugin, .sohu-index-v3 .godR{width:320px; margin-left:-8%;}
+    /*右边框*/ .sohu-index-v3 .public .sidebar {
+        width: 380px;
+        margin-top: 3%;
+        float: left;
+    }
+
+    /*底部		*/
+    .footer_box {
+        height: auto;
+        margin-top: 10px !important;
+    }
+
+        .footer_box .footer_logo {
+            width: 180px;
+            height: 90px;
+            margin: 0px;
+            border-right: none;
+        }
+
+        .footer_box .introduce {
+            width: 300px;
+            height: 100px;
+            float: none;
+            margin: 0 auto;
+            margin-top: 1%;
+            font-size: 9px !important;
+            text-align: left;
+            text-indent: 20px;
+            padding-top: 20px;
+            color: #999999;
+        }
+
+
+}

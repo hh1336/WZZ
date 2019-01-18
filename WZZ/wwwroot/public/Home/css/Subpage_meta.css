@@ -1,0 +1,414 @@
+/*body*/
+
+body {
+    padding: 0;
+    margin: 0;
+}
+/*隐藏菜单按钮*/
+
+@media (min-width:450px) {
+    .menu {
+        display: none;
+    }
+}
+
+@media (min-width:1480px) {
+    .footer_box {
+        background-color: #FFFFFF;
+        height: 150px;
+        margin-top: 25px;
+        border-top: 1px solid #F0F0F0;
+    }
+
+        .footer_box .footer_logo {
+            width: 290px;
+            height: 119px;
+            margin: 2% 0 0 10%;
+            border-right: 2px solid #cc9d32;
+        }
+
+        .footer_box .introduce {
+            width: 700px;
+            height: 119px;
+            float: right;
+            margin-right: 16%;
+            margin-top: -7%;
+            font-size: 18px;
+            text-align: left;
+            text-indent: 30px;
+            padding-top: 10px;
+            color: #999999;
+        }
+}
+/*media ip6 plus*/
+
+@media (max-width:414px) {
+    /*logo位置*/
+    .navbar-header {
+        margin-left: 0px;
+    }
+    /*layout*/
+    .layout {
+        width: 400px;
+    }
+    /*NAV*/
+    .nav-height .navbar-collapse .navlist {
+        display: none;
+    }
+    /*ul*/
+    .nav-height .navbar-collapse .navlist1 {
+        width: 120% !important;
+    }
+    /*ul*/
+    /*title*/
+    .nav-height .navbar-collapse .nav-item {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px Dotted #999999;
+    }
+    /*li*/
+    .title-box1 {
+        text-align: center;
+        
+        margin-bottom: -50px;
+        margin-top: 30px;
+    }
+    /*标题*/
+    #tit {
+        width: 350px !important;
+        border: none;
+    }
+    /*茶文化*/
+    .title-box1 .cn {
+        font-size: 20px;
+        line-height: 20px;
+        padding-bottom: 0px;
+        width: 350px;
+        text-align: center;
+    }
+
+    .title-box1 .en {
+        display: block;
+        font-size: 26px;
+        text-align: center !important;
+        width: 350px;
+    }
+    /*.in-news .col-box*/
+    .in-news {
+        padding-bottom: 20px;
+    }
+
+        .in-news .col-box {
+            width: 370px;
+            height: auto;
+            margin: 20px 3px !important;
+            padding: 10px 0px;
+        }
+
+            .in-news .col-box .hd-box {
+                width: 350px;
+                font-size: 15px;
+                margin: 0;
+                line-height: 10px;
+                margin-top: 20px;
+                margin-bottom: -10px;
+                padding-left: 1%;
+                padding-right: 1%;
+            }
+
+                .in-news .col-box .hd-box a {
+                    font-size: 16px;
+                }
+
+            .in-news .col-box .pic-box {
+                width: 370px;
+                float: left;
+            }
+
+                .in-news .col-box .pic-box p {
+                    font-size: 14px;
+                    width: 80%;
+                }
+
+            .in-news .col-box .news-list li a {
+                width: 280px;
+            }
+
+    .top {
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+    }
+        /*回到顶部*/
+        .top::before {
+            font-size: 14px;
+        }
+
+    .top-in {
+        width: 12px;
+        height: 12px;
+    }
+    /*底部*/
+    .footer_box {
+        width: 400px;
+    }
+
+    .footer_box {
+        height: auto;
+        margin-top: 10px !important;
+    }
+
+        .footer_box .footer_logo {
+            width: 230px;
+            height: 90px;
+            margin: 0px 50px;
+            border-right: none;
+        }
+
+        .footer_box .introduce {
+            width: 340px;
+            height: 100px;
+            float: none;
+            margin: 0 auto;
+            margin-top: 1%;
+            font-size: 9px !important;
+            text-align: left;
+            text-indent: 20px;
+            padding-top: 20px;
+            color: #999999;
+        }
+}
+
+@media (max-width:380px) {
+    .footer_box {
+        width: 360px;
+    }
+
+    .footer_box {
+        height: auto;
+        margin-top: 10px !important;
+    }
+
+        .footer_box .footer_logo {
+            width: 200px;
+            height: 90px;
+            margin: 0px 10px;
+            border-right: none;
+        }
+
+        .footer_box .introduce {
+            width: 320px;
+            height: 100px;
+            float: none;
+            margin: 0 auto;
+            margin-top: 1%;
+            font-size: 9px !important;
+            text-align: left;
+            text-indent: 20px;
+            padding-top: 20px;
+            color: #999999;
+        }
+}
+/*media ip6*/
+
+@media (max-width:375px) {
+    /*logo位置*/
+    .navbar-header {
+        margin-left: 0px;
+    }
+    /*layout*/
+    .layout {
+        width: 350px;
+    }
+    /*NAV*/
+    .nav-height .navbar-collapse .navlist {
+        display: none;
+    }
+    /*ul*/
+    .nav-height .navbar-collapse .navlist1 {
+        width: 120% !important;
+    }
+    /*ul*/
+    /*title*/
+    .nav-height .navbar-collapse .nav-item {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px Dotted #999999;
+    }
+    /*li*/
+    .title-box1 {
+        text-align: center;
+       
+        margin-bottom: -50px;
+        margin-top: 30px;
+    }
+    /*标题*/
+    #tit {
+        width: 320px !important;
+        border: none;
+    }
+    /*茶文化*/
+    .title-box1 .cn {
+        font-size: 20px;
+        line-height: 20px;
+        padding-bottom: 0px;
+        width: 320px;
+        text-align: center;
+    }
+
+    .title-box1 .en {
+        display: block;
+        font-size: 26px;
+        text-align: center !important;
+        width: 320px;
+    }
+    /*.in-news .col-box*/
+    .in-news {
+        padding-bottom: 20px;
+    }
+
+        .in-news .col-box {
+            width: 350px;
+            height: auto;
+            margin: 20px 0px !important;
+            padding: 10px 0px;
+        }
+
+            .in-news .col-box .hd-box {
+                width: 310px;
+                font-size: 15px;
+                margin: 0;
+                line-height: 10px;
+                margin-top: 20px;
+                margin-bottom: -10px;
+            }
+
+                .in-news .col-box .hd-box a {
+                    font-size: 16px;
+                }
+
+            .in-news .col-box .pic-box {
+                width: 350px;
+                float: left;
+            }
+
+                .in-news .col-box .pic-box p {
+                    font-size: 14px;
+                    width: 80%;
+                }
+
+            .in-news .col-box .news-list li a {
+                width: 280px;
+            }
+}
+/*media ip5*/
+
+@media (max-width:325px) {
+    .container-fluid {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    /*logo位置*/
+    .navbar-header {
+        margin-left: 0px;
+    }
+    /*NAV*/
+    .nav-height .navbar-collapse .navlist {
+        display: none;
+    }
+    /*ul*/
+    .nav-height .navbar-collapse .navlist1 {
+        width: 120% !important;
+    }
+    /*ul*/
+    /*title*/
+    .nav-height .navbar-collapse .nav-item {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px Dotted #999999;
+    }
+    /*li*/
+    .title-box1 {
+        text-align: center;
+      
+        margin-bottom: -50px;
+        margin-top: 30px;
+    }
+    /*标题*/
+    #tit {
+        width: 200px !important;
+        border: none;
+    }
+    /*茶文化*/
+    .title-box1 .cn {
+        font-size: 20px;
+        line-height: 20px;
+        padding-bottom: 0px;
+    }
+
+    .title-box1 .en {
+        display: none;
+    }
+    /*.in-news .col-box*/
+    .in-news {
+        width: 320px;
+        padding-bottom: 20px;
+        margin-left:-20px;
+    }
+
+        .in-news .col-box {
+            width: 300px;
+            height: auto;
+            margin: 20px 0px 20px 0px !important;
+            padding: 10px 0px;
+        }
+
+            .in-news .col-box .hd-box {
+                width: 240px;
+                font-size: 14px;
+                margin: 0;
+                line-height: 10px;
+                margin-top: 20px;
+                margin-bottom: -10px;
+            }
+
+            .in-news .col-box .pic-box {
+                width: 300px;
+                float: left;
+            }
+
+                .in-news .col-box .pic-box p {
+                    font-size: 14px;
+                    width: 80%;
+                }
+
+            .in-news .col-box .news-list li a {
+                width: 280px;
+            }
+    /*底部		*/
+    .footer_box {
+        height: auto;
+        margin-top: 10px !important;
+    }
+
+        .footer_box .footer_logo {
+            width: 180px;
+            height: 90px;
+            margin: 0px;
+            border-right: none;
+        }
+
+        .footer_box .introduce {
+            width: 300px;
+            height: 100px;
+            float: none;
+            margin: 0 auto;
+            margin-top: 1%;
+            font-size: 9px !important;
+            text-align: left;
+            text-indent: 20px;
+            padding-top: 20px;
+            color: #999999;
+        }
+}

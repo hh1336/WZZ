@@ -1,0 +1,10 @@
+G:\C#Source\WZZ\Test.BLL\bin\Debug\netcoreapp2.1\Test.BLL.deps.json
+G:\C#Source\WZZ\Test.BLL\bin\Debug\netcoreapp2.1\Test.BLL.runtimeconfig.json
+G:\C#Source\WZZ\Test.BLL\bin\Debug\netcoreapp2.1\Test.BLL.runtimeconfig.dev.json
+G:\C#Source\WZZ\Test.BLL\bin\Debug\netcoreapp2.1\Test.BLL.dll
+G:\C#Source\WZZ\Test.BLL\bin\Debug\netcoreapp2.1\Test.BLL.pdb
+G:\C#Source\WZZ\Test.BLL\obj\Debug\netcoreapp2.1\Test.BLL.csproj.CoreCompileInputs.cache
+G:\C#Source\WZZ\Test.BLL\obj\Debug\netcoreapp2.1\Test.BLL.AssemblyInfoInputs.cache
+G:\C#Source\WZZ\Test.BLL\obj\Debug\netcoreapp2.1\Test.BLL.AssemblyInfo.cs
+G:\C#Source\WZZ\Test.BLL\obj\Debug\netcoreapp2.1\Test.BLL.dll
+G:\C#Source\WZZ\Test.BLL\obj\Debug\netcoreapp2.1\Test.BLL.pdb

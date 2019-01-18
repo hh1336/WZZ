@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no,widht=device-widht,initial-scale=1.0,maximum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edeg" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet" href="~/public/Home/css/Layout.css" />
+    @* css *@
+    <link rel="stylesheet" href="~/public/Home/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/public/Home/css/font-awesome.css" />
+
+
+   
+</head>
+<body style="overflow-x:hidden;">
+
+    <div class="container body-content">
+        <div class="container">
+
+            <!--头部-->
+
+            <header class="head_nav_met_16_3 met-head navbar-fixed-top" m-id="1" m-type="head_nav">
+                <div id="header" class="    header-fixed" style="top: 0px; visibility: inherit; opacity: 1;">
+
+                    <div class="container nav_aa">
+                        <ul class="head-list p-l-0 ">
+                            <li class="left tel">
+                                <img src="~/public/Home/images/index/head/1523865923.png" alt="">
+                                <span>加盟电话：</span>
+                                <em>155-7780-7079</em>
+                            </li>
+                            <!-- 右边的边框 -->
+                            <li class="right">
+                                <ul>
+                                    <li>
+                                        <img src="~/public/Home/images/index/head/1523608984.png">
+                                        <span>红茶</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/public/Home/images/index/head/1523608961.png">
+                                        <span>绿茶</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/public/Home/images/index/head/1523608245.png">
+                                        <span>普洱</span>
+                                    </li>
+                                    <li>
+                                        <img src="~/public/Home/images/index/head/1523608571.png">
+                                        <span>乌龙</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <nav class="navbar  head_nav_met_16_3 navbar-shadow">
+                    <div class="container">
+                        <div class="row nav-height">
+
+                            <!-- 导航 -->
+                            <div class=" navbar-collapse ">
+                                <!-- logo -->
+                                <div class="navbar-header">
+                                    <a asp-action="index" asp-controller="Home" class="">
+                                        <div class="logo">
+                                            <img src="~/public/Home/images/test/壶1.png" alt="logo" width="160" height="80">
+                                        </div>
+                                    </a>
+                                    <button type="button" class="header_menu">
+                                        <span class="sr-only">汉堡</span>
+                                        <img src="~/public/Home/images/font/菜单.png" id="header_menu">
+                                    </button>
+                                </div>
+
+                                <ul class="nav navlist">
+                                    <li class="nav-item" style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <a asp-action="Index" asp-controller="Home" class="nav-link nav_link_a active">首页</a>
+
+                                    </li>
+                                    <li class="nav-item " style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <a asp-action="Index" asp-controller="Subpage" target="_self" class="nav-link nav_link_b ">茶知识</a>
+
+                                    </li>
+                                    <li class="nav-item " style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <a asp-action="Index" asp-controller="Varieties" target="_self" class="nav-link nav_link_c">茶品种</a>
+
+
+                                        <!--<li class="nav-item " style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                            <a href="brand(品牌).html" target="_self" class="nav-link nav_link_d">茶品牌</a>
+
+
+                                        </li>-->
+                                    <li class="nav-item " style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
+                                        <a  asp-action="Index" asp-controller="Story"  target="_self" class="nav-link nav_link_e">茶故事</a>
+
+
+                                    <li class="nav-item m-l-0" style="">
+                                        <a href="" target="_self" class="nav-link ">联系</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- 导航 -->
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- 头部 -->
+            @RenderBody()
+        </div>
+
+        @*底部*@
+        <div class="container-fluid footer_box">
+            <div class="foter">
+
+                <div class="footer_logo">
+                    <a asp-action="/index" asp-controller="Home"><img src="~/public/Home/images/test/壶1.png" width="280" height="119" /></a>
+                </div>
+                <div class="introduce">
+                    本网站是非盈利型网站，只为志同道合的爱茶人、懂茶人、赏茶人提供一个平台，丰富茶知识，增长茶文化、提高茶品味。
+                    站内文章一律来源其他网站，如有没注明清楚的地方，多多谅解。
+                </div>
+
+
+            </div>
+            <br />
+
+        </div>
+    </div>
+
+    <button id="goToTop" class="gotoTOP" style="display: block;"><a href="javascript:;"><img src="~/images/font/箭头 (2).png"></a></button>
+
+    @* JS *@
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="~/public/Home/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="~/public/Home/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/public/Home/js/Layout.js"></script>
+
+    @RenderSection("Scripts", required: false)
+
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+/*iphoone 6 plus*/	
+            @media (max-width:420px){
+            	/*body*/
+            	body{overflow-x: hidden;}
+            	/*导航*/
+            	.head_nav_met_16_3{max-width: 414px;}
+            	/*文章主体*/
+            	.main11{padding: 0;width: 400px;}
+            	.news_list_detail_met_16_3{width: 410px;margin-left: 1%;
+    margin-top: 9%;}
+         		.ore{width:405px;}
+                .met-shownews-body{width:410px;}
+                /*文章主体标题*/
+                .news_list_detail_met_16_3 .details-title h1{font-size: 20px;text-align: center;}
+                .news_list_detail_met_16_3 .details-title .info{text-align: center;}
+               
+               /*next*/
+              	/*.p-y-30{padding-bottom: 10px;}
+                .p-t-30{padding-top: 10px; 
+                */
+    			/*热文*/
+    			.main1{display: none !important;}
+    			
+    			
+            }
+        /*iphone 6,iphone X*/
+            @media (max-width:380px){
+            	/*body*/
+            	
+            	/*导航*/
+            	.head_nav_met_16_3{max-width: 375px;}
+            	/*文章主体*/
+            	.main11{padding: 0;width: 370px;}
+            	.news_list_detail_met_16_3{width: 370px;margin-left: 1%;
+    margin-top: 9%;}
+         		.ore{width:375px;}
+                .met-shownews-body{width:370px;}
+                /*文章主体标题*/
+                .news_list_detail_met_16_3 .details-title h1{font-size: 18px;text-align: center;}
+                .news_list_detail_met_16_3 .details-title .info{text-align: center;}
+                
+               /*next*/
+              	/*.p-y-30{padding-bottom: 10px;}
+                .p-t-30{padding-top: 10px; 
+                */
+    			/*热文*/
+    			.main1{display: none !important;}
+    			
+            }
+        /*iphone 5*/
+            @media (max-width:325px){
+            	/*文章主体标题*/
+                .news_list_detail_met_16_3 .details-title h1{font-size: 16px;text-align: center;}
+                /*点击量*/
+                .news_list_detail_met_16_3 .details-title .info{text-align: center;}
+            }
