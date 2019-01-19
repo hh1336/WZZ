@@ -17,5 +17,7 @@ namespace BLL.Interfaces
 
         List<WZZModel> GetAllList();
 
+        List<WZZModel> GetModelByPid(int id);
+
     }
 }

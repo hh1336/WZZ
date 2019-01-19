@@ -6,10 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edeg" />
     <title>@ViewData["Title"]</title>
 
-    <link rel="stylesheet" href="~/public/Home/css/Layout.css" />
     @* css *@
+    <link rel="stylesheet" href="~/public/Home/css/Layout.css" />
     <link rel="stylesheet" href="~/public/Home/css/bootstrap.min.css" />
-
     <link rel="stylesheet" href="~/public/Home/css/font-awesome.css" />
     @RenderSection("Styles", required: false)
 
@@ -24,7 +23,7 @@
             <!--头部-->
 
             <header class="head_nav_met_16_3 met-head navbar-fixed-top" m-id="1" m-type="head_nav">
-                <div id="header" class="    header-fixed" style="top: 0px; visibility: inherit; opacity: 1;">
+                <div id="header" class="header-fixed" style="top: 0px; visibility: inherit; opacity: 1;">
 
                     <div class="container nav_aa">
                         <ul class="head-list p-l-0 ">
@@ -90,11 +89,7 @@
                                         <a asp-action="Index" asp-controller="Varieties" target="_self" class="nav-link nav_link_c">茶品种</a>
 
 
-                                        <!--<li class="nav-item " style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
-                                            <a href="brand(品牌).html" target="_self" class="nav-link nav_link_d">茶品牌</a>
-
-
-                                        </li>-->
+                                        </li>
                                     <li class="nav-item " style="visibility: inherit; opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">
                                         <a  asp-action="Index" asp-controller="Story"  target="_self" class="nav-link nav_link_e">茶故事</a>
 

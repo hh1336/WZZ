@@ -1,4 +1,5 @@
 ﻿using DAL.Entitys;
+using DAL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace BLL.Interfaces
         Article GetById(int id);
 
         List<Article> GetAllList();
+
+        List<ModelArticle> GetArticleByModel(List<WZZModel> model);
     }
 }

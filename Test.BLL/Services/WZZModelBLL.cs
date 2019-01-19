@@ -49,5 +49,17 @@ namespace BLL.Services
             var result = _db.WZZModels.SingleOrDefault(w => w.id == id);
             return result;
         }
+
+        /// <summary>
+        /// 根据副id获取对应大模块下的小模块
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<WZZModel> GetModelByPid(int id)
+        {
+            var result = _db.WZZModels.Where(w => w.Pid == id);
+            var resultList = result.ToList();
+            return resultList;
+        }
     }
 }

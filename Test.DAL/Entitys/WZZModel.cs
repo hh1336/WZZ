@@ -25,5 +25,10 @@ namespace DAL.Entitys
         /// </summary>
         [StringLength(50)]
         public string Subheading { set; get; }
+
+        /// <summary>
+        /// 自关联id
+        /// </summary>
+        public int Pid { set; get; }
     }
 }

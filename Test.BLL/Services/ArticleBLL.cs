@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using DAL;
 using DAL.Entitys;
+using DAL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,22 @@ namespace BLL.Services
         {
             var reslut = GetAll();
             return reslut.ToList();
+        }
+
+        /// <summary>
+        /// 根据模块获取文章
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns>返回文章和模块信息</returns>
+        public List<ModelArticle> GetArticleByModel(List<WZZModel> model)
+        {
+            List<ModelArticle> modellist = new List<ModelArticle>();
+            foreach (var item in model)
+            {
+                var Articles = _db.Articles.Where(a => a.WZZModelId == item.id);
+                modellist.Add(new ModelArticle() { WZZModel = item, Articles = Articles.ToList() });
+            }
+            return modellist;
         }
 
         /// <summary>
