@@ -55,7 +55,7 @@ button {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -390,7 +390,6 @@ a:hover {
 
 .hot .mob-ctt {
     position: relative;
-    float: right;
     width: 400px;
 }
 
@@ -448,7 +447,7 @@ a:hover {
     height: 124px;
     overflow: hidden;
     background: #e7e7e7;
-    margin-right: 0;
+    
 }
 
 .hot .icon-team-auth {
@@ -580,7 +579,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -764,7 +763,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -829,7 +828,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -989,7 +988,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -1173,7 +1172,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -1262,7 +1261,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -1496,7 +1495,6 @@ h3 {
 
             .Hot_box .mod-info-flow .mob-ctt {
                 width: 220px;
-                float: left;
                 left: 10px;
                 font-size: 12px;
             }
@@ -1537,7 +1535,6 @@ h3 {
 
     .Hot_box .mod-info-flow .mob-ctt {
         width: 300px;
-        float: left;
         left: 10px;
         font-size: 12px;
     }
@@ -1571,7 +1568,6 @@ h3 {
     }
 
         .navbar-header button {
-            float: right;
             width: 15px;
             height: 15px;
         }
@@ -1725,7 +1721,7 @@ h3 {
                 .Hot_box .mod-info-flow .mod-b .mod-thumb {
                     width: 90px;
                     height: 50px;
-                    margin-right: 0;
+                    
                 }
 
                     .Hot_box .mod-info-flow .mod-b .mod-thumb img {
@@ -1746,78 +1742,7 @@ h3 {
         font-size: 6px;
     }
 
-    .Hot_box .mob-sub, .type_a .mob-sub, .type_d .mob-sub {
-        width: 180px  ;
-    }
-
-
-    /*type_b部分*/
-    .type_b {
-        width: 400px  ;
-    }
-
-        .type_b .mod-b {
-            width: 400px;
-        }
-
-        .type_b .mod-info-flow .mod-b {
-            height: 100px  ;
-        }
-
-        .type_b .type_b_title h3 {
-            font-size: 16px  ;
-            width: 342px;
-            text-align: left;
-        }
-
-        .type_b .mod-b-push .mod-thumb {
-            width: 400px;
-            height: 200px;
-            margin-right:0;
-        }
-
-        .type_b .mod-thumb a .type_b_img {
-            width: 400px;
-            height: 200px;
-        }
-
-        .type_b .mod-b-push .mob-ctt {
-            width: 400px;
-        }
-
-        .type_b .mob-ctt {
-            float: left;
-            font-size: 14px  ;
-        }
-
-            .type_b .mob-ctt h2 a {
-                font-size: 10px  ;
-            }
-
-    .mob-author {
-        font-size: 10px;
-    }
-
-
-    .type_b .mob-sub {
-        font-size: 10px;
-    }
-
-    .type_b a .type_b_img_xs {
-        width: 90px;
-        height: 50px;
-    }
-
-    .type_b .mob_ctt1 {
-        width: 260px;
-    }
-
-    .type_b .pull-left {
-        width: 100px;
-        height: 0px;
-    }
-
-
+ 
 
     /*type_a部分*/
     .type_a {
@@ -1860,148 +1785,6 @@ h3 {
                 width: 10px;
                 height: 10px;
             }
-
-    /*type_c部分*/
-    .type_c {
-        width: 400px;
-        float: left;
-    }
-
-        .type_c .type_c_title h3 {
-            font-size: 16px;
-            width: 200px;
-            text-align: left;
-        }
-
-        .type_c .mod-b {
-            width: 400px;
-            height: 317px;
-        }
-
-        .type_c .mod-b-push .mod-thumb {
-            width: 400px;
-            height: 200px;
-            margin-right:0;
-        }
-
-        .type_c .mod-b-push .mob-ctt {
-            width: 340px;
-            margin-top: 0px;
-            height: 90px;
-        }
-
-        .type_c .mob-ctt {
-            text-align: left;
-            float: left;
-        }
-
-            .type_c .mob-ctt h2 a {
-                font-size: 10px;
-                width: 300px;
-            }
-
-        .type_c .mob-sub {
-            font-size: 10px;
-            line-height: px;
-        }
-
-        .type_c .column-link-box {
-            width: 100px;
-            float: right;
-        }
-
-        .type_c .column-link {
-            padding-left: 20%;
-            text-align: right;
-        }
-
-    .mod-info-flow .type_c .mod-b {
-        width: 370px;
-        height: 200px  ;
-    }
-
-    .type_c .type_c_mod_b {
-        width: 90px;
-        height: 50px;
-    }
-
-        .type_c .type_c_mod_b .mod-thumb {
-            width: 90px;
-            height: 50px;
-            margin-right:0;
-        }
-
-    .type_c .type_c_mob-ctt {
-        width: 200px;
-        float: left;
-    }
-
-    .type_c .mob-author {
-        height: 30px;
-    }
-
-    .type_c .type_c_mod_b .mob-sub {
-    }
-
-    .type_c .mod-info-flow {
-        height: 300px;
-    }
-
-    /*type_d部分*/
-    .type_d {
-        width: 400px;
-        float: left;
-        position: inherit;
-    }
-
-        .type_d .type_a_title h3 {
-            font-size: 16px;
-            height: 10px;
-            padding-left: 11px;
-        }
-
-        .type_d .type_d_title h3 {
-            font-size: 16px;
-            height: 10px;
-        }
-
-        .type_d .mob-ctt h2 a {
-            font-size: 10px  ;
-        }
-
-        .type_d .mod-info-flow {
-            width: 400px;
-        }
-
-            .type_d .mod-info-flow .mod-b {
-                width: 400px;
-                height: 110px;
-            }
-
-                .type_d .mod-info-flow .mod-b .mod-thumb, .Hot_box .mod-info-flow .mod-b .mod-thumb img {
-                    width: 90px;
-                    height: 50px;
-                }
-
-            .type_d .mod-info-flow .mob-ctt {
-                width: 200px;
-                height: 100px;
-                width: 250px;
-            }
-
-        .type_d .mob-author {
-            font-size: 10px  ;
-        }
-
-            .type_d .mob-author .author-face {
-                width: 10px;
-                height: 10px;
-            }
-
-
-        .type_d .mob-sub {
-            font-size: 10px;
-        }
 
     /*footer_box部分*/
     .footer_box {
@@ -2103,7 +1886,7 @@ h3 {
             .Hot_box .mod-info-flow .mod-b .mod-thumb {
                 width: 90px;
                 height: 50px;
-                margin-right: 0;
+                
             }
 
                 .Hot_box .mod-info-flow .mod-b .mod-thumb img {
@@ -2222,7 +2005,7 @@ h3 {
             .Hot_box .mod-info-flow .mod-b .mod-thumb {
                 width: 90px;
                 height: 50px;
-                margin-right: 0;
+                
             }
 
                 .Hot_box .mod-info-flow .mod-b .mod-thumb img {
@@ -2429,7 +2212,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -2500,7 +2283,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -2739,7 +2522,6 @@ a:hover {
 
     .type_a .mob-ctt {
         position: relative;
-        float: right;
         width: 400px;
     }
 
@@ -2796,7 +2578,7 @@ a:hover {
     height: 124px;
     overflow: hidden;
     background: #e7e7e7;
-    margin-right: 0;
+    
 }
 
     .type_a .icon-team-auth {
@@ -2849,240 +2631,12 @@ a:hover {
         height: 30px;
     }
 
-.type_b a {
-    background-color: transparent;
-}
-
-    .type_b a:active, a:hover {
-        outline: 0;
-    }
-
-.type_b img {
-    border: 0;
-}
-
-.type_b * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 :after, :before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-
-.type_b a {
-    color: #337ab7;
-    text-decoration: none;
-}
-
-    .type_b a:focus, a:hover {
-        color: #23527c;
-        text-decoration: underline;
-    }
-
-    .type_b a:focus {
-        outline: 5px auto -webkit-focus-ring-color;
-        outline-offset: -2px;
-    }
-
-.type_b img {
-    vertical-align: middle;
-}
-
-.type_b h2 {
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-}
-
-
-.type_b h2 {
-    font-size: 30px;
-}
-
-.type_b a {
-    color: #303030;
-}
-
-    .type_b a:hover {
-        color: #3ca5f6;
-        text-decoration: none;
-    }
-
-    .type_b a:link {
-        text-decoration: none;
-    }
-
-.type_b img {
-    width: 100%;
-}
-
-.type_b .mod-thumb img {
-    width: 100%;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    vertical-align: top;
-}
-
-.type_b .mod-thumb img {
-    height: 100%;
-    object-fit: cover;
-}
-
-.type_b .mod-thumb:hover img {
-    -webkit-transform: scale(1.04);
-    -moz-transform: scale(1.04);
-    -ms-transform: scale(1.04);
-    -o-transform: scale(1.04);
-    transform: scale(1.04);
-}
-
-.type_b .mod-b {
-    padding: 20px 0;
-    height: 184px;
-    /*border-bottom: 1px solid #f0f0f0;*/
-    width: 800px;
-}
-
-.type_b .mob-ctt {
-    position: relative;
-    float: right;
-    width: 450px;
-}
-
-    .type_b .mob-ctt h2 {
-        font-size: 24px;
-    }
-
-        .type_b .mob-ctt h2 a {
-            font-size: 18px;
-            line-height: 1.5;
-            word-break: normal;
-            word-wrap: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-            .type_b .mob-ctt h2 a.msubstr-row5 {
-                -webkit-line-clamp: 5;
-            }
-
-.type_b .mob-sub {
-    font-size: 14px;
-    color: #999;
-    line-height: 24px;
-    word-break: normal;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
-
-.type_b .mod-b-push .mob-sub {
-    -webkit-line-clamp: 4;
-}
-
-
-    .type_b .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_b .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_b .mob-author .author-name {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-
-.type_b .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_b .mod-b-push {
-    height: 341px;
-}
-
-    .type_b .mod-b-push .mod-thumb {
-        width: 450px;
-        height: 281px;
-        margin-right: 0;
-    }
-
-    .type_b .mod-b-push .mob-ctt {
-        width: 250px;
-    }
-
-.type_b .column-link-box {
-    position: absolute;
-    bottom: 25px;
-    right: 0;
-    text-align: right;
-}
-
-.type_b .column-link-big-box {
-    width: 300px;
-}
-
-    .type_b .column-link-big-box .column-link {
-        display: inline-block;
-    }
-
-.type_b .column-link {
-    font-size: 12px;
-    color: #3ca5f6;
-    text-align: center;
-    line-height: 1;
-    z-index: 10;
-}
-
-.type_b .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_b a {
-    cursor: pointer;
-}
-
-.type_b .mod-b {
-    position: absolute;
-}
-
-.type_b .type_b_title h3 {
-    border: none  ;
-    text-align: center;
-    color: #C82333;
-    width: 210px;
-}
-
 a {
     background-color: transparent;
     -webkit-text-decoration-skip: objects;
@@ -3113,7 +2667,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -3296,7 +2850,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -3361,7 +2915,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -3476,14 +3030,6 @@ a:hover {
     word-break: break-all;
 }
 
-.type_b .pull-left {
-    width: 220px;
-    height: 184px;
-}
-
-.type_b .mob_ctt1 {
-    float: left;
-}
 
 a:hover {
     outline: 0;
@@ -3530,7 +3076,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -3713,7 +3259,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -3802,7 +3348,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -3838,24 +3384,6 @@ h3 {
 }
 /*! CSS Used from: http://127.0.0.1:8020/%E6%96%87%E7%AB%A0%E7%AB%99/css/index_meta.css */
 @media (min-width:1480px) {
-    .type_b {
-        width: 780px  ;
-    }
-
-    .type_b_title {
-        padding-left: 3%;
-    }
-
-    .type_b .pull-left {
-        width: 220px;
-        height: 184px;
-    }
-
-
-    .type_b .mob_ctt1 {
-        float: left;
-    }
-
     .type_a {
         padding-left: 3%;
         width: 680px;
@@ -3863,22 +3391,6 @@ h3 {
 }
 
 @media (max-width:1480px) {
-    .type_b {
-        width: 780px  ;
-    }
-
-    .type_b_title {
-        padding-left: 3%;
-    }
-
-    .type_b .pull-left {
-        width: 220px;
-        height: 184px;
-    }
-
-    .type_b .mob_ctt1 {
-        float: left;
-    }
 
     .type_a {
         padding-left: 3%;
@@ -3887,13 +3399,7 @@ h3 {
 }
 
 @media (max-width:1460px) {
-    .type_b {
-        width: 750px  ;
-    }
 
-    .type_b_title {
-        padding-left: 3%;
-    }
 
     .type_a {
         padding-left: 3%;
@@ -3916,23 +3422,6 @@ h3 {
         white-space: nowrap;
     }
 
-    .type_b {
-        width: 650px  ;
-    }
-
-    .type_b_title {
-        padding-left: 3%;
-    }
-
-    .type_b .pull-left {
-        width: 220px;
-        height: 184px;
-    }
-
-    .type_b .mob_ctt1 {
-        float: left;
-    }
-
     .type_a {
         padding-left: 3%;
         width: 630px;
@@ -3940,43 +3429,16 @@ h3 {
 }
 
 @media (max-width:1400px) {
-    .type_b {
-        width: 690px  ;
-    }
 
-    .type_b_title {
-        padding-left: 3%;
-    }
 
     .type_a {
         padding-left: 3%;
         width: 600px;
     }
 
-    .type_b .column-link {
-        padding-right: 5%;
-    }
 }
 
 @media (max-width:1380px) {
-    .type_b {
-        width: 650px  ;
-        padding-left: -15px  ;
-    }
-
-    .type_b_title {
-        padding-left: 3%;
-    }
-
-    .type_b .pull-left {
-        width: 220px;
-        height: 184px;
-    }
-
-
-    .type_b .mob_ctt1 {
-        float: left;
-    }
 
     .type_a {
         padding-left: 3%;
@@ -3989,7 +3451,6 @@ h3 {
 
             .type_a .mod-info-flow .mob-ctt {
                 width: 250px;
-                float: left;
                 left: 10px;
             }
 
@@ -4001,30 +3462,16 @@ h3 {
                     width: 170px;
                     overflow: hidden;
                     text-overflow: ellipsis;
-                    margin-right: 0;
+                    
                 }
 
         .type_a .mob-author {
             margin: 0 auto;
         }
 
-    .type_b .column-link {
-        display: none  ;
-    }
 }
 
 @media (max-width:1320px) {
-    .type_b {
-        width: 650px  ;
-    }
-
-    .type_b_title {
-        padding-left: 3%;
-    }
-
-    .type_b .column-link-box {
-        width: 90px;
-    }
 
     .type_a {
         padding-left: 3%;
@@ -4045,7 +3492,6 @@ h3 {
 
             .type_a .mod-info-flow .mob-ctt {
                 width: 0px;
-                float: left;
                 font-size: 12px;
             }
 
@@ -4056,14 +3502,11 @@ h3 {
                 .type_a .mod-info-flow .mod-b .mod-thumb {
                     width: 150px;
                     height: 100px;
-                    margin-right: 0;
+                    
                 }
 }
 
 @media (max-width:769px) {
-    .type_a, .type_b {
-        position: absolute;
-    }
 }
 
 @media (max-width:420px) {
@@ -4071,67 +3514,12 @@ h3 {
         width: 180px  ;
     }
 
-    .type_b {
-        width: 400px  ;
-    }
-
-        .type_b .mod-b {
-            width: 400px;
-        }
-
-        .type_b .mod-info-flow .mod-b {
-            height: 100px  ;
-        }
-
-        .type_b .type_b_title h3 {
-            font-size: 16px  ;
-            width: 342px;
-            text-align: left;
-        }
-
-        .type_b .mod-b-push .mod-thumb {
-            width: 400px;
-            height: 200px;
-            margin-right: 0;
-        }
-
-        .type_b .mod-b-push .mob-ctt {
-            width: 400px;
-        }
-
-        .type_b .mob-ctt {
-            float: left;
-            font-size: 14px  ;
-        }
-
-            .type_b .mob-ctt h2 a {
-                font-size: 10px  ;
-            }
 
     .mob-author {
         font-size: 10px;
     }
 
 
-    .type_b .mob-sub {
-        font-size: 10px;
-    }
-
-    .type_b a .type_b_img_xs {
-        width: 90px;
-        height: 50px;
-    }
-
-    .type_b .mob_ctt1 {
-        width: 260px;
-    }
-
-
-
-    .type_b .pull-left {
-        width: 100px;
-        height: 0px;
-    }
 
     .type_a {
         width: 410px;
@@ -4157,7 +3545,7 @@ h3 {
                 .type_a .mod-info-flow .mod-b .mod-thumb {
                     width: 90px;
                     height: 50px;
-                    margin-right: 0;
+                    
                 }
 
             .type_a .mod-info-flow .mob-ctt {
@@ -4180,79 +3568,11 @@ h3 {
         width: 220px  ;
     }
 
-    .type_c {
-    }
-
-    .type_b {
-        width: 370px  ;
-    }
-
-        .type_b .mod-b {
-            width: 370px;
-            padding: 0px 0px;
-        }
-
-        .type_b .mod-info-flow .mod-b {
-            height: 100px  ;
-        }
-
-        .type_b .type_b_title h3 {
-            font-size: 16px  ;
-            width: 342px;
-            text-align: left;
-        }
-
-        .type_b .mod-b-push .mod-thumb {
-            width: 350px;
-            height: 200px;
-            margin-right: 0;
-        }
-
-        .type_b .mod-b-push .mob-ctt {
-            width: 350px;
-        }
-
-        .type_b .mob-ctt {
-            float: left;
-            font-size: 14px  ;
-        }
-
-        .type_b .mob-sub {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .type_b .mob-ctt h2 a {
-            font-size: 10px  ;
-        }
 
     .mob-author {
         font-size: 10px;
     }
 
-
-    .type_b .mob-sub {
-        font-size: 10px;
-    }
-
-    .type_b a .type_b_img_xs {
-        width: 90px;
-        height: 50px;
-    }
-
-    .type_b .mob_ctt1 {
-        width: 260px;
-    }
-
-
-    .type_b .mob-author .time {
-        display: none;
-    }
-
-    .type_b .pull-left {
-        width: 100px;
-        height: 0px;
-    }
 
     .type_a {
         width: 350px;
@@ -4278,7 +3598,7 @@ h3 {
                 .type_a .mod-info-flow .mod-b .mod-thumb {
                     width: 90px;
                     height: 50px;
-                    margin-right: 0;
+                    
                 }
 
             .type_a .mod-info-flow .mob-ctt {
@@ -4303,50 +3623,6 @@ h3 {
         width: 180px  ;
     }
 
-    .type_b {
-        width: 300px  ;
-    }
-
-        .type_b .mod-b {
-            width: 300px;
-            border-bottom: none;
-        }
-
-
-        .type_b .mod-info-flow .mod-b {
-            height: 120px  ;
-        }
-
-    .type_b_title {
-        text-align: center  ;
-    }
-
-    .type_b .type_b_title h3 {
-        font-size: 16px  ;
-        width: 320px;
-        text-align: center  ;
-    }
-
-    .type_b .mod-b-push .mod-thumb {
-        width: 300px;
-        height: 150px;
-        margin-right: 0;
-    }
-
-    .type_b .mod-b-push .mob-ctt {
-        width: 300px;
-        font-size: 10px;
-    }
-
-    .type_b .mob-ctt {
-        float: left;
-        font-size: 14px  ;
-    }
-
-
-        .type_b .mob-ctt h2 {
-            text-align: center  ;
-        }
 
     a {
         font-size: 10px  ;
@@ -4356,36 +3632,6 @@ h3 {
         font-size: 10px;
     }
 
-    .type_b .mob-sub {
-        font-size: 10px;
-    }
-
-    .type_b a .type_b_img_xs {
-        width: 90px;
-        height: 50px;
-    }
-
-    .type_b .mob_ctt1 {
-        width: 200px;
-    }
-
-
-    .type_b .pull-left {
-        width: 100px;
-    }
-
-    .type_b .mod-b-push {
-        height: 289px;
-    }
-
-    .type_b .column-link-box {
-        width: 120px  ;
-        padding-left: 15%  ;
-    }
-
-    .type_b .mob-sub {
-        font-size: 8px  ;
-    }
 
     .type_a {
         width: 300px;
@@ -4412,7 +3658,7 @@ h3 {
                 .type_a .mod-info-flow .mod-b .mod-thumb {
                     width: 300px;
                     height: 150px;
-                    margin-right: 0;
+                    
                 }
 
             .type_a .mod-info-flow .mob-ctt {
@@ -4519,7 +3765,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -4542,76 +3788,6 @@ h3 {
 /*! CSS Used from: http://127.0.0.1:8020/%E6%96%87%E7%AB%A0%E7%AB%99/css/font-awesome.min.css */
 .pull-left {
     float: left;
-}
-/*! CSS Used from: Embedded */
-
-    .type_b .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_b .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_b .mob-author .author-name, .mob-author .time, .mob-author em {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-.type_b .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_b .icon-team-auth {
-    background-position: -325px -424px;
-}
-
-.type_b .icon-fvr {
-    background-position: -106px -3px;
-    cursor: auto  ;
-}
-
-.type_b .icon-cmt {
-    background-position: -67px -1px;
-    cursor: auto  ;
-}
-
-
-.type_b .mob-author .icon {
-    cursor: pointer;
-}
-
-.type_b .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_b a {
-    cursor: pointer;
-}
-
-.type_b .mod-b {
-    position: relative;
-}
-
-
-.type_b .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
 }
 /*! CSS Used from: Embedded */
 .mob-author .time, .mob-author em {
@@ -4654,7 +3830,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -4862,7 +4038,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -4977,245 +4153,12 @@ a:hover {
     word-break: break-all;
 }
 
-.type_c a {
-    background-color: transparent;
-}
-
-    .type_c a:active, a:hover {
-        outline: 0;
-    }
-
-.type_c img {
-    border: 0;
-}
-
-.type_c * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
 :after, :before {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.type_c a {
-    color: #337ab7;
-    text-decoration: none;
-}
-
-    .type_c a:focus, a:hover {
-        color: #23527c;
-        text-decoration: underline;
-    }
-
-    .type_c a:focus {
-        outline: 5px auto -webkit-focus-ring-color;
-        outline-offset: -2px;
-    }
-
-.type_c img {
-    vertical-align: middle;
-}
-
-.type_c h2 {
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-}
-
-
-.type_c h2 {
-    font-size: 30px;
-}
-
-.type_c a {
-    color: #303030;
-}
-
-    .type_c a:hover {
-        color: #3ca5f6;
-        text-decoration: none;
-    }
-
-    .type_c a:link {
-        text-decoration: none;
-    }
-
-.type_c img {
-    width: 100%;
-}
-
-.type_c .mod-thumb img {
-    width: 100%;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    vertical-align: top;
-}
-
-.type_c .mod-thumb img {
-    height: 100%;
-    object-fit: cover;
-}
-
-.type_c .mod-thumb:hover img {
-    -webkit-transform: scale(1.04);
-    -moz-transform: scale(1.04);
-    -ms-transform: scale(1.04);
-    -o-transform: scale(1.04);
-    transform: scale(1.04);
-}
-
-.type_c .mod-b {
-    padding: 20px 0;
-    height: 184px;
-    border-bottom: 1px solid #f0f0f0;
-    width: 800px;
-}
-
-.type_c .mob-ctt {
-    position: relative;
-    float: right;
-
-    width: 450px;
-
-}
-
-.mod-info-flow .type_c_mod_b .type_c_mob-ctt h2 {
-    font-size: 24px;
-    text-align: left;
-    width: 400px;
-}
-
-
-.type_c .mob-ctt h2 a {
-    font-size: 18px;
-    line-height: 1.5;
-    word-break: normal;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-
-    .type_c .mob-ctt h2 a.msubstr-row5 {
-        -webkit-line-clamp: 5;
-    }
-
-.type_c .mob-sub {
-    font-size: 14px;
-    color: #999;
-    line-height: 24px;
-    word-break: normal;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
-
-.type_c .mod-b-push .mob-sub {
-    -webkit-line-clamp: 4;
-}
-
-
-
-    .type_c .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_c .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_c .mob-author .author-name {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-
-.type_c .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_c .mod-b-push {
-    height: 341px;
-}
-
-    .type_c .mod-b-push .mod-thumb {
-        width: 450px;
-        height: 281px;
-        margin-right: 0;
-    }
-
-    .type_c .mod-b-push .mob-ctt {
-        width: 250px;
-    }
-
-.type_c .column-link-box {
-    position: absolute;
-    bottom: 25px;
-    right: 0;
-    text-align: right;
-}
-
-.type_c .column-link-big-box {
-    width: 300px;
-}
-
-    .type_c .column-link-big-box .column-link {
-        display: inline-block;
-    }
-
-.type_c .column-link {
-    font-size: 12px;
-    color: #3ca5f6;
-    text-align: center;
-    line-height: 1;
-    z-index: 10;
-}
-
-.type_c .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_c a {
-    cursor: pointer;
-}
-
-.type_c .mod-b {
-    position: absolute;
-}
-
-.type_c .type_c_title h3 {
-    border: none  ;
-    text-align: center;
-    color: #C82333;
-    width: 210px;
-}
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -5271,7 +4214,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -5289,148 +4232,7 @@ h3 {
 }
 
 .pull-left {
-    float: left;
-}
-
-
-    .type_c .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_c .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_c .mob-author .author-name, .mob-author .time, .mob-author em {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-
-.type_c .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_c .icon-team-auth {
-    background-position: -325px -424px;
-}
-
-.type_c .icon-fvr {
-    background-position: -106px -3px;
-    cursor: auto  ;
-}
-
-.type_c .icon-cmt {
-    background-position: -67px -1px;
-    cursor: auto  ;
-}
-
-.type_c .mob-author .icon {
-    cursor: pointer;
-}
-
-.type_c .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_c a {
-    cursor: pointer;
-}
-
-.type_c .mod-b {
-    position: relative;
-}
-
-
-.type_c .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-
-    .type_c .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_c .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_c .mob-author .author-name, .mob-author .time, .mob-author em {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-
-.type_c .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_c .icon-team-auth {
-    background-position: -325px -424px;
-}
-
-.type_c .icon-fvr {
-    background-position: -106px -3px;
-    cursor: auto  ;
-}
-
-.type_c .icon-cmt {
-    background-position: -67px -1px;
-    cursor: auto  ;
-}
-
-
-.type_c .mob-author .icon {
-    cursor: pointer;
-}
-
-.type_c .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_c a {
-    cursor: pointer;
-}
-
-.type_c .mod-b {
-    position: relative;
-}
-
-
-.type_c .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
+     
 }
 
 a {
@@ -5463,7 +4265,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -5555,214 +4357,6 @@ a:hover {
     word-break: break-all;
 }
 
-.type_d * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.type_d :after, :before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.type_d a:focus, a:hover {
-    color: #23527c;
-    text-decoration: underline;
-}
-
-.type_d a:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-}
-
-.type_d .clearfix:after, .clearfix:before {
-    display: table;
-    content: " ";
-}
-
-.type_d .clearfix:after {
-    clear: both;
-}
-
-.type_d .pull-left {
-    float: left  ;
-}
-
-.type_d .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.type_d a {
-    color: #303030;
-}
-
-    .type_d a:hover {
-        color: #3ca5f6;
-        text-decoration: none;
-    }
-
-    .type_d a:link {
-        text-decoration: none;
-    }
-
-.type_d img {
-    width: 100%;
-}
-
-.type_d .mod-thumb img {
-    width: 100%;
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
-    vertical-align: top;
-}
-
-.type_d .mod-thumb img {
-    height: 100%;
-    object-fit: cover;
-}
-
-.type_d .mod-thumb:hover img {
-    -webkit-transform: scale(1.04);
-    -moz-transform: scale(1.04);
-    -ms-transform: scale(1.04);
-    -o-transform: scale(1.04);
-    transform: scale(1.04);
-}
-
-.type_d .mod-info-flow {
-    display: inline-block;
-}
-
-.type_d .mod-b {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    height: 150px;
-    border-bottom: 1px solid #f0f0f0;
-    width: 700px;
-}
-
-    .type_d .mod-b:last-child {
-        border: none;
-    }
-
-.type_d .mob-ctt {
-    position: relative;
-    float: right;
-    width: 400px;
-}
-
-    .type_d .mob-ctt h2 {
-        font-size: 24px;
-    }
-
-        .type_d .mob-ctt h2 a {
-            font-size: 18px;
-            line-height: 1.5;
-            word-break: normal;
-            word-wrap: break-word;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-        }
-
-.type_d .mob-sub {
-    font-size: 14px;
-    color: #999;
-    line-height: 24px;
-    word-break: normal;
-    word-wrap: break-word;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-}
-
-    .type_d .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_d .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_d .mob-author .author-name, .mob-author .time, .mob-author em {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-
-.type_d .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_d .icon-team-auth {
-    background-position: -325px -424px;
-}
-
-.type_d .icon-fvr {
-    background-position: -106px -3px;
-    cursor: auto  ;
-}
-
-.type_d .icon-cmt {
-    background-position: -67px -1px;
-    cursor: auto  ;
-}
-
-.type_d .mob-author .icon-cmt {
-}
-
-.type_d .mob-author .icon {
-    cursor: pointer;
-}
-
-.type_d .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_d a {
-    cursor: pointer;
-}
-
-.type_d .mod-b {
-    position: relative;
-}
-
-.type_d .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-}
-
-.type_d .type_d_title h3 {
-    color: #C82333;
-    height: 30px;
-}
-
 a:hover {
     outline: 0;
 }
@@ -5808,7 +4402,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -5992,7 +4586,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -6081,7 +4675,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -6117,466 +4711,42 @@ h3 {
 }
 /*! CSS Used from: http://127.0.0.1:8020/%E6%96%87%E7%AB%A0%E7%AB%99/css/index_meta.css */
 @media (min-width:1480px) {
-    .type_c {
-        padding-left: 1%;
-    }
 
-    .type_c_title {
-        padding-left: 3%;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 680px;
-    }
 }
 
 @media (max-width:1480px) {
-    .type_c {
-        padding-left: 1%;
-    }
 
-    .type_c_title {
-        padding-left: 3%;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 680px;
-    }
 }
 
 @media (max-width:1460px) {
-    .type_c {
-        width: 750px  ;
-    }
-
-    .type_c_title {
-        padding-left: 3%;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 670px;
-    }
-
-        .type_d .mob-sub {
-            width: 350px  ;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-    .type_c .column-link {
-        padding-right: 5%;
-    }
+   
 }
 
 @media (max-width:1435px) {
-    .type_d .mob-sub {
-        width: 300px  ;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    .type_c {
-        width: 710px  ;
-    }
-
-    .type_c_title {
-        padding-left: 2%;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 630px;
-    }
+  
 }
 
 @media (max-width:1400px) {
-    .type_c {
-        width: 690px  ;
-    }
-
-    .type_c_title {
-        padding-left: 2%;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 600px;
-    }
-
-    .type_c .column-link {
-        padding-right: 5%;
-    }
+  
 }
 
 @media (max-width:1380px) {
-    .type_c {
-        width: 650px  ;
-    }
-
-    .type_c_title {
-        padding-left: 2%;
-    }
-
-    .type_c .column-link {
-        display: none  ;
-    }
-
-    .type_c .type_c_mob-ctt {
-        float: left;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 530px;
-    }
-
-        .type_d .mod-info-flow {
-            width: 520px;
-        }
-
-            .type_d .mod-info-flow .mob-ctt {
-                width: 250px;
-                float: left;
-                left: 10px;
-            }
-
-            .type_d .mod-info-flow .mod-b {
-                width: 520px;
-            }
-
-                .type_d .mod-info-flow .mod-b .mod-thumb {
-                    width: 170px;
-                    margin-right: 0;
-                }
+   
 }
 
 @media (max-width:1320px) {
-    .type_c {
-        width: 650px  ;
-    }
-
-    .type_c_title {
-        padding-left: 2%;
-    }
-
-    .type_c .column-link-box {
-        width: 90px;
-    }
-
-    .type_d {
-        padding-left: 3%;
-        width: 510px;
-    }
-
-        .type_d .mod-info-flow {
-            width: 520px;
-        }
-
-            .type_d .mod-info-flow .mob-ctt {
-                width: 250px;
-                float: left;
-                left: 10px;
-            }
-
-            .type_d .mod-info-flow .mod-b {
-                width: 520px;
-            }
-
-                .type_d .mod-info-flow .mod-b .mod-thumb {
-                    width: 170px;
-                    margin-right: 0;
-                }
+   
 }
 
 @media (max-width:420px) {
-    .type_d .mob-sub {
-        width: 180px  ;
-    }
-
-    .mob-author {
-        font-size: 10px;
-    }
-
-    .type_c {
-        width: 400px;
-        float: left;
-    }
-
-        .type_c .type_c_title h3 {
-            font-size: 16px;
-            width: 200px;
-            text-align: left;
-        }
-
-        .type_c .mod-b {
-            width: 400px;
-            height: 317px;
-        }
-
-        .type_c .mod-b-push .mod-thumb {
-            width: 400px;
-            height: 200px;
-            margin-right: 0;
-        }
-
-        .type_c .mod-b-push .mob-ctt {
-            width: 340px;
-            height: 90px;
-        }
-
-        .type_c .mob-ctt {
-            text-align: left;
-            float: left;
-        }
-
-            .type_c .mob-ctt h2 a {
-                font-size: 10px;
-                width: 300px;
-            }
-
-
-        .type_c .mob-sub {
-            font-size: 10px;
-            line-height: px;
-        }
-
-        .type_c .column-link-box {
-            width: 100px;
-            float: right;
-        }
-
-        .type_c .column-link {
-            padding-left: 20%;
-            text-align: right;
-        }
-
-        .type_c .type_c_mod_b {
-            width: 90px;
-            height: 50px;
-        }
-
-            .type_c .type_c_mod_b .mod-thumb {
-                width: 90px;
-                height: 50px;
-                margin-right: 0;
-            }
-
-        .type_c .type_c_mob-ctt {
-            width: 200px;
-            float: left;
-        }
-
-        .type_c .mob-author {
-            height: 30px;
-        }
-
-        .type_c .mod-info-flow {
-            height: 300px;
-        }
-
-    .type_d {
-        width: 400px;
-        float: left;
-        position: inherit;
-    }
-
-        .type_d .type_d_title h3 {
-            font-size: 16px;
-            height: 10px;
-        }
-
-        .type_d .mob-ctt h2 a {
-            font-size: 10px  ;
-        }
-
-        .type_d .mod-info-flow {
-            width: 400px;
-        }
-
-            .type_d .mod-info-flow .mod-b {
-                width: 400px;
-                height: 110px;
-            }
-
-                .type_d .mod-info-flow .mod-b .mod-thumb {
-                    width: 90px;
-                    height: 50px;
-                    margin-right: 0;
-                }
-
-            .type_d .mod-info-flow .mob-ctt {
-                width: 200px;
-                height: 100px;
-                width: 250px;
-            }
-
-        .type_d .mob-author {
-            font-size: 10px  ;
-        }
-
-            .type_d .mob-author .author-face {
-                width: 10px;
-                height: 10px;
-            }
-
-            .type_d .mob-author .author-name {
-            }
-
-        .type_d .mob-sub {
-            font-size: 10px;
-        }
+   
 }
 
 @media (max-width:380px) {
-    .type_d .mob-sub {
-        width: 220px  ;
-    }
-
-    .mob-author {
-        font-size: 10px;
-    }
-
-    .type_c {
-        width: 370px;
-        float: left;
-    }
-
-        .type_c .type_c_title h3 {
-            font-size: 16px;
-            width: 200px;
-            text-align: left;
-        }
-
-        .type_c .mod-b {
-            width: 370px;
-            height: 317px;
-        }
-
-        .type_c .mod-b-push .mod-thumb {
-            width: 350px;
-            height: 200px;
-            margin-right: 0;
-        }
-
-        .type_c .mod-b-push .mob-ctt {
-            width: 340px;
-            height: 90px;
-        }
-
-        .type_c .mob-ctt {
-            text-align: left;
-            float: left;
-        }
-
-            .type_c .mob-ctt h2 a {
-                font-size: 10px;
-            }
-
-        .type_c .mob-author {
-            width: 300px;
-        }
-
-        .type_c .mob-sub {
-            font-size: 10px;
-            line-height: px;
-        }
-
-        .type_c .column-link-box {
-            width: 100px;
-            float: right;
-        }
-
-        .type_c .column-link {
-            padding-left: 20%;
-            text-align: right;
-        }
-
-        .type_c .type_c_mod_b {
-            width: 90px;
-            height: 50px;
-        }
-
-            .type_c .type_c_mod_b .mod-thumb {
-                width: 90px;
-                height: 50px;
-                margin-right: 0;
-            }
-
-        .type_c .type_c_mob-ctt {
-            width: 200px;
-            float: left;
-        }
-
-        .type_c .mob-author {
-            height: 30px;
-        }
-
-        .type_c .mod-info-flow {
-            height: 300px;
-        }
-
-    .type_d {
-        width: 370px;
-        float: left;
-        position: inherit;
-    }
-
-        .type_d .type_d_title h3 {
-            font-size: 16px;
-            height: 10px;
-        }
-
-        .type_d .mob-ctt h2 a {
-            font-size: 10px  ;
-        }
-
-        .type_d .mod-info-flow {
-            width: 370px;
-        }
-
-            .type_d .mod-info-flow .mod-b {
-                width: 370px;
-                height: 110px;
-            }
-
-                .type_d .mod-info-flow .mod-b .mod-thumb {
-                    width: 90px;
-                    height: 50px;
-                    margin-right: 0;
-                }
-
-            .type_d .mod-info-flow .mob-ctt {
-                width: 200px;
-                height: 100px;
-            }
-
-        .type_d .mob-author {
-            font-size: 10px  ;
-        }
-
-            .type_d .mob-author .author-face {
-                width: 10px;
-                height: 10px;
-            }
-
-            .type_d .mob-author .author-name {
-            }
-
-        .type_d .mob-sub {
-            font-size: 10px;
-        }
+   
 }
 
 @media (max-width:325px) {
-    .type_d .mob-sub {
-        width: 180px  ;
-    }
-
     a {
         font-size: 10px  ;
     }
@@ -6585,168 +4755,7 @@ h3 {
         font-size: 10px;
     }
 
-    .type_c {
-        width: 300px;
-        float: left;
-    }
-
-        .type_c .type_c_title h3 {
-            font-size: 16px;
-            width: 100px;
-            text-align: center;
-        }
-
-        .type_c .mod-b {
-            width: 300px;
-            height: 317px;
-        }
-
-        .type_c .mod-b-push .mod-thumb {
-            width: 300px;
-            height: 200px;
-            margin-right: 0;
-        }
-
-        .type_c .mod-b-push .mob-ctt {
-            width: 340px;
-            height: 120px;
-        }
-
-        .type_c .mob-ctt {
-            text-align: left;
-            float: left;
-        }
-
-
-            .type_c .mob-ctt h2 a {
-                font-size: 10px;
-                width: 200px  ;
-                text-align: left;
-            }
-
-        .type_c .mob-author {
-            height: 30px;
-            width: 300px;
-            text-align: right;
-        }
-
-        .type_c .mob-sub {
-            font-size: 10px;
-            line-height: px;
-        }
-
-        .type_c .column-link-box {
-            width: 100px;
-            float: right;
-        }
-
-        .type_c .column-link {
-            padding-left: 20%;
-            text-align: right;
-        }
-
-        .type_c .type_c_mod_b {
-            width: 90px;
-            height: 50px;
-        }
-
-            .type_c .type_c_mod_b .mod-thumb {
-                width: 90px;
-                height: 50px;
-                margin-right: 0;
-            }
-
-        .type_c .type_c_mob-ctt {
-            width: 300px  ;
-            float: left;
-        }
-
-        .type_c .mob-author i, .type_c .mob-author em {
-            display: none;
-        }
-
-        .type_c .mod-info-flow {
-            height: 300px;
-        }
-
-        .type_c .column-link-box {
-            display: none;
-        }
-
-        .type_c .mod-b-push .mob-sub {
-            width: 280px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            border: none;
-        }
-
-        .type_c .mob-author .author-face img {
-            width: 20px;
-            height: 15px;
-        }
-
-    .type_d {
-        width: 300px;
-        float: left;
-        position: inherit;
-    }
-
-    .type_d_title {
-        width: 280px;
-        text-align: center;
-    }
-
-
-    .type_d .type_d_title h3 {
-        font-size: 16px;
-        height: 10px;
-    }
-
-    .type_d .mob-ctt h2 {
-        width: 290px;
-    }
-
-        .type_d .mob-ctt h2 a {
-            font-size: 10px  ;
-        }
-
-
-
-    .type_d .mod-info-flow {
-        width: 370px;
-    }
-
-        .type_d .mod-info-flow .mod-b {
-            width: 370px;
-            height: 110px;
-        }
-
-            .type_d .mod-info-flow .mod-b .mod-thumb {
-                width: 90px;
-                height: 50px;
-                margin-right: 0;
-            }
-
-        .type_d .mod-info-flow .mob-ctt {
-            width: 200px;
-            height: 100px;
-        }
-
-    .type_d .mob-author {
-        font-size: 10px  ;
-    }
-
-        .type_d .mob-author .author-face {
-            width: 10px;
-            height: 10px;
-        }
-
-        .type_d .mob-author .author-name {
-        }
-
-    .type_d .mob-sub {
-        font-size: 10px;
-    }
+    
 
 }
 /*! CSS Used from: http://127.0.0.1:8020/%E6%96%87%E7%AB%A0%E7%AB%99/css/bootstrap.css */
@@ -6835,7 +4844,7 @@ h3 {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 
     h2, h3 {
@@ -6859,78 +4868,7 @@ h3 {
 .pull-left {
     float: left;
 }
-/*! CSS Used from: Embedded */
 
-
-    .type_c .mob-author .author-face {
-        position: absolute;
-        width: 25px;
-        height: 25px;
-    }
-
-        .type_c .mob-author .author-face img {
-            width: 100%;
-            overflow: hidden;
-            border-radius: 25px;
-        }
-
-    .type_c .mob-author .author-name, .mob-author .time, .mob-author em {
-        color: #bbb;
-        line-height: 24px;
-        font-style: normal;
-        word-break: break-all;
-    }
-
-
-.type_c .mod-thumb {
-    width: 220px;
-    height: 124px;
-    overflow: hidden;
-    background: #e7e7e7;
-    margin-right: 0;
-}
-
-.type_c .icon-team-auth {
-    background-position: -325px -424px;
-}
-
-.type_c .icon-fvr {
-    background-position: -106px -3px;
-    cursor: auto  ;
-}
-
-.type_c .icon-cmt {
-    background-position: -67px -1px;
-    cursor: auto  ;
-}
-
-
-.type_c .mob-author .icon {
-    cursor: pointer;
-}
-
-.type_c .transition {
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -ms-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
-}
-
-.type_c a {
-    cursor: pointer;
-}
-
-.type_c .mod-b {
-    position: relative;
-}
-
-
-.type_c .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-}
 /****************************************************   底部样式   ****************************************************************************/
 /*! CSS Used from: http://127.0.0.1:8020/%E6%96%87%E7%AB%A0%E7%AB%99/css/index.css */
 a {
@@ -6963,7 +4901,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7099,7 +5037,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7237,7 +5175,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7271,7 +5209,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7407,7 +5345,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7545,7 +5483,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7581,7 +5519,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7750,7 +5688,7 @@ img {
     }
 
     img {
-        page-break-inside: avoid;
+        /*page-break-inside: avoid;*/
     }
 }
 
@@ -7766,85 +5704,7 @@ img {
     float: left;
 }
 
-.type_b {
-    position: absolute;
-}
 
 .type {
     float: right  ;
 }
-
-.type_c {
-    position: absolute;
-}
-
-
-
-    /********************************************************************************************************************************************/
-        .type_c .mob-author .author-face {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-        }
-
-            .type_c .mob-author .author-face img {
-                width: 100%;
-                overflow: hidden;
-                border-radius: 25px;
-            }
-
-        .type_c .mob-author .author-name, .mob-author .time, .mob-author em {
-            color: #bbb;
-            line-height: 24px;
-            font-style: normal;
-            word-break: break-all;
-        }
-
-
-    .type_c .mod-thumb {
-        width: 220px;
-        height: 124px;
-        overflow: hidden;
-        background: #e7e7e7;
-        margin-right:0;
-    }
-
-    .type_c .icon-team-auth {
-        background-position: -325px -424px;
-    }
-
-    .type_c .icon-fvr {
-        background-position: -106px -3px;
-        cursor: auto  ;
-    }
-
-    .type_c .icon-cmt {
-        background-position: -67px -1px;
-        cursor: auto  ;
-    }
-
-    .type_c .mob-author .icon {
-        cursor: pointer;
-    }
-
-    .type_c .transition {
-        -webkit-transition: all .2s ease-out;
-        -moz-transition: all .2s ease-out;
-        -ms-transition: all .2s ease-out;
-        -o-transition: all .2s ease-out;
-        transition: all .2s ease-out;
-    }
-
-    .type_c a {
-        cursor: pointer;
-    }
-
-    .type_c .mod-b {
-        position: relative;
-    }
-
-    .type_c .clearfix:after {
-        content: '';
-        display: block;
-        clear: both;
-    }

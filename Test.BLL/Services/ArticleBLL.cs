@@ -48,9 +48,12 @@ namespace BLL.Services
         public List<ModelArticle> GetArticleByModel(List<WZZModel> model)
         {
             List<ModelArticle> modellist = new List<ModelArticle>();
+            //循环每一个模块
             foreach (var item in model)
             {
+                //把每个模块下的文章查询出来
                 var Articles = _db.Articles.Where(a => a.WZZModelId == item.id);
+                //把每个模块信息和对应的文章都放在一个ModelArticle集合中
                 modellist.Add(new ModelArticle() { WZZModel = item, Articles = Articles.ToList() });
             }
             return modellist;
