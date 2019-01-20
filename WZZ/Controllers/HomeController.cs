@@ -10,10 +10,12 @@ namespace WZZ.Controllers
     public class HomeController : Controller
     {
         private readonly IWZZModelBLL _WZZModelBLL;
+        private readonly IRotationChartBLL _rotationChartBLL;
 
-        public HomeController(IWZZModelBLL wZZModelBLL)
+        public HomeController(IWZZModelBLL wZZModelBLL,IRotationChartBLL rotationChartBLL)
         {
             _WZZModelBLL = wZZModelBLL;
+            _rotationChartBLL = rotationChartBLL;
         }
 
         //首页
@@ -21,7 +23,6 @@ namespace WZZ.Controllers
         {
             return View();
         }
-        //子页面
         public IActionResult Index_Article()
         {
             return View();
@@ -32,7 +33,12 @@ namespace WZZ.Controllers
             var result = _WZZModelBLL.GetById(id);
             return Json(result);
         }
-
+        //加载轮播图
+        public IActionResult GetRotationCharts(int id)
+        {
+            var result = _rotationChartBLL.GetImgByModelId(id);
+            return Json(result);
+        }
 
     }
 }

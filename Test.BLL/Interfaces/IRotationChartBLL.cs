@@ -16,5 +16,7 @@ namespace BLL.Interfaces
         RotationChart GetById(int id);
 
         List<RotationChart> GetAllList();
+
+        List<RotationChart> GetImgByModelId(int id);
     }
 }

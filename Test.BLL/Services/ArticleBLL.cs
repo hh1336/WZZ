@@ -54,7 +54,7 @@ namespace BLL.Services
                 //把每个模块下的文章查询出来
                 var Articles = _db.Articles.Where(a => a.WZZModelId == item.id);
                 //把每个模块信息和对应的文章都放在一个ModelArticle集合中
-                modellist.Add(new ModelArticle() { WZZModel = item, Articles = Articles.ToList() });
+                modellist.Add(new ModelArticle() { WZZModel = item, Articles = Articles.OrderByDescending(s => s.createTime).ToList() });
             }
             return modellist;
         }

@@ -48,5 +48,16 @@ namespace BLL.Services
         {
             return _db.RotationCharts.SingleOrDefault(r => r.id == id);
         }
+
+        /// <summary>
+        /// 根据模块的id来加载轮播图
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<RotationChart> GetImgByModelId(int id)
+        {
+            var result = _db.RotationCharts.Where(r => r.WZZModelId == id);
+            return result.ToList();
+        }
     }
 }
