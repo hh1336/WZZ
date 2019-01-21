@@ -8,12 +8,13 @@ using ADMIN.Models;
 
 namespace ADMIN.Controllers
 {
-    public class HomeController : Controller
+    public class Admin_LoginController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
        
+
     }
 }
