@@ -61,5 +61,10 @@ namespace DAL.Entitys
         /// </summary>
         public int WZZModelId { set; get; }
 
+        /// <summary>
+        /// 轮播图的id
+        /// </summary>
+        public int RotationChartId { set; get; }
+
     }
 }
