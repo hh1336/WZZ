@@ -1,30 +1,18 @@
 ﻿@{
     ViewData["Title"] = "茶故事";
 }
+@section Styles{
+    <link rel="stylesheet" href="~/public/Home/css/Story.css" />
+    <link rel="stylesheet" href="~/public/Home/css/Story_mera.css" />
+}
 
-<link rel="stylesheet" href="~/public/Home/css/Story.css" />
-<link rel="stylesheet" href="~/public/Home/css/Story_mera.css" />
 <div class="container">
-    <div class="container-fluid" id="header">
-
-
-
-    </div>
-
     <!-----------------------------------------------------mian----------------------------------------------------------->
-    <div class="container" style="padding: 0; margin: 0;">
+    <div class="container" style="padding: 0; margin: 0;" id="pic">
         <div class="container">
             <div class="mian1" style="margin:0 auto ;">
                 <!--轮播图-->
                 <div id="demo" class="carousel slide" data-ride="carousel" style="width: 870px;float:left;">
-
-                    <!-- 指示符 -->
-                    <ul class="carousel-indicators">
-                        <li data-target="#demo" data-slide-to="0" class=""></li>
-                        <li data-target="#demo" data-slide-to="1" class="active"></li>
-                        <li data-target="#demo" data-slide-to="2" class=""></li>
-                    </ul>
-
                     <!-- 轮播图片 -->
                     <div class="carousel-inner">
                         <div class="carousel-item">
@@ -66,25 +54,17 @@
                         <span class="tt"></span>
                     </div>
 
-
-
-                    <div class="pic-txt clear " data-loc="3" data-media-id="419342">
+                    <div class="pic-txt clear ">
                         <div class="pic img-do">
-                            <a id=" ">
-                                <img alt=" " src="~/images/story/hot/hot_1.jpg">
-
-                                <span class="sn">1</span>
-
+                            <a>
+                                <img src="~/images/story/hot/hot_1.jpg">
                             </a>
                         </div>
                         <h4>
                             <a id="text">老阿姨为养生喝清肠茶 连喝三年结肠却癌前病变</a>
-
                         </h4>
-
-
                         <p>
-                            <a href=" " target="_blank"><em data-role=" " data-id="273534753">89万</em> 阅读</a>
+                            <a href=""><em>89万</em> 阅读</a>
                         </p>
                     </div>
 
@@ -157,64 +137,6 @@
                     </div>
 
                 </div>
-                <!--弹窗-->
-                <div id="modal" data-toggle="modal" class="container-fluid border modal_article visible-lg-block" style="height: 1747px; width: 1349px;">
-                    <div class="container  modal_bg">
-                        <div class="modal_details">
-                            <div class="w-100 h-auto text-center">
-                                <button type="button" class="close" data-dismiss="modal">×</button>
-                                <h2>老阿姨为养生喝清肠茶 连喝三年结肠却癌前病变</h2>
-                                <span>来源：<em>澎湃新闻</em></span>&nbsp;&nbsp;<span>时间：<em>2018年12月01日 13:43 </em></span>&nbsp;&nbsp; <span>点击量：<em>85万</em></span>&nbsp;&nbsp;
-                                <hr>
-                            </div>
-                            <div class="container w-75">
-                                <p>原标题：喝三年清肠茶却查出结肠癌前病变，医生：含泻药不可长期服用</p>
-                                <p>清肠茶、清肠果吃了3年多，陆陆续续花了10多万，可是最近便秘愈发严重！这是怎么回事？</p>
-                                <p>近日，李阿姨来到浙江医院做了肠镜检查，结果让她后怕不已：不仅肠道活动度差，结肠还有豹纹样改变，也就是结肠黑变病的一种，而重度的结肠黑变病则是癌前病变的一种！</p>
-                                <p>浙江医院消化内科朱琴副主任医师说，近段时间以来，每个月都能查出好几例结肠黑变病，这些患者的共同特点，就是像李阿姨这样有长期进食含有刺激性泻药成分的清肠茶、清肠果等等保健产品。</p>
-                                <p>能排肠毒，能清宿便，甚至还能美容养颜，市面上很多清肠茶、清肠果、养颜胶囊打着这样“诱人”的旗号。尤其是排便困难人士，仿佛看到了缓解自己难言之隐的灵丹妙药，52岁的李阿姨就是其中之一。</p>
-                                <div class="text-center">
-                                    <img src="~/images/story/hot/hot_1.jpg">
-                                </div>
-
-                                <p>李阿姨家中经济条件不错，3年多前听人说起清肠茶、清肠果的“神奇”功效，为了解决自己的排便困扰，顺带起到美容养颜之功效，她开始吃起了这类保健产品。</p>
-                                <p>前前后后花了10多万，可万万没想到会招致结肠黑变病的结果，拿到肠镜检查结果，李阿姨整个人都懵了。</p>
-                                <p>随着生活条件的改善，保健的观念也逐渐加深，但“排宿便”的保健产品最好不要乱吃，海淘的也不能尽信。</p>
-                                <p>朱琴说，最近还有一位老患者找到她，也说自己便秘严重，肠镜检查之后也发现结肠黑变病，肠道几乎没有活动度。详细了解之后，她一直在吃从日本海淘的一个品牌的清肠茶。</p>
-                                <div class="text-center">
-                                    <h1>这些保健品有泻药成分</h1>
-                                    <h1>多吃有诱发肠癌的可能</h1>
-                                </div>
-
-                                <p>近年来，随着人们对养生这件事儿的推崇，各种号称有“清肠”“排毒”“排宿便”等功能的保健品如雨后春笋般涌出。众商家为了推销其产品，还会给这些产品冠上“纯天然”“草本植物”“无毒无害”的名号。</p>
-                                <p>朱琴介绍，所谓“排宿便”的保健产品中多含有大黄、番泻叶、芦荟、酚酞（果导片）等泻药。</p>
-                                <p>这一类泻药的主要成分是蒽醌类物质，会刺激肠壁的神经元，促进肠道蠕动，从而达到通便的目的。但滥用泻药最为严重的后果是会造成结肠黑变病，增加患肠肿瘤的概率。</p>
-                                <p>“有些清肠果，配料表上一般注明其添加了桑叶粉、决明子粉、郁李仁粉、马黛茶粉、天然胡萝卜素等成分。决明子、郁李仁也含有蒽醌类物质，可刺激肠道感觉神经末梢，增强直肠反射性蠕动，促使排便甚至腹泻，且多伴有腹痛。</p>
-                                <p>如果这些成分在清肠果中过量添加，人们长期大量食用就会引起结肠黑变病，造成严重的肠运动障碍。”朱琴说。</p>
-                                <span>
-                                    一定要在医生指导下服药！
-                                </span>
-                                <span>
-                                    一定要在医生指导下服药！
-                                </span>
-                                <span>
-                                    一定要在医生指导下服药！
-                                    <p>　重要的事情说三遍！真的不能再自己给自己看病，滥用保健品了</p>
-                                    <p>对严重便秘的人群，朱琴建议：到消化内科正规就诊，先诊断清楚便秘是什么原因引起的，是结肠慢传输还是出口梗阻，在医生指导下服用可长期使用的泻药。</p>
-                                    <p>一旦因为长期服用刺激性泻药导致结肠黑变病，不严重的情况下，停服一段时间后，部分人的结肠黑变病是可逆的。</p>
-                                    <p>随着人们经济水平的提高，越来越多的人选择去美容院理疗或者食用保健品来养生。</p>
-                                    <p>其实，只要饮食规律，睡眠充足，适当运动，放松身心，即可达到任何“保健品”都无法比拟的养生效果！请善待自己的身体！</p>
-                                    <em>作者：柯静</em>
-
-                                    <p> &nbsp;</p>
-                                </span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
         </div>
 
@@ -933,735 +855,88 @@
                 </div>
             </div>
         </div>
-        <div class="sohu-index-v3 container-fluid" style="margin:0 auto;margin-top: 5%;">
-
-
-            <div class="area clearfix public content-business channel-content" data-role=" ">
-
-                <!--标题区域-->
-                <!--左侧-->
-                <div class="main left">
-                    <div class="title-cut">
-                        <ul>
-                            <li class=" cur" data-role=" " data-rel="main-panel" data-type="main">
-                                <a href=" " target="_blank">
-                                    热门茶事
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <div class="list-mun">
-                        <div class="main-box clearfix business-news" data-role=" ">
-                            <!--左侧头图-->
-                            <div class="main-left left" data-role=" ">
-                                <div class="pic-focus">
-                                    <a href=" " title="" target="_blank">
-                                        <img src="~/images/story/article/a1.jpg" data-processed="true">
-                                        <span class="txt">终于等来了！简单粗暴辨别好茶的方式！</span>
-                                    </a>
-                                </div>
-                                <div class="pic-group clearfix">
-                                    <ul>
-                                        <li class="">
-                                            <a href="">
-                                                <img src="~/images/story/article/s_a3.jpg" alt=" " data-processed="true">
-                                                <span class="txt">时光如禅，你如茶</span>
-                                            </a>
-                                        </li>
-                                        <li class=" end  ">
-                                            <a href=" " title="" target="_blank">
-                                                <img src="~/images/story/article/s_a2.jpg" alt=" " data-processed="true">
-                                                <span class="txt">买茶前，这些问题先弄明白</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--文章-->
-                            <div class="main-right right" data-role="">
-                                <div class="list16">
-                                    <ul>
-
-                                        <li>
-                                            <a href="" target="_blank" title=" ">
-                                                <strong>手脚冰凉，喝肉桂陈皮普洱茶</strong>
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href=" " target="_blank" title=" ">
-                                                老白茶这么喝，病毒全赶跑
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href=" " target="_blank">
-                                                茶中的大雅——茶与《红楼梦》
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href=" " target="_blank">
-                                                老白茶这么喝，病毒全赶跑
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href=" " target="_blank">
-                                                220℃高温下 南京炒茶高手“铁砂掌”巅峰对决
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href=" " target="_blank">
-                                                各类茶功效的比较?
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="list16">
-                                    <ul>
-
-                                        <li>
-                                            <a d="" href=" " target="_blank" title=" ">
-                                                <strong>这座寨子至今已有1300多年的历史，是最古老茶农濮人的后裔</strong>
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a data-param=" " href=" " target="_blank" title=" ">
-                                                首届全国评茶员职业技能竞赛广东省赛区预选赛开幕
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a data-param=" " href=" " target="_blank" title=" ">
-                                                “工夫茶”开赛在即 |“宋茶王”携手组委会，20g金牌召唤“金泡手”
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a data-param=" " href=" " target="_blank" title=" ">
-                                                茶叶深加工的盛会——中国茶·食品技术高峰论坛今日隆重举行
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a data-param=" " href=" " target="_blank" title=" ">
-                                                厚道之人，必有厚福！
-
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a>普洱茶收藏者高飞｜“冰岛”“昔归”结缘之旅，优雅精致的生活情调</a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!--视频tab-->
-                        <div class="main-box" style="display:none" data-role=" ">
-                            <div data-role=" " class="main-left left">
-
-                                <div class="pic-focus">
-                                    <a href=" " title=" " target="_blank"><img data-src=" " src=" " alt=" "><span class="txt">上海大赢家！广州、深圳不是失败者，大国一定是群星闪耀</span></a>
-                                </div>
-                                <div class="pic-group clearfix">
-                                    <ul>
-
-
-                                        <li class="">
-                                            <a href=" " title=" " target="_blank"><img data-src=" " src=" " alt=" "><span class="txt">如果有天人人都能买得起房了 会发生什么变化？</span></a>
-                                        </li>
-
-
-                                        <li class="end">
-                                            <a href=" " target="_blank"><img src=" " alt=" "><span class="txt">经济观察报·2018全球商业领袖调查报告：外资投资信心增强  期待扩大改革开放的市场红利</span></a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                            <div data-role=" " class="main-right right">
-
-                                <div class="list16">
-                                    <ul>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-                                                <strong>房价如果下跌50%，实体经济能活起来吗？</strong>
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                “谣言”四起：全球市场真将迎来“忐忑不安”的一夜
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                深圳房价真的有可能下跌吗？
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                美国中期选举投票日！中国宣布一件大事：关乎中美 今夜“谣言”或惊动市场
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                楼市降温，为何不见三四线房价下滑？
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                关键时刻，“救火队长”王QS现身，中美贸易摩擦转机出现？
-
-
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="list16">
-                                    <ul>
-
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-                                                <strong>上交所设立科创板并试点注册制，对A股有何影响？</strong>
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                提供一个分析房价泡沫的简单思路
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                如果人民币破七  对房价会有怎样的影响？
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                美国中期大选来临，特朗普或输掉选举，对股市汇市意味着什么？
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                纾困基金驰援民企，国资、券商、险资纷纷进场
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                宠物店推出“共享宠物”：一天30元就能提前当“铲屎官”
-
-
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-
-                        <div class="main-box" style="display:none" data-role=" ">
-                            <div data-role=" " class="main-left left">
-
-                                <div class="pic-focus">
-                                    <a href=" " target="_blank"><img data-src=" " src=" " alt=" "><span class="txt">彼得林奇投资真经：业余投资者的优势 | 价值投资系列</span></a>
-                                </div>
-                                <div class="pic-group clearfix">
-                                    <ul>
-
-
-                                        <li class="">
-                                            <a href=" " target="_blank"><img src=" " alt=" "><span class="txt">黄金技术面发看涨信号，民主党是否“争气”决定多头寿命</span></a>
-                                        </li>
-
-
-                                        <li class="end">
-                                            <a href=" " target="_blank"><img src=" " alt=" "><span class="txt">钱包金融深陷泥沼 五位高管相继挂靴 奥马电器危机四伏</span></a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                            <div data-role=" " class="main-right right">
-
-                                <div class="list16">
-                                    <ul>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-                                                <strong>彭博行业研究：美元和股市难以为继 黄金最终会是大赢家</strong>
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                券商全方位发力主动管理 资管业务再起航
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                易纲：“真金白银”改善民企融资环境
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                易纲：进一步扩大民企债券融资支持工具试点
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                美油期现价差有所收窄，INE原油成交持仓比再临低位反弹信号初现
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                信托发力资产证券化业务谋转型
-
-
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="list16">
-                                    <ul>
-
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-                                                <strong>中国式投资防骗指南：p2p</strong>
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                英镑还在“步步高升” 退欧协议仍是焦点
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                上周前100家P2P平台成交量为147.3亿 | 周榜TOP100
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                预见经济：11月
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                如何进行家庭风险管理？这4个方法不可不知
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                王德勤：美元指数连阴望续跌 黄金短线还是低多
-
-
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-
-                        <div class="main-box" style="display:none" data-role=" ">
-                            <div data-role=" " class="main-left left">
-
-                                <div class="pic-focus">
-                                    <a href=" " target="_blank"><img src=" " alt=" "><span class="txt">红星美凯龙公司债申购火热  发行30亿获超额认购</span></a>
-                                </div>
-                                <div class="pic-group clearfix">
-                                    <ul>
-
-
-                                        <li class="">
-                                            <a href=" " target="_blank"><img src=" " alt=" "><span class="txt">万达电影闭关归来，或成万达转型后的核心业务？</span></a>
-                                        </li>
-
-
-                                        <li class="end">
-                                            <a href=" " target="_blank"><img src=" " alt=" "><span class="txt">【招商策略】科创板，助力科技创新大方向——A股主题周观察（1106）</span></a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-                            </div>
-                            <div data-role=" " class="main-right right">
-
-                                <div class="list16">
-                                    <ul>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-                                                <strong>大跌眼镜：QFII三季度大手笔增持一股</strong>
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                美元指数稍作回升 中期选举主导市场紧张气氛
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                下一个二十年，腾讯会变成投资公司吗？
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                [公司]中持股份股东纪源科星拟减持不超2%股份
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                A股进退之际，资本大鳄要干什么！
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                科创板成立，A股那个躺着赚钱的年代不存在了
-
-
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                                <div class="list16">
-                                    <ul>
-
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-                                                <strong>永辉超市的阵痛？对标阿里快速扩张导致牺牲利润</strong>
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                【欧盘必读】彭博：两座大山力压多头 欲振金价 中期选举余力不足
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                外资布局A股或再提速！5500亿资金静候入场，北上资金月内重点加仓这些股
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                远见有良策  科创板二连板
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                涨停喜报：今日3票2涨停
-
-
-
-                                            </a>
-                                        </li>
-
-
-                                        <li>
-                                            <a href=" " target="_blank">
-
-
-                                                忽悠？股价跌破发行价 拟回购股份不超20亿元！7万股民被“深套”
-
-
-
-                                            </a>
-                                        </li>
-
-                                    </ul>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-
-                        <!--广告-->
-                    </div>
-                </div>
-                <!--右侧-->
-                <div class="sidebar right">
-                    <!--左侧导航：largePlugin为true:大插件， area_1 可能为ad或pic ,area_2 可能为hotAuthor-->
-                    <!--大插件-->
-                    <div class="clear  plugin plugin-side-right" data-widget-id="business_index_component_1" style="display: block; overflow: visible;">
-
-                        <!--图一-->
-                        <div class="stock-sohuindex-out">
-                            <div class="stock-img">
-                                <div class="stock-zxb" style="display: block;overflow: hidden !important;margin-left:-15px;text-align: center;">
-                                    <a href=" " target="_blank ">
-                                        <img src="~/images/story/article/s_a4.jpg" width="267" height="150">
-                                        <h5>&nbsp;&nbsp;&nbsp;心上无事，身上无病，杯中有茶，便是人生好光景</h5>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="godR" data-role=" " data-god-id=" " data-monitorkey=" ">
-                        <div style="margin: 0 5%;">
-                            <img src="~/images/index/type_a/t_a1.jpg" width="265" height="150" style="margin: 10% 0%;">
-                            <h5>茶有三不喝，财有三不发，债有三不欠！</h5>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-------------------------------------------------第二个----------------------------------------------->
-
-
-
-
 
     </div>
 
-    @section Scripts{
-        <script type="text/javascript" src="~/public/Home/js/Story.js"></script>
-        <script>
-            $(function () {
-                $.post("/Home/GetModel", { id: 9 }, function (result) {
-                    $(".tt").text(result.name)
-                })
+
+</div>
+
+@section Scripts{
+    <script type="text/javascript" src="~/public/Home/js/Story.js"></script>
+    <script>
+        function load() {
+            //加载轮播图
+            $.post("/Home/GetRotationCharts", { id: 14 }, function (result) {
+                var rotationChartstr = ``;
+                for (var i = 0; i < result.length; i++) {
+                    rotationChartstr += `<div class="carousel-item">
+                                <img src="`+ result[i].imgurl + `" height="430">
+                                <div class="carousel-caption">
+                                    <h3>`+ result[i].title + `</h3>
+                                </div>
+                            </div>`;
+                }
+                $(".carousel-inner").append(rotationChartstr);
+            });
+            //加载模块
+            $.post("/Subpage/GetModel", { id: 14 }, function (result) {
+                if (result.length > 0) {
+                    //加载轮播图旁边的内容
+                    var hotnew = result.shift();
+                    var hottxt = ``;
+                    if (hotnew.articles.length > 5) {
+                        var hotarticel = hotnew.articles.slice(0, 5)
+                        for (var i = 0; i < hotarticel.length; i++) {
+                            hottxt += `
+                            <div class="pic-txt clear ">
+                        <div class="pic img-do">
+                            <a>
+                                <img src="`+ hotarticel[i].imgurl +`">
+                            </a>
+                        </div>
+                        <h4>
+                            <a id="text">`+ hotarticel[i].title +`</a>
+                        </h4>
+                    </div>`;
+                        }
+                    } else {
+                        for (var i = 0; i < hotnew.articles.length; i++) {
+                            hottxt += `
+                            <div class="pic-txt clear ">
+                        <div class="pic img-do">
+                            <a>
+                                <img src="`+ hotnew.articles[i].imgurl +`">
+                            </a>
+                        </div>
+                        <h4>
+                            <a id="text">`+ hotnew.articles[i].title +`</a>
+                        </h4>
+                    </div>`;
+                        }
+                    }
+                    var hottitle = `
+                    <div class="titleR">
+                        <span class="tt">`+ hotnew.wzzModel.name + `</span>
+                    </div>`+ hottxt;
+                    $("#hot-news").append(hottitle);
+                }
+                //加载完第一个模块后，如果还有模块的话则继续加载
+                if (result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        var txt = ``;
+
+                        var titlestr = ``;
+                    }
+                }
+
+            });
+        }
+
+
+        $(function () {
+            $.post("/Home/GetModel", { id: 9 }, function (result) {
+                $(".tt").text(result.name)
             })
-        </script>
-    }
+        })
+    </script>
+}
