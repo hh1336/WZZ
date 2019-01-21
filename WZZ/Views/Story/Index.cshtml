@@ -76,11 +76,11 @@
                 var rotationChartstr = ``;
                 for (var i = 0; i < result.length; i++) {
                     rotationChartstr += `<div class="carousel-item">
-                                                    <img src="`+ result[i].imgurl + `" height="430">
-                                                    <div class="carousel-caption">
-                                                        <h3>`+ result[i].title + `</h3>
-                                                    </div>
-                                                </div>`;
+                                                                <img src="`+ result[i].imgurl + `" height="430">
+                                                                <div class="carousel-caption">
+                                                                    <h3>`+ result[i].title + `</h3>
+                                                                </div>
+                                                            </div>`;
                 }
                 $(".carousel-inner").append(rotationChartstr);
             });
@@ -94,36 +94,36 @@
                         var hotarticel = hotnew.articles.slice(0, 5)
                         for (var i = 0; i < hotarticel.length; i++) {
                             hottxt += `
-                                                <div class="pic-txt clear ">
-                                            <div class="pic img-do">
-                                                <a>
-                                                    <img src="`+ hotarticel[i].imgurl + `">
-                                                </a>
-                                            </div>
-                                            <h4>
-                                                <a id="text">`+ hotarticel[i].title + `</a>
-                                            </h4>
-                                        </div>`;
+                                                            <div class="pic-txt clear ">
+                                                        <div class="pic img-do">
+                                                            <a>
+                                                                <img src="`+ hotarticel[i].imgurl + `">
+                                                            </a>
+                                                        </div>
+                                                        <h4>
+                                                            <a id="text">`+ hotarticel[i].title + `</a>
+                                                        </h4>
+                                                    </div>`;
                         }
                     } else {
                         for (var i = 0; i < hotnew.articles.length; i++) {
                             hottxt += `
-                                                <div class="pic-txt clear ">
-                                            <div class="pic img-do">
-                                                <a>
-                                                    <img src="`+ hotnew.articles[i].imgurl + `">
-                                                </a>
-                                            </div>
-                                            <h4>
-                                                <a id="text">`+ hotnew.articles[i].title + `</a>
-                                            </h4>
-                                        </div>`;
+                                                            <div class="pic-txt clear ">
+                                                        <div class="pic img-do">
+                                                            <a>
+                                                                <img src="`+ hotnew.articles[i].imgurl + `">
+                                                            </a>
+                                                        </div>
+                                                        <h4>
+                                                            <a id="text">`+ hotnew.articles[i].title + `</a>
+                                                        </h4>
+                                                    </div>`;
                         }
                     }
                     var hottitle = `
-                                        <div class="titleR">
-                                            <span class="tt">`+ hotnew.wzzModel.name + `</span>
-                                        </div>`+ hottxt;
+                                                    <div class="titleR">
+                                                        <span class="tt">`+ hotnew.wzzModel.name + `</span>
+                                                    </div>`+ hottxt;
                     $("#hot-news").append(hottitle);
                 }
                 //加载完第一个模块后，如果还有模块的话则继续加载
@@ -141,20 +141,20 @@
                                 }
                                 for (var j = 0; j < 6; j++) {
                                     liarticle += `
-                                                        <li>
-                                                            <a href="" title="`+ sisarticle[i].title + `">
-                                                                `+ sisarticle[i].title + `
-                                                            </a>
-                                                        </li>
-                                                        `;
+                                                                    <li>
+                                                                        <a href="" title="`+ sisarticle[i].title + `">
+                                                                            `+ sisarticle[i].title + `
+                                                                        </a>
+                                                                    </li>
+                                                                    `;
                                 }
                                 var articlestr = `<div class="main-right left col-4">
-                                                        <div class="list16">
-                                                            <ul>
-                                                            `+ liarticle + `
-                                                            </ul>
-                                                        </div>
-                                                    </div>`;
+                                                                    <div class="list16">
+                                                                        <ul>
+                                                                        `+ liarticle + `
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>`;
 
                                 if (result[i].articles.length > 0) {
                                     if (result[i].articles.length > 6) {
@@ -165,37 +165,37 @@
                                         }
                                         for (var j = 0; j < 6; j++) {
                                             liarticle2 += `
-                                                                <li>
-                                                                    <a href="" title="`+ sisarticle2[i].title + `">
-                                                                        `+ sisarticle2[i].title + `
-                                                                 </a>
-                                                             </li>
-                                                                `;
+                                                                            <li>
+                                                                                <a href="" title="`+ sisarticle2[i].title + `">
+                                                                                    `+ sisarticle2[i].title + `
+                                                                             </a>
+                                                                         </li>
+                                                                            `;
                                             articlestr += `<div class="main-right left col-4">
-                                                            <div class="list16">
-                                                            <ul>
-                                                            `+ liarticle2 + `
-                                                            </ul>
-                                                        </div>
-                                                    </div>`;
+                                                                        <div class="list16">
+                                                                        <ul>
+                                                                        `+ liarticle2 + `
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>`;
                                         }
                                     } else {
                                         var liarticle2 = ``;
                                         for (var j = 0; j < result[i].articles.length; j++) {
                                             liarticle2 += `
-                                                                <li>
-                                                                    <a href="" title="`+ result[i].articles[j].title + `">
-                                                                        `+ result[i].articles[j].title + `
-                                                                 </a>
-                                                             </li>
-                                                                `;
+                                                                            <li>
+                                                                                <a href="" title="`+ result[i].articles[j].title + `">
+                                                                                    `+ result[i].articles[j].title + `
+                                                                             </a>
+                                                                         </li>
+                                                                            `;
                                             articlestr += `<div class="main-right left col-4">
-                                                            <div class="list16">
-                                                            <ul>
-                                                            `+ liarticle2 + `
-                                                            </ul>
-                                                        </div>
-                                                    </div>`;
+                                                                        <div class="list16">
+                                                                        <ul>
+                                                                        `+ liarticle2 + `
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>`;
                                         }
                                     }
 
@@ -203,55 +203,55 @@
                                     var liarticle = ``;
                                     for (var j = 0; j < result[i].articles.length; j++) {
                                         liarticle += `
-                                                        <li>
-                                                            <a href="" title="`+ result[i].articles[j].title + `">
-                                                                `+ result[i].articles[j].title + `
-                                                            </a>
-                                                        </li>
-                                                        `;
+                                                                    <li>
+                                                                        <a href="" title="`+ result[i].articles[j].title + `">
+                                                                            `+ result[i].articles[j].title + `
+                                                                        </a>
+                                                                    </li>
+                                                                    `;
                                     }
                                     var articlestr = `<div class="main-right left col-4">
-                                                        <div class="list16">
-                                                            <ul>
-                                                            `+ liarticle + `
-                                                            </ul>
-                                                        </div>
-                                                    </div>`;
+                                                                    <div class="list16">
+                                                                        <ul>
+                                                                        `+ liarticle + `
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>`;
                                 }
                                 txt += `
-                                                <div class="clo-lg-3 h-25 w-100">
-                                            <div class="list-mun" >
-                                                <div class="main-box clearfix business-news">
-                                                    <div class="main-left left" >
-                                                        <div class="pic-focus">
-                                                            <a href="" title="`+ onenew.title + `" >
-                                                                <img src="`+ onenew.imgurl + `" data-processed="true">
-                                                                <span class="txt">`+ onenew.title + `</span>
-                                                            </a>
+                                                            <div class="clo-lg-3 h-25 w-100">
+                                                        <div class="list-mun" >
+                                                            <div class="main-box clearfix business-news">
+                                                                <div class="main-left left" >
+                                                                    <div class="pic-focus">
+                                                                        <a href="" title="`+ onenew.title + `" >
+                                                                            <img src="`+ onenew.imgurl + `" data-processed="true">
+                                                                            <span class="txt">`+ onenew.title + `</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                `+ articlestr + `
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    `+ articlestr + `
-                                                </div>
-                                            </div>
-                                            </div>
-                                                `;
+                                                        </div>
+                                                            `;
                             }
                         }
 
                         var titlestr = `
-                                            <div class="main left w-100">
-                                        <div class="title-cut">
-                                            <ul>
-                                                <li class=" cur" data-rel="main-panel" data-type="main">
-                                                    <a href=" " >
-                                                        `+ result[i].wzzModel.name + `
-                                                    </a>
-                                                </li>
+                                                        <div class="main left w-100">
+                                                    <div class="title-cut">
+                                                        <ul>
+                                                            <li class=" cur" data-rel="main-panel" data-type="main">
+                                                                <a href=" " >
+                                                                    `+ result[i].wzzModel.name + `
+                                                                </a>
+                                                            </li>
 
-                                            </ul>
-                                        </div>
-                                        `+ txt + `
-                                        </div>`;
+                                                        </ul>
+                                                    </div>
+                                                    `+ txt + `
+                                                    </div>`;
                         $("#modelContent").append(titlestr);
                     }
                 }
