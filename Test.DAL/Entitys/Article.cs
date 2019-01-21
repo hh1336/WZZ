@@ -64,7 +64,12 @@ namespace DAL.Entitys
         /// <summary>
         /// 轮播图的id
         /// </summary>
-        public int RotationChartId { set; get; }
+        public int RotationChartsId { set; get; }
+
+        /// <summary>
+        /// 茶类型id
+        /// </summary>
+        public int TeaTypeId { set; get; }
 
     }
 }

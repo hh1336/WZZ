@@ -1,4 +1,5 @@
 ﻿using DAL.Entitys;
+using DAL.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace BLL.Interfaces
         TeaType GetById(int id);
 
         List<TeaType> GetAllList();
+
+        List<TeaTypeAndArticlesViewModel> GetTeaTypeAndArticle();
     }
 }

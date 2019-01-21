@@ -24,5 +24,11 @@ namespace WZZ.Controllers
             var result = _teaType.GetById(id);
             return Json(result);
         }
+
+        public IActionResult GetAllTeaType()
+        {
+            var result = _teaType.GetTeaTypeAndArticle();
+            return Json(result);
+        }
     }
 }
