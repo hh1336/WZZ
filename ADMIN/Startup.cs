@@ -34,7 +34,7 @@ namespace ADMIN
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var sqlConnection = @"Data Source=WIN-7ECBVT9VKBL;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
+            var sqlConnection = @"Data Source=MYWORK\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
 
             BLLDIRegister sdr = new BLLDIRegister();

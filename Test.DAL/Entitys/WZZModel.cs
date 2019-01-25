@@ -29,6 +29,6 @@ namespace DAL.Entitys
         /// <summary>
         /// 自关联id
         /// </summary>
-        public int Pid { set; get; }
+        public int? Pid { set; get; }
     }
 }

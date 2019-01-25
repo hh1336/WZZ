@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using DAL;
 using DAL.Entitys;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,11 +56,20 @@ namespace BLL.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public List<WZZModel> GetModelByPid(int id)
+        public List<WZZModel> GetModelByPid(int? id)
         {
-            var result = _db.WZZModels.Where(w => w.Pid == id);
-            var resultList = result.ToList();
-            return resultList;
+            List<WZZModel> result = new List<WZZModel>();
+            if (id.HasValue)
+            {
+                result = _db.WZZModels.Where(w => w.Pid == id).ToList();
+            }
+            else
+            {
+                var query = _db.WZZModels.Where(w => w.Pid == null);
+                result = query.ToList();
+            }
+
+            return result;
         }
     }
 }

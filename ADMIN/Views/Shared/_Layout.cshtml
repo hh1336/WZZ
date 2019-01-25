@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/assets/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/assets/vendor/linearicons/style.css">
-    <link rel="stylesheet" href="~/assets/vendor/chartist/css/chartist-custom.css">
+    @*<link rel="stylesheet" href="~/assets/vendor/chartist/css/chartist-custom.css">*@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="~/assets/css/main.css">
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
@@ -35,7 +35,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-                <a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+                <a href="index.html"><img src="~/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
             </div>
             <div class="container-fluid">
 
@@ -44,9 +44,9 @@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>用户名</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                            <img src="" class="img-circle"> <span id="username"></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a asp-action="/index" asp-controller="Admin_Login"><i class="lnr lnr-exit"></i> <span>退出登入</span></a></li>
+                                <li><a asp-action="/OutLogin" asp-controller="Admin_Login"><i class="lnr lnr-exit"></i> <span>退出登入</span></a></li>
                             </ul>
                         </li>
 
@@ -60,23 +60,7 @@
             <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
                 <div class="sidebar-scroll" style="overflow: hidden; width: auto; height: 95%;">
                     <nav>
-                        <ul class="nav">
-                            <li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>主页</span></a></li>
-
-
-
-
-                            <li>
-                                <a href="#subPages" data-toggle="collapse" class="collapsed" aria-expanded="false"><i class="lnr lnr-file-empty"></i> <span>列表</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-                                <div id="subPages" class="collapse" aria-expanded="false" style="height: 0px;">
-                                    <ul class="nav">
-                                        <li><a href="#" class="">列表1</a></li>
-
-                                        <li><a href="#" class="">列表3</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
+                        <ul class="nav" id="headul">
 
                         </ul>
                     </nav>
@@ -115,7 +99,7 @@
     <script src="~/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="~/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="~/assets/vendor/chartist/js/chartist.min.js"></script>
+    @*<script src="~/assets/vendor/chartist/js/chartist.min.js"></script>*@
     <script src="~/assets/scripts/klorofil-common.js"></script>
     <script src="~/assets/scripts/index.js"></script>
 

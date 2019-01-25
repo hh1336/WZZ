@@ -9,6 +9,9 @@ using BLL.Interfaces;
 using DAL.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace ADMIN.Controllers
 {
@@ -28,13 +31,24 @@ namespace ADMIN.Controllers
         public IActionResult Login(LoginViewModel login)
         {
             var result = bll.LoginUser(login.email, login.pwd);
-            //http://www.cnblogs.com/wyt007/p/8128186.html
-            var claims = new List<Claim>()
+            if (result.code == 1)
+            {
+                var claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Name,result.email)
             };
-
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+                HttpContext.Session.SetString("username", result.email);
+            }
             return Json(result);
+        }
+
+        [Authorize]
+        public IActionResult OutLogin()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return Redirect("Index");
         }
 
     }

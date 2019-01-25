@@ -9,5 +9,6 @@ namespace BLL.Interfaces
     public interface ILoginBLL
     {
         LoginInfo LoginUser(string email, string pwd);
+        UserViewModel GetUserInfo(string email);
     }
 }

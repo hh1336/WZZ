@@ -19,6 +19,17 @@ namespace BLL.Services
             _db = db;
         }
 
+        public UserViewModel GetUserInfo(string email)
+        {
+            var user = _db.Users.FirstOrDefault(u => u.Email == email);
+            var info = new UserViewModel();
+            info.Id = user.Id;
+            info.Email = user.Email;
+            info.Nickname = user.Nickname;
+            info.PortraitUrl = user.PortraitUrl;
+            return info;
+        }
+
         public LoginInfo LoginUser(string email, string pwd)
         {
             var user = _db.Users.FirstOrDefault(u => u.Email == email);
