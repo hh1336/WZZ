@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL;
 using DAL;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,12 +39,26 @@ namespace ADMIN
 
             BLLDIRegister sdr = new BLLDIRegister();
             sdr.DIRegister_DAL(services);
+            //使用session
+            services.AddSession(o => {
+                o.IdleTimeout = TimeSpan.FromMinutes(20);
+            });
+            //给登陆注解设置路径
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o => {
+                    o.LoginPath = "/Admin_Login/Index";
+                });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            //设置中加入session
+            app.UseSession();
+            app.UseAuthentication();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

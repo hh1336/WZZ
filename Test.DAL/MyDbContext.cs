@@ -20,5 +20,6 @@ namespace DAL
         public virtual DbSet<ArticleConTent> ArticleConTents { set; get; }
         public virtual DbSet<ArticleImage> ArticleImages { set; get; }
         public virtual DbSet<Subheading> Subheadings { set; get; }
+        public virtual DbSet<User> Users { set; get; }
     }
 }

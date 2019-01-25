@@ -17,6 +17,7 @@ namespace BLL
             services.AddTransient(typeof(ITeaTypeBLL), typeof(TeaTypeBLL));
             services.AddTransient(typeof(IArticleBLL), typeof(ArticleBLL));
             services.AddTransient(typeof(IRotationChartBLL), typeof(RotationChartBLL));
+            services.AddTransient(typeof(ILoginBLL), typeof(LoginBLL));
 
         }
     }
