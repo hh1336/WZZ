@@ -10,7 +10,7 @@ function GetModel(pid, callback) {
                 });
                 var str = `
                 <li>
-                    <a href="#tit` + result[i].id + `" data-toggle="collapse" class="collapsed" aria-expanded="false"><i class="lnr lnr-file-empty"></i> 
+                    <a href="#tit` + result[i].id + `" data-toggle="collapse" class="collapsed" aria-expanded="false"><i class="glyphicon glyphicon-th-large"></i> 
                         <span>`+ result[i].name + `</span> 
                         <i class="icon-submenu lnr lnr-chevron-left"></i>
                                 <div id="tit`+ result[i].id + `" class="collapse" aria-expanded="false" style="height: 0px;">
@@ -49,7 +49,7 @@ $(function () {
     });
 
     $.post("/Home/GetSession", { key: "username" }, function (result) {
-        $("#username").text(result.email).prev().attr("src", result.portraitUrl);
+        $("#username").text(result.nickname).prev().attr("src", result.portraitUrl);
     });
 
 

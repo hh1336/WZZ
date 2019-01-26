@@ -1,31 +1,25 @@
-﻿
-@{
+﻿<form id="userForm">
 
-}
-
-
-    <div class="row">
-        <!--搜索框-->
-        <form class="">
-            <div class="col-lg-8">
-                <div class="input-group">
-                    <input type="text" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default">搜索</button>
-                    </span>
-                </div>
-            </div>
-        </form><!--按钮-->
-        <div class="col-lg-4">
-            <button type="button" class="btn btn-primary" style="background-color: #337AB7 !important;">增加</button>
-            <button type="button" class="btn btn-success" style="background-color: #3ca512 !important;">刷新</button>
-
-        </div>
-
-
-        <!--表单-->
-        <div class="table">
-            bootstrap表单
-        </div>
-
+    <div class="form-group text-center">
+        <label>
+            <img src="..." width="150px" class="img-circle " id="portraitUrl">
+        </label>
     </div>
+    <div class="form-group">
+        <label>NickName: &nbsp;&nbsp;</label>
+        <input type="text" class="form-control" style="width:20%;" name="nickname" value="" />
+    </div>
+
+</form>
+
+
+
+@section Scripts{
+    <script>
+        $.post("/Home/GetSession", { key: "username" }, function (result) {
+            console.log(result);
+            $("#portraitUrl").attr("src", result.portraitUrl);
+            $("input[name=nickname]").val(result.nickname);
+        })
+    </script>
+}
