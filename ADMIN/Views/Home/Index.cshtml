@@ -1,25 +1,71 @@
-﻿<form id="userForm">
+﻿@section Styles{
+    <style>
+        #portraitUrl:hover {
+            filter: alpha(Opacity=80);
+            -moz-opacity: 0.8;
+            opacity: 0.8
+        }
+    </style>
+}
 
-    <div class="form-group text-center">
+<form id="userForm">
+    <input type="hidden" name="id" value="" />
+    <div class="form-group text-center ">
         <label>
-            <img src="..." width="150px" class="img-circle " id="portraitUrl">
+            <img src="" width="150px" class="img-circle " id="portraitUrl">
+            <input type="hidden" name="portraitUrl" value="" />
         </label>
     </div>
-    <div class="form-group">
+    <div class="form-group form-inline text-center">
         <label>NickName: &nbsp;&nbsp;</label>
         <input type="text" class="form-control" style="width:20%;" name="nickname" value="" />
     </div>
-
+    <div class="form-group form-inline text-center">
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <label> Email: &nbsp;&nbsp;</label>
+        <input type="text" class="form-control" style="width:20%;" name="email" value="" disabled />
+    </div>
+    <div class="form-group form-inline text-center">
+        <label>Password: &nbsp;&nbsp;</label>
+        <input type="password" class="form-control" style="width:20%;" name="pwd" value="" />
+    </div>
+    <div class="form-group text-center">
+        <input type="submit" value="保存信息" class="btn btn-success" />
+    </div>
 </form>
 
 
 
 @section Scripts{
     <script>
+        //渲染用户信息
         $.post("/Home/GetSession", { key: "username" }, function (result) {
-            console.log(result);
             $("#portraitUrl").attr("src", result.portraitUrl);
+            $("input[name=portraitUrl]").val(result.portraitUrl);
             $("input[name=nickname]").val(result.nickname);
+            $("input[name=email]").val(result.email);
+            $("input[name=id]").val(result.id);
+        })
+        //用户提交要修改的信息
+        $("#userForm").submit(function (e) {
+            e.preventDefault();
+            if ($("input[name=nickname]").val() == "" || $("input[name=nickname]").val() == undefined) {
+                alert("请输入nackname");
+                return false;
+            }
+            if ($("input[name=pwd]").val() == "" || $("input[name=pwd]").val() == undefined) {
+                alert("请输入要修改的密码");
+                return false;
+            }
+            var _data = $("#userForm").serializeArray();
+            $.post("/Home/UpdateInfo", { userInfo: _data }, function (result) {
+                alert(result.msg);
+                window.location.href = result.url;
+            })
         })
     </script>
 }
