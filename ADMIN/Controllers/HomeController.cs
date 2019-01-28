@@ -8,6 +8,7 @@ using ADMIN.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using BLL.Interfaces;
+using System.IO;
 
 namespace ADMIN.Controllers
 {
@@ -28,6 +29,7 @@ namespace ADMIN.Controllers
             return View();
         }
 
+
         public IActionResult GetSession(string key)
         {
             var value = HttpContext.Session.GetString(key);
@@ -39,6 +41,16 @@ namespace ADMIN.Controllers
         {
             var result = _wzzmodel.GetModelByPid(pid);
             return Json(result);
+        }
+
+        public IActionResult UpFile()
+        {
+            var files = HttpContext.Request.Form;
+            foreach (var item in files)
+            {
+                //FileStream stream = new FileStream
+            }
+            return Json(new { });
         }
     }
 }

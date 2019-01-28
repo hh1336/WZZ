@@ -3,7 +3,8 @@
         #portraitUrl:hover {
             filter: alpha(Opacity=80);
             -moz-opacity: 0.8;
-            opacity: 0.8
+            opacity: 0.8;
+            cursor: pointer;
         }
     </style>
 }
@@ -40,6 +41,7 @@
 
 
 
+
 @section Scripts{
     <script>
         //渲染用户信息
@@ -66,6 +68,38 @@
                 alert(result.msg);
                 window.location.href = result.url;
             })
+        })
+
+        //选择头像
+        $(document).on("click", "#portraitUrl", function () {
+            //文件上传配置
+            var fileopt = {
+                language: 'zh',//设置语言为中文
+                uploadUrl: "/Home/UpFile",//文件上传路径
+                showUpload: true,//是否显示上传按钮
+                browseClass: "btn btn-primary", //按钮样式
+                deleteUrl:"/Home/DelFile",//删除地址
+                validateInitialCount: true,
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            }
+            var inp = `<input id="input-b1" name="input-b1" type="file" class="file-loading" data-browse-on-zone-click="true">`;
+            $(".modal-body").html(inp);
+            $("#myModalLabel").text("请选择头像");
+            $("#input-b1").fileinput(fileopt);
+            $("#myModal").modal('show');
+        })
+        //点击上传时
+        $("#input-b1").on("fileuploaded", function (e, data, priviewId, index) {
+            console.log(data);
+            console.log(priviewId);
+            console.log(index);
+            $("#myModal").modal("hide");
+            var data = data.response.lstOrderImport;
+            if (data == undefined) {
+                alert('文件格式类型不正确');
+                return false;
+            }
         })
     </script>
 }

@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="~/assets/css/main.css">
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
     <link rel="stylesheet" href="~/assets/css/demo.css">
+    <!--上传文件-->
+    <link href="~/assets/css/fileinput.min.css" rel="stylesheet" />
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
@@ -44,7 +46,8 @@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <img src="" class="img-circle"> <span id="username"></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+                                <img src="" class="img-circle"> <span id="username"></span> <i class="icon-submenu lnr lnr-chevron-down"></i>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a asp-action="/" asp-controller="Home"><i class="fa fa-id-card-o"></i> <span>个人中心</span></a></li>
                                 <li><a asp-action="/OutLogin" asp-controller="Admin_Login"><i class="lnr lnr-exit"></i> <span>退出登入</span></a></li>
@@ -61,9 +64,7 @@
             <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
                 <div class="sidebar-scroll" style="overflow: hidden; width: auto; height: 95%;">
                     <nav>
-                        <ul class="nav" id="headul">
-
-                        </ul>
+                        <ul class="nav" id="headul"></ul>
                     </nav>
                 </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 407.128px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
             </div>
@@ -87,8 +88,23 @@
             </div>
         </footer>
     </div>
-
-
+    <!--模态框-->
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -102,6 +118,10 @@
     <script src="~/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
     @*<script src="~/assets/vendor/chartist/js/chartist.min.js"></script>*@
     <script src="~/assets/scripts/klorofil-common.js"></script>
+    <!--上传文件-->
+    <script src="~/assets/scripts/fileinput.min.js"></script>
+    <script src="~/assets/scripts/zh.js"></script>
+
     <script src="~/assets/scripts/index.js"></script>
 
     @RenderSection("Scripts", required: false)
