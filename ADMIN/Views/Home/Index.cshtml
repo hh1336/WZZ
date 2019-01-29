@@ -78,28 +78,34 @@
                 uploadUrl: "/Home/UpFile",//文件上传路径
                 showUpload: true,//是否显示上传按钮
                 browseClass: "btn btn-primary", //按钮样式
-                deleteUrl:"/Home/DelFile",//删除地址
+                deleteUrl: "/Home/DelFile",//删除地址
+                maxFileCount: 1,//允许最大同时上传数
                 validateInitialCount: true,
+                maxFileSizenumber: 1024 * 5,//设置最大上传大小
                 previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                 allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+                deleteUrlString: "",//删除图片的路径
+                //删除时需要传入的参数
+                deleteExtraDataObject: {
+
+                },
             }
-            var inp = `<input id="input-b1" name="input-b1" type="file" class="file-loading" data-browse-on-zone-click="true">`;
+            var inp = `<input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true">`;
             $(".modal-body").html(inp);
             $("#myModalLabel").text("请选择头像");
-            $("#input-b1").fileinput(fileopt);
+
+            $("#input-b1").fileinput(fileopt).on("fileuploaded", function (event, data, result) {
+                console.log(data)
+                console.log(event)
+                if (data.response) {
+                    alert('处理成功');
+                    $("#portraitUrl").attr("src", data.response[0])
+                }
+            }).on("filesuccessremove", function (e, data) {
+
+            });
+
             $("#myModal").modal('show');
-        })
-        //点击上传时
-        $("#input-b1").on("fileuploaded", function (e, data, priviewId, index) {
-            console.log(data);
-            console.log(priviewId);
-            console.log(index);
-            $("#myModal").modal("hide");
-            var data = data.response.lstOrderImport;
-            if (data == undefined) {
-                alert('文件格式类型不正确');
-                return false;
-            }
         })
     </script>
 }

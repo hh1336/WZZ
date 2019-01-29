@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using BLL.Interfaces;
 using System.IO;
+using System.Web;
+using BLL.Commons;
 
 namespace ADMIN.Controllers
 {
@@ -43,14 +45,29 @@ namespace ADMIN.Controllers
             return Json(result);
         }
 
+        /// <summary>
+        /// 上传文件
+        /// </summary>
+        /// <returns></returns>
         public IActionResult UpFile()
         {
-            var files = HttpContext.Request.Form;
+            var files = Request.Form.Files;
+            List<string> filename = new List<string>();
             foreach (var item in files)
             {
-                //FileStream stream = new FileStream
+                //文件名
+                var name = DateTime.Now.Millisecond + item.FileName;
+                //保存路径
+                string filepath = Path.GetFullPath("ImageFiles/" + name);
+
+                //将图片拷贝到ImageFiles目录下
+                using (FileStream fs = new FileStream(filepath, FileMode.OpenOrCreate))
+                {
+                    item.CopyToAsync(fs);
+                }
+                filename.Add(name);
             }
-            return Json(new { });
+            return Json(filename);
         }
     }
 }
