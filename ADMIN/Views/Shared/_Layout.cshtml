@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="~/assets/css/demo.css">
     <!--上传文件-->
     <link href="~/assets/css/fileinput.min.css" rel="stylesheet" />
+    <!--LayUI-->
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" media="all" />
+
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
@@ -37,7 +40,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="brand">
-                <a href="index.html"><img src="~/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+                <a asp-action="/" asp-controller="Home"><img src="~/assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
             </div>
             <div class="container-fluid">
 
@@ -118,9 +121,13 @@
     <script src="~/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
     @*<script src="~/assets/vendor/chartist/js/chartist.min.js"></script>*@
     <script src="~/assets/scripts/klorofil-common.js"></script>
+    <!--公共的js方法-->
+    <script src="~/js/site.js"></script>
     <!--上传文件-->
     <script src="~/assets/scripts/fileinput.min.js"></script>
     <script src="~/assets/scripts/zh.js"></script>
+    <!--LayUI-->
+    <script src="~/lib/layui/layui.all.js"></script>
 
     <script src="~/assets/scripts/index.js"></script>
 

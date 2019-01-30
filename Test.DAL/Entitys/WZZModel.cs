@@ -30,5 +30,9 @@ namespace DAL.Entitys
         /// 自关联id
         /// </summary>
         public int? Pid { set; get; }
+
+        public string url { set; get; }
+
+        public string icon { set; get; }
     }
 }

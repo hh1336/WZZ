@@ -11,7 +11,7 @@ function GetModel(pid, callback) {
                 });
                 var str = `
                 <li>
-                    <a href="#tit` + result[i].id + `" data-toggle="collapse" class="collapsed" aria-expanded="false"><i class="glyphicon glyphicon-th-large"></i> 
+                    <a href="#tit` + result[i].id + `" data-toggle="collapse" class="collapsed" aria-expanded="false"><i class="fa ` + result[i].icon + `"></i> 
                         <span>`+ result[i].name + `</span> 
                         <i class="icon-submenu lnr lnr-chevron-left"></i>
                                 <div id="tit`+ result[i].id + `" class="collapse" aria-expanded="false" style="height: 0px;">
@@ -36,7 +36,7 @@ function GetModel(pid, callback) {
         }).done(function (data) {
             var li = "";
             for (var s = 0; s < data.length; s++) {
-                li += "<li><a href=''>" + data[s].name + "</a></li>";
+                li += "<li><a class='cmodel' href='" + data[s].url + "' data-id='" + data[s].id + "'>" + data[s].name + "</a></li>";
             }
             callback(li);
         });
@@ -53,6 +53,11 @@ $(function () {
         $("#username").text(result.nickname).prev().attr("src", result.portraitUrl);
     });
 
+    $(document).on("click", ".cmodel", function (e) {
+        var key = "ModelId";
+        var val = $(this).attr("data-id");
+        Common.SetSession(key, val);
+    });
 
     //var data, options;
 

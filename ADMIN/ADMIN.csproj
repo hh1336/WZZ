@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Test.BLL\BLL.csproj" />
     <ProjectReference Include="..\Test.DAL\DAL.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\ImageFiles\" />
+  </ItemGroup>
 </Project>

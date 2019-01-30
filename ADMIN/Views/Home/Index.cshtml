@@ -56,16 +56,16 @@
         $("#userForm").submit(function (e) {
             e.preventDefault();
             if ($("input[name=nickname]").val() == "" || $("input[name=nickname]").val() == undefined) {
-                alert("请输入nackname");
+                layer.msg("请输入nackname");
                 return false;
             }
             if ($("input[name=pwd]").val() == "" || $("input[name=pwd]").val() == undefined) {
-                alert("请输入要修改的密码");
+                layer.msg("请输入要修改的密码");
                 return false;
             }
             var _data = $("#userForm").serializeArray();
-            $.post("/Home/UpdateInfo", { userInfo: _data }, function (result) {
-                alert(result.msg);
+            $.post("/Home/UpdateInfo", _data, function (result) {
+                layer.msg(result.msg);
                 window.location.href = result.url;
             })
         })
@@ -94,15 +94,15 @@
             $(".modal-body").html(inp);
             $("#myModalLabel").text("请选择头像");
 
-            $("#input-b1").fileinput(fileopt).on("fileuploaded", function (event, data, result) {
-                console.log(data)
-                console.log(event)
+            $("#input-b1").fileinput(fileopt).on("fileuploaded", function (event, data) {
+            //上传文件的回调函数
                 if (data.response) {
-                    alert('处理成功');
-                    $("#portraitUrl").attr("src", data.response[0])
+                    layer.msg('上传成功');
+                    $("#portraitUrl").attr("src", data.response[0].filePath);
+                    $("input[name=portraitUrl]").val(data.response[0].filePath);
                 }
             }).on("filesuccessremove", function (e, data) {
-
+                //删除文件的回调函数
             });
 
             $("#myModal").modal('show');

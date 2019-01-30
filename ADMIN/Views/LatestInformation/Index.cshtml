@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "最新资讯";
+}
+
+<table id="myTable" lay-filter="test"></table>
+
+
+@section Scripts{
+    <script>
+        //加载数据
+        function load() {
+            var ModelId;
+            Common.GetSession("ModelId", function (modelid) {
+                ModelId = modelid;
+            });
+            layui.use('table', function () {
+                var table = layui.table;
+                table.render({
+                    elem: '#myTable',
+                    url: '/LatestInformation/GetList', //数据接口
+                    toolbar: true,//开启工具栏
+                    defaultToolbar: ['print', 'exports'],//定义工具栏的工具位置
+                    page: false,//开启分页
+                    loading: true,//加载时出现等待条
+                    contentType: "json",//接收内容为json类型
+                    id: 'Reload',//定义标识，用于刷新
+                    method: "POST",//请求方式为post
+                    title: "文章表",//标题
+                    autoSort: false,//false为服务器来进行排序
+                    initSort: {//初始排序状态
+                        field: 'id',
+                        type: 'desc'
+                    },
+                    text: {
+                        none: "还没有数据，快去发布一点文章吧。"
+                    },
+                    cols: [[ //表头
+                        {
+                            field: 'id',//数据名称
+                            title: 'ID',//显示名称
+                            sort: true,//排序开启
+                            fixed: 'left',//固定在左侧
+                            unresize: true,//不可拖动的列宽
+                            align: "center"//内容居中
+                        },
+                        {
+                            field: 'action',
+                            title: '操作',
+                            unresize: true,
+                            align: "center",
+                            templet: function (data) {
+                                var btn = "";
+                                var edit = "<a href='" + data.id + "' >编辑</a>";
+                                var del = "<a href='" + data.id + "' >删除</a>";
+                                btn = edit + del;
+                                return btn;
+                            }
+                        },
+                        {
+                            field: 'title',
+                            title: '标题',
+                            unresize: true,
+                            align: "center"
+                        },
+                        {
+                            field: 'createTime',
+                            title: '发布时间',
+                            sort: true,
+                            unresize: true,
+                            align: "center"
+                        },
+                        {
+                            field: 'updateTime',
+                            title: '最后更新时间',
+                            sort: true,
+                            unresize: true,
+                            align: "center"
+                        },
+                        {
+                            field: 'author',
+                            title: '作者',
+                            sort: true,
+                            unresize: true,
+                            align: "center"
+                        },
+                        {
+                            field: 'source',
+                            title: '来源',
+                            sort: true,
+                            unresize: true,
+                            align: "center"
+                        },
+                        {
+                            field: 'imgurl',
+                            title: '图片',
+                            unresize: true,
+                            align: "center",
+                            templet: function (data) {
+                                return "<img src='" + data.imgurl + "' width='100px' height='100px' />";
+                            }
+                        }
+                    ]],
+                    where: {//传输的参数
+                        ModelId: ModelId
+                    },
+                    response: {//定义后台返回json时的格式
+                        statusName: "Code",//定义返回的状态码名称
+                        statusCode: 200,//定义成功时应返回的状态码
+                        msgName: 'Message', //消息字段
+                        countName: 'Total', //总数字段
+                        dataName: 'Result' //数据字段
+                    },
+                    done: function (res, curr, count) {//表格加载完成后的回调函数
+                        //res为接口数据
+                        //curr为页码
+                        //count为条数
+                    }
+
+                });
+
+            });
+        }
+
+
+        $(function () {
+            load();
+        })
+
+    </script>
+}
+
