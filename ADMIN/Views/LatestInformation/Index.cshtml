@@ -3,30 +3,41 @@
     ViewData["Title"] = "最新资讯";
 }
 
-<table id="myTable" lay-filter="test"></table>
+<table id="myTable" lay-filter="filter"></table>
 
 
 @section Scripts{
     <script>
+        //全局化排序
+        var _sortField = "id";
+        var _sortType = "desc";
+        //记录初始化好的表格
+        var table;
+        //得到该模块的id
+        var ModelId;
+        Common.GetSession("ModelId", function (modelid) {
+            ModelId = modelid;
+        });
+
         //加载数据
         function load() {
-            var ModelId;
-            Common.GetSession("ModelId", function (modelid) {
-                ModelId = modelid;
-            });
             layui.use('table', function () {
-                var table = layui.table;
+                //将初始化好的表格赋值到全局
+                table = layui.table;
+                //对这个表格进行加载
                 table.render({
                     elem: '#myTable',
                     url: '/LatestInformation/GetList', //数据接口
                     toolbar: true,//开启工具栏
                     defaultToolbar: ['print', 'exports'],//定义工具栏的工具位置
-                    page: false,//开启分页
+                    page: true,//开启分页,可传入dom元素自定义分页样式
                     loading: true,//加载时出现等待条
                     contentType: "json",//接收内容为json类型
                     id: 'Reload',//定义标识，用于刷新
-                    method: "POST",//请求方式为post
+                    method: "GET",//请求方式为post
                     title: "文章表",//标题
+                    limit: 10,//每页显示条数
+                    limits: [10, 50, 100],//一次显示多条
                     autoSort: false,//false为服务器来进行排序
                     initSort: {//初始排序状态
                         field: 'id',
@@ -42,7 +53,10 @@
                             sort: true,//排序开启
                             fixed: 'left',//固定在左侧
                             unresize: true,//不可拖动的列宽
-                            align: "center"//内容居中
+                            align: "center",//内容居中
+                            templet: function (data) {//data里面存放着一整条数据
+                                return data.LAY_INDEX;//返回当前数据的索引
+                            }
                         },
                         {
                             field: 'action',
@@ -51,8 +65,8 @@
                             align: "center",
                             templet: function (data) {
                                 var btn = "";
-                                var edit = "<a href='" + data.id + "' >编辑</a>";
-                                var del = "<a href='" + data.id + "' >删除</a>";
+                                var edit = "<a class='layui-btn layui-btn-xs layui-btn-primary'name='edit' data-id='" + data.id + "' ><i class='layui-icon'>&#xe642;</i></a> <span></span>";
+                                var del = "<a class='layui-btn layui-btn-xs layui-btn-primary' name='del' data-id='" + data.id + "' ><i class='layui-icon'>&#xe640;</i></a>";
                                 btn = edit + del;
                                 return btn;
                             }
@@ -68,14 +82,20 @@
                             title: '发布时间',
                             sort: true,
                             unresize: true,
-                            align: "center"
+                            align: "center",
+                            templet: function (data) {
+                                return Common.ToDateTime(data.createTime);
+                            }
                         },
                         {
                             field: 'updateTime',
                             title: '最后更新时间',
                             sort: true,
                             unresize: true,
-                            align: "center"
+                            align: "center",
+                            templet: function (data) {
+                                return Common.ToDateTime(data.updateTime);
+                            }
                         },
                         {
                             field: 'author',
@@ -97,19 +117,22 @@
                             unresize: true,
                             align: "center",
                             templet: function (data) {
-                                return "<img src='" + data.imgurl + "' width='100px' height='100px' />";
+                                var img = "无";
+                                if (data.imgurl != null && data.imgurl != "" && data.imgurl != undefined) img = "<img src='" + data.imgurl + "' width='100px' height='100px' />";
+                                return img;
                             }
                         }
                     ]],
-                    where: {//传输的参数
-                        ModelId: ModelId
+                    where: {//加载表格时需要传入的参数
+                        ModelId: ModelId,
+                        field: _sortField,
+                        order: _sortType
                     },
                     response: {//定义后台返回json时的格式
-                        statusName: "Code",//定义返回的状态码名称
+                        statusName: "code",//定义返回的状态码名称
                         statusCode: 200,//定义成功时应返回的状态码
-                        msgName: 'Message', //消息字段
-                        countName: 'Total', //总数字段
-                        dataName: 'Result' //数据字段
+                        msgName: 'message', //消息字段
+                        countName: 'total', //总数字段
                     },
                     done: function (res, curr, count) {//表格加载完成后的回调函数
                         //res为接口数据
@@ -119,12 +142,68 @@
 
                 });
 
+                //监听排序字段
+                table.on("sort(filter)", function (obj) {
+                    //排序发生改变时将排序字段赋值记录到全局
+                    _sortField = obj.field;
+                    _sortType = obj.type;
+
+                    //触发刷新事件，将当前初始化的表格传入
+                    reload(obj);
+                });
+
+            });
+
+        }
+
+        //刷新表格，需要接收一个初始化后的表格
+        function reload(obj) {
+            if (obj == undefined || obj == "") {
+                obj = {
+                    field: "id",
+                    type: "desc"
+                };
+            }
+            //刷新事件,第一个参数为标识id
+            table.reload("Reload", {
+                initSort: obj,
+                where: {
+                    ModelId: ModelId,
+                    field: obj.field,
+                    order: obj.type
+                }
             });
         }
 
-
         $(function () {
             load();
+
+            //删除方法
+            $(document).on("click", "a[name=del]", function (e) {
+                e.preventDefault();
+                var _id = $(this).attr("data-id");
+                var yesOrNo = Common.alert("删除数据", "请问您确定要删除这条数据吗？");
+                if (yesOrNo == 0) {
+                    return false;
+                }
+                var app = new appModal();
+                app.show();
+                $.ajax({
+                    url: "",
+                    type: "post",
+                    dataType: "json",
+                    data: { id: _id }
+                }).done(function (result) {
+                    layer.msg(result.msg);
+                    //刷新数据
+                    reload({
+                        field: _sortField,
+                        type: _sortType
+                    });
+
+                })
+            })
+
         })
 
     </script>

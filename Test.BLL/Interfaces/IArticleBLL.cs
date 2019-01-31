@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using BLL.Commons;
 namespace BLL.Interfaces
 {
     /// <summary>
@@ -19,5 +19,9 @@ namespace BLL.Interfaces
         List<Article> GetAllList();
 
         List<ModelArticle> GetArticleByModel(List<WZZModel> model);
+
+        IQueryable<Article> GetArticleByModelId(int id);
+
+        IPageList<Article> GetArticlePageList(SearchViewModel model);
     }
 }

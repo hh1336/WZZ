@@ -59,17 +59,17 @@ namespace DAL.Entitys
         /// <summary>
         /// 模块的id
         /// </summary>
-        public int WZZModelId { set; get; }
+        public int? WZZModelId { set; get; }
 
         /// <summary>
         /// 轮播图的id
         /// </summary>
-        public int RotationChartsId { set; get; }
+        public int? RotationChartsId { set; get; }
 
         /// <summary>
         /// 茶类型id
         /// </summary>
-        public int TeaTypeId { set; get; }
+        public int? TeaTypeId { set; get; }
 
     }
 }

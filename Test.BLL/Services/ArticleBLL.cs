@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BLL.Commons;
 
 namespace BLL.Services
 {
@@ -60,6 +61,27 @@ namespace BLL.Services
         }
 
         /// <summary>
+        /// 根据模块id获取文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IQueryable<Article> GetArticleByModelId(int id)
+        {
+            return _db.Articles.Where(a => a.WZZModelId == id);
+        }
+
+        /// <summary>
+        /// 对数据进行分页
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public IPageList<Article> GetArticlePageList(SearchViewModel model)
+        {
+            var result = GetArticleByModelId(model.ModelId).Sort(model.field, model.order).ToPageList(model.limit, model.page);
+            return result;
+        }
+
+        /// <summary>
         /// 根据id获取文章
         /// </summary>
         /// <param name="id"></param>
@@ -68,5 +90,8 @@ namespace BLL.Services
         {
             return _db.Articles.SingleOrDefault(a => a.id == id);
         }
+
+
+
     }
 }

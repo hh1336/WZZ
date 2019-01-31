@@ -14,7 +14,7 @@ namespace DAL.ViewModels
         /// <summary>
         /// 模块id
         /// </summary>
-        public int ModelId { set; get; } 
+        public int ModelId { set; get; }
 
         /// <summary>
         /// 第几页
@@ -25,5 +25,15 @@ namespace DAL.ViewModels
         /// 数量
         /// </summary>
         public int limit { set; get; }
+
+        /// <summary>
+        /// 排序名称
+        /// </summary>
+        public string field { set; get; }
+
+        /// <summary>
+        /// 排序方式
+        /// </summary>
+        public string order { set; get; }
     }
 }

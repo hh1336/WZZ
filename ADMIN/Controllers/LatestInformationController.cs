@@ -13,9 +13,11 @@ namespace ADMIN.Controllers
     public class LatestInformationController : Controller
     {
         private readonly IWZZModelBLL _wzzbll;
-        public LatestInformationController(IWZZModelBLL wZZModelBLL)
+        private readonly IArticleBLL _article;
+        public LatestInformationController(IWZZModelBLL wZZModelBLL, IArticleBLL article)
         {
             _wzzbll = wZZModelBLL;
+            _article = article;
         }
         public IActionResult Index()
         {
@@ -27,11 +29,11 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="model">查询条件</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpGet]
         public IActionResult GetList(SearchViewModel model)
         {
-
-            return Json(new { Code = 200, Message = "加载成功", Total = 11, Result = 1 });
+            var result = _article.GetArticlePageList(model);
+            return Json(result);
         }
     }
 }
