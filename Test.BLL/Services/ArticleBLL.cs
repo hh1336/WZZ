@@ -3,10 +3,12 @@ using DAL;
 using DAL.Entitys;
 using DAL.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BLL.Commons;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace BLL.Services
 {
@@ -20,6 +22,55 @@ namespace BLL.Services
         public ArticleBLL(MyDbContext db)
         {
             _db = db;
+        }
+
+        /// <summary>
+        /// 创建或修改文章表信息
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public async Task<int> AddOrUpdate(Article data)
+        {
+            if (data.id == 0)
+            {//判断是0就为新增
+                data.createTime = DateTime.Now;
+                await _db.Articles.AddAsync(data);
+                var result = await _db.SaveChangesAsync();
+                if(result > 0)
+                {
+                    return data.id;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            else//不是0就为修改
+            {
+                var article = await _db.Articles.SingleOrDefaultAsync(a => a.id == data.id);
+                if (article == null)
+                {
+                    //如果查不到数据则返回false
+                    return 0;
+                }
+                article.title = data.title;
+                article.TeaTypeId = data.TeaTypeId;
+                article.source = data.source;
+                article.imgurl = data.imgurl;
+                article.author = data.author;
+                article.updateTime = DateTime.Now;
+                article.WZZModelId = data.WZZModelId;
+                var result = await _db.SaveChangesAsync();
+                if (result == 1)
+                {
+                    return article.id;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
         }
 
         /// <summary>
@@ -75,9 +126,9 @@ namespace BLL.Services
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public IPageList<Article> GetArticlePageList(SearchViewModel model)
+        public async Task<IPageList<Article>> GetArticlePageList(SearchViewModel model)
         {
-            var result = GetArticleByModelId(model.ModelId).Sort(model.field, model.order).ToPageList(model.limit, model.page);
+            var result = await GetArticleByModelId(model.ModelId).Sort(model.field, model.order).ToPageList(model.limit, model.page);
             return result;
         }
 
@@ -90,8 +141,6 @@ namespace BLL.Services
         {
             return _db.Articles.SingleOrDefault(a => a.id == id);
         }
-
-
 
     }
 }

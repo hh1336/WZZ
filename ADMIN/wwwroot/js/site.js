@@ -75,15 +75,19 @@ class Common {
 
 
 //封装模态框
-var appModal = function () {//初始获取模态框
+var appModal = function (obj) {//初始获取模态框
     this.model = $("#myModal");
     this.mtitle = $("#myModalLabel");
     this.mbody = $(".modal-body");
+
+    //实例化时需要传入参数将模态框进行初始化
+    if (obj !== undefined) this.init(obj);
+
 };
 
 appModal.prototype = {
     //弹出模态框
-    show: function () {
+    open: function () {
         this.model.modal("show");
     },
     //关闭模态框
@@ -91,16 +95,29 @@ appModal.prototype = {
         this.model.modal("hiden");
     },
     init: function (obj) {
+        //模态框的标题
         this.mtitle.text(obj.title);
-        $.ajax({
-            url: obj.url,
-            dataType: obj.dataType,
-            type: "post",
-            data: obj.data,
-            async: false
-        }).done(function (result) {
-            
-        });
+        //发送一个ajax请求，将子页面渲染到模态框中
+        if (obj.url !== undefined) {
+            $.ajax({
+                url: obj.url,
+                dataType: "html",
+                type: "post",
+                data: obj.data === undefined ? {} : obj.data,
+                async: false
+            }).done(function (result) {
+                this.mbody.html(result);
+            });
+        }
+        if (obj.body !== undefined) {
+            this.mbody.html(obj.body);
+        }
+
+    },
+    //清空模态框内容
+    clear: function () {
+        this.mtitle.text("");
+        this.mbody.html("");
     }
 };
 

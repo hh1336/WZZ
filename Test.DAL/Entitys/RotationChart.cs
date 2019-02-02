@@ -36,6 +36,11 @@ namespace DAL.Entitys
         /// <summary>
         /// 模块的id
         /// </summary>
-        public int WZZModelId { set; get; }
+        public int? WZZModelId { set; get; }
+
+        /// <summary>
+        /// 对应的文章id
+        /// </summary>
+        public int? Article { set; get; }
     }
 }

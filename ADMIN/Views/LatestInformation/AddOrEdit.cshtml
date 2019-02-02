@@ -1,0 +1,278 @@
+﻿
+@section Styles{
+    <style>
+        .ArticleTitle .layui-input {
+            width: 79%;
+            margin: 0;
+            border-color: #6b6f3f
+        }
+
+        #addoredit textarea {
+            resize: none;
+        }
+
+        #addoredit hr {
+            background-color: black;
+        }
+    </style>
+}
+<div id="addoredit">
+    <form id="addArticle" class="layui-form">
+        <div class="ArticleTitle">
+            <h2>新建</h2>
+            <hr />
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><b>标题:</b></label>
+                <div class="layui-input-block">
+                    <input type="text" name="title" title-id="" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"><b>来源:</b></label>
+                <div class="layui-input-inline" style="margin-left:30px;">
+                    <input type="text" name="source" required lay-verify="required" placeholder="请输入来源" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label"><b>作者:</b></label>
+                <div class="layui-input-inline">
+                    <input type="text" name="author" required lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
+                </div>
+
+                <label class="layui-form-label" style="width:71px;padding:9px 10px 0 0;"><b>发布时间:</b></label>
+                <div class="layui-input-inline">
+                    <input type="text" name="createTime" class="layui-input" disabled value="">
+                </div>
+            </div>
+            <div class="layui-form-item hidden">
+                <label class="layui-form"><b>请选择文章图片:</b></label>
+                <input type="hidden" name="imgurl" value="" />
+                <input id="imgurl" type="file" class="file-loading" data-browse-on-zone-click="true">
+            </div>
+
+        </div>
+
+        <div class="ArticleContent hidden">
+            <h3>文章主体</h3>
+            <hr />
+
+            <div class="layui-form-item ">
+                <div class="layui-input-block" style="margin-left:0;">
+                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" ArticleContent-id=""></textarea>
+                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                </div>
+            </div>
+            <input type="button" class="btn btn-danger btn-xs paragraph" value="插入一个段落" />
+
+
+            <div class="layui-form-item ">
+                <hr />
+                <div class="layui-input-block" style="margin-left:0;">
+                    <input type="text" value="" class="layui-input subheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                    <textarea placeholder="请输入文章内容" class="layui-textarea" Subheading-id="" ArticleContent-id=""></textarea>
+                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                    <input type="button" class="btn btn-danger btn-xs paragraph" value="插入一个段落" />
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </form>
+    <input type="button" class="btn btn-danger" value="插入一个小节" />
+</div>
+
+
+@section Scripts{
+    <script>
+        //插入段落
+        //$(document).on("click", ".paragraph", function (e) {
+        //    e.preventDefault();
+        //    //判断是否有标题，有标题则表示当前点击的是一个段落
+        //    var isSubheading = $(this).siblings(".subheading");
+
+
+        //})
+
+        //实时保存文章标题信息
+        $(".ArticleTitle input[type=text]").blur(function (e) {
+            e.preventDefault();
+            savetitle();
+        });
+        //保存标题功能
+        function savetitle() {
+            var title = $("input[name=title]").val();
+            if (title === "" || title === undefined) {
+                layer.msg("文章标题不能为空");
+                $(".ArticleContent").addClass("hidden");
+                $("#imgurl").parent("div").addClass("hidden");
+                return false;
+            }
+            var _data = {};
+            _data.title = title;
+            _data.id = $("input[name=title]").attr("title-id");
+            _data.source = $("input[name=source]").val();
+            _data.author = $("input[name=author]").val();
+            _data.imgurl = $("input[name=imgurl]").val();
+            var modelid;
+            Common.GetSession("ModelId", function (result) {
+                modelid = result;
+            });
+            _data.WZZModelId = modelid;
+            $.ajax({
+                url: "/LatestInformation/SaveArticleTitle",
+                type: "post",
+                dataType: 'json',
+                data: _data
+            }).done(function (result) {
+                if (result.code) {
+                    $("input[name=title]").attr("title-id", result.aid);
+                    $(".ArticleContent").removeClass("hidden");
+                    $("input[name=imgurl]").parent("div").removeClass("hidden");
+
+                }
+
+            })
+        }
+
+
+
+
+        $(function () {
+            //初始化时间
+            layui.use('laydate', function () {
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: 'input[name=createTime]', //指定元素
+                    format: 'yyyy年MM月dd日',
+                    value: new Date()
+                });
+            });
+
+
+            //文章标题上传图片
+            //文件上传配置
+            var fileopt = {
+                language: 'zh',//设置语言为中文
+                uploadUrl: "/Home/UpFile",//文件上传路径
+                showUpload: true,//是否显示上传按钮
+                browseClass: "btn btn-primary", //按钮样式
+                deleteUrl: "/Home/DelFile",//删除地址
+                maxFileCount: 1,//允许最大同时上传数
+                uploadAsync: true,//上传方式使用异步
+                showClose: false,//是否显示右上角关闭按钮
+                validateInitialCount: true,
+                fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+                maxFileSizenumber: 1024 * 3,//设置最大上传大小
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+                deleteUrlString: "/Home/DelFile",//删除图片的路径
+                initialPreviewConfig: {
+                    url: "/Home/DelFile"
+                },
+                //删除时需要传入的参数
+                deleteExtraDataObject: {
+                    url: $("input[name=imgurl]").val()
+                },
+            }
+            //初始化上传控件
+            $("#imgurl").fileinput(fileopt).on("fileuploaded", function (even, data) {
+                //上传成功后的回调函数
+                if (data.response) {
+                    layer.msg('上传成功');
+                    //保存图片路径
+                    $("input[name=imgurl]").val(data.response[0].filePath);
+                    savetitle();
+                }
+            }).on("filepredelete", function (event, key, jqXHR, data) {
+
+            });
+
+
+
+            //文章内容上传图片
+            var contentoption = {
+                language: 'zh',//设置语言为中文
+                uploadUrl: "/Home/UpFile",//文件上传路径
+                showUpload: true,//是否显示上传按钮
+                showPreview: true,//是否显示预览区域
+                browseClass: "btn btn-primary", //按钮样式
+                deleteUrl: "/Home/DelFile",//删除地址
+                maxFileCount: 3,//允许最大同时上传数
+                uploadAsync: true,//上传方式使用异步
+                showClose: false,//是否显示右上角关闭按钮
+                validateInitialCount: true,
+                fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+                maxFileSizenumber: 1024 * 3,//设置最大上传大小
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+                deleteUrlString: "",//删除图片的路径
+                //删除时需要传入的参数
+                deleteExtraDataObject: {
+
+                },
+            }
+            $(".upimg").fileinput(contentoption).on("fileuploaded", function (even, data) {
+                //上传成功后的回调函数
+                if (data.response) {
+
+                    var img = `<input type="hidden" value="` + data.response[0].filePath + `" img-id="" class="ArticleImg">`;
+                    $(this).parent("div.layui-input-block").append(img);
+                    //获取到对应段落的id
+                    var acid = $(this).parent().parent().parent().parent().parent().children("textarea").attr("ArticleContent-id");
+                    if (acid == "" || acid == undefined) {
+                        layer.msg("请先输入文章内容再上传图片，否则图片将无法保存");
+                        return false;
+                    }
+                    var _data = {};
+                    _data.ArticleConTentId = acid;
+                    _data.url = data.response[0].filePath;
+                    $.post("/LatestInformation/SaveArticleImage", { data: _data }, function (result) {
+                        if (result.code) {
+                            layer.msg('上传成功');
+                        }
+                    });
+                }
+            });
+
+            //没有标题的文章保存方法
+            $(document).ready(function (e) {
+                $("textarea.ArticleContent").blur(function (e) {
+                    e.preventDefault();
+                    var dom = $(this);
+                    var _data = {};
+                    _data.id = $(this).attr("ArticleContent-id");
+                    _data.articleText = $(this).val();
+                    _data.ArticleId = $("input[name=title]").attr("title-id");
+                    $.post("/LatestInformation/SaveArticleContent", { data: _data }, function (result) {
+                        if (result.code) {
+                            dom.attr("ArticleContent-id", result.aid);
+                            dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                        }
+                    })
+
+                })
+                //保存图片描述
+                $(".subheading").blur(function (e) {
+                    e.preventDefault();
+                    var _data = {};
+                    _data.title = $(this).val();
+                    _data.ArticleConTentId = $(this).attr("ArticleContent-id");
+                    $.post("/LatestInformation/SaveArticleImgTitle", { data: _data })
+                })
+            })
+
+
+
+        })
+
+    </script>
+}

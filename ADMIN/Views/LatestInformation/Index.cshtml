@@ -5,8 +5,17 @@
 
 <table id="myTable" lay-filter="filter"></table>
 
+工具栏模板：
+<script type="text/html" id="toolbar">
+    <div class="layui-btn-container">
+        <a class="layui-btn layui-btn-sm" asp-action="AddOrEdit">添加数据</a>
+        <button class="layui-btn layui-btn-sm" id="reload">刷新</button>
+    </div>
+</script>
 
 @section Scripts{
+
+
     <script>
         //全局化排序
         var _sortField = "id";
@@ -28,8 +37,8 @@
                 table.render({
                     elem: '#myTable',
                     url: '/LatestInformation/GetList', //数据接口
-                    toolbar: true,//开启工具栏
-                    defaultToolbar: ['print', 'exports'],//定义工具栏的工具位置
+                    toolbar: "#toolbar",//开启工具栏
+                    defaultToolbar: ['exports', '#toolbar'],//定义工具栏的工具位置
                     page: true,//开启分页,可传入dom元素自定义分页样式
                     loading: true,//加载时出现等待条
                     contentType: "json",//接收内容为json类型
@@ -94,7 +103,11 @@
                             unresize: true,
                             align: "center",
                             templet: function (data) {
-                                return Common.ToDateTime(data.updateTime);
+                                if (data.updateTime !== null) {
+                                    return Common.ToDateTime(data.updateTime);
+                                }
+                                return "";
+
                             }
                         },
                         {
@@ -175,35 +188,56 @@
             });
         }
 
+        //刷新按钮
+        $(document).on("click", "#reload", function (e) {
+            e.preventDefault();
+            //调用刷新方法
+            reload({
+                field: _sortField,
+                type: _sortType
+            });
+        })
+        //删除方法
+        $(document).on("click", "a[name=del]", function (e) {
+            e.preventDefault();
+            var _id = $(this).attr("data-id");
+            var yesOrNo = Common.alert("删除数据", "请问您确定要删除这条数据吗？");
+            if (yesOrNo == 0) {
+                return false;
+            }
+            $.ajax({
+                url: "",
+                type: "post",
+                dataType: "json",
+                data: { id: _id }
+            }).done(function (result) {
+                layer.msg(result.msg);
+                //刷新数据
+                reload({
+                    field: _sortField,
+                    type: _sortType
+                });
+
+            })
+        })
+
+        //编辑按钮
+        $(document).on("click", "a[name=edit]", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: "/LatestInformation/GetInfo",
+                data: { id: 2 },
+                dataType: "json",
+                type: "post"
+            }).done(function (result) {
+                console.log(result);
+            })
+        })
+
+
+
         $(function () {
             load();
-
-            //删除方法
-            $(document).on("click", "a[name=del]", function (e) {
-                e.preventDefault();
-                var _id = $(this).attr("data-id");
-                var yesOrNo = Common.alert("删除数据", "请问您确定要删除这条数据吗？");
-                if (yesOrNo == 0) {
-                    return false;
-                }
-                var app = new appModal();
-                app.show();
-                $.ajax({
-                    url: "",
-                    type: "post",
-                    dataType: "json",
-                    data: { id: _id }
-                }).done(function (result) {
-                    layer.msg(result.msg);
-                    //刷新数据
-                    reload({
-                        field: _sortField,
-                        type: _sortType
-                    });
-
-                })
-            })
-
         })
 
     </script>

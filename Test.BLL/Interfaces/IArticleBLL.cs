@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BLL.Commons;
+using System.Data.Entity.Infrastructure;
+using System.Threading.Tasks;
+
 namespace BLL.Interfaces
 {
     /// <summary>
@@ -22,6 +25,7 @@ namespace BLL.Interfaces
 
         IQueryable<Article> GetArticleByModelId(int id);
 
-        IPageList<Article> GetArticlePageList(SearchViewModel model);
+        Task<IPageList<Article>> GetArticlePageList(SearchViewModel model);
+        Task<int> AddOrUpdate(Article data);
     }
 }

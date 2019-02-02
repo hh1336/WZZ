@@ -61,10 +61,6 @@ namespace DAL.Entitys
         /// </summary>
         public int? WZZModelId { set; get; }
 
-        /// <summary>
-        /// 轮播图的id
-        /// </summary>
-        public int? RotationChartsId { set; get; }
 
         /// <summary>
         /// 茶类型id

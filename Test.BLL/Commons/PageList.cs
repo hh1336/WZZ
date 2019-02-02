@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL.Commons
 {
@@ -20,7 +22,7 @@ namespace BLL.Commons
         /// <param name="field">排序的字段</param>
         /// <param name="order">排序规则</param>
         /// <returns></returns>
-        public static IPageList<TSource> ToPageList<TSource>(this IQueryable<TSource> source, int limit, int page) where TSource : class, new()
+        public static async Task<IPageList<TSource>> ToPageList<TSource>(this IQueryable<TSource> source, int limit, int page) where TSource : class, new()
         {
             //计算取第几页的值
             int skip = (page - 1) * limit;
@@ -32,7 +34,7 @@ namespace BLL.Commons
             //返回数据
             return new IPageList<TSource>()
             {
-                data = query.ToList(),
+                data = await query.ToListAsync(),
                 total = source.Count() / limit < 1 ? 1 : source.Count() / limit,
                 code = 200,
                 count = source.Count(),
@@ -66,6 +68,46 @@ namespace BLL.Commons
             }
             return query;
         }
+
+        ///// <summary>
+        ///// 对内容进行升序
+        ///// </summary>
+        ///// <typeparam name="TSource"></typeparam>
+        ///// <param name="source"></param>
+        ///// <param name="func"></param>
+        ///// <returns></returns>
+        //public static IQueryable<TSource> SortASC<TSource>(this IQueryable<TSource> source, Func<TSource, T> func) where TSource : class, new()
+        //{
+        //    string sort = "";
+        //    foreach (var item in source)
+        //    {
+        //        sort = func(item);
+        //    }
+        //    var query = from item in source
+        //                orderby sort ascending
+        //                select item;
+        //    return query;
+        //}
+
+        ///// <summary>
+        ///// 对内容进行降序
+        ///// </summary>
+        ///// <typeparam name="TSource"></typeparam>
+        ///// <param name="source"></param>
+        ///// <param name="func"></param>
+        ///// <returns></returns>
+        //public static IQueryable<TSource> SortDESC<TSource>(this IQueryable<TSource> source, Func<TSource, string> func) where TSource : class, new()
+        //{
+        //    string sort = "";
+        //    foreach (var item in source)
+        //    {
+        //        sort = func(item);
+        //    }
+        //    var query = from item in source
+        //                orderby sort descending
+        //                select item;
+        //    return query;
+        //}
 
     }
 

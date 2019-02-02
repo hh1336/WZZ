@@ -34,11 +34,11 @@ namespace DAL.Entitys
         /// <summary>
         /// 文章id
         /// </summary>
-        public int ArticleId { set; get; }
+        public int? ArticleId { set; get; }
 
         /// <summary>
         /// 文章副标题id
         /// </summary>
-        public int SubheadingId { set; get; }
+        public int? SubheadingId { set; get; }
     }
 }
