@@ -17,6 +17,7 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="~/assets/css/main.css">
     <link rel="stylesheet" href="~/assets/css/demo.css">
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
@@ -38,10 +39,10 @@
                             </div>
                             <form class="form-auth-small" id="loginForm">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="Email" name="Email" value=""  placeholder="Email">
+                                    <input type="text" class="form-control" id="Email" name="Email" value="" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="Pwd" name="Pwd" value=""  placeholder="PassWord">
+                                    <input type="password" class="form-control" id="Pwd" name="Pwd" value="" placeholder="PassWord">
                                 </div>
                                 @*<div class="form-group clearfix">
                                         <label class="fancy-checkbox element-left">
@@ -67,8 +68,8 @@
         </div>
     </div>
 
-
     <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/layui/layui.all.js"></script>
     <script>
         $(function () {
             var form = $("#loginForm");
@@ -90,7 +91,8 @@
                         window.location.href = result.url;
                         return false;
                     }
-                    alert(result.msg);
+                    layer.msg(result.msg);
+                    $("#Pwd").parent("div").addClass("has-error");
                 })
 
             })

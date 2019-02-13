@@ -5,7 +5,8 @@
 
 <table id="myTable" lay-filter="filter"></table>
 
-工具栏模板：
+
+<!--工具栏模板：-->
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
         <a class="layui-btn layui-btn-sm" asp-action="AddOrEdit">添加数据</a>
@@ -131,7 +132,8 @@
                             align: "center",
                             templet: function (data) {
                                 var img = "无";
-                                if (data.imgurl != null && data.imgurl != "" && data.imgurl != undefined) img = "<img src='" + data.imgurl + "' width='100px' height='100px' />";
+                                if (data.imgurl != null && data.imgurl != "" && data.imgurl != undefined) img = "<a href='#' class='selectimg' imgurl='" + data.imgurl + "'>查看</a>";
+
                                 return img;
                             }
                         }
@@ -144,8 +146,6 @@
                     response: {//定义后台返回json时的格式
                         statusName: "code",//定义返回的状态码名称
                         statusCode: 200,//定义成功时应返回的状态码
-                        msgName: 'message', //消息字段
-                        countName: 'total', //总数字段
                     },
                     done: function (res, curr, count) {//表格加载完成后的回调函数
                         //res为接口数据
@@ -233,7 +233,12 @@
                 console.log(result);
             })
         })
-
+        //用户点击查看图片时
+        $(document).on("click", ".selectimg", function () {
+            var url = $(this).attr("imgurl");//得到这张图片的url
+            var img = '<img src="' + url + '" style="margin:0 auto;" />';
+            Common.alert("文章图片", img);
+        });
 
 
         $(function () {

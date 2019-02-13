@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,7 +36,7 @@ namespace BLL.Commons
             //返回数据
             return new IPageList<TSource>()
             {
-                data = await query.ToListAsync(),
+                data = query,
                 total = source.Count() / limit < 1 ? 1 : source.Count() / limit,
                 code = 200,
                 count = source.Count(),
@@ -46,68 +48,35 @@ namespace BLL.Commons
         /// 对数据进行排序，用于IQueryable<>类型
         /// </summary>
         /// <typeparam name="TSource">实体</typeparam>
-        /// <param name="source">数据</param>
+        /// <param name="source">数据源</param>
         /// <param name="field">排序字段</param>
         /// <param name="order">排序规则</param>
         /// <returns></returns>
         public static IQueryable<TSource> Sort<TSource>(this IQueryable<TSource> source, string field, string order) where TSource : class, new()
         {
-            IQueryable<TSource> query;
-            //判断需要进行的是升序还是降序
-            if (order.Equals("desc"))
-            {
-                query = from item in source
-                        orderby field descending
-                        select item;
-            }
-            else
-            {
-                query = from item in source
-                        orderby field ascending
-                        select item;
-            }
+            //如果传过来的是null或空的排序方式，则按照降序来排序
+            if (string.IsNullOrEmpty(order)) order = "asc";
+
+            if (order.Equals("asc")) order = "OrderBy";
+            else if (order.Equals("desc")) order = "OrderByDescending";
+
+            //定义一个TSource类型的变量，值为field
+            ParameterExpression param = Expression.Parameter(typeof(TSource), field);
+            //查找TSource中，是否有field这个公共变量
+            PropertyInfo pi = typeof(TSource).GetProperty(field);
+
+            //创建一个type数组，索引0保存所指向的实体类型，索引1保存得到的公共变量的类型
+            Type[] types = new Type[2];
+            types[0] = typeof(TSource);
+            types[1] = pi.PropertyType;
+            //生成Linq表达式树
+            Expression expr = Expression.Call(typeof(Queryable), order, types, source.Expression, Expression.Lambda(Expression.Property(param, field), param));
+            //执行Linq语句
+            IQueryable<TSource> query = source.Provider.CreateQuery<TSource>(expr);
+
             return query;
         }
 
-        ///// <summary>
-        ///// 对内容进行升序
-        ///// </summary>
-        ///// <typeparam name="TSource"></typeparam>
-        ///// <param name="source"></param>
-        ///// <param name="func"></param>
-        ///// <returns></returns>
-        //public static IQueryable<TSource> SortASC<TSource>(this IQueryable<TSource> source, Func<TSource, T> func) where TSource : class, new()
-        //{
-        //    string sort = "";
-        //    foreach (var item in source)
-        //    {
-        //        sort = func(item);
-        //    }
-        //    var query = from item in source
-        //                orderby sort ascending
-        //                select item;
-        //    return query;
-        //}
-
-        ///// <summary>
-        ///// 对内容进行降序
-        ///// </summary>
-        ///// <typeparam name="TSource"></typeparam>
-        ///// <param name="source"></param>
-        ///// <param name="func"></param>
-        ///// <returns></returns>
-        //public static IQueryable<TSource> SortDESC<TSource>(this IQueryable<TSource> source, Func<TSource, string> func) where TSource : class, new()
-        //{
-        //    string sort = "";
-        //    foreach (var item in source)
-        //    {
-        //        sort = func(item);
-        //    }
-        //    var query = from item in source
-        //                orderby sort descending
-        //                select item;
-        //    return query;
-        //}
 
     }
 
@@ -125,7 +94,7 @@ namespace BLL.Commons
         /// <summary>
         /// 数据
         /// </summary>
-        public List<T> data { set; get; }
+        public IQueryable<T> data { set; get; }
 
         /// <summary>
         /// 返回消息

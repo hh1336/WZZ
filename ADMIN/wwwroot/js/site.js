@@ -79,6 +79,7 @@ var appModal = function (obj) {//初始获取模态框
     this.model = $("#myModal");
     this.mtitle = $("#myModalLabel");
     this.mbody = $(".modal-body");
+    this.clear();
 
     //实例化时需要传入参数将模态框进行初始化
     if (obj !== undefined) this.init(obj);
@@ -116,7 +117,7 @@ appModal.prototype = {
     },
     //清空模态框内容
     clear: function () {
-        this.mtitle.text("");
+        this.mtitle.text("标题");
         this.mbody.html("");
     }
 };
