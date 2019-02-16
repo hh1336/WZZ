@@ -26,6 +26,7 @@ namespace BLL.Commons
         /// <returns></returns>
         public static async Task<IPageList<TSource>> ToPageList<TSource>(this IQueryable<TSource> source, int limit, int page) where TSource : class, new()
         {
+            if (source.Count() == 0) return new IPageList<TSource>() { code = 200, message = "无数据", data = source, total = 1, count = 0 };
             //计算取第几页的值
             int skip = (page - 1) * limit;
             //计算取几条
@@ -54,6 +55,7 @@ namespace BLL.Commons
         /// <returns></returns>
         public static IQueryable<TSource> Sort<TSource>(this IQueryable<TSource> source, string field, string order) where TSource : class, new()
         {
+            if (source.Count() == 0) return source;
             //如果传过来的是null或空的排序方式，则按照降序来排序
             if (string.IsNullOrEmpty(order)) order = "asc";
 

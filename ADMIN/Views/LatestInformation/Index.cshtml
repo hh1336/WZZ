@@ -47,20 +47,20 @@
                     method: "GET",//请求方式为post
                     title: "文章表",//标题
                     limit: 10,//每页显示条数
-                    limits: [10, 50, 100],//一次显示多条
+                    limits: [10, 20, 50],//一次显示多条
                     autoSort: false,//false为服务器来进行排序
                     initSort: {//初始排序状态
                         field: 'id',
                         type: 'desc'
                     },
                     text: {
-                        none: "还没有数据，快去发布一点文章吧。"
+                        none: '还没有数据，快去发布一点文章吧。'
                     },
                     cols: [[ //表头
                         {
                             field: 'id',//数据名称
                             title: 'ID',//显示名称
-                            sort: true,//排序开启
+                            //sort: true,//排序开启
                             fixed: 'left',//固定在左侧
                             unresize: true,//不可拖动的列宽
                             align: "center",//内容居中
@@ -148,6 +148,9 @@
                         statusCode: 200,//定义成功时应返回的状态码
                     },
                     done: function (res, curr, count) {//表格加载完成后的回调函数
+                        //console.log(res);
+                        //console.log(curr);
+                        //console.log(count);
                         //res为接口数据
                         //curr为页码
                         //count为条数

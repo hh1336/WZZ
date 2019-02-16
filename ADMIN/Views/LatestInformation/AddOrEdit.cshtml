@@ -59,47 +59,21 @@
 
             <div class="layui-form-item ">
                 <div class="layui-input-block" style="margin-left:0;">
-                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" ArticleContent-id=""></textarea>
+                    <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
                     <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
                     <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
                 </div>
             </div>
-            <input type="button" class="btn btn-danger btn-xs paragraph" value="插入一个段落" />
-
-
-            <div class="layui-form-item ">
-                <hr />
-                <div class="layui-input-block" style="margin-left:0;">
-                    <input type="text" value="" class="layui-input subheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                    <textarea placeholder="请输入文章内容" class="layui-textarea" Subheading-id="" ArticleContent-id=""></textarea>
-                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
-                    <input type="button" class="btn btn-danger btn-xs paragraph" value="插入一个段落" />
-                </div>
-            </div>
-
-
-
-
+            <input type="button" class="btn btn-danger btn-xs paragraph" id="addAContent" value="插入一个段落" />
         </div>
-
-
     </form>
-    <input type="button" class="btn btn-danger" value="插入一个小节" />
 </div>
 
 
 @section Scripts{
     <script>
-        //插入段落
-        //$(document).on("click", ".paragraph", function (e) {
-        //    e.preventDefault();
-        //    //判断是否有标题，有标题则表示当前点击的是一个段落
-        //    var isSubheading = $(this).siblings(".subheading");
-
-
-        //})
-
+    var modelid;
         //实时保存文章标题信息
         $(".ArticleTitle input[type=text]").blur(function (e) {
             e.preventDefault();
@@ -120,10 +94,6 @@
             _data.source = $("input[name=source]").val();
             _data.author = $("input[name=author]").val();
             _data.imgurl = $("input[name=imgurl]").val();
-            var modelid;
-            Common.GetSession("ModelId", function (result) {
-                modelid = result;
-            });
             _data.WZZModelId = modelid;
             $.ajax({
                 url: "/LatestInformation/SaveArticleTitle",
@@ -141,91 +111,105 @@
             })
         }
 
+        //文章内容上传图片
+        var contentoption = {
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            showPreview: true,//是否显示预览区域
+            browseClass: "btn btn-primary", //按钮样式
+            deleteUrl: "/Home/DelFile",//删除地址
+            maxFileCount: 3,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            validateInitialCount: true,
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            deleteUrlString: "",//删除图片的路径
+            //删除时需要传入的参数
+            deleteExtraDataObject: {
+
+            },
+        }
+        //文件上传配置(单图上传)
+        var fileopt = {
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            browseClass: "btn btn-primary", //按钮样式
+            deleteUrl: "/Home/DelFile",//删除地址
+            maxFileCount: 1,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            validateInitialCount: true,
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            deleteUrlString: "/Home/DelFile",//删除图片的路径
+            initialPreviewConfig: {
+                url: "/Home/DelFile"
+            },
+            //删除时需要传入的参数
+            deleteExtraDataObject: {
+                url: $("input[name=imgurl]").val()
+            },
+        }
+        //文章标题保存方法
+        function mainSubheadingSave(obj) {
+            obj.blur(function (e) {
+                e.preventDefault();
+                var dom = $(this);
+                var _data = {};
+                _data.id = $(this).attr("Subheading-id");
+                _data.head = $(this).val();
+                _data.ArticlesId = modelid;
+                //保存
+                $.post("/LatestInformation/SaveSubheading", { data: _data }, function (result) {
+                    if (result.code) {
+                        dom.attr("Subheading-id", result.aid);
+                        dom.siblings("textarea.ArticleContent").attr("Subheading-id", result.aid);
+                    }
+                })
 
 
+            })
+        }
 
-        $(function () {
-            //初始化时间
-            layui.use('laydate', function () {
-                var laydate = layui.laydate;
+        //文章保存方法
+        function AcontentSave(obj) {
+            obj.blur(function (e) {
+                e.preventDefault();
+                var dom = $(this);
+                var _data = {};
+                _data.id = $(this).attr("ArticleContent-id");
+                _data.articleText = $(this).val();
+                _data.ArticleId = $("input[name=title]").attr("title-id");
+                $.post("/LatestInformation/SaveArticleContent", { data: _data }, function (result) {
+                    if (result.code) {
+                        dom.attr("ArticleContent-id", result.aid);
+                        dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                    }
+                })
 
-                //执行一个laydate实例
-                laydate.render({
-                    elem: 'input[name=createTime]', //指定元素
-                    format: 'yyyy年MM月dd日',
-                    value: new Date()
-                });
-            });
+            })
+            //保存图片描述
+            obj.parent().find(".subheading").blur(function (e) {
+                e.preventDefault();
+                var _data = {};
+                _data.title = $(this).val();
+                _data.ArticleConTentId = $(this).attr("ArticleContent-id");
+                $.post("/LatestInformation/SaveArticleImgTitle", { data: _data })
+            })
+        }
 
-
-            //文章标题上传图片
-            //文件上传配置
-            var fileopt = {
-                language: 'zh',//设置语言为中文
-                uploadUrl: "/Home/UpFile",//文件上传路径
-                showUpload: true,//是否显示上传按钮
-                browseClass: "btn btn-primary", //按钮样式
-                deleteUrl: "/Home/DelFile",//删除地址
-                maxFileCount: 1,//允许最大同时上传数
-                uploadAsync: true,//上传方式使用异步
-                showClose: false,//是否显示右上角关闭按钮
-                validateInitialCount: true,
-                fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
-                maxFileSizenumber: 1024 * 3,//设置最大上传大小
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-                deleteUrlString: "/Home/DelFile",//删除图片的路径
-                initialPreviewConfig: {
-                    url: "/Home/DelFile"
-                },
-                //删除时需要传入的参数
-                deleteExtraDataObject: {
-                    url: $("input[name=imgurl]").val()
-                },
-            }
-            //初始化上传控件
-            $("#imgurl").fileinput(fileopt).on("fileuploaded", function (even, data) {
+        //初始化文章内容图片
+        function initAcontentImg(obj) {
+            obj.fileinput(contentoption).on("fileuploaded", function (even, data) {
                 //上传成功后的回调函数
                 if (data.response) {
-                    layer.msg('上传成功');
-                    //保存图片路径
-                    $("input[name=imgurl]").val(data.response[0].filePath);
-                    savetitle();
-                }
-            }).on("filepredelete", function (event, key, jqXHR, data) {
-
-            });
-
-
-
-            //文章内容上传图片
-            var contentoption = {
-                language: 'zh',//设置语言为中文
-                uploadUrl: "/Home/UpFile",//文件上传路径
-                showUpload: true,//是否显示上传按钮
-                showPreview: true,//是否显示预览区域
-                browseClass: "btn btn-primary", //按钮样式
-                deleteUrl: "/Home/DelFile",//删除地址
-                maxFileCount: 3,//允许最大同时上传数
-                uploadAsync: true,//上传方式使用异步
-                showClose: false,//是否显示右上角关闭按钮
-                validateInitialCount: true,
-                fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
-                maxFileSizenumber: 1024 * 3,//设置最大上传大小
-                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-                deleteUrlString: "",//删除图片的路径
-                //删除时需要传入的参数
-                deleteExtraDataObject: {
-
-                },
-            }
-            $(".upimg").fileinput(contentoption).on("fileuploaded", function (even, data) {
-                //上传成功后的回调函数
-                if (data.response) {
-
-                    var img = `<input type="hidden" value="` + data.response[0].filePath + `" img-id="" class="ArticleImg">`;
-                    $(this).parent("div.layui-input-block").append(img);
                     //获取到对应段落的id
                     var acid = $(this).parent().parent().parent().parent().parent().children("textarea").attr("ArticleContent-id");
                     if (acid == "" || acid == undefined) {
@@ -241,35 +225,73 @@
                         }
                     });
                 }
+            })
+        }
+
+
+
+        //插入一段内容
+        $(document).on("click", "#addAContent", function () {
+            var _acontenthtml = `
+                <div class="layui-form-item ">
+                    <div class="layui-input-block" style="margin-left:0;">
+                        <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                        <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                    </div>
+                </div>
+                `;
+            $(this).before(_acontenthtml);
+            var _upimg = $(this).prev().find(".upimg");
+            initAcontentImg(_upimg);
+            var acontent = $(this).prev().find(".ArticleContent");
+            AcontentSave(acontent);
+            var mainSubheading = $(this).prev().find(".mainSubheading");
+            mainSubheadingSave(mainSubheading);
+
+        });
+
+
+
+
+        $(function () {
+            //初始化时间
+            layui.use('laydate', function () {
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: 'input[name=createTime]', //指定元素
+                    format: 'yyyy年MM月dd日',
+                    value: new Date()
+                });
+            });
+            //得到模块id
+            Common.GetSession("ModelId", function (result) {
+                modelid = result;
             });
 
-            //没有标题的文章保存方法
-            $(document).ready(function (e) {
-                $("textarea.ArticleContent").blur(function (e) {
-                    e.preventDefault();
-                    var dom = $(this);
-                    var _data = {};
-                    _data.id = $(this).attr("ArticleContent-id");
-                    _data.articleText = $(this).val();
-                    _data.ArticleId = $("input[name=title]").attr("title-id");
-                    $.post("/LatestInformation/SaveArticleContent", { data: _data }, function (result) {
-                        if (result.code) {
-                            dom.attr("ArticleContent-id", result.aid);
-                            dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
-                        }
-                    })
+            //文章标题上传图片
+            //初始化上传控件
+            $("#imgurl").fileinput(fileopt).on("fileuploaded", function (even, data) {
+                //上传成功后的回调函数
+                if (data.response) {
+                    layer.msg('上传成功');
+                    //保存图片路径
+                    $("input[name=imgurl]").val(data.response[0].filePath);
+                    savetitle();
+                }
+            }).on("filepredelete", function (event, key, jqXHR, data) {
 
-                })
-                //保存图片描述
-                $(".subheading").blur(function (e) {
-                    e.preventDefault();
-                    var _data = {};
-                    _data.title = $(this).val();
-                    _data.ArticleConTentId = $(this).attr("ArticleContent-id");
-                    $.post("/LatestInformation/SaveArticleImgTitle", { data: _data })
-                })
-            })
+            });
 
+            //初始化第一个文章图片控件
+            initAcontentImg($(".upimg"));
+            //初始化第一个文章标题控件
+            mainSubheadingSave($(".mainSubheading"));
+            //初始化第一个文章内容控件
+            AcontentSave($("textarea.ArticleContent"));
 
 
         })

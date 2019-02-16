@@ -36,7 +36,7 @@ function GetModel(pid, callback) {
         }).done(function (data) {
             var li = "";
             for (var s = 0; s < data.length; s++) {
-                li += "<li><a class='cmodel' href='" + data[s].url + "' data-id='" + data[s].id + "'>" + data[s].name + "</a></li>";
+                li += "<li><a class='cmodel' href='/LatestInformation/Index' data-id='" + data[s].id + "'>" + data[s].name + "</a></li>";
             }
             callback(li);
         });

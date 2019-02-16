@@ -17,12 +17,14 @@ namespace ADMIN.Controllers
         private readonly IArticleBLL _article;
         private readonly IArticleConTentBLL _articleConTent;
         private readonly IArticleImageBLL _articleImage;
-        public LatestInformationController(IWZZModelBLL wZZModelBLL, IArticleBLL article, IArticleConTentBLL articleConTentBLL, IArticleImageBLL articleImageBLL)
+        private readonly ISubheadingBLL _subheading;
+        public LatestInformationController(IWZZModelBLL wZZModelBLL, IArticleBLL article, IArticleConTentBLL articleConTentBLL, IArticleImageBLL articleImageBLL, ISubheadingBLL subheading)
         {
             _wzzbll = wZZModelBLL;
             _article = article;
             _articleConTent = articleConTentBLL;
             _articleImage = articleImageBLL;
+            _subheading = subheading;
         }
         public async Task<IActionResult> Index()
         {
@@ -85,10 +87,22 @@ namespace ADMIN.Controllers
             return Json(new { code = aid == 0 ? false : true, aid = aid });
         }
 
+        /// <summary>
+        /// 保存文章图片的描述
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SaveArticleImgTitle(ArticleImage data)
         {
             bool result = await _articleImage.UpdateTitle(data);
             return Json(new { code = result });
+        }
+
+        //
+        public async Task<IActionResult> SaveSubheading(Subheading data)
+        {
+            int aid = await _subheading.AddOrUpdate(data);
+            return Json(new { code = aid == 0 ? false : true, aid = aid });
         }
 
     }
