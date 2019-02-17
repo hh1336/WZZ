@@ -29,6 +29,6 @@ namespace DAL.Entitys
         /// <summary>
         /// 文章id
         /// </summary>
-        public int ArticlesId { set; get; }
+        public int Articleid { set; get; }
     }
 }

@@ -98,11 +98,43 @@ namespace ADMIN.Controllers
             return Json(new { code = result });
         }
 
-        //
+        /// <summary>
+        /// 保存文章段落的标题
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SaveSubheading(Subheading data)
         {
             int aid = await _subheading.AddOrUpdate(data);
             return Json(new { code = aid == 0 ? false : true, aid = aid });
+        }
+
+        /// <summary>
+        /// 删除文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> DelSubheading(int id)
+        {
+            bool result = await _subheading.Del(id);
+            return Json(result);
+        }
+
+        /// <summary>
+        /// 显示文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Show(int id)
+        {
+            bool result = await _article.Show(id);
+            return Json(result);
+        }
+
+        public async Task<IActionResult> SoftDel(int id)
+        {
+            bool result = await _article.SoftDel(id);
+            return Json(new { msg = result ? "删除成功" : "删除失败" });
         }
 
     }

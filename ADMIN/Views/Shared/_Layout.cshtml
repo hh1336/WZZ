@@ -51,7 +51,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                 <img src="" class="img-circle"> <span id="username"></span> <i class="icon-submenu lnr lnr-chevron-down"></i>
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu layui-anim layui-anim-scale">
                                 <li><a asp-action="/" asp-controller="Home"><i class="fa fa-id-card-o"></i> <span>个人中心</span></a></li>
                                 <li><a asp-action="/OutLogin" asp-controller="Admin_Login"><i class="lnr lnr-exit"></i> <span>退出登入</span></a></li>
                             </ul>
@@ -77,7 +77,7 @@
         <div class="main">
             <!-- MAIN CONTENT -->
             <div class="main-content">
-                <div class="container-fluid" id="container">
+                <div class="container-fluid layui-anim layui-anim-scale" id="container">
                     @RenderBody()
                 </div>
             </div>

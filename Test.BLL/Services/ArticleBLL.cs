@@ -60,6 +60,7 @@ namespace BLL.Services
                 article.author = data.author;
                 article.updateTime = DateTime.Now;
                 article.WZZModelId = data.WZZModelId;
+                article.isShow = data.isShow;
                 var result = await _db.SaveChangesAsync();
                 if (result == 1)
                 {
@@ -118,7 +119,7 @@ namespace BLL.Services
         /// <returns></returns>
         public IQueryable<Article> GetArticleByModelId(int id)
         {
-            return _db.Articles.Where(a => a.WZZModelId == id);
+            return _db.Articles.Where(a => a.WZZModelId == id && a.isShow == 1);
         }
 
         /// <summary>
@@ -142,5 +143,32 @@ namespace BLL.Services
             return _db.Articles.SingleOrDefault(a => a.id == id);
         }
 
+        /// <summary>
+        /// 显示数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> Show(int id)
+        {
+            var article = await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
+            if (article == null) return false;
+            article.isShow = 1;
+            await _db.SaveChangesAsync();
+            return true;
+        }
+
+        /// <summary>
+        /// 软删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> SoftDel(int id)
+        {
+            var article = await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
+            if (article == null) return false;
+            article.isShow = 0;
+            await _db.SaveChangesAsync();
+            return true;
+        }
     }
 }

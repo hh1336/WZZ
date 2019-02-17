@@ -4,7 +4,8 @@
         .ArticleTitle .layui-input {
             width: 79%;
             margin: 0;
-            border-color: #6b6f3f
+            border-color: #6b6f3f;
+            
         }
 
         #addoredit textarea {
@@ -17,6 +18,10 @@
     </style>
 }
 <div id="addoredit">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;"></fieldset>
+
+
+
     <form id="addArticle" class="layui-form">
         <div class="ArticleTitle">
             <h2>新建</h2>
@@ -73,7 +78,7 @@
 
 @section Scripts{
     <script>
-    var modelid;
+        var modelid;
         //实时保存文章标题信息
         $(".ArticleTitle input[type=text]").blur(function (e) {
             e.preventDefault();
@@ -165,7 +170,22 @@
                 var _data = {};
                 _data.id = $(this).attr("Subheading-id");
                 _data.head = $(this).val();
-                _data.ArticlesId = modelid;
+                _data.Articleid = $("input[name=title]").attr("title-id");
+                //当用户清空文本框时
+                if (_data.head == "") {
+                    //表示已经保存有一条数据了
+                    if (_data.id != "") {
+                        $.post("/LatestInformation/DelSubheading", { id: _data.id }, function (result) {
+                            if (result) {
+                                //清空id
+                                dom.attr("Subheading-id", "");
+                                //清空文章内容所保存的id
+                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", "");
+                            }
+                        })
+                    }
+                    return false;
+                }
                 //保存
                 $.post("/LatestInformation/SaveSubheading", { data: _data }, function (result) {
                     if (result.code) {
@@ -187,6 +207,12 @@
                 _data.id = $(this).attr("ArticleContent-id");
                 _data.articleText = $(this).val();
                 _data.ArticleId = $("input[name=title]").attr("title-id");
+                _data.SubheadingId = $(this).attr("Subheading-id");
+                if (_data.SubheadingId == "") {
+                    var subid = dom.parent().parent().prev().find(".ArticleContent").attr("Subheading-id");
+                    _data.SubheadingId = subid;
+                    dom.attr("Subheading-id", subid);
+                }
                 $.post("/LatestInformation/SaveArticleContent", { data: _data }, function (result) {
                     if (result.code) {
                         dom.attr("ArticleContent-id", result.aid);
@@ -233,15 +259,16 @@
         //插入一段内容
         $(document).on("click", "#addAContent", function () {
             var _acontenthtml = `
-                <div class="layui-form-item ">
-                    <div class="layui-input-block" style="margin-left:0;">
-                        <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
-                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                        <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
-                    </div>
-                </div>
-                `;
+                            <div class="layui-form-item ">
+                                <div class="layui-input-block layui-anim layui-anim-scale" style="margin-left:0;">
+                                    <hr class="layui-bg-blue">
+                                    <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                                </div>
+                            </div>
+                            `;
             $(this).before(_acontenthtml);
             var _upimg = $(this).prev().find(".upimg");
             initAcontentImg(_upimg);
@@ -256,9 +283,39 @@
 
 
         $(function () {
-            //初始化时间
-            layui.use('laydate', function () {
+            //初始化时间和工具
+            layui.use(['util', 'laydate'], function () {
                 var laydate = layui.laydate;
+                var util = layui.util;
+
+                //初始化固定块
+                util.fixbar({
+                    bar1: "&#xe605",
+                    bar2: "&#xe65c",
+                    css: {
+                        right: 50,
+                        bottom: 100
+                    },
+                    bgcolor: '#1E9FFF',
+                    click: function (type) {
+                        if (type === 'bar1') {
+                            var aid = $("input[name=title]").attr("title-id");
+                            if (aid == "") {
+                                layer.msg("请完善文章内容");
+                                return false;
+                            }
+                            $.post("/LatestInformation/Show", { id: aid }, function (result) {
+                                if (result) {
+                                    window.location.href = "/LatestInformation/index";
+                                }
+                            })
+                        } else if (type === 'bar2') {
+                            window.location.href = "/LatestInformation/index";
+                        }
+                    }
+                });
+
+
 
                 //执行一个laydate实例
                 laydate.render({

@@ -38,12 +38,12 @@ class Common {
     static alert(title, msg) {
         layer.open({
             title: title,
-            btn: ["确定", "取消"],
             content: msg,
-            yes: function () {
+            btn: ["确定", "取消"],
+            btn1: function () {
                 return 1;
             },
-            end: function () {
+            btn2: function () {
                 return 0;
             }
         });
@@ -52,10 +52,10 @@ class Common {
     static alert(title, msg, yescallback) {
         layer.open({
             title: title,
-            btn: ["确定", "取消"],
             content: msg,
-            yes: yescallback,
-            end: function () {
+            btn: ["确定", "取消"],
+            btn1: yescallback,
+            btn2: function () {
                 return 0;
             }
         });
@@ -64,10 +64,10 @@ class Common {
     static alert(title, msg, yescallback, endcallback) {
         layer.open({
             title: title,
-            btn: ["确定", "取消"],
             content: msg,
-            yes: yescallback,
-            end: endcallback
+            btn: ["确定", "取消"],
+            btn1: yescallback,
+            btn2: endcallback
         });
     }
 

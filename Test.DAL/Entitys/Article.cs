@@ -67,5 +67,11 @@ namespace DAL.Entitys
         /// </summary>
         public int? TeaTypeId { set; get; }
 
+
+        /// <summary>
+        /// 是否可显示
+        /// </summary>
+        public int isShow { set; get; }
+
     }
 }

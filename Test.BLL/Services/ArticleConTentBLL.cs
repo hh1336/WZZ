@@ -46,9 +46,9 @@ namespace BLL.Services
                 {
                     return 0;
                 }
-                acontent.ArticleId = data.ArticleId;
+                if (data.ArticleId.HasValue) acontent.ArticleId = data.ArticleId;
                 acontent.articleText = data.articleText;
-                acontent.SubheadingId = data.SubheadingId;
+                if (data.SubheadingId.HasValue) acontent.SubheadingId = data.SubheadingId;
                 var result = await _db.SaveChangesAsync();
                 if (result > 0)
                 {
@@ -59,6 +59,7 @@ namespace BLL.Services
                     return 0;
                 }
             }
+
         }
     }
 }

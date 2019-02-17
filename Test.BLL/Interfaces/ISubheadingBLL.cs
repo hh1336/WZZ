@@ -9,5 +9,6 @@ namespace BLL.Interfaces
     public interface ISubheadingBLL
     {
         Task<int> AddOrUpdate(Subheading data);
+        Task<bool> Del(int id);
     }
 }

@@ -200,19 +200,15 @@
                 type: _sortType
             });
         })
+
+
         //删除方法
-        $(document).on("click", "a[name=del]", function (e) {
-            e.preventDefault();
-            var _id = $(this).attr("data-id");
-            var yesOrNo = Common.alert("删除数据", "请问您确定要删除这条数据吗？");
-            if (yesOrNo == 0) {
-                return false;
-            }
+        function delAc(id) {
             $.ajax({
-                url: "",
+                url: "/LatestInformation/SoftDel",
                 type: "post",
                 dataType: "json",
-                data: { id: _id }
+                data: { id: id }
             }).done(function (result) {
                 layer.msg(result.msg);
                 //刷新数据
@@ -222,6 +218,15 @@
                 });
 
             })
+        }
+        function test() {
+            console.log(123);
+        }
+        $(document).on("click", "a[name=del]", function (e) {
+            e.preventDefault();
+            var _id = $(this).attr("data-id");
+            Common.alert("删除数据", "请问您确定要删除这条数据吗？", test());
+
         })
 
         //编辑按钮
@@ -246,6 +251,7 @@
 
         $(function () {
             load();
+
         })
 
     </script>
