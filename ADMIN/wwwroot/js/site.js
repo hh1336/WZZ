@@ -34,34 +34,30 @@ class Common {
         return year + "年" + month + "月" + day + "日";
     }
 
-    //自定义弹窗，有确定和取消按钮
-    static alert(title, msg) {
-        layer.open({
-            title: title,
-            content: msg,
-            btn: ["确定", "取消"],
-            btn1: function () {
-                return 1;
-            },
-            btn2: function () {
-                return 0;
-            }
-        });
-    }
-    //重载弹窗
-    static alert(title, msg, yescallback) {
-        layer.open({
-            title: title,
-            content: msg,
-            btn: ["确定", "取消"],
-            btn1: yescallback,
-            btn2: function () {
-                return 0;
-            }
-        });
-    }
-    //重载弹窗
+    //自定义弹框
     static alert(title, msg, yescallback, endcallback) {
+        //当没有传入回调函数时
+        if (yescallback === undefined && endcallback === undefined) {
+            layer.open({
+                title: title,
+                content: msg,
+                btn: ["确定", "取消"],
+                btn1: () => { return 1; },
+                btn2: () => { return 0; }
+            });
+            return;
+        }
+        //当传入一个回调函数时
+        if (yescallback !== undefined && endcallback === undefined) {
+            layer.open({
+                title: title,
+                content: msg,
+                btn: ["确定", "取消"],
+                btn1: yescallback,
+                btn2: () => { return 0; }
+            });
+            return;
+        }
         layer.open({
             title: title,
             content: msg,

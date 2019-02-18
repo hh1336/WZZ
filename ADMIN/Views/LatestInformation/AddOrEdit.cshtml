@@ -5,7 +5,6 @@
             width: 79%;
             margin: 0;
             border-color: #6b6f3f;
-            
         }
 
         #addoredit textarea {
@@ -180,7 +179,22 @@
                                 //清空id
                                 dom.attr("Subheading-id", "");
                                 //清空文章内容所保存的id
-                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", "");
+                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", "").attr("ArticleContent-id","");
+
+
+                                //重新保存一下文章
+                                var acdata = {};
+                                acdata.id = dom.siblings("textarea.ArticleContent").attr("ArticleContent-id");
+                                acdata.articleText = dom.siblings("textarea.ArticleContent").val();
+                                acdata.ArticleId = $("input[name=title]").attr("title-id");
+                                acdata.SubheadingId = dom.siblings("textarea.ArticleContent").attr("Subheading-id");
+                                $.post("/LatestInformation/SaveArticleContent", { data: acdata }, (result) => {
+                                    if (result.code) {
+                                        dom.siblings("textarea.ArticleContent").attr("ArticleContent-id", result.aid);
+                                        dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                                    }
+                                });
+
                             }
                         })
                     }
@@ -191,9 +205,22 @@
                     if (result.code) {
                         dom.attr("Subheading-id", result.aid);
                         dom.siblings("textarea.ArticleContent").attr("Subheading-id", result.aid);
-                    }
-                })
 
+                        //重新保存一下文章
+                        var acdata = {};
+                        acdata.id = dom.siblings("textarea.ArticleContent").attr("ArticleContent-id");
+                        acdata.articleText = dom.siblings("textarea.ArticleContent").val();
+                        acdata.ArticleId = $("input[name=title]").attr("title-id");
+                        acdata.SubheadingId = dom.siblings("textarea.ArticleContent").attr("Subheading-id");
+                        $.post("/LatestInformation/SaveArticleContent", { data: acdata }, (result) => {
+                            if (result.code) {
+                                dom.siblings("textarea.ArticleContent").attr("ArticleContent-id", result.aid);
+                                dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                            }
+                        });
+                    }
+
+                })
 
             })
         }
@@ -259,16 +286,16 @@
         //插入一段内容
         $(document).on("click", "#addAContent", function () {
             var _acontenthtml = `
-                            <div class="layui-form-item ">
-                                <div class="layui-input-block layui-anim layui-anim-scale" style="margin-left:0;">
-                                    <hr class="layui-bg-blue">
-                                    <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
-                                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
-                                </div>
-                            </div>
-                            `;
+                                        <div class="layui-form-item ">
+                                            <div class="layui-input-block layui-anim layui-anim-scale" style="margin-left:0;">
+                                                <hr class="layui-bg-blue">
+                                                <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                                                <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                                                <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                                <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                                            </div>
+                                        </div>
+                                        `;
             $(this).before(_acontenthtml);
             var _upimg = $(this).prev().find(".upimg");
             initAcontentImg(_upimg);

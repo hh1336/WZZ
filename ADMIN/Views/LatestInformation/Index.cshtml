@@ -199,33 +199,27 @@
                 field: _sortField,
                 type: _sortType
             });
-        })
-
-
-        //删除方法
-        function delAc(id) {
-            $.ajax({
-                url: "/LatestInformation/SoftDel",
-                type: "post",
-                dataType: "json",
-                data: { id: id }
-            }).done(function (result) {
-                layer.msg(result.msg);
-                //刷新数据
-                reload({
-                    field: _sortField,
-                    type: _sortType
-                });
-
-            })
-        }
-        function test() {
-            console.log(123);
-        }
+        });
+        //删除数据的方法
         $(document).on("click", "a[name=del]", function (e) {
             e.preventDefault();
             var _id = $(this).attr("data-id");
-            Common.alert("删除数据", "请问您确定要删除这条数据吗？", test());
+            Common.alert("删除数据", "请问您确定要删除这条数据吗？", () => {
+                $.ajax({
+                    url: "/LatestInformation/SoftDel",
+                    type: "post",
+                    dataType: "json",
+                    data: { id: _id }
+                }).done(function (result) {
+                    layer.msg(result.msg);
+                    //刷新数据
+                    reload({
+                        field: _sortField,
+                        type: _sortType
+                    });
+                    return 1;
+                })
+            },);
 
         })
 

@@ -31,8 +31,9 @@ namespace DAL.Entitys
         /// </summary>
         public int? Pid { set; get; }
 
-        public string url { set; get; }
-
+        /// <summary>
+        /// 文章图标
+        /// </summary>
         public string icon { set; get; }
     }
 }
