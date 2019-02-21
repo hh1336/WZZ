@@ -39,10 +39,21 @@ namespace ADMIN
 
             BLLDIRegister sdr = new BLLDIRegister();
             sdr.DIRegister_DAL(services);
-            //使用session
-            services.AddSession(o => {
+
+            ////使用session
+            //services.AddDistributedSqlServerCache(o =>
+            //{
+            //    o.ConnectionString = sqlConnection;
+            //    o.SchemaName = "dbo";
+            //    o.TableName = "SessionState";
+            //});
+            services.AddSession(o =>
+            {
                 o.IdleTimeout = TimeSpan.FromMinutes(20);
             });
+
+
+
             //给登陆注解设置路径
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(o => {
