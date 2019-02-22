@@ -34,7 +34,7 @@ namespace ADMIN
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var sqlConnection = @"Data Source=MYWORK\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
+            var sqlConnection = @"Data Source=DESKTOP-I9S42KC\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
 
             BLLDIRegister sdr = new BLLDIRegister();
@@ -50,6 +50,8 @@ namespace ADMIN
             services.AddSession(o =>
             {
                 o.IdleTimeout = TimeSpan.FromMinutes(20);
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
             });
 
 
@@ -66,9 +68,7 @@ namespace ADMIN
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //设置中加入session
-            app.UseSession();
-            app.UseAuthentication();
+            
 
             if (env.IsDevelopment())
             {
@@ -81,6 +81,10 @@ namespace ADMIN
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            //设置中加入session
+            app.UseSession();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
