@@ -12,7 +12,7 @@ class Common {
             dataType: "json",
             data: { key: key },
             async: false
-        }).done(function (value) {
+        }).done((value) => {
             callback(value);
         });
     }
@@ -30,11 +30,13 @@ class Common {
         var day = d.getDate();
         month = month < 10 ? "0" + month : month;
         day = day < 10 ? "0" + day : day;
-
-        return year + "年" + month + "月" + day + "日";
+        var h = d.getHours();
+        var mm = d.getMinutes();
+        var s = d.getSeconds();
+        return year + "年" + month + "月" + day + "日 " + h + ":" + mm + ":" + s ;
     }
 
-    //自定义弹框
+    //自定义弹框（回调函数如果带有参数，则只能传入匿名函数）
     static alert(title, msg, yescallback, endcallback) {
         //当没有传入回调函数时
         if (yescallback === undefined && endcallback === undefined) {
@@ -71,7 +73,7 @@ class Common {
 
 
 //封装模态框
-var appModal = function (obj) {//初始获取模态框
+var appModal = (obj) => {//初始获取模态框
     this.model = $("#myModal");
     this.mtitle = $("#myModalLabel");
     this.mbody = $(".modal-body");
@@ -84,14 +86,14 @@ var appModal = function (obj) {//初始获取模态框
 
 appModal.prototype = {
     //弹出模态框
-    open: function () {
+    open: () => {
         this.model.modal("show");
     },
     //关闭模态框
-    close: function () {
+    close: () => {
         this.model.modal("hiden");
     },
-    init: function (obj) {
+    init: (obj) => {
         //模态框的标题
         this.mtitle.text(obj.title);
         //发送一个ajax请求，将子页面渲染到模态框中
@@ -102,7 +104,7 @@ appModal.prototype = {
                 type: "post",
                 data: obj.data === undefined ? {} : obj.data,
                 async: false
-            }).done(function (result) {
+            }).done((result) => {
                 this.mbody.html(result);
             });
         }
@@ -112,7 +114,7 @@ appModal.prototype = {
 
     },
     //清空模态框内容
-    clear: function () {
+    clear: () => {
         this.mtitle.text("标题");
         this.mbody.html("");
     }

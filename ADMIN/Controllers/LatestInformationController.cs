@@ -13,11 +13,16 @@ namespace ADMIN.Controllers
     [Authorize]
     public class LatestInformationController : Controller
     {
+        #region 构造函数和依赖注入
         private readonly IWZZModelBLL _wzzbll;
         private readonly IArticleBLL _article;
         private readonly IArticleConTentBLL _articleConTent;
         private readonly IArticleImageBLL _articleImage;
         private readonly ISubheadingBLL _subheading;
+
+        /// <summary>
+        /// 通过构造函数进行依赖注入
+        /// </summary>
         public LatestInformationController(IWZZModelBLL wZZModelBLL, IArticleBLL article, IArticleConTentBLL articleConTentBLL, IArticleImageBLL articleImageBLL, ISubheadingBLL subheading)
         {
             _wzzbll = wZZModelBLL;
@@ -26,6 +31,8 @@ namespace ADMIN.Controllers
             _articleImage = articleImageBLL;
             _subheading = subheading;
         }
+        #endregion
+
         public async Task<IActionResult> Index()
         {
             return View();
@@ -50,9 +57,13 @@ namespace ADMIN.Controllers
         /// <returns></returns>
         public async Task<IActionResult> AddOrEdit(int? id)
         {
+            if (id.HasValue)
+            {
+                Article data = await _article.GetById(id.Value);
+                return View("Update", data);
+            }
             return View();
         }
-
 
         /// <summary>
         /// 新增或修改文章表内容
@@ -131,6 +142,11 @@ namespace ADMIN.Controllers
             return Json(result);
         }
 
+        /// <summary>
+        /// 执行软删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> SoftDel(int id)
         {
             bool result = await _article.SoftDel(id);

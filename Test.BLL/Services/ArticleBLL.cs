@@ -138,9 +138,9 @@ namespace BLL.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Article GetById(int id)
+        public async Task<Article> GetById(int id)
         {
-            return _db.Articles.SingleOrDefault(a => a.id == id);
+            return await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
         }
 
         /// <summary>

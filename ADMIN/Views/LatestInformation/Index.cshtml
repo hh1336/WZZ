@@ -91,7 +91,6 @@
                             field: 'createTime',
                             title: '发布时间',
                             sort: true,
-                            unresize: true,
                             align: "center",
                             templet: function (data) {
                                 return Common.ToDateTime(data.createTime);
@@ -101,7 +100,6 @@
                             field: 'updateTime',
                             title: '最后更新时间',
                             sort: true,
-                            unresize: true,
                             align: "center",
                             templet: function (data) {
                                 if (data.updateTime !== null) {
@@ -219,22 +217,26 @@
                     });
                     return 1;
                 })
-            },);
+            });
 
         })
 
         //编辑按钮
         $(document).on("click", "a[name=edit]", function (e) {
             e.preventDefault();
-            $.ajax({
-                url: "/LatestInformation/GetInfo",
-                data: { id: 2 },
-                dataType: "json",
-                type: "post"
-            }).done(function (result) {
-                console.log(result);
-            })
+            var _id = $(this).attr("data-id");
+            window.location.href = "/LatestInformation/AddOrEdit?id=" + _id;
+
+            //$.ajax({
+            //    url: "/LatestInformation/AddOrEdit",
+            //    data: { id: _id },
+            //    dataType: "json",
+            //    type: "post"
+            //}).done(function (result) {
+            //    console.log(result);
+            //})
         })
+
         //用户点击查看图片时
         $(document).on("click", ".selectimg", function () {
             var url = $(this).attr("imgurl");//得到这张图片的url

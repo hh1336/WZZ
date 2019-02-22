@@ -17,7 +17,7 @@ namespace BLL.Interfaces
     {
         IQueryable<Article> GetAll();
 
-        Article GetById(int id);
+        Task<Article> GetById(int id);
 
         List<Article> GetAllList();
 

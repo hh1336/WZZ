@@ -1,0 +1,187 @@
+﻿@using DAL.Entitys
+@model Article
+@{
+    ViewData["Title"] = "编辑";
+}
+
+<div id="upcontainer">
+    <h3>编辑</h3>
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;"></fieldset>
+    <form id="addArticle" class="layui-form">
+        <div class="ArticleTitle">
+            <div class="ArticleTitle">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><b>标题:</b></label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" title-id="@Model.id" value="@Model.title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><b>来源:</b></label>
+                    <div class="layui-input-inline" style="margin-left:30px;">
+                        <input type="text" name="source" required lay-verify="required" placeholder="请输入来源" autocomplete="off" class="layui-input" value="@Model.source">
+                    </div>
+
+                    <label class="layui-form-label"><b>作者:</b></label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="author" required lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input" value="@Model.author">
+                    </div>
+
+                    <label class="layui-form-label" style="width:71px;padding:9px 10px 0 0;"><b>发布时间:</b></label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="createTime" class="layui-input" disabled value="@Model.createTime">
+                    </div>
+                    <label class="layui-form-label" style="width:71px;padding:9px 10px 0 0;"><b>修改时间:</b></label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="updateTime" class="layui-input" disabled value="@Model.updateTime">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form"><b>文章图片:</b></label>
+                    @if (!string.IsNullOrEmpty(Model.imgurl))
+                    {
+                        <input type='hidden' name='imgurl' value="@Model.imgurl">
+                        <img src="@Model.imgurl" class="imgurl delimg" title="点击图片进行删除" />
+                    }
+                    else
+                    {
+                        <span>无</span>
+                    }
+                    <input type="file" class="layui-btn file-loading" data-browse-on-zone-click="true" id="titileimg" value="上传图片" />
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <script>
+        var _modelId;
+
+
+
+
+        //文件上传配置(单图上传)
+        var fileopt = {
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            browseClass: "btn btn-primary", //按钮样式
+            deleteUrl: "/Home/DelFile",//删除地址
+            maxFileCount: 1,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            showPreview: false,//关闭预览
+            validateInitialCount: true,
+            showCaption: false,//关闭信息简介
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            deleteUrlString: "/Home/DelFile",//删除图片的路径
+            initialPreviewConfig: {
+                url: "/Home/DelFile"
+            },
+            //删除时需要传入的参数
+            deleteExtraDataObject: {
+                url: $("input[name=imgurl]").val()
+            },
+        }
+        //实时保存文章标题
+        $(".ArticleTitle input[type=text]").blur(function (e) {
+            e.preventDefault();
+            SaveAcTitle();
+        });
+
+
+        //保存文章标题部分
+        function SaveAcTitle() {
+            var data = {}
+            data.id = $("input[name=title]").attr("title-id");
+            data.title = $("input[name=title]").val();
+            data.source = $("input[name=source]").val();
+            data.author = $("input[name=author]").val();
+            data.imgurl = $("input[name=imgurl]:hidden").val();
+            data.createTime = $("input[name=createTime]").val();
+            data.WZZModelId = _modelId;
+            data.isShow = 1;
+            console.log(data);
+            if (data.title == "") {
+                layer.msg("不能没有文章标题");
+                return;
+            }
+            $.ajax({
+                url: "/LatestInformation/SaveArticleTitle",
+                type: "post",
+                dataType: 'json',
+                data: data
+            })
+
+        }
+        //删除方法
+        $(document).on("click", ".delimg", () => {
+            var url = $(this).attr("src")
+            var dom = $(this);
+            $.post("/Home/DelFile", { url: url }, () => {
+                dom.removeAttr("src");
+                dom.prev().val("");
+            })
+        })
+
+
+
+
+        $(function () {
+            //初始化leyui
+            layui.use(["util", "upload"], () => {
+                var util = layui.util;
+
+                //初始化固定块
+                util.fixbar({
+                    bar1: "&#xe605",
+                    bar2: "&#xe65c",
+                    css: {
+                        right: 50,
+                        bottom: 100
+                    },
+                    bgcolor: '#1E9FFF',
+                    click: function (type) {
+                        if (type === 'bar1') {
+                            SaveAcTitle();
+                            window.location.href = "/LatestInformation/index";
+                        } else if (type === 'bar2') {
+                            window.location.href = "/LatestInformation/index";
+                        }
+                    }
+                });
+            })
+
+            //得到模块id
+            Common.GetSession("ModelId", function (result) {
+                _modelId = result;
+            });
+
+
+            $("#titileimg").fileinput(fileopt).on("fileuploaded", (even, data) => {
+                if (data.response) {
+
+                    if ($(even.target).parents(".layui-form-item").children("span").length == 1) {
+                        $(even.target).parents(".layui-form-item").children("span").remove();
+                        var img = "<img src='" + data.response[0].filePath + "' class='imgurl delimg' title='点击图片进行删除'/>";
+                        var urldata = "<input type='hidden' name='imgurl' value='" + data.response[0].filePath + "'>";
+                        $(even.target).parents(".layui-form-item").find("label").after(img).after(urldata);
+
+                    } else {
+                        var imgurl = $(even.target).parents(".layui-form-item").find(".imgurl").attr("src");
+                        $(even.target).parents(".layui-form-item").find(".imgurl").attr("src", data.response[0].filePath);
+                        $(even.target).parents(".layui-form-item").find("input[name=imgurl]").val(data.response[0].filePath);
+                        $.post("/Home/DelFile", { url: imgurl });
+                    }
+
+                }
+            });
+        })
+    </script>
+}
