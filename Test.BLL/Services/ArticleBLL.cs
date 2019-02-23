@@ -36,7 +36,7 @@ namespace BLL.Services
                 data.createTime = DateTime.Now;
                 await _db.Articles.AddAsync(data);
                 var result = await _db.SaveChangesAsync();
-                if(result > 0)
+                if (result > 0)
                 {
                     return data.id;
                 }
@@ -72,6 +72,31 @@ namespace BLL.Services
                 }
 
             }
+        }
+
+        /// <summary>
+        /// 根据文章id获取文章的段落
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<GetAcontentModel> GetAcByAcid(int id)
+        {
+            //判断传入的数据是否有错
+            if (id == 0) return new GetAcontentModel();
+            var isnull = await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
+            if (isnull == null) return new GetAcontentModel();
+
+            var result = new GetAcontentModel();
+            //找到没有小节标题的所有内容
+            //var nullheadAc = _db.ArticleConTents.Where(a => a.ArticleId == id && a.Subheadingid == null).Include(c => c.ArticleImage);
+
+
+            ////找到小节的标题
+            //var Achead = _db.Subheadings.Where(s => s.Articleid == id);
+
+            return result;
+
+
         }
 
         /// <summary>
@@ -119,7 +144,8 @@ namespace BLL.Services
         /// <returns></returns>
         public IQueryable<Article> GetArticleByModelId(int id)
         {
-            return _db.Articles.Where(a => a.WZZModelId == id && a.isShow == 1);
+            var result = _db.Articles.Where(a => a.WZZModelId == id && a.isShow == 1);
+            return result;
         }
 
         /// <summary>

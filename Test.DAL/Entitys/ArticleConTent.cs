@@ -32,6 +32,11 @@ namespace DAL.Entitys
         public Subheading Subheading { set; get; }
 
         /// <summary>
+        /// 关联文章对应的图片
+        /// </summary>
+        public ICollection<ArticleImage> ArticleImage { set; get; }
+
+        /// <summary>
         /// 文章id
         /// </summary>
         public int? ArticleId { set; get; }
@@ -39,6 +44,6 @@ namespace DAL.Entitys
         /// <summary>
         /// 文章副标题id
         /// </summary>
-        public int? SubheadingId { set; get; }
+        public int? Subheadingid { set; get; }
     }
 }

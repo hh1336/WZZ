@@ -48,7 +48,7 @@ namespace BLL.Services
                 }
                 if (data.ArticleId.HasValue) acontent.ArticleId = data.ArticleId;
                 acontent.articleText = data.articleText;
-                if (data.SubheadingId.HasValue) acontent.SubheadingId = data.SubheadingId;
+                if (data.Subheadingid.HasValue) acontent.Subheadingid = data.Subheadingid;
                 var result = await _db.SaveChangesAsync();
                 if (result > 0)
                 {

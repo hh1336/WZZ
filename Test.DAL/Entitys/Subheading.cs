@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace DAL.Entitys
@@ -24,7 +25,7 @@ namespace DAL.Entitys
         /// <summary>
         /// 关联文章实体
         /// </summary>
-        public Article Article { set; get; }
+        public ICollection<Article> Article { set; get; }
 
         /// <summary>
         /// 文章id

@@ -53,6 +53,22 @@
 
             </div>
         </div>
+
+        <div class="ArticleContent">
+            <h3>文章主体</h3>
+            <hr />
+
+            <div class="layui-form-item ">
+                <div class="layui-input-block" style="margin-left:0;">
+                    <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                </div>
+            </div>
+            <input type="button" class="btn btn-danger btn-xs paragraph" id="addAContent" value="插入一个段落" />
+        </div>
+
     </form>
 </div>
 
@@ -107,29 +123,52 @@
             data.createTime = $("input[name=createTime]").val();
             data.WZZModelId = _modelId;
             data.isShow = 1;
-            console.log(data);
             if (data.title == "") {
-                layer.msg("不能没有文章标题");
-                return;
+                layer.msg("不能没有文章标题", { icon: 2 });
+                return false;
             }
             $.ajax({
                 url: "/LatestInformation/SaveArticleTitle",
                 type: "post",
                 dataType: 'json',
                 data: data
-            })
+            });
+            return true;
 
         }
-        //删除方法
-        $(document).on("click", ".delimg", () => {
+
+        //删除图片方法
+        $(document).on("click", ".delimg", function () {
             var url = $(this).attr("src")
             var dom = $(this);
-            $.post("/Home/DelFile", { url: url }, () => {
-                dom.removeAttr("src");
-                dom.prev().val("");
+            if (url == undefined) {
+                layer.msg("已删除图片");
+                return false;
+            }
+            var index = Common.alert("删除图片", "是否删除这张图片", () => {
+                $.ajax({
+                    url: "/Home/DelFile",
+                    type: "post",
+                    dataType: "json",
+                    data: { url: url }
+                }).done(function () {
+                    dom.removeAttr("src");
+                    dom.prev().val("");
+                    SaveAcTitle();
+                    layer.close(index);
+                })
+
             })
+
         })
 
+        //加载文章内容方法
+        function loadAc(id) {
+            if (id == undefined || id == "") return false;
+            $.post("/LatestInformation/LoadAcByAcId", { aid: id }, (result) => {
+                console.log(result);
+            })
+        }
 
 
 
@@ -149,8 +188,10 @@
                     bgcolor: '#1E9FFF',
                     click: function (type) {
                         if (type === 'bar1') {
-                            SaveAcTitle();
-                            window.location.href = "/LatestInformation/index";
+                            var isok = SaveAcTitle();
+                            if (isok) {
+                                window.location.href = "/LatestInformation/index";
+                            }
                         } else if (type === 'bar2') {
                             window.location.href = "/LatestInformation/index";
                         }
@@ -163,7 +204,7 @@
                 _modelId = result;
             });
 
-
+            //对文章封面的图片空间初始化
             $("#titileimg").fileinput(fileopt).on("fileuploaded", (even, data) => {
                 if (data.response) {
 
@@ -182,6 +223,10 @@
 
                 }
             });
+
+            //加载文章内容
+            loadAc($("input[name=title]").attr("title-id"));
+
         })
     </script>
 }

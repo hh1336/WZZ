@@ -53,7 +53,7 @@ namespace BLL.Services
             if (id == 0) return false;
             var subhead = await _db.Subheadings.SingleOrDefaultAsync(s => s.id == id);
             if (subhead == null) return false;
-            var acontents = _db.ArticleConTents.Where(a => a.SubheadingId == id);
+            var acontents = _db.ArticleConTents.Where(a => a.Subheadingid == id);
             if (acontents.Count() > 0)
             {
                 foreach (var item in acontents)

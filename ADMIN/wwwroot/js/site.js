@@ -33,40 +33,35 @@ class Common {
         var h = d.getHours();
         var mm = d.getMinutes();
         var s = d.getSeconds();
-        return year + "年" + month + "月" + day + "日 " + h + ":" + mm + ":" + s ;
+        return year + "年" + month + "月" + day + "日 " + h + ":" + mm + ":" + s;
     }
 
     //自定义弹框（回调函数如果带有参数，则只能传入匿名函数）
     static alert(title, msg, yescallback, endcallback) {
         //当没有传入回调函数时
         if (yescallback === undefined && endcallback === undefined) {
-            layer.open({
-                title: title,
-                content: msg,
-                btn: ["确定", "取消"],
-                btn1: () => { return 1; },
-                btn2: () => { return 0; }
-            });
-            return;
+            yescallback = function (index, layero) {
+                layer.close(index);
+            };
         }
-        //当传入一个回调函数时
-        if (yescallback !== undefined && endcallback === undefined) {
-            layer.open({
-                title: title,
-                content: msg,
-                btn: ["确定", "取消"],
-                btn1: yescallback,
-                btn2: () => { return 0; }
-            });
-            return;
+
+        if (yescallback !== undefined && endcallback === undefined) {//当传入一个回调函数时
+            endcallback = function () {
+            };
         }
-        layer.open({
+
+        var index = layer.open({
             title: title,
             content: msg,
+            shadeClose: true,
+            resize: false,
+            closeBtn: "2",
             btn: ["确定", "取消"],
             btn1: yescallback,
             btn2: endcallback
         });
+
+        return index;
     }
 
 }

@@ -153,5 +153,16 @@ namespace ADMIN.Controllers
             return Json(new { msg = result ? "删除成功" : "删除失败" });
         }
 
+        /// <summary>
+        /// 根据文章id获取文章的章节内容
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> LoadAcByAcId(int id)
+        {
+            GetAcontentModel result = await _article.GetAcByAcid(id);
+            return Json(result);
+        }
+
     }
 }
