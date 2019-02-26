@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace DAL.Entitys
 {
@@ -35,5 +37,10 @@ namespace DAL.Entitys
         /// 文章图标
         /// </summary>
         public string icon { set; get; }
+
+        /// <summary>
+        /// 关联文章
+        /// </summary>
+        public ICollection<Article> Articles { set; get; }
     }
 }

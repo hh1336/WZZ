@@ -155,13 +155,6 @@
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
             allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
             deleteUrlString: "/Home/DelFile",//删除图片的路径
-            initialPreviewConfig: {
-                url: "/Home/DelFile"
-            },
-            //删除时需要传入的参数
-            deleteExtraDataObject: {
-                url: $("input[name=imgurl]").val()
-            },
         }
         //文章标题保存方法
         function mainSubheadingSave(obj) {

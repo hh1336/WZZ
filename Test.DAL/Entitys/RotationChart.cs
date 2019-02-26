@@ -42,5 +42,10 @@ namespace DAL.Entitys
         /// 对应的文章id
         /// </summary>
         public int? ArticleId { set; get; }
+
+        /// <summary>
+        /// 关联文章
+        /// </summary>
+        public Article Article { set; get; }
     }
 }

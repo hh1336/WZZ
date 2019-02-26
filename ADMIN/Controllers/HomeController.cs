@@ -87,7 +87,7 @@ namespace ADMIN.Controllers
         /// 上传文件
         /// </summary>
         /// <returns></returns>
-        public IActionResult UpFile()
+        public async Task<IActionResult> UpFile()
         {
             var files = Request.Form.Files;
             List<FileInfoViewModel> FileInfos = new List<FileInfoViewModel>();

@@ -10,5 +10,6 @@ namespace BLL.Interfaces
     {
         Task<int> Add(ArticleImage data);
         Task<bool> UpdateTitle(ArticleImage data);
+        Task<List<ArticleImage>> FindByActId(int actId);
     }
 }

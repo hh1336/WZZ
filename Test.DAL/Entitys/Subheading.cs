@@ -25,11 +25,16 @@ namespace DAL.Entitys
         /// <summary>
         /// 关联文章实体
         /// </summary>
-        public ICollection<Article> Article { set; get; }
+        public Article Article { set; get; }
 
         /// <summary>
         /// 文章id
         /// </summary>
         public int Articleid { set; get; }
+
+        /// <summary>
+        /// 关联文章内容
+        /// </summary>
+        public ICollection<ArticleConTent> ArticleConTents { set; get; }
     }
 }

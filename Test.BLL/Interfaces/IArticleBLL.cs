@@ -29,6 +29,6 @@ namespace BLL.Interfaces
         Task<int> AddOrUpdate(Article data);
         Task<bool> Show(int id);
         Task<bool> SoftDel(int id);
-        Task<GetAcontentModel> GetAcByAcid(int id);
+        Task<ArticleInfoModel> GetAcByAcid(int id);
     }
 }

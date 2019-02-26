@@ -8,6 +8,7 @@
     <h3>编辑</h3>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;"></fieldset>
     <form id="addArticle" class="layui-form">
+
         <div class="ArticleTitle">
             <div class="ArticleTitle">
                 <div class="layui-form-item">
@@ -97,13 +98,6 @@
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
             allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
             deleteUrlString: "/Home/DelFile",//删除图片的路径
-            initialPreviewConfig: {
-                url: "/Home/DelFile"
-            },
-            //删除时需要传入的参数
-            deleteExtraDataObject: {
-                url: $("input[name=imgurl]").val()
-            },
         }
         //实时保存文章标题
         $(".ArticleTitle input[type=text]").blur(function (e) {
@@ -162,12 +156,45 @@
 
         })
 
+
         //加载文章内容方法
         function loadAc(id) {
             if (id == undefined || id == "") return false;
-            $.post("/LatestInformation/LoadAcByAcId", { aid: id }, (result) => {
-                console.log(result);
+            $.ajax({
+                url: "/LatestInformation/LoadAcByAcId",
+                data: { aid: id },
+                type: "post",
+                dataType: "json",
+            }).done(function (actontent) {
+                console.log(actontent);
+                
+
+                $(".upimg").fileinput({
+                    language: 'zh',//设置语言为中文
+                    uploadUrl: "/Home/UpFile",//文件上传路径
+                    showUpload: true,//是否显示上传按钮
+                    browseClass: "btn btn-primary", //按钮样式
+                    maxFileCount: 5,//允许最大同时上传数
+                    uploadAsync: true,//上传方式使用异步
+                    showClose: false,//是否显示右上角关闭按钮
+                    showPreview: false,//关闭预览
+                    validateInitialCount: true,
+                    showCaption: true,//关闭信息简介
+                    fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+                    maxFileSizenumber: 1024 * 3,//设置最大上传大小
+                    previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                    allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+                }).on("fileuploaded", function (even, data) {
+                    console.log(data);
+
+                });
+
+
             })
+
+
+
+
         }
 
 

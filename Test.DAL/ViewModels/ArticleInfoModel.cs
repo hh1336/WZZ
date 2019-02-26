@@ -1,14 +1,12 @@
-﻿using System;
+﻿using DAL.Entitys;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DAL.Entitys
+namespace DAL.ViewModels
 {
-    /// <summary>
-    /// 文章表实体
-    /// </summary>
-    public class Article
+    public class ArticleInfoModel
     {
         /// <summary>
         /// 主键
@@ -76,12 +74,11 @@ namespace DAL.Entitys
         /// <summary>
         /// 关联小节段落
         /// </summary>
-        public ICollection<Subheading> Subheadings { set; get; }
+        public List<Subheading> Subheadings { set; get; }
 
         /// <summary>
         /// 关联文章内容
         /// </summary>
-        public ICollection<ArticleConTent> ArticleConTents { set; get; }
-
+        public List<ArticleConTent> ArticleConTents { set; get; }
     }
 }

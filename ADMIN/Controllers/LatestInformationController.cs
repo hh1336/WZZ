@@ -3,14 +3,16 @@ using DAL.Entitys;
 using DAL.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ADMIN.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class LatestInformationController : Controller
     {
         #region 构造函数和依赖注入
@@ -158,10 +160,33 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<IActionResult> LoadAcByAcId(int id)
+        public async Task<IActionResult> LoadAcByAcId(int aid)
         {
-            GetAcontentModel result = await _article.GetAcByAcid(id);
-            return Json(result);
+            var result = await _article.GetAcByAcid(aid);
+            //不允许循环序列化
+            var setting = new JsonSerializerSettings();
+            setting.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
+            return Json(result, setting);
+        }
+
+        /// <summary>
+        /// 根据文章内容id加载图片
+        /// </summary>
+        /// <param name="actId"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> LoadImg(int actId)
+        {
+            //得到需要的图片
+            List<ArticleImage> imgs = await _articleImage.FindByActId(actId);
+            List<FileStream> files = new List<FileStream>();
+            foreach (var item in imgs)
+            {
+                //得到路径去打开图片，添加到文件数组中
+                var file = Path.GetFullPath("wwwroot" + item.url);
+                files.Add(new FileStream(file, FileMode.Open));
+            }
+            return Json(new { imgs = files });
         }
 
     }

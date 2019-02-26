@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using DAL;
 using DAL.Entitys;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,17 @@ namespace BLL.Services
             {
                 return 0;
             }
+        }
+
+        /// <summary>
+        /// 根据文章内容id获取图片
+        /// </summary>
+        /// <param name="actId"></param>
+        /// <returns></returns>
+        public async Task<List<ArticleImage>> FindByActId(int actId)
+        {
+            var result = _db.ArticleImages.Where(a => a.ArticleConTentId == actId);
+            return await result.ToListAsync();
         }
 
         /// <summary>

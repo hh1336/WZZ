@@ -34,5 +34,10 @@ namespace DAL.Entitys
         /// </summary>
         [StringLength(50)]
         public string imgurl { set; get; }
+
+        /// <summary>
+        /// 关联文章
+        /// </summary>
+        public ICollection<Article> Articles { set; get; }
     }
 }

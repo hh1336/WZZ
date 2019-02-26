@@ -79,24 +79,29 @@ namespace BLL.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<GetAcontentModel> GetAcByAcid(int id)
+        public async Task<ArticleInfoModel> GetAcByAcid(int id)
         {
             //判断传入的数据是否有错
-            if (id == 0) return new GetAcontentModel();
-            var isnull = await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
-            if (isnull == null) return new GetAcontentModel();
+            if (id == 0) return new ArticleInfoModel();
 
-            var result = new GetAcontentModel();
+            //得到小节标题内容
+            var achead = _db.Subheadings
+                .Include(w => w.ArticleConTents)
+                .ThenInclude(img => img.ArticleImage)
+                .Where(s => s.Articleid == id);
+           
+            
+
             //找到没有小节标题的所有内容
-            //var nullheadAc = _db.ArticleConTents.Where(a => a.ArticleId == id && a.Subheadingid == null).Include(c => c.ArticleImage);
+            var nullheadAc = _db.ArticleConTents
+                .Include(img => img.ArticleImage)
+                .Where(a => a.ArticleId == id && a.Subheadingid == null);
 
-
-            ////找到小节的标题
-            //var Achead = _db.Subheadings.Where(s => s.Articleid == id);
+            ArticleInfoModel result = new ArticleInfoModel();
+            result.ArticleConTents = await nullheadAc.ToListAsync();
+            result.Subheadings = await achead.ToListAsync();
 
             return result;
-
-
         }
 
         /// <summary>
@@ -167,6 +172,8 @@ namespace BLL.Services
         public async Task<Article> GetById(int id)
         {
             return await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
+
+
         }
 
         /// <summary>
