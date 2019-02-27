@@ -189,5 +189,15 @@ namespace ADMIN.Controllers
             return Json(new { imgs = files });
         }
 
+        /// <summary>
+        /// 删除图片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> DelImg(int id)
+        {
+            bool result = await _articleImage.DelById(id);
+            return Json(result);
+        }
     }
 }

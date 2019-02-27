@@ -63,10 +63,14 @@
                 <div class="layui-input-block" style="margin-left:0;">
                     <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
                     <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                    <div class="showimg">
+                        <img src="~/ImageFiles/779user-medium.png" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="" onclick="delacimg(this)" />
+                    </div>
                     <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
                     <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
                 </div>
             </div>
+
             <input type="button" class="btn btn-danger btn-xs paragraph" id="addAContent" value="插入一个段落" />
         </div>
 
@@ -156,6 +160,32 @@
 
         })
 
+        //文章删除图片
+        function delacimg(dom) {
+            var imgid = $(dom).attr("img-id");
+            var imgurl = $(dom).attr("src");
+
+            //删除数据
+            $.post("/LatestInformation/DelImg", { id: imgid }, (result) => {
+                if (result) {
+                    layer.msg("删除成功", { icon: 1 });
+                    //删除图片
+                    $.post("/Home/DelFile", { url: imgurl }, function (result) {
+                        $(dom).remove();
+                    });
+                    return;
+                }
+                layer.msg("删除失败", { icon: 2 });
+            });
+        }
+
+        //初始化所有图片控件
+        function InitImg(dom) {
+            $(dom).fileinput(acfileopt).on("fileuploaded", function (even, data) {
+                console.log(data);
+
+            });
+        }
 
         //加载文章内容方法
         function loadAc(id) {
@@ -167,9 +197,8 @@
                 dataType: "json",
             }).done(function (actontent) {
                 console.log(actontent);
-                
-
-                $(".upimg").fileinput({
+                //文章内容图片的上传设置
+                var acfileopt = {
                     language: 'zh',//设置语言为中文
                     uploadUrl: "/Home/UpFile",//文件上传路径
                     showUpload: true,//是否显示上传按钮
@@ -184,17 +213,14 @@
                     maxFileSizenumber: 1024 * 3,//设置最大上传大小
                     previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
                     allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-                }).on("fileuploaded", function (even, data) {
-                    console.log(data);
-
-                });
+                };
 
 
             })
 
 
 
-
+            $("[data-toggle='tooltip']").tooltip();
         }
 
 

@@ -38,6 +38,21 @@ namespace BLL.Services
         }
 
         /// <summary>
+        /// 根据id删除图片
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<bool> DelById(int id)
+        {
+            if (id == 0) return false;
+            var img = await _db.ArticleImages.SingleOrDefaultAsync(a => a.id == id);
+            if (img == null) return false;
+            _db.ArticleImages.Remove(img);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+
+        /// <summary>
         /// 根据文章内容id获取图片
         /// </summary>
         /// <param name="actId"></param>
