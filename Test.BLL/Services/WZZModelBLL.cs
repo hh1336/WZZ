@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL.Services
 {
@@ -45,9 +46,9 @@ namespace BLL.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public WZZModel GetById(int id)
+        public async Task<WZZModel> GetById(int id)
         {
-            var result = _db.WZZModels.SingleOrDefault(w => w.id == id);
+            var result = await _db.WZZModels.SingleOrDefaultAsync(w => w.id == id);
             return result;
         }
 

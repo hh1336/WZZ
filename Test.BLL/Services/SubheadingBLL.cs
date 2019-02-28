@@ -44,7 +44,7 @@ namespace BLL.Services
         }
 
         /// <summary>
-        /// 删除对应的文章标题数据和对应的文章内容
+        /// 删除标题
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -58,15 +58,7 @@ namespace BLL.Services
             {
                 foreach (var item in acontents)
                 {
-                    var imgdata = _db.ArticleImages.Where(a => a.ArticleConTentId == item.id);
-                    if (imgdata.Count() > 0)
-                    {
-                        foreach (var idata in imgdata)
-                        {
-                            _db.ArticleImages.Remove(idata);
-                        }
-                    }
-                    _db.ArticleConTents.Remove(item);
+                    item.Subheadingid = null;
                 }
                 _db.SaveChanges();
             }

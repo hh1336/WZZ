@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ADMIN.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class LatestInformationController : Controller
     {
         #region 构造函数和依赖注入
@@ -50,6 +50,17 @@ namespace ADMIN.Controllers
         {
             var result = await _article.GetArticlePageList(model);
             return Json(result);
+        }
+
+        /// <summary>
+        /// 根据id获取模块信息
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> GetModelInfo(int id)
+        {
+            var result = await _wzzbll.GetById(id);
+            return Json(result.name);
         }
 
         /// <summary>

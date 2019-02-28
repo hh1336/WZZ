@@ -1,8 +1,5 @@
 ﻿
-@{
-    ViewData["Title"] = "最新资讯";
-}
-
+<h3 id="title"></h3>
 <table id="myTable" lay-filter="filter"></table>
 
 
@@ -198,6 +195,7 @@
                 type: _sortType
             });
         });
+
         //删除数据的方法
         $(document).on("click", "a[name=del]", function (e) {
             e.preventDefault();
@@ -226,15 +224,6 @@
             e.preventDefault();
             var _id = $(this).attr("data-id");
             window.location.href = "/LatestInformation/AddOrEdit?id=" + _id;
-
-            //$.ajax({
-            //    url: "/LatestInformation/AddOrEdit",
-            //    data: { id: _id },
-            //    dataType: "json",
-            //    type: "post"
-            //}).done(function (result) {
-            //    console.log(result);
-            //})
         })
 
         //用户点击查看图片时
@@ -244,10 +233,16 @@
             Common.alert("文章图片", img);
         });
 
+        //加载标题
+        function loadTitle(modelId) {
+            $.post("/LatestInformation/GetModelInfo", { id: modelId }, function (result) {
+                $("#title").text(result);
+            })
+        }
 
         $(function () {
             load();
-
+            loadTitle(ModelId);
         })
 
     </script>

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
@@ -13,7 +14,7 @@ namespace BLL.Interfaces
     {
         IQueryable<WZZModel> GetAll();
 
-        WZZModel GetById(int id);
+        Task<WZZModel> GetById(int id);
 
         List<WZZModel> GetAllList();
 

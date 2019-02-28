@@ -59,17 +59,17 @@
             <h3>文章主体</h3>
             <hr />
 
-            <div class="layui-form-item ">
-                <div class="layui-input-block" style="margin-left:0;">
-                    <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                    <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
-                    <div class="showimg">
-                        <img src="~/ImageFiles/779user-medium.png" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="" onclick="delacimg(this)" />
+            @*<div class="layui-form-item layui-anim layui-anim-upbit">
+                    <div class="layui-input-block" style="margin-left:0;">
+                        <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                        <div class="showimg">
+                            <img src="~/ImageFiles/779user-medium.png" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="" onclick="delacimg(this)" />
+                        </div>
+                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                        <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
                     </div>
-                    <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                    <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
-                </div>
-            </div>
+                </div>*@
 
             <input type="button" class="btn btn-danger btn-xs paragraph" id="addAContent" value="插入一个段落" />
         </div>
@@ -80,9 +80,6 @@
 @section Scripts{
     <script>
         var _modelId;
-
-
-
 
         //文件上传配置(单图上传)
         var fileopt = {
@@ -103,12 +100,48 @@
             allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
             deleteUrlString: "/Home/DelFile",//删除图片的路径
         }
+
+        //文章内容图片的上传设置
+        var acfileopt = {
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            browseClass: "btn btn-primary", //按钮样式
+            maxFileCount: 5,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            showPreview: false,//关闭预览
+            validateInitialCount: true,
+            showCaption: true,//关闭信息简介
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+        };
+
+        //初始化图片控件，带预览
+        var addfileopt = {
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            browseClass: "btn btn-primary", //按钮样式
+            maxFileCount: 5,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            showPreview: true,//关闭预览
+            validateInitialCount: true,
+            showCaption: true,//关闭信息简介
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+        };
+
         //实时保存文章标题
         $(".ArticleTitle input[type=text]").blur(function (e) {
             e.preventDefault();
             SaveAcTitle();
         });
-
 
         //保存文章标题部分
         function SaveAcTitle() {
@@ -135,7 +168,7 @@
 
         }
 
-        //删除图片方法
+        //文章标题删除图片方法
         $(document).on("click", ".delimg", function () {
             var url = $(this).attr("src")
             var dom = $(this);
@@ -164,27 +197,150 @@
         function delacimg(dom) {
             var imgid = $(dom).attr("img-id");
             var imgurl = $(dom).attr("src");
+            var index = Common.alert("删除提示！", "您确定要删除该图片吗？", () => {
+                //删除数据
+                $.post("/LatestInformation/DelImg", { id: imgid }, (result) => {
+                    if (result) {
+                        layer.msg("删除成功", { icon: 1 });
+                        //删除图片
+                        $.post("/Home/DelFile", { url: imgurl }, function (result) {
+                            $(dom).remove();
+                        });
+                        return;
+                    }
+                    layer.msg("删除失败", { icon: 2 });
+                });
+                layer.close(index)
+            })
 
-            //删除数据
-            $.post("/LatestInformation/DelImg", { id: imgid }, (result) => {
-                if (result) {
-                    layer.msg("删除成功", { icon: 1 });
-                    //删除图片
-                    $.post("/Home/DelFile", { url: imgurl }, function (result) {
-                        $(dom).remove();
-                    });
-                    return;
-                }
-                layer.msg("删除失败", { icon: 2 });
-            });
         }
 
         //初始化所有图片控件
-        function InitImg(dom) {
-            $(dom).fileinput(acfileopt).on("fileuploaded", function (even, data) {
-                console.log(data);
+        function InitImg(dom, opt, uploadcallback) {
+            $(dom).fileinput(opt).on("fileuploaded", function (even, data) {
+                //当传入回调函数时执行回调函数，不传入时执行默认的回调函数
+                if (uploadcallback != undefined) {
+                    uploadcallback(even, data);
+                    return;
+                }
+                //默认方式渲染结构
+                //上传成功后的回调函数
+                if (data.response) {
+                    //获取到对应段落的id
+                    var acid = $(this).parents(".layui-form-item").find("textarea").attr("ArticleContent-id");
+                    if (acid == "" || acid == undefined) {
+                        layer.msg("请先输入文章内容再上传图片，否则图片将无法保存");
+                        return false;
+                    }
+                    var _data = {};
+                    _data.ArticleConTentId = acid;
+                    _data.url = data.response[0].filePath;
+                    $.post("/LatestInformation/SaveArticleImage", { data: _data }, function (result) {
+                        if (result.code) {
+                            var imghtml = `<img src="` + _data.url + `" class="btn btn-default layui-anim layui-anim-scale" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + result.aid + `" onclick="delacimg(this)" />`;
+                            $(dom).parents(".layui-form-item").find(".showimg").append(imghtml);
+                            layer.msg('上传成功');
+                        }
+                    });
+                }
 
             });
+        }
+
+        //文章标题初始化
+        function mainSubheadingSave(obj) {
+            obj.blur(function (e) {
+                e.preventDefault();
+                var dom = $(this);
+                var _data = {};
+                _data.id = $(this).attr("Subheading-id");
+                _data.head = $(this).val();
+                _data.Articleid = $("input[name=title]").attr("title-id");
+                //当用户清空文本框时
+                if (_data.head == "") {
+                    //表示已经保存有一条数据了
+                    if (_data.id != "") {
+                        $.post("/LatestInformation/DelSubheading", { id: _data.id }, function (result) {
+                            if (result) {
+                                //清空id
+                                dom.attr("Subheading-id", "");
+                                //清空文章内容所保存的id
+                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", dom.parent().parent().prev().find(".ArticleContent").attr("Subheading-id"));
+
+                                //重新保存一下文章
+                                var acdata = {};
+                                acdata.id = dom.siblings("textarea.ArticleContent").attr("ArticleContent-id");
+                                acdata.articleText = dom.siblings("textarea.ArticleContent").val();
+                                acdata.ArticleId = $("input[name=title]").attr("title-id");
+                                acdata.SubheadingId = dom.siblings("textarea.ArticleContent").attr("Subheading-id");
+                                $.post("/LatestInformation/SaveArticleContent", { data: acdata }, (result) => {
+                                    if (result.code) {
+                                        dom.siblings("textarea.ArticleContent").attr("ArticleContent-id", result.aid);
+                                        dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                                    }
+                                });
+
+                            }
+                        })
+                    }
+                    return false;
+                }
+                //保存
+                $.post("/LatestInformation/SaveSubheading", { data: _data }, function (result) {
+                    if (result.code) {
+                        dom.attr("Subheading-id", result.aid);
+                        dom.siblings("textarea.ArticleContent").attr("Subheading-id", result.aid);
+
+                        //重新保存一下文章
+                        var acdata = {};
+                        acdata.id = dom.siblings("textarea.ArticleContent").attr("ArticleContent-id");
+                        acdata.articleText = dom.siblings("textarea.ArticleContent").val();
+                        acdata.ArticleId = $("input[name=title]").attr("title-id");
+                        acdata.SubheadingId = dom.siblings("textarea.ArticleContent").attr("Subheading-id");
+                        $.post("/LatestInformation/SaveArticleContent", { data: acdata }, (result) => {
+                            if (result.code) {
+                                dom.siblings("textarea.ArticleContent").attr("ArticleContent-id", result.aid);
+                                dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                            }
+                        });
+                    }
+
+                })
+
+            })
+        }
+
+        //文章保存方法
+        function AcontentSave(obj) {
+            obj.blur(function (e) {
+                e.preventDefault();
+                var dom = $(this);
+                var _data = {};
+                _data.id = $(this).attr("ArticleContent-id");
+                _data.articleText = $(this).val();
+                _data.ArticleId = $("input[name=title]").attr("title-id");
+                _data.SubheadingId = $(this).attr("Subheading-id");
+                if (_data.SubheadingId == "") {
+                    var subid = dom.parent().parent().prev().find(".ArticleContent").attr("Subheading-id");
+                    _data.SubheadingId = subid;
+                    dom.attr("Subheading-id", subid);
+                }
+                $.post("/LatestInformation/SaveArticleContent", { data: _data }, function (result) {
+                    if (result.code) {
+                        dom.attr("ArticleContent-id", result.aid);
+                        dom.siblings("input.subheading").attr("ArticleContent-id", result.aid);
+                    }
+                })
+
+            })
+            //保存图片描述
+            obj.parent().find(".subheading").blur(function (e) {
+                e.preventDefault();
+                var _data = {};
+                _data.title = $(this).val();
+                _data.ArticleConTentId = $(this).attr("ArticleContent-id");
+                $.post("/LatestInformation/SaveArticleImgTitle", { data: _data })
+            })
         }
 
         //加载文章内容方法
@@ -196,34 +352,112 @@
                 type: "post",
                 dataType: "json",
             }).done(function (actontent) {
-                console.log(actontent);
-                //文章内容图片的上传设置
-                var acfileopt = {
-                    language: 'zh',//设置语言为中文
-                    uploadUrl: "/Home/UpFile",//文件上传路径
-                    showUpload: true,//是否显示上传按钮
-                    browseClass: "btn btn-primary", //按钮样式
-                    maxFileCount: 5,//允许最大同时上传数
-                    uploadAsync: true,//上传方式使用异步
-                    showClose: false,//是否显示右上角关闭按钮
-                    showPreview: false,//关闭预览
-                    validateInitialCount: true,
-                    showCaption: true,//关闭信息简介
-                    fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
-                    maxFileSizenumber: 1024 * 3,//设置最大上传大小
-                    previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
-                    allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-                };
 
+                //渲染没有标题的文章内容
+                for (var i = 0; i < actontent.ArticleConTents.length; i++) {
+                    //渲染图片
+                    var acimg = ``;
+                    var acimgtitle = "";
+                    for (var x = 0; x < actontent.ArticleConTents[i].ArticleImage.length; x++) {
+                        acimg += `<img src="` + actontent.ArticleConTents[i].ArticleImage[x].url + `" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + actontent.ArticleConTents[i].ArticleImage[x].id + `" onclick="delacimg(this)" />`;
+                        if (acimgtitle == "") acimgtitle = actontent.ArticleConTents[i].ArticleImage[x].title;
+                    }
 
+                    var achtml = `<div class="layui-form-item layui-anim layui-anim-upbit">
+                                            <div class="layui-input-block" style="margin-left:0;">
+                                                <hr class="layui-bg-blue">
+                                                <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                                                <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id="`+ actontent.ArticleConTents[i].id + `">` + actontent.ArticleConTents[i].articleText + `</textarea>
+                                                <div class="showimg">
+                                                    `+ acimg + `
+                                                </div>
+                                                <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                                <input type="text" value="`+ acimgtitle + `" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="` + actontent.ArticleConTents[i].id + `" />
+                                            </div>
+                                        </div>`;
+
+                    //将内容插入页面
+                    $("#addAContent").before(achtml);
+                    var dom = $("#addAContent").prev();
+                    //初始化标题
+                    mainSubheadingSave(dom.find(".mainSubheading"));
+                    //初始化文章内容和图片描述
+                    AcontentSave(dom.find(".ArticleContent"));
+                    //初始化图片
+                    InitImg(dom.find(".upimg"), acfileopt);
+
+                }
+
+                //渲染带标题的文章内容
+                //得到每一个标题
+                for (var i = 0; i < actontent.Subheadings.length; i++) {
+                    var acititle = actontent.Subheadings[i].head;
+                    //得到每一个内容
+                    for (var x = 0; x < actontent.Subheadings[i].ArticleConTents.length; x++) {
+                        var acimgtitle = ``;
+                        var acimg = ``;
+                        //得到每一张图片
+                        for (var y = 0; y < actontent.Subheadings[i].ArticleConTents[x].ArticleImage.length; y++) {
+                            acimg += `<img src="` + actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].url + `" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].id + `" onclick="delacimg(this)" />`;
+                            if (acimgtitle == ``) acimgtitle = actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].title;
+                        }
+                        if (x >= 1) acititle = ``;
+                        var achtml = `<div class="layui-form-item layui-anim layui-anim-upbit">
+                                    <div class="layui-input-block" style="margin-left:0;">
+                                        <hr class="layui-bg-blue">
+                                        <input type="text" value="`+ acititle + `" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="` + actontent.Subheadings[i].ArticleId + `" Subheading-id="` + actontent.Subheadings[i].id + `" />
+                                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="` + actontent.Subheadings[i].id + `" ArticleContent-id="` + actontent.Subheadings[i].ArticleConTents[x].id + `">` + actontent.Subheadings[i].ArticleConTents[x].articleText + `</textarea>
+                                        <div class="showimg">
+                                            `+ acimg + `
+                                        </div>
+                                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                        <input type="text" value="`+ acimgtitle + `" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="` + actontent.Subheadings[i].ArticleConTents[x].id + `" />
+                                    </div>
+                                </div>`;
+                        //将内容插入页面
+                        $("#addAContent").before(achtml);
+                        var dom = $("#addAContent").prev();
+                        //初始化标题
+                        mainSubheadingSave(dom.find(".mainSubheading"));
+                        //初始化文章内容和图片描述
+                        AcontentSave(dom.find(".ArticleContent"));
+                        //初始化图片
+                        InitImg(dom.find(".upimg"), acfileopt);
+
+                    }
+                }
+
+                $("[data-toggle='tooltip']").tooltip();
             })
-
-
-
-            $("[data-toggle='tooltip']").tooltip();
         }
 
-
+        //插入一段内容
+        $(document).on("click", "#addAContent", function (e) {
+            e.preventDefault();
+            var achtml = `
+            <div class="layui-form-item layui-anim layui-anim-upbit">
+                            <div class="layui-input-block" style="margin-left:0;">
+                                <hr class="layui-bg-blue">
+                                <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                                <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                                <div class="showimg">
+                                    
+                                </div>
+                                <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                            </div>
+                        </div>
+            `;
+            //将内容插入页面
+            $(this).before(achtml);
+            var dom = $("#addAContent").prev();
+            //初始化标题
+            mainSubheadingSave(dom.find(".mainSubheading"));
+            //初始化文章内容和图片描述
+            AcontentSave(dom.find(".ArticleContent"));
+            //初始化图片
+            InitImg(dom.find(".upimg"), addfileopt);
+        })
 
         $(function () {
             //初始化leyui

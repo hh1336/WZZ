@@ -174,7 +174,7 @@
                                 //清空id
                                 dom.attr("Subheading-id", "");
                                 //清空文章内容所保存的id
-                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", "").attr("ArticleContent-id","");
+                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", dom.parent().parent().prev().find(".ArticleContent").attr("Subheading-id"));
 
 
                                 //重新保存一下文章
