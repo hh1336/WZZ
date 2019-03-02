@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DAL.Entitys
@@ -54,11 +55,12 @@ namespace DAL.Entitys
         /// <summary>
         /// 关联模块
         /// </summary>
-        public WZZModel WZZModel { set; get; }
+        public virtual WZZModel WZZModel { set; get; }
 
         /// <summary>
         /// 模块的id
         /// </summary>
+        [ForeignKey("WZZModel")]
         public int? WZZModelId { set; get; }
 
 
@@ -82,6 +84,13 @@ namespace DAL.Entitys
         /// 关联文章内容
         /// </summary>
         public ICollection<ArticleConTent> ArticleConTents { set; get; }
+
+        /// <summary>
+        /// 关联轮播图
+        /// </summary>
+        public ICollection<RotationChart> RotationCharts { set; get; }
+
+
 
     }
 }

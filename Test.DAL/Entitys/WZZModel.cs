@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace DAL.Entitys
@@ -31,7 +32,13 @@ namespace DAL.Entitys
         /// <summary>
         /// 自关联id
         /// </summary>
+        [ForeignKey("WZZModels")]
         public int? Pid { set; get; }
+
+        /// <summary>
+        /// 自关联
+        /// </summary>
+        public WZZModel WZZModels { set; get; }
 
         /// <summary>
         /// 文章图标

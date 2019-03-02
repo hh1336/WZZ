@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace DAL.Entitys
@@ -30,11 +31,12 @@ namespace DAL.Entitys
         /// <summary>
         /// 关联文章内容
         /// </summary>
-        public ArticleConTent ArticleConTent { set; get; }
+        public virtual ArticleConTent ArticleConTent { set; get; }
 
         /// <summary>
         /// 文章内容id
         /// </summary>
+        [ForeignKey("ArticleConTent")]
         public int ArticleConTentId { set; get; }
     }
 }

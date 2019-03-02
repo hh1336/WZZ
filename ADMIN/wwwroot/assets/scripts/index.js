@@ -32,9 +32,9 @@ function GetModel(pid, callback) {
                         <i class="icon-submenu lnr lnr-chevron-left"></i>
                         <div id="SettingAndManager" class="collapse" aria-expanded="false" style="height: 0px;">
                             <ul class="nav">
-                                <li><a class="cmodel" href="/recovery/Index" >回收站</a></li>
-                                <li><a class="cmodel" href="/RotationChartSetting/Index" >轮播图设置</a></li>
-                                <li><a class="cmodel" href="/ModelManager/Index" >模块管理</a></li>
+                                <li><a href="/recovery/Index" >回收站</a></li>
+                                <li><a href="/RotationChartSetting/Index" >轮播图设置</a></li>
+                                <li><a href="/ModelManager/Index" >模块管理</a></li>
                             </ul>
                         </div>
                     </a>

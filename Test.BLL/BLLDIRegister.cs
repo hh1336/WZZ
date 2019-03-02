@@ -22,6 +22,7 @@ namespace BLL
             services.AddTransient(typeof(IArticleConTentBLL), typeof(ArticleConTentBLL));
             services.AddTransient(typeof(IArticleImageBLL), typeof(ArticleImageBLL));
             services.AddTransient(typeof(ISubheadingBLL), typeof(SubheadingBLL));
+            services.AddTransient(typeof(IRecoveryServiceBLL), typeof(RecoveryServiceBLL));
 
         }
     }

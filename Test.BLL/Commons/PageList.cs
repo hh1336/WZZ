@@ -80,6 +80,42 @@ namespace BLL.Commons
         }
 
 
+        /// <summary>
+        /// 对数据进行排序，用于IQueryable<>类型
+        /// </summary>
+        /// <typeparam name="TSource">实体</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="field">排序字段</param>
+        /// <param name="order">排序规则</param>
+        /// <returns></returns>
+        public static IQueryable<TSource> Sort<TSource>(this Task<IQueryable<TSource>> source, string field, string order) where TSource : class, new()
+        {
+            if (source.Result.Count() == 0) return source.Result;
+            //如果传过来的是null或空的排序方式，则按照降序来排序
+            if (string.IsNullOrEmpty(order)) order = "asc";
+
+            if (order.Equals("asc")) order = "OrderBy";
+            else if (order.Equals("desc")) order = "OrderByDescending";
+
+            //定义一个TSource类型的变量，值为field
+            ParameterExpression param = Expression.Parameter(typeof(TSource), field);
+            //查找TSource中，是否有field这个公共变量
+            PropertyInfo pi = typeof(TSource).GetProperty(field);
+
+            //创建一个type数组，索引0保存所指向的实体类型，索引1保存得到的公共变量的类型
+            Type[] types = new Type[2];
+            types[0] = typeof(TSource);
+            types[1] = pi.PropertyType;
+            //生成Linq表达式树
+            Expression expr = Expression.Call(typeof(Queryable), order, types, source.Result.Expression, Expression.Lambda(Expression.Property(param, field), param));
+            //执行Linq语句
+            IQueryable<TSource> query = source.Result.Provider.CreateQuery<TSource>(expr);
+
+            return query;
+        }
+
+
+
     }
 
     /// <summary>
