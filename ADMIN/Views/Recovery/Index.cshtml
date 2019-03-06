@@ -206,12 +206,8 @@
                     type: 3
                 });
                 $.post("/Recovery/Clear", {}, function (result) {
-                    if (!result.code) {
-                        layer.msg("删除失败,请刷新重试", { icon: 2 });
-                        return;
-                    }
-                    for (var i = 0; i < result.list.length; i++) {
-                        $.post("/Home/DelFile", { url: result.list[i] });
+                    for (var i = 0; i < result.length; i++) {
+                        $.post("/Home/DelFile", { url: result[i] });
                     }
                     layer.close(loadindex);
                     layer.msg("删除成功!", { icon: 1 });

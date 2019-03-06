@@ -45,6 +45,6 @@ namespace BLL.Interfaces
         /// 清空回收站数据
         /// </summary>
         /// <returns></returns>
-        Task<DelArticleResultModel> Clear();
+        Task<List<string>> Clear();
     }
 }

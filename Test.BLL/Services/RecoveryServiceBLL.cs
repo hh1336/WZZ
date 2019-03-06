@@ -29,32 +29,21 @@ namespace BLL.Services
             return true;
         }
 
-        public async Task<DelArticleResultModel> Clear()
+        public async Task<List<string>> Clear()
         {
             var result = _db.Articles
                 .Include(s => s.ArticleConTents)
                 .ThenInclude(s => s.ArticleImage)
                 .Include(s => s.Subheadings)
                 .Where(a => a.isShow == 0);
-            var list = new List<string>();
+            var acurl = new List<string>();
             foreach (var item in result)
             {
-                if (item.imgurl != null) list.Add(item.imgurl);
-                foreach (var ac in item.ArticleConTents)
-                {
-                    foreach (var img in ac.ArticleImage)
-                    {
-                        list.Add(img.url);
-                    }
-                }
+                var urllist = await DelData(item.id);
+                acurl.AddRange(urllist.list);
             }
-            _db.Articles.RemoveRange(result);
-            await _db.SaveChangesAsync();
-            return new DelArticleResultModel()
-            {
-                code = true,
-                list = list
-            };
+
+            return acurl;
         }
 
         public async Task<DelArticleResultModel> DelData(int id)

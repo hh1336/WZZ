@@ -10,8 +10,6 @@ $(function() {
   var btn = "<div class='btnBg'></div><div class='btn'>";
   for(var i=0; i < len; i++) {
 	  btn += "<span></span>";
-	  
-	 
   }
   btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
   $(".item").append(btn);

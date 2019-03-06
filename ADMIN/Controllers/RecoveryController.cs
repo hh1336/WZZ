@@ -68,7 +68,7 @@ namespace ADMIN.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Clear()
         {
-            DelArticleResultModel result = await _bll.Clear();
+            var result = await _bll.Clear();
             return Json(result);
         }
 
