@@ -24,5 +24,17 @@ namespace ADMIN.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> GetList()
+        {
+            RotationChartViewModel result = await _bll.GetAll();
+            return Json(result);
+        }
+
+        public async Task<IActionResult> AddOrEdit(RotationChartInputModel model)
+        {
+            RotationChart result = await _bll.GetById(model);
+            return PartialView(result);
+        }
     }
 }

@@ -68,10 +68,12 @@ class Common {
 
 
 //封装模态框
-var appModal = (obj) => {//初始获取模态框
+var appModal = function (obj) {//初始获取模态框
     this.model = $("#myModal");
     this.mtitle = $("#myModalLabel");
     this.mbody = $(".modal-body");
+    this.yescallback = $("#modalsub");
+    this.endcallback = $("#modalend");
     this.clear();
 
     //实例化时需要传入参数将模态框进行初始化
@@ -81,14 +83,15 @@ var appModal = (obj) => {//初始获取模态框
 
 appModal.prototype = {
     //弹出模态框
-    open: () => {
+    open: function () {
         this.model.modal("show");
     },
     //关闭模态框
-    close: () => {
-        this.model.modal("hiden");
+    close: function () {
+        this.model.modal("hide");
     },
-    init: (obj) => {
+    init: function (obj) {
+        var dom = this;
         //模态框的标题
         this.mtitle.text(obj.title);
         //发送一个ajax请求，将子页面渲染到模态框中
@@ -99,19 +102,33 @@ appModal.prototype = {
                 type: "post",
                 data: obj.data === undefined ? {} : obj.data,
                 async: false
-            }).done((result) => {
-                this.mbody.html(result);
+            }).done(function (result) {
+                obj.callback(result);
+                dom.mbody.html(result);
+
             });
         }
+
         if (obj.body !== undefined) {
-            this.mbody.html(obj.body);
+            dom.mbody.html(obj.body);
         }
+
+        if (obj.yes !== undefined) {
+            dom.yescallback.click(obj.yes);
+        }
+
+        if (obj.end !== undefined) {
+            dom.endcallback.click(obj.end);
+        }
+
 
     },
     //清空模态框内容
-    clear: () => {
+    clear: function () {
         this.mtitle.text("标题");
         this.mbody.html("");
+        this.yescallback.unbind();
+        this.endcallback.unbind();
     }
 };
 

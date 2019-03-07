@@ -1,0 +1,37 @@
+﻿@using DAL.Entitys
+@model RotationChart
+
+<div class="imgshow left">
+    <div class="btn btn-default" style="width:400px;height:300px;">
+        <img src="/ImageFiles/banner1.jpg" class="img-responsive" />
+        <input type="text" value="" placeholder="轮播图描述（可空）" class="form-control" />
+    </div>
+    <div class="btn btn-default" style="width:400px;height:300px;">
+        <img src="/ImageFiles/banner1.jpg" class="img-responsive" />
+        <input type="text" value="" placeholder="轮播图描述（可空）" class="form-control" />
+    </div>
+
+</div>
+
+<input id="imgurl" type="file" class="file-loading" data-browse-on-zone-click="true">
+<script>
+    $(function () {
+        $("#imgurl").fileinput({
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            browseClass: "btn btn-primary", //按钮样式
+            deleteUrl: "/Home/DelFile",//删除地址
+            maxFileCount: 3,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            validateInitialCount: true,
+            showPreview: false,//关闭预览
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            deleteUrlString: "/Home/DelFile",//删除图片的路径
+        })
+    })
+</script>

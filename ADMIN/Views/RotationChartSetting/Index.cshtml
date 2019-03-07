@@ -1,137 +1,214 @@
-﻿
-<div id="HomeCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner item">
+﻿@section Styles{
+    <style>
+        .Carousel {
+            margin: 0 auto;
+            width: 70%;
+        }
 
-        <!-- 圆点 -->
-        <ol class="carousel-indicators">
-            <li data-target="#HomeCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#HomeCarousel" data-slide-to="1"></li>
-        </ol>
+        .cbtn {
+            margin-left: 15%;
+            margin-bottom: 10px;
+        }
+    </style>
+}
 
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">首页</li>
+        <li>茶品种</li>
+        <li>茶文化</li>
+    </ul>
 
+    <div class="layui-tab-content">
 
-        @* 轮播图图片 *@
-        <div class="item active">
-            <img src="~/ImageFiles/banner1.jpg" >
-            <div class="carousel-caption">
-                六大茶类茶叶的不同功效及特点
+        <div class="layui-tab-item layui-show">
+            <button type="button" class="btn btn-success cbtn">添加</button>
+            <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(this)" wzzid="11">删除</button>
+            <div id="HomeCarousel" class="carousel slide Carousel" data-ride="carousel">
+                <div class="carousel-inner">
+
+                </div>
             </div>
         </div>
-        <div class="item">
-            <img src="~/ImageFiles/banner4.jpg">
-            <div class="carousel-caption">
-                如何成为品茶高手？学会这5个动作让你成为品茶高手！
+
+        <div class="layui-tab-item">
+            <div class="layui-tab-item layui-show">
+                <button type="button" class="btn btn-success cbtn">添加</button>
+                <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(this)" wzzid="13">删除</button>
+                <div id="TeaTypeCarousel" class="carousel slide Carousel" data-ride="carousel">
+                    <div class="carousel-inner item">
+
+                    </div>
+                </div>
             </div>
         </div>
 
-        <a class="left carousel-control" href="#HomeCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#HomeCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        <div class="layui-tab-item">
+            <div class="layui-tab-item layui-show">
+                <button type="button" class="btn btn-success cbtn">添加</button>
+                <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(this)" wzzid="14">删除</button>
+                <div id="StoryCarousel" class="carousel slide Carousel" data-ride="carousel">
+                    <div class="carousel-inner item">
 
-        @*<li>
-                <a href="">
-                    <img src="~/ImageFiles/banner1.jpg" width="100%" height="100%" />
-                    <span class="carousel-caption">六大茶类茶叶的不同功效及特点</span>
-                </a>
-            </li>
-            <li class="banner_li">
-                <a href="">
-                    <img src="~/ImageFiles/banner2.jpg" width="100%" height="100%" />
-                    <span>茶叶种类划分：各茶叶分类的代表茶有哪些？</span>
-                </a>
-            </li>
-            <li class="banner_li">
-                <a href="">
-                    <span>择一处清幽，斟一盏芳茗</span>
-                    <img src="~/ImageFiles/banner3.jpg" width="100%" height="100%" />
-                </a>
-            </li>
-            <li class="banner_li">
-                <a href="">
-                    <span>如何成为品茶高手？学会这5个动作让你成为品茶高手！</span>
-                    <img src="~/ImageFiles/banner4.jpg" width="100%" height="100%" />
-                </a>
-            </li>*@
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
+
+
+
+
+
+
 @section Scripts{
     <script>
+        //保存加载过的数据
+        var _homelist;
+        var _teatypelist;
+        var _storylist;
+
+        //加载图片
+        function load() {
+            var _homeDom = $("#HomeCarousel");
+            var _teaTypeDom = $("#TeaTypeCarousel");
+            var _storyDom = $("#StoryCarousel");
+            $.post("/RotationChartSetting/GetList", {}, function (result) {
+                //全局保存加载过的数据
+                _homelist = result.homeRotationChart;
+                _teatypelist = result.teaTypeRotationChart;
+                _storylist = result.storyRotationChart;
+                var active = "";//记录是否为第一条，是则加上对应的类
+                var domid = `HomeCarousel`;//记录domid用于控制dom改变
+                var imgdiv = ``;//记录轮播图图片的结构
+                var li = ``;//记录圆点结构
+                var ol = ``;//组装圆点结构
+                var carousel = ``;//组装左右切换按钮
+                for (var i = 0; i < result.homeRotationChart.length; i++) {
+                    if (i == 0) {
+                        active = "active";
+                    } else {
+                        active = "";
+                    }
+                    li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `" href="#` + domid + `"></li>`;
+                    imgdiv += `<div class="item ` + active + `">
+                                            <img src="`+ result.homeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.homeRotationChart[i].id + `" wzzid="` + result.homeRotationChart[i].wzzModelId + `" arcid="` + result.homeRotationChart[i].articleId + `">
+                                            <div class="carousel-caption">
+                                                `+ result.homeRotationChart[i].title + `
+                                            </div>
+                                        </div>`;
+                }
+                carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>`;
+                ol = `<ol class="carousel-indicators">` + li + `</ol>`;
+                _homeDom.children(".carousel-inner").html(ol);
+                _homeDom.children(".carousel-inner").append(imgdiv);
+                _homeDom.children(".carousel-inner").append(carousel);
+
+                //清空结构重新组装下一个选项卡
+                domid = "StoryCarousel";
+                imgdiv = ``;
+                li = ``;
+                ol = ``;
+                carousel = ``;
+                for (var i = 0; i < result.storyRotationChart.length; i++) {
+                    if (i == 0) {
+                        active = "active";
+                    } else {
+                        active = "";
+                    }
+                    li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `"></li>`;
+                    imgdiv += `<div class="item ` + active + `">
+                                            <img src="`+ result.storyRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.storyRotationChart[i].id + `" wzzid="` + result.storyRotationChart[i].wzzModelId + `" arcid="` + result.storyRotationChart[i].articleId + `">
+                                            <div class="carousel-caption">
+                                                `+ result.storyRotationChart[i].title + `
+                                            </div>
+                                        </div>`;
+                }
+                carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>`;
+                ol = `<ol class="carousel-indicators">` + li + `</ol>`;
+                _storyDom.children(".carousel-inner").html(ol);
+                _storyDom.children(".carousel-inner").append(imgdiv);
+                _storyDom.children(".carousel-inner").append(carousel);
+
+                //清空结构重新组装下一个选项卡
+                domid = "TeaTypeCarousel";
+                imgdiv = ``;
+                li = ``;
+                ol = ``;
+                carousel = ``;
+                for (var i = 0; i < result.teaTypeRotationChart.length; i++) {
+                    if (i == 0) {
+                        active = "active";
+                    } else {
+                        active = "";
+                    }
+                    li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `"></li>`;
+                    imgdiv += `<div class="item ` + active + `">
+                                            <img src="`+ result.teaTypeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.teaTypeRotationChart[i].id + `" wzzid="` + result.teaTypeRotationChart[i].wzzModelId + `" arcid="` + result.teaTypeRotationChart[i].articleId + `">
+                                            <div class="carousel-caption">
+                                                `+ result.teaTypeRotationChart[i].title + `
+                                            </div>
+                                        </div>`;
+                }
+                carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
+                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>`;
+                ol = `<ol class="carousel-indicators">` + li + `</ol>`;
+                _teaTypeDom.children(".carousel-inner").html(ol);
+                _teaTypeDom.children(".carousel-inner").append(imgdiv);
+                _teaTypeDom.children(".carousel-inner").append(carousel);
+
+            })
+        }
+
+        //添加轮播图
+        function addRotationChart(id) {
+            var app = new appModal({
+                title: "添加轮播图",
+                url: "/RotationChartSetting/AddOrEdit",
+                data: { WZZModelId: id },
+                callback: function (result) {
+                    console.log(result)
+                },
+                yes: function (e) {
+                    e.preventDefault();
+                    console.log(123);
+                }
+            });
+            app.open();
+        }
+
+        //当用户点击添加时
+        $(document).on("click", ".cbtn", function (e) {
+            e.preventDefault();
+            var wzzid = $(this).next().attr("wzzid");
+            addRotationChart(wzzid);
+        })
+
         $(function () {
-
-            //$('.item').carousel()
-            //var sWidth = $(".item").width(); //获取焦点图的宽度（显示面积）
-            //var len = $(".item ul li").length; //获取焦点图个数
-            //var index = 0;
-            //var picTimer;
-            //var tit;
-            ////文章标题
-
-            ////以下代码添加数字按钮和按钮后的半透明条，还有上一页、下一页两个按钮
-            //var btn = "<div class='btnBg'></div><div class='btn'>";
-            //for (var i = 0; i < len; i++) {
-            //    btn += "<span></span>";
-            //}
-            //btn += "</div><div class='preNext pre'></div><div class='preNext next'></div>";
-            //$(".item").append(btn);
-            //$(".item .btnBg").css("opacity", 0.5);
-
-            ////为小按钮添加鼠标滑入事件，以显示相应的内容
-            //$(".item .btn span").css("opacity", 0.4).mouseover(function () {
-            //    index = $(".item .btn span").index(this);
-            //    showPics(index);
-            //}).eq(0).trigger("mouseover");
-
-            ////上一页、下一页按钮透明度处理
-            //$(".item .preNext").css("opacity", 0.2).hover(function () {
-            //    $(this).stop(true, false).animate({ "opacity": "0.5" }, 300);
-            //}, function () {
-            //    $(this).stop(true, false).animate({ "opacity": "0.2" }, 300);
-            //});
-
-            ////上一页按钮
-            //$(".item .pre").click(function () {
-            //    index -= 1;
-            //    if (index == -1) { index = len - 1; }
-            //    showPics(index);
-            //});
-
-            ////下一页按钮
-            //$(".item .next").click(function () {
-            //    index += 1;
-            //    if (index == len) { index = 0; }
-            //    showPics(index);
-            //});
-
-            ////图片为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
-            //$(".item ul").css("width", sWidth * (len));
-
-            ////鼠标滑上焦点图时停止自动播放，滑出时开始自动播放
-            //$(".item").hover(function () {
-            //    clearInterval(picTimer);
-            //}, function () {
-            //    picTimer = setInterval(function () {
-            //        showPics(index);
-            //        index++;
-            //        if (index == len) { index = 0; }
-            //    }, 4000); //此4000代表自动播放的间隔，单位：毫秒
-            //}).trigger("mouseleave");
-
-            ////显示图片函数，根据接收的index值显示相应的内容
-            //function showPics(index) { //普通切换
-            //    var nowLeft = -index * sWidth; //根据index值计算ul元素的left值
-            //    //使用animate()方法调整ul元素滚动到计算出的position
-            //    $(".item ul").stop(true, false).animate({ "left": nowLeft }, 300);
-            //    //为当前的按钮切换到选中的效果
-            //    $(".item .btn span").stop(true, false).animate({ "opacity": "0.4" }, 300)
-            //        .eq(index).stop(true, false).animate({ "opacity": "1" }, 300);
-            //}
+            load();
         })
     </script>
 }
