@@ -1,27 +1,17 @@
-﻿@using DAL.Entitys
-@model RotationChart
-
-<div class="imgshow left">
-    <div class="btn btn-default" style="width:400px;height:300px;">
-        <img src="/ImageFiles/banner1.jpg" class="img-responsive" />
-        <input type="text" value="" placeholder="轮播图描述（可空）" class="form-control" />
-    </div>
-    <div class="btn btn-default" style="width:400px;height:300px;">
-        <img src="/ImageFiles/banner1.jpg" class="img-responsive" />
-        <input type="text" value="" placeholder="轮播图描述（可空）" class="form-control" />
-    </div>
+﻿
+<div class="left" id="imgshow">
 
 </div>
 
-<input id="imgurl" type="file" class="file-loading" data-browse-on-zone-click="true">
+<input id="imgurl" type="file" class="file-loading" multiple data-browse-on-zone-click="true">
 <script>
+
     $(function () {
         $("#imgurl").fileinput({
             language: 'zh',//设置语言为中文
             uploadUrl: "/Home/UpFile",//文件上传路径
             showUpload: true,//是否显示上传按钮
             browseClass: "btn btn-primary", //按钮样式
-            deleteUrl: "/Home/DelFile",//删除地址
             maxFileCount: 3,//允许最大同时上传数
             uploadAsync: true,//上传方式使用异步
             showClose: false,//是否显示右上角关闭按钮
@@ -31,7 +21,44 @@
             maxFileSizenumber: 1024 * 3,//设置最大上传大小
             previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
             allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
-            deleteUrlString: "/Home/DelFile",//删除图片的路径
-        })
+        }).on("fileuploaded", function (even, data) {
+            //上传成功
+            if (data.response) {
+                var htmlmodel = `
+            <div class="btn btn-default imginfo layui-anim layui-anim-scale" style="width:400px;height:320px;" data-toggle="tooltip" data-placement="top" title="双击图片取消上传">
+                <img src="`+ data.response[0].filePath + `" class="img-responsive" />
+                <input type="text" value="" placeholder="轮播图描述（可空）" class="form-control" name="rotitle" />
+                <div class="form-group">
+                    <div class="input-group ">
+                        <input type="text" class="form-control" placeholder="请选择轮播图对应的文章" name="article" aria-describedby="inputGroupSuccess1Status" readonly="readonly">
+                        <span class="input-group-addon" style="padding:0;">
+                            <input type="button"  class="btn btn-primary ChoiceAc" value="选择" />
+                        </span>
+                    </div>
+                </div>
+            </div>`;
+                $("#imgshow").append(htmlmodel).children(".imginfo:last").dblclick(function () {
+                    var div = $(this);
+                    var url = $(div).children("img").attr("src");
+                    $.post("/Home/DelFile", { url: url });
+                    $(div).remove();
+                }).find("input.ChoiceAc").click(function (e) {
+                    var div = $(this).parents("div.imginfo");
+                    e.preventDefault();
+                    $.post("/RotationChartSetting/GetArticles", {}, function (result) {
+                        var index = Common.alert("选择文章", result, function () {
+                            var acid = $("#articles-table").siblings("input[name=_id]:hidden");
+                            var actitle = $("#articles-table").siblings("input[name=_title]:hidden");
+                            var acauthor = $("#articles-table").siblings("input[name=_author]:hidden");
+                            $(div).find("input[name=article]").val(actitle.val() + "-" + acauthor.val()).attr("Article-id", acid.val());
+                            layer.close(index);
+                        }, () => { }, "630px");
+                    })
+
+                });
+
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        });
     })
 </script>

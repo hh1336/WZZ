@@ -37,7 +37,7 @@ class Common {
     }
 
     //自定义弹框（回调函数如果带有参数，则只能传入匿名函数）
-    static alert(title, msg, yescallback, endcallback) {
+    static alert(title, msg, yescallback, endcallback, width) {
         //当没有传入回调函数时
         if (yescallback === undefined && endcallback === undefined) {
             yescallback = function (index, layero) {
@@ -54,7 +54,7 @@ class Common {
             title: title,
             content: msg,
             shadeClose: true,
-            resize: false,
+            area: width === undefined ? 'auto' : width,
             closeBtn: "2",
             btn: ["确定", "取消"],
             btn1: yescallback,
@@ -74,6 +74,7 @@ var appModal = function (obj) {//初始获取模态框
     this.mbody = $(".modal-body");
     this.yescallback = $("#modalsub");
     this.endcallback = $("#modalend");
+    this.mWidth = $(".modal-dialog");
     this.clear();
 
     //实例化时需要传入参数将模态框进行初始化
@@ -83,7 +84,11 @@ var appModal = function (obj) {//初始获取模态框
 
 appModal.prototype = {
     //弹出模态框
-    open: function () {
+    open: function (obj) {
+        if (obj !== undefined) {
+            if (obj.width !== undefined) this.mWidth.css("width", obj.width);
+        }
+
         this.model.modal("show");
     },
     //关闭模态框
@@ -103,7 +108,8 @@ appModal.prototype = {
                 data: obj.data === undefined ? {} : obj.data,
                 async: false
             }).done(function (result) {
-                obj.callback(result);
+                if (obj.callback !== undefined) obj.callback(result);
+
                 dom.mbody.html(result);
 
             });
@@ -119,6 +125,9 @@ appModal.prototype = {
 
         if (obj.end !== undefined) {
             dom.endcallback.click(obj.end);
+        }
+        if (obj.width !== undefined) {
+            dom.mWidth.css("width", obj.width);
         }
 
 

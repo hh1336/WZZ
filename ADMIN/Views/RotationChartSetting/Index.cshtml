@@ -23,7 +23,7 @@
 
         <div class="layui-tab-item layui-show">
             <button type="button" class="btn btn-success cbtn">添加</button>
-            <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(this)" wzzid="11">删除</button>
+            <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(11)" wzzid="11">删除</button>
             <div id="HomeCarousel" class="carousel slide Carousel" data-ride="carousel">
                 <div class="carousel-inner">
 
@@ -34,7 +34,7 @@
         <div class="layui-tab-item">
             <div class="layui-tab-item layui-show">
                 <button type="button" class="btn btn-success cbtn">添加</button>
-                <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(this)" wzzid="13">删除</button>
+                <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(13)" wzzid="13">删除</button>
                 <div id="TeaTypeCarousel" class="carousel slide Carousel" data-ride="carousel">
                     <div class="carousel-inner item">
 
@@ -46,7 +46,7 @@
         <div class="layui-tab-item">
             <div class="layui-tab-item layui-show">
                 <button type="button" class="btn btn-success cbtn">添加</button>
-                <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(this)" wzzid="14">删除</button>
+                <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(14)" wzzid="14">删除</button>
                 <div id="StoryCarousel" class="carousel slide Carousel" data-ride="carousel">
                     <div class="carousel-inner item">
 
@@ -94,21 +94,22 @@
                         active = "";
                     }
                     li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `" href="#` + domid + `"></li>`;
+                    var tit = result.homeRotationChart[i].title == null ? "" : result.homeRotationChart[i].title;
                     imgdiv += `<div class="item ` + active + `">
-                                            <img src="`+ result.homeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.homeRotationChart[i].id + `" wzzid="` + result.homeRotationChart[i].wzzModelId + `" arcid="` + result.homeRotationChart[i].articleId + `">
-                                            <div class="carousel-caption">
-                                                `+ result.homeRotationChart[i].title + `
-                                            </div>
-                                        </div>`;
+                                                                                    <img src="`+ result.homeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.homeRotationChart[i].id + `" wzzid="` + result.homeRotationChart[i].wzzModelId + `" arcid="` + result.homeRotationChart[i].articleId + `">
+                                                                                    <div class="carousel-caption">
+                                                                                        `+ tit + `
+                                                                                    </div>
+                                                                                </div>`;
                 }
                 carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>`;
+                                                                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Previous</span>
+                                                                                    </a>
+                                                                                    <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                                                                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Next</span>
+                                                                                    </a>`;
                 ol = `<ol class="carousel-indicators">` + li + `</ol>`;
                 _homeDom.children(".carousel-inner").html(ol);
                 _homeDom.children(".carousel-inner").append(imgdiv);
@@ -127,21 +128,22 @@
                         active = "";
                     }
                     li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `"></li>`;
+                    var tit = result.storyRotationChart[i].title == null ? "" : result.storyRotationChart[i].title;
                     imgdiv += `<div class="item ` + active + `">
-                                            <img src="`+ result.storyRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.storyRotationChart[i].id + `" wzzid="` + result.storyRotationChart[i].wzzModelId + `" arcid="` + result.storyRotationChart[i].articleId + `">
-                                            <div class="carousel-caption">
-                                                `+ result.storyRotationChart[i].title + `
-                                            </div>
-                                        </div>`;
+                                                                                    <img src="`+ result.storyRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.storyRotationChart[i].id + `" wzzid="` + result.storyRotationChart[i].wzzModelId + `" arcid="` + result.storyRotationChart[i].articleId + `">
+                                                                                    <div class="carousel-caption">
+                                                                                        `+ tit + `
+                                                                                    </div>
+                                                                                </div>`;
                 }
                 carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>`;
+                                                                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Previous</span>
+                                                                                    </a>
+                                                                                    <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                                                                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Next</span>
+                                                                                    </a>`;
                 ol = `<ol class="carousel-indicators">` + li + `</ol>`;
                 _storyDom.children(".carousel-inner").html(ol);
                 _storyDom.children(".carousel-inner").append(imgdiv);
@@ -160,21 +162,22 @@
                         active = "";
                     }
                     li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `"></li>`;
+                    var tit = result.teaTypeRotationChart[i].title == null ? "" : result.teaTypeRotationChart[i].title;
                     imgdiv += `<div class="item ` + active + `">
-                                            <img src="`+ result.teaTypeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.teaTypeRotationChart[i].id + `" wzzid="` + result.teaTypeRotationChart[i].wzzModelId + `" arcid="` + result.teaTypeRotationChart[i].articleId + `">
-                                            <div class="carousel-caption">
-                                                `+ result.teaTypeRotationChart[i].title + `
-                                            </div>
-                                        </div>`;
+                                                                                    <img src="`+ result.teaTypeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.teaTypeRotationChart[i].id + `" wzzid="` + result.teaTypeRotationChart[i].wzzModelId + `" arcid="` + result.teaTypeRotationChart[i].articleId + `">
+                                                                                    <div class="carousel-caption">
+                                                                                        `+ tit + `
+                                                                                    </div>
+                                                                                </div>`;
                 }
                 carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
-                                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
-                                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                <span class="sr-only">Next</span>
-                                            </a>`;
+                                                                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Previous</span>
+                                                                                    </a>
+                                                                                    <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                                                                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                                                        <span class="sr-only">Next</span>
+                                                                                    </a>`;
                 ol = `<ol class="carousel-indicators">` + li + `</ol>`;
                 _teaTypeDom.children(".carousel-inner").html(ol);
                 _teaTypeDom.children(".carousel-inner").append(imgdiv);
@@ -188,16 +191,30 @@
             var app = new appModal({
                 title: "添加轮播图",
                 url: "/RotationChartSetting/AddOrEdit",
-                data: { WZZModelId: id },
-                callback: function (result) {
-                    console.log(result)
-                },
-                yes: function (e) {
-                    e.preventDefault();
-                    console.log(123);
+                data: {},
+                yes: function () {
+                    var imglist = $("#imgshow .imginfo");
+                    var data = [];
+                    imglist.each(function (index, dom) {
+                        var url = $(dom).children("img").attr("src");
+                        var aid = $(dom).find("input[name=article]").attr("Article-id");
+                        var rotitle = $(dom).children("input[name=rotitle]").val();
+                        data.push({
+                            title: rotitle,
+                            imgurl: url,
+                            ArticleId: aid,
+                            wzzModelId: id
+                        })
+                    });
+                    $.post("/RotationChartSetting/AddRotationChart", { data: data }, function (result) {
+                        if (result) {
+                            layer.msg("添加成功！", { icon: 1 });
+                            load();
+                        }
+                    })
                 }
             });
-            app.open();
+            app.open({ width: "80%" });
         }
 
         //当用户点击添加时
@@ -206,6 +223,53 @@
             var wzzid = $(this).next().attr("wzzid");
             addRotationChart(wzzid);
         })
+
+        function delRotationChart(wzzid) {
+
+            $.post("/RotationChartSetting/GetList", { wzzid: wzzid }, function (result) {
+                var htmlmodel = ``;
+                for (var i = 0; i < result.length; i++) {
+                    var tit = result[i].title == null ? "" : result[i].title;
+                    var aid = result[i].ArticleId == null ? "" : result[i].ArticleId;
+                    var acontent = result[i].Article == null ? "" : result[i].Article.title + "-" + result[i].Article.author;
+                    htmlmodel += `
+                            <div class="btn btn-default imginfo layui-anim layui-anim-scale" style="width:400px;height:320px;" data-toggle="tooltip" data-placement="top" title="双击图片进行删除">
+                                        <img src="`+ result[i].imgurl + `" class="img-responsive" img-id="` + result[i].id + `" />
+                                        <input type="text" value="`+ tit + `" class="form-control" name="rotitle" readonly="readonly" />
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" value="`+ acontent + `" name="article" aria-describedby="inputGroupSuccess1Status" readonly="readonly" Article-id="` + aid + `">
+                                            </div>
+                                        </div>
+                                    </div>`;
+
+                }
+
+                var app = new appModal({
+                    title: "删除轮播图",
+                    body: htmlmodel,
+                    yes: load,
+                    end: load
+                });
+                app.open({ width: "75%" });
+                var div = $('[data-toggle="tooltip"]');
+                $(div).tooltip();
+                //删除数据
+                $(div).dblclick(function () {
+                    var dom = $(this);
+                    var id = $(dom).children("img").attr("img-id");
+                    var imgurl = $(dom).children("img").attr("src");
+                    $.post("/RotationChartSetting/RemovRotationChart", { id: id }, function (result) {
+                        if (result) {
+                            layer.msg("删除成功", { icon: 1 });
+                            dom.remove();
+                        }
+                    });
+                    $.post("/Home/DelFile", { url: imgurl });
+                })
+            })
+
+
+        }
 
         $(function () {
             load();
