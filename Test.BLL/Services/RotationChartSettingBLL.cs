@@ -26,7 +26,8 @@ namespace BLL.Services
                 await _db.RotationCharts.AddRangeAsync(data);
                 await _db.SaveChangesAsync();
                 return true;
-            }catch
+            }
+            catch
             {
                 return false;
             }
@@ -37,7 +38,7 @@ namespace BLL.Services
         {
             if (id == 0) return false;
             var rotationChart = await _db.RotationCharts.SingleOrDefaultAsync(s => s.id == id);
-            if(rotationChart == null)
+            if (rotationChart == null)
             {
                 return false;
             }
@@ -76,12 +77,34 @@ namespace BLL.Services
             return await result.ToListAsync();
         }
 
-        public async Task<RotationChart> GetById(RotationChartInputModel model)
+        public async Task<RotationChart> GetById(int id)
         {
-            if (!model.id.HasValue) return new RotationChart();
-            var result = await _db.RotationCharts.SingleOrDefaultAsync(s => s.id == model.id.Value);
+            if (id <= 0) return new RotationChart();
+            var result = await _db.RotationCharts.Include(a => a.Article).SingleOrDefaultAsync(s => s.id == id);
             if (result == null) return new RotationChart();
             return result;
+        }
+
+        public async Task<bool> UpData(RotationChartInputModel data)
+        {
+            if (data.id <= 0) return false;
+            var rotationchart = await _db.RotationCharts.SingleOrDefaultAsync(s => s.id == data.id);
+            if (rotationchart == null) return false;
+            if (data.ArticleId.HasValue)
+            {
+                if (await _db.Articles.SingleOrDefaultAsync(s => s.id == data.ArticleId) == null) return false;
+            }
+            if (data.WZZModelId.HasValue)
+            {
+                if (await _db.WZZModels.SingleOrDefaultAsync(s => s.id == data.WZZModelId) == null) return false;
+            }
+
+            rotationchart.imgurl = data.imgurl;
+            rotationchart.title = data.title;
+            rotationchart.WZZModelId = data.WZZModelId;
+            rotationchart.ArticleId = data.ArticleId;
+            await _db.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -32,13 +32,16 @@ namespace DAL.Entitys
         /// <summary>
         /// 自关联id
         /// </summary>
-        [ForeignKey("WZZModels")]
         public int? Pid { set; get; }
 
         /// <summary>
         /// 自关联
         /// </summary>
+        [ForeignKey("Pid")]
         public WZZModel WZZModels { set; get; }
+
+        
+        public ICollection<WZZModel> WZZModeles { set; get; }
 
         /// <summary>
         /// 文章图标

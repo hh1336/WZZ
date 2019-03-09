@@ -59,5 +59,17 @@ namespace ADMIN.Controllers
             bool result = await _bll.DelRotationChart(id);
             return Json(result);
         }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            RotationChart result = await _bll.GetById(id);
+            return PartialView(result);
+        }
+
+        public async Task<IActionResult> UpData(RotationChartInputModel data)
+        {
+            bool result = await _bll.UpData(data);
+            return Json(result);
+        }
     }
 }

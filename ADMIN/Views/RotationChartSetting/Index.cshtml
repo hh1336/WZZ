@@ -1,6 +1,6 @@
 ﻿@section Styles{
     <style>
-        .Carousel {
+        .mCarousel {
             margin: 0 auto;
             width: 70%;
         }
@@ -24,7 +24,7 @@
         <div class="layui-tab-item layui-show">
             <button type="button" class="btn btn-success cbtn">添加</button>
             <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(11)" wzzid="11">删除</button>
-            <div id="HomeCarousel" class="carousel slide Carousel" data-ride="carousel">
+            <div id="HomeCarousel" class="carousel slide mCarousel">
                 <div class="carousel-inner">
 
                 </div>
@@ -35,7 +35,7 @@
             <div class="layui-tab-item layui-show">
                 <button type="button" class="btn btn-success cbtn">添加</button>
                 <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(13)" wzzid="13">删除</button>
-                <div id="TeaTypeCarousel" class="carousel slide Carousel" data-ride="carousel">
+                <div id="TeaTypeCarousel" class="carousel slide mCarousel" >
                     <div class="carousel-inner item">
 
                     </div>
@@ -47,7 +47,7 @@
             <div class="layui-tab-item layui-show">
                 <button type="button" class="btn btn-success cbtn">添加</button>
                 <button type="button" class="btn btn-danger " style="margin-bottom:10px;" onclick="delRotationChart(14)" wzzid="14">删除</button>
-                <div id="StoryCarousel" class="carousel slide Carousel" data-ride="carousel">
+                <div id="StoryCarousel" class="carousel slide mCarousel">
                     <div class="carousel-inner item">
 
                     </div>
@@ -93,23 +93,20 @@
                     } else {
                         active = "";
                     }
-                    li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `" href="#` + domid + `"></li>`;
+                    li += `<li data-target="#` + domid + `" data-slide-to="` + i + `" class="` + active + `"></li>`;
                     var tit = result.homeRotationChart[i].title == null ? "" : result.homeRotationChart[i].title;
-                    imgdiv += `<div class="item ` + active + `">
-                                                                                    <img src="`+ result.homeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.homeRotationChart[i].id + `" wzzid="` + result.homeRotationChart[i].wzzModelId + `" arcid="` + result.homeRotationChart[i].articleId + `">
-                                                                                    <div class="carousel-caption">
-                                                                                        `+ tit + `
-                                                                                    </div>
-                                                                                </div>`;
+                    imgdiv += `<div class="item ` + active + `"><img src="`+ result.homeRotationChart[i].imgurl + `" width="100%" height="100%" data-id="` + result.homeRotationChart[i].id + `" wzzid="` + result.homeRotationChart[i].wzzModelId + `" arcid="` + result.homeRotationChart[i].articleId + `">
+                        <div class="carousel-caption">`+ tit + `</div>
+                        </div>`;
                 }
                 carousel = `<a class="left carousel-control" href="#` + domid + `" role="button" data-slide="prev">
-                                                                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                                                                        <span class="sr-only">Previous</span>
-                                                                                    </a>
-                                                                                    <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
-                                                                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                                                                        <span class="sr-only">Next</span>
-                                                                                    </a>`;
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                        </a>
+                    <a class="right carousel-control" href="#`+ domid + `" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>`;
                 ol = `<ol class="carousel-indicators">` + li + `</ol>`;
                 _homeDom.children(".carousel-inner").html(ol);
                 _homeDom.children(".carousel-inner").append(imgdiv);
@@ -183,6 +180,37 @@
                 _teaTypeDom.children(".carousel-inner").append(imgdiv);
                 _teaTypeDom.children(".carousel-inner").append(carousel);
 
+                //加载完数据后为图片添加点击事件以供编辑
+                $(".layui-tab-content img").click(function (e) {
+                    e.preventDefault();
+                    var id = $(this).attr("data-id");
+                    var app = new appModal({
+                        title:"编辑",
+                        url: "/RotationChartSetting/Edit",
+                        data: { id: id },
+                        yes: function () {
+                            var oldurl = $("input[name=oldurl]:hidden").val();
+                            if (oldurl != "") $.post("/Home/DelFile", { url: oldurl });
+                            var imgdom = $(".imginfo");
+                            var _data = {};
+                            _data.id = imgdom.children("img").attr("data-id");
+                            _data.imgurl = imgdom.children("img").attr("src");
+                            _data.title = imgdom.children("input[name=rotitle]").val();
+                            _data.WZZModelId = imgdom.attr("wzzid");
+                            _data.ArticleId = imgdom.find("input[name=article]").attr("Article-id");
+                            $.post("/RotationChartSetting/UpData", { data: _data }, function (result) {
+                                if (result) {
+                                    layer.msg("更新成功", { icon: 1 });
+                                } else {
+                                    layer.msg("更新失败", { icon: 2 });
+                                }
+                                load();
+                            })
+                            
+                        }
+                    });
+                    app.open({ width: "26%" });
+                })
             })
         }
 

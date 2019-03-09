@@ -1,0 +1,17 @@
+﻿
+
+
+
+@section Scripts{
+    <script>
+        function load() {
+            $.post("/ModelManager/GetAllModal", {}, function (result) {
+                console.log(result);
+            })
+        }
+
+        $(function () {
+            load();
+        })
+    </script>
+}

@@ -41,6 +41,12 @@ namespace BLL.Services
             return result.ToList();
         }
 
+        public async Task<List<WZZModel>> GetAllModal()
+        {
+            var result = _db.WZZModels.Include(a => a.WZZModeles).Where(s => s.Pid == null);
+            return await result.ToListAsync();
+        }
+
         /// <summary>
         /// 根据id获取模块信息
         /// </summary>

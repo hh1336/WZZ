@@ -18,9 +18,9 @@ namespace BLL.Interfaces
         /// <summary>
         /// 根据id获取轮播图
         /// </summary>
-        /// <param name="model"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        Task<RotationChart> GetById(RotationChartInputModel model);
+        Task<RotationChart> GetById(int id);
 
         /// <summary>
         /// 获取所有的文章
@@ -48,5 +48,12 @@ namespace BLL.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task<bool> DelRotationChart(int id);
+
+        /// <summary>
+        /// 更新轮播图数据
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        Task<bool> UpData(RotationChartInputModel data);
     }
 }

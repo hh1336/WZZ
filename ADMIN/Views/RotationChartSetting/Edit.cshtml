@@ -1,0 +1,67 @@
+﻿@using DAL.Entitys
+@model RotationChart
+
+<div class="btn btn-default imginfo layui-anim layui-anim-scale" style="width:400px;height:320px;" data-toggle="tooltip" data-placement="top" title="双击替换图片" wzzid="@Model.WZZModelId">
+    <img src="@Model.imgurl" class="img-responsive" data-id="@Model.id" />
+    <input type="text" value="@Model.title" placeholder="轮播图描述（可空）" class="form-control" name="rotitle" />
+    <div class="form-group">
+        <div class="input-group ">
+            @{
+                string acval = Model.Article == null ? "" : Model.Article.title + "-" + Model.Article.author;
+                string acid = Model.ArticleId == null ? "" : Model.ArticleId.ToString();
+            }
+            <input type="text" class="form-control" placeholder="请选择轮播图对应的文章" name="article" value="@acval" Article-id="@acid" readonly="readonly">
+            <span class="input-group-addon" style="padding:0;">
+                <input type="button" class="btn btn-primary ChoiceAc" value="选择" />
+            </span>
+        </div>
+    </div>
+</div>
+<input id="imgurl" type="file" class="file-loading" data-browse-on-zone-click="true" value="替换图片">
+<input type="hidden" name="oldurl" value="" />
+
+<script>
+    $(function () {
+        //初始化tooltip工具，并且绑定双击事件
+        $(".imginfo").tooltip().dblclick(function () {
+
+            $("#imgurl").fileinput({
+                language: 'zh',//设置语言为中文
+                uploadUrl: "/Home/UpFile",//文件上传路径
+                showUpload: true,//是否显示上传按钮
+                browseClass: "btn btn-primary", //按钮样式
+                maxFileCount: 1,//允许最大同时上传数
+                uploadAsync: true,//上传方式使用异步
+                showClose: false,//是否显示右上角关闭按钮
+                validateInitialCount: true,
+                showPreview: false,//关闭预览
+                showCaption: false,//关闭信息简介
+                fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+                maxFileSizenumber: 1024 * 3,//设置最大上传大小
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+                allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+            }).click().on("fileuploaded", function (even, data) {
+                if (data.response) {
+                    //保存原始url
+                    $("input[name=oldurl]:hidden").val($(".imginfo img").attr("src"));
+
+                    $(".imginfo img").attr("src", data.response[0].filePath);
+
+                }
+            });
+
+        }).find("input.ChoiceAc").click(function (e) {
+            var div = $(this).parents("div.imginfo");
+            e.preventDefault();
+            $.post("/RotationChartSetting/GetArticles", {}, function (result) {
+                var index = Common.alert("选择文章", result, function () {
+                    var acid = $("#articles-table").siblings("input[name=_id]:hidden");
+                    var actitle = $("#articles-table").siblings("input[name=_title]:hidden");
+                    var acauthor = $("#articles-table").siblings("input[name=_author]:hidden");
+                    $(div).find("input[name=article]").val(actitle.val() + "-" + acauthor.val()).attr("Article-id", acid.val());
+                    layer.close(index);
+                }, () => { }, "630px");
+            })
+        })
+    })
+</script>
