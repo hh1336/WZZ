@@ -13,6 +13,8 @@ using System.Web;
 using BLL.Commons;
 using DAL.ViewModels;
 using DAL.Entitys;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
 
 namespace ADMIN.Controllers
 {
@@ -52,6 +54,11 @@ namespace ADMIN.Controllers
         public IActionResult GetSession(string key)
         {
             var value = HttpContext.Session.GetString(key);
+            if (string.IsNullOrEmpty(value))
+            {
+                HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                return Redirect("Index");
+            }
             var result = _login.GetUserInfo(value);
             return Json(result);
         }
