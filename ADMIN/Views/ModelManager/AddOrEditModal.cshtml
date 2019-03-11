@@ -1,0 +1,66 @@
+﻿@using DAL.Entitys
+@model WZZModel
+
+<style>
+    #modelform .layui-form-label {
+        padding: 9px 0 9px 0;
+    }
+</style>
+<form class="layui-form" id="modelform">
+    <input type="hidden" name="id" value="@Model.id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">模块名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入模块名" class="layui-input" value="@Model.name">
+        </div>
+    </div>
+    @{ var hid = Model.Pid.HasValue ? "" : "hidden"; }
+    <div class="layui-form-item @hid" id="section">
+        <label class="layui-form-label">选择模块：</label>
+        <div class="layui-input-block">
+
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">副标题：</label>
+        <div class="layui-input-block">
+            <input type="text" name="Subheading" lay-verify="Subheading" autocomplete="off" placeholder="请输入副标题" class="layui-input" value="@Model.Subheading">
+        </div>
+    </div>
+    <input type="hidden" value="@Model.Pid" id="pid" />
+    <div class="layui-form-item">
+    <div class="layui-inline">
+      <label class="layui-form-label">选择图标：</label>
+      <div class="layui-input-inline">
+        <input type="tel" name="icon" lay-verify="icon" autocomplete="off" class="layui-input" value="@Model.icon" placeholder="将内容粘贴到这">
+      </div>
+      <label><a href="http://www.fontawesome.com.cn/faicons/" target="view_window">去选择</a> </label>
+    </div>
+  </div>
+</form>
+
+<script>
+    $(function () {
+        var form;
+        $.post("/ModelManager/GetAllModal", {}, function (result) {
+            var check = ``;
+            var pid = $("#pid:hidden").val();
+
+            for (var i = 0; i < result.length; i++) {
+                if (result[i].id === pid) {
+                    check = `checked="checked"`
+                } else {
+                    check = ``;
+                }
+                var inp = `<input type="radio" name="Pid" value="` + result[i].id + `" title="` + result[i].name + `" ` + check + ` >`;
+                $("#section").children(".layui-input-block").append(inp);
+            }
+            form.render();
+
+        });
+        layui.use('form', function () {
+            form = layui.form;
+        });
+
+    })
+</script>

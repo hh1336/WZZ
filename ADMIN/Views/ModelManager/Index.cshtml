@@ -1,17 +1,147 @@
 ﻿
 
+<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title"></ul>
 
+    <div class="layui-tab-content ">
+    </div>
+</div>
+
+
+
+<script type="text/html" id="toolbar">
+    <div class="layui-btn layui-btn-normal layui-btn-xs layui-btn-radius" lay-event="move" data-toggle="tooltip" data-placement="right" title="移动"><i class="layui-icon layui-icon-release"></i></div>
+    <div class="layui-btn layui-btn-xs layui-btn-radius" lay-event="edit" data-toggle="tooltip" data-placement="right" title="编辑"><i class="layui-icon layui-icon-edit"></i></div>
+    <div class="layui-btn layui-btn-xs layui-btn-danger layui-btn-radius" lay-event="del" data-toggle="tooltip" data-placement="left" title="删除"><i class="layui-icon layui-icon-delete"></i></div>
+</script>
 
 @section Scripts{
     <script>
         function load() {
             $.post("/ModelManager/GetAllModal", {}, function (result) {
-                console.log(result);
+                var tabtitleul = $(".layui-tab .layui-tab-title");
+                var tabcontent = $(".layui-tab .layui-tab-content");
+                var layid = 0;
+                for (var i = 0; i < result.length; i++) {
+                    var tab = `<div class="layui-tab-item layui-show">
+                                                <table lay-filter="datatab`+ result[i].id + `">
+                                                <thead>
+                                                    <tr>
+                                                        <th lay-data="{field:'id',fixed: 'left',unresize: true,align: 'center',templet:function(data){return data.LAY_INDEX;}}">ID</th>
+                                                        <th lay-data="{fixed: 'right', width: 165, align:'center', toolbar: '#toolbar'}"></th>
+                                                        <th lay-data="{field:'name',align: 'center'}">模块名称</th>
+                                                        <th lay-data="{field:'Subheading',align: 'center'}">副标题</th>
+                                                        <th lay-data="{field:'icon',align: 'center',templet:function(data){ return '<i class=&quot;fa '+ data.icon +'&quot;  ></i>' }}">图标</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                                </table>
+                                                </div>`;
+                    tabcontent.append(tab);
+
+                    var table = layui.table;
+                    table.init('datatab' + result[i].id, {
+                        limit: result[i].length,
+                        data: result[i].WZZModeles,
+                        toolbar: '<div><input type="button" value="添加一个子模块" class="layui-btn" onclick="AddOrEditModal(0,' + result[i].id + ')" /></div>',
+                        defaultToolbar: ['<div><input type="button" value="添加一个子模块" class="layui-btn" onclick="AddOrEditModal(0,' + result[i].id + ')" /></div>'],
+                        text: {
+                            none: '还没有数据，赶紧点击右下角添加一条吧' 
+                        }
+                    });
+                    //监听工具条
+                    table.on('tool(datatab' + result[i].id + ')', function (obj) {
+                        console.log(obj);
+                        var data = obj.data;
+                        var event = obj.event;
+                        switch (event) {
+                            case "move"://移动
+
+                                break;
+                            case "edit"://编辑
+
+                                break;
+                            case "del"://删除
+
+                                break;
+                        }
+                    });
+
+                    //加载选项卡title
+                    var liactive = "layui-this";
+
+                    if (i > 0) {
+                        liactive = "";
+                        layid = result[0].id;
+                    }
+                    var li = ` <li class="` + liactive + `" lay-id="` + result[i].id + `" >` + result[i].name + `</li>`;
+                    tabtitleul.append(li);
+
+                }
+
+                layui.use('element', function () {
+                    var element = layui.element;
+
+                    //跳转到第一个选项卡
+                    element.tabChange("docDemoTabBrief", layid);
+                });
+                $('[data-toggle="tooltip"]').tooltip()
             })
+
         }
+
+        //添加一个子模块
+        function AddOrEditModal(id,pid) {
+            var app = new appModal({
+                title: "添加一个子模块",
+                url: "/ModelManager/AddOrEditModal",
+                data: { id: id, pid: pid },
+                yes: function () {
+                    var datalist = $("#modelform").serializeArray();
+                    var data = {};
+                    datalist.forEach(function (value, index) {
+                        data[value.name] = value.value;
+                    })
+                    $.post("/ModelManager/SaveModel",{ data: data }, function (result) {
+                        layer.msg(result.msg, { icon: result.code });
+                        load();
+                    })
+                }
+            });
+            app.open({ width: "50%" });
+
+        }
+
+
 
         $(function () {
             load();
+            
+            //右下角添加模块
+            layui.use('util', function () {
+                var util = layui.util;
+
+                util.fixbar({
+                    bar1: "&#xe654;",
+                    bar2: "&#xe642;",
+                    bgcolor: "#01AAED",
+                    css: { right: 100, bottom: 100 },
+                    click: function (type) {
+                        if (type === 'bar1') {
+                            var app = new appModal({
+                                title: "添加一个模块",
+                                url: "/ModelManager/AddOrEditModal"
+                            });
+                            app.open({ width: "50%" });
+                        }
+                        if (type === 'bar2') {
+
+                        }
+                    }
+                });
+            });
+            
+
         })
     </script>
 }

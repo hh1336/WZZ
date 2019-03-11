@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using DAL;
 using DAL.Entitys;
+using DAL.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -77,6 +78,11 @@ namespace BLL.Services
             }
 
             return result;
+        }
+
+        public Task<bool> SaveModel(WZZModel data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -34,5 +34,19 @@ namespace ADMIN.Controllers
                 ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             });
         }
+
+        public async Task<IActionResult> AddOrEditModal(AddOrEditWZZModelViewModel modal)
+        {
+            WZZModel result = new WZZModel() { Pid = modal.pid };
+            if (modal.id.HasValue && modal.id != 0) result = await _wzz.GetById(modal.id.Value);
+
+            return PartialView(result);
+        }
+
+        public async Task<IActionResult> SaveModel(WZZModel data)
+        {
+            bool result = await _wzz.SaveModel(data);
+            return Json(new { msg = result ? "保存成功" : "保存失败", code = result ? 1 : 2 });
+        }
     }
 }
