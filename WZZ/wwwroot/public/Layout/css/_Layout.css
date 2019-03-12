@@ -1,0 +1,92 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    box-shadow: 1px 2px 2px #e8e8e8;
+}
+
+    header nav.container {
+        padding: 0;
+        margin: 0 auto;
+        width: 80%;
+    }
+
+
+
+header nav .navtop {
+    height: 30%;
+    font-size: 14px;
+}
+
+header nav em {
+    font-weight: 800;
+}
+
+header nav ul {
+    list-style-type: none;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: right;
+}
+
+    header nav ul li {
+        margin-left: 10px;
+        float: right;
+    }
+
+header nav .navbottom .row {
+    height: 70%;
+}
+
+    header nav .navbottom .row .col-9 {
+        padding-top: 10px;
+    }
+
+header nav .navbottom div {
+    padding: 0;
+}
+
+header nav .navbottom ul.nav {
+    padding-top: 27px;
+    font-size: 20px;
+    font-weight: 200;
+    float: right;
+}
+
+    header nav .navbottom ul.nav a {
+        color: #000000;
+    }
+
+        header nav .navbottom ul.nav a:hover {
+            text-decoration: none;
+        }
+
+
+
+footer {
+    padding: 0;
+    margin: 0 auto;
+    width: 80%;
+    box-shadow: 0px -1px 0px #e8e8e8;
+    margin-top:10px;
+}
+
+    footer .footerleft:after {
+        content: '';
+        position: absolute;
+        left: auto;
+        top: auto;
+        bottom: 10px;
+        right: 0;
+        height: 80%;
+        width: 2px;
+        background-color: #cc9d32;
+    }
+    footer .footerright {
+        font-size:18px;
+        padding-top:2%;
+        text-indent: 2em;
+        color:#938f8f;
+    }

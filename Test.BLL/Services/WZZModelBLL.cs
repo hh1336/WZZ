@@ -55,7 +55,21 @@ namespace BLL.Services
         /// <returns></returns>
         public async Task<WZZModel> GetById(int id)
         {
+            
             var result = await _db.WZZModels.SingleOrDefaultAsync(w => w.id == id);
+            if(result == null)
+            {
+                try
+                {
+                    throw new Exception("模块为空") { HelpLink = "/LatestInformation/Index" };
+                }
+                catch (Exception)
+                {
+
+                    return new WZZModel();
+                }
+                
+            }
             return result;
         }
 
@@ -80,9 +94,27 @@ namespace BLL.Services
             return result;
         }
 
-        public Task<bool> SaveModel(WZZModel data)
+        public async Task<bool> SaveModel(WZZModel data)
         {
-            throw new NotImplementedException();
+            //创建
+            if(data.id == 0)
+            {
+                await _db.WZZModels.AddAsync(data);
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            else
+            {
+                
+                var wzzmodel = await _db.WZZModels.SingleOrDefaultAsync(s => s.id == data.id);
+                if (wzzmodel == null) return false;
+                wzzmodel.name = data.name;
+                wzzmodel.Pid = data.Pid.HasValue ? data.Pid : null;
+                wzzmodel.Subheading = data.Subheading;
+                wzzmodel.icon = data.icon;
+                await _db.SaveChangesAsync();
+                return true;
+            }
         }
     }
 }

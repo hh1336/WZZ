@@ -236,6 +236,7 @@
         //加载标题
         function loadTitle(modelId) {
             $.post("/LatestInformation/GetModelInfo", { id: modelId }, function (result) {
+                if (result == null) window.location.href = "/Home/Index";
                 $("#title").text(result);
             })
         }

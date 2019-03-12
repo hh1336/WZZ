@@ -46,5 +46,12 @@ namespace BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<List<string>> Clear();
+
+        /// <summary>
+        /// 根据模块id删除数据
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<List<string>> ClearByModelId(int id);
     }
 }

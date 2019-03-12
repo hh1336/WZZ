@@ -16,7 +16,7 @@ namespace WZZ.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return PartialView();
         }
 
         public IActionResult GetTea(int id)

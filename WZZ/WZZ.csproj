@@ -21,4 +21,9 @@
     <ProjectReference Include="..\Test.DAL\DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\public\Layout\js\" />
+    <Folder Include="wwwroot\public\Layout\image\" />
+  </ItemGroup>
+
 </Project>

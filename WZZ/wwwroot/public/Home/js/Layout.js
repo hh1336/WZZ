@@ -1,34 +1,9 @@
-﻿//————————————————————————导航下拉——————————————————————
-
-$(document).ready(function () {
-    $("#header_menu").click(function () {
-        $(".navlist").slideToggle("slow");
+﻿
+$(document).on("click", "ul.navlist li", function (e) {
+    if ($(this).attr("controller") === "Home") return;
+    e.preventDefault();
+    var controller = $(this).attr("controller");
+    $.post("/" + controller + "/Index", {}, function (html) {
+        $("#container").html(html);
     });
-    $(".nav-link").click(function () {
-        $(".navlist").slideToggle();
-    });
-});
-
-//————————————————————————回到顶部——————————————————————
-$(function gotoTOP() {
-
-    $('#goToTop').hide();        //隐藏go to top按钮
-
-    $(window).scroll(function () {
-        // console.log($(this).scrollTop());
-
-        //当window的scrolltop距离大于1时，go to
-        if ($(this).scrollTop() > 100) {
-            $('#goToTop').fadeIn();
-        } else {
-            $('#goToTop').fadeOut();
-        }
-    });
-
-    $('#goToTop a').click(function () {
-        $('html ,body').animate({ scrollTop: 0 }, 300);
-        return false;
-    });
-
-
 });

@@ -46,6 +46,21 @@ namespace BLL.Services
             return acurl;
         }
 
+        public async Task<List<string>> ClearByModelId(int id)
+        {
+            var arlist = _db.Articles.Where(s => s.WZZModelId == id);
+            var urllist = new List<string>();
+            foreach (var item in arlist)
+            {
+                var aclist = await DelData(item.id);
+                urllist.AddRange(aclist.list);
+            }
+            var wzzmodel = await _db.WZZModels.SingleOrDefaultAsync(s => s.id == id);
+            _db.WZZModels.Remove(wzzmodel);
+            await _db.SaveChangesAsync();
+            return urllist;
+        }
+
         public async Task<DelArticleResultModel> DelData(int id)
         {
             //判断数据准确性

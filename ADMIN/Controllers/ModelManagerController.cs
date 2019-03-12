@@ -16,10 +16,12 @@ namespace ADMIN.Controllers
     public class ModelManagerController : Controller
     {
         private readonly IWZZModelBLL _wzz;
+        private readonly IRecoveryServiceBLL _recovery;
 
-        public ModelManagerController(IWZZModelBLL wzz)
+        public ModelManagerController(IWZZModelBLL wzz, IRecoveryServiceBLL recovery)
         {
             this._wzz = wzz;
+            this._recovery = recovery;
         }
         public async Task<IActionResult> Index()
         {
@@ -47,6 +49,22 @@ namespace ADMIN.Controllers
         {
             bool result = await _wzz.SaveModel(data);
             return Json(new { msg = result ? "保存成功" : "保存失败", code = result ? 1 : 2 });
+        }
+
+        public async Task<IActionResult> DelModel(AddOrEditWZZModelViewModel model)
+        {
+           var wzzmode = await _wzz.GetById(model.id.Value);
+            if(wzzmode != null)
+            {
+                //判断是在删除大模块
+                if(wzzmode.Pid == null)
+                {
+                    return Json(new { code = 2, msg = "操作失败" });
+                }
+                List<string> urllist = await _recovery.ClearByModelId(model.id.Value);
+                return Json(new { code = 1, msg = "操作成功", urllist = urllist });
+            }
+            return Json(new { code = 2, msg = "操作失败" });
         }
     }
 }

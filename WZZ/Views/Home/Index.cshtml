@@ -1,340 +1,82 @@
 ﻿@{
     ViewData["Title"] = "首页";
 }
-@section Styles{
-    <link rel="stylesheet" href="~/public/Home/css/index.css" />
-}
-<div id="content_top" style="height:100%;width:100%; margin:0 auto; padding-top:13%;">
-    <!-- 外套 -->
-    <div class="wrapper" style="white-space:nowrap !important;">
-        <!---------left  （banner）--------->
-        <div class="banner_box col-5" style="margin-right:10px;">
-            <div class="banner">
-                <div class="item">
-                    <ul id="lunbotu">
-                        <li class="banner_li">
-                            <a href=""><span>六大茶类茶叶的不同功效及特点</span><img src="~/public/Home/images/index/banner1.jpg" width="100%" height="100%" /></a>
-                        </li>
-                        <li class="banner_li">
-                            <a href=""><span>茶叶种类划分：各茶叶分类的代表茶有哪些？</span><img src="~/public/Home/images/index/banner3.jpg" width="100%" height="100%" /></a>
-                        </li>
-                        <li class="banner_li">
-                            <a href=""><span>择一处清幽，斟一盏芳茗</span><img src="~/public/Home/images/index/banner2.jpg" width="100%" height="100%" /></a>
-                        </li>
-                        <li class="banner_li">
-                            <a href=""><span>如何成为品茶高手？学会这5个动作让你成为品茶高手！</span><img src="~/public/Home/images/index/banner4.jpg" width="100%" height="100%" /></a>
-                        </li>
-                    </ul>
-                </div>
+
+<style>
+    #content h4{
+        color:#b70000;
+    }
+</style>
+
+<div class="row" id="Hometop">
+    <!--轮播图-->
+    <div class="col-7">
+        <div id="HomeCarousel" class="carousel slide" data-ride="carousel">
+            <!--圆点区域-->
+            <ol class="carousel-indicators"></ol>
+
+            <!--图片区域-->
+            <div class="carousel-inner">
+
             </div>
-        </div>
 
-        <!---------right  （Hot）--------->
-        <div class="Hot_box col-5" id="right_Hot">
-
-
+            <!--左右侧切换按钮-->
+            <a class="carousel-control-prev" href="#HomeCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#HomeCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
     </div>
 
+    
+    <div class="col-4 col-lg-pull-1 col-md-pull-1">
+        <h4>最新资讯</h4>
+    </div>
+</div>
+
+<div class="row" id="Homebottom">
+    <div class="col-6" id="bottomleft"></div>
+    <div class="col-6" id="bottomright"></div>
 </div>
 
 
-<div id="content_foot" style="width:100%;height:100%; float:left; margin:0 auto; padding-top:30px;">
-
-    <div class="content_left col-5.5 p-0" style="display:inline-block;" id="content_left">
-
-    </div>
-
-    <div class="content_right col-5.5 p-0" style="display:inline-block;" id="content_right">
-
-    </div>
-
-</div>
 @section Scripts{
-    <script type="text/javascript" src="~/public/Home/js/index.js"></script>
     <script>
         //加载模块
         function load() {
-        //加载模块信息
-            $.post("/Subpage/GetModel", { id: 11 }, function (result) {
-                //当有模块信息时
-                if (result.length > 0) {
-                    //加载轮播图旁边的模块
-                    var arrayone = result.shift();
-                    //定义文章个数初始值
-                    var hotcontent = ``;
-                    //加载模块下的文章
-                    if (arrayone.articles.length > 0) {
-                        //如果文章数大于3，则取前3条
-                        if (arrayone.articles.length > 3) {
-                            var newarray = arrayone.articles.slice(0, 3);
-                            //将数据遍历出来
-                            for (var i = 0; i < newarray.length; i++) {
-                                hotcontent = + `
-                                                <div class="mod-b mod-art clearfix  d-flex justify-content-start">
-                                        <div class="mod-thumb pull-left img1 col-4 p-0">
-                                            <a class="transition" href="/Home/Index_Article?id=`+ newarray[i].id + `">
-                                                <img class="" alt="`+ newarray[i].title + `" src="` + newarray[i].imgurl + `" style="display: inline;">
-                                            </a>
-                                        </div>
-                                        <div class="mob-ctt index-article-list-yh col-6 pl-2">
-                                            <h2>
-                                                <a href="/Home/Index_Article?id=`+ newarray[i].id + `" class="transition msubstr-row2">` + newarray[i].title + `</a>
-                                            </h2>
-                                            <div class="mob-author">
-                                                <div class="author-face">
-                                                    <img src="~/public/Home/images/font/小猫.png">
-                                                </div>
-                                                <a href="/Home/Index_Article?id=`+ newarray[i].id + `" class="pl-4">
-                                                    <span class="author-name ">`+ newarray[i].source + `</span>
-                                                    <span class="time">`+ newarray[i].createTime + `</span>
-                                                </a>
-                                            </div>
-                                            <div class="mob-sub">
-                                                `+ newarray[i].author + `
-                                            </div>
-                                        </div>
-                                    </div>
-                                                `;
-                            }
-                        } else {//如果文章数小于三条
-                            //直接遍历数据
-                            for (var i = 0; i < arrayone.articles.length; i++) {
-                                hotcontent = + `
-                                                <div class="mod-b mod-art clearfix  d-flex justify-content-start">
-                                        <div class="mod-thumb pull-left img1 col-4 p-0">
-                                            <a class="transition" href="/Home/Index_Article?id=`+ arrayone.articles[i].id + `">
-                                                <img class="" alt="`+ arrayone.articles[i].title + `" src="` + arrayone.articles[i].imgurl + `" style="display: inline;">
-                                            </a>
-                                        </div>
-                                        <div class="mob-ctt index-article-list-yh col-6 pl-2">
-                                            <h2>
-                                                <a href="/Home/Index_Article?id=`+ arrayone.articles[i].id + `" class="transition msubstr-row2">` + arrayone.articles[i].title + `</a>
-                                            </h2>
-                                            <div class="mob-author">
-                                                <div class="author-face">
-                                                    <img src="~/public/Home/images/font/小猫.png">
-                                                </div>
-                                                <a href="/Home/Index_Article?id=`+ arrayone.articles[i].id + `" class="pl-4">
-                                                    <span class="author-name ">`+ arrayone.articles[i].source + `</span>
-                                                    <span class="time">`+ arrayone.articles[i].createTime + `</span>
-                                                </a>
-                                            </div>
-                                            <div class="mob-sub">
-                                                `+ arrayone.articles[i].author + `
-                                            </div>
-                                        </div>
-                                    </div>
-                                        `;
-                            }
-                        }
+            //加载模块信息
 
-                    }
-                    //将加载好的文章数拼接到模块中
-                    var hottitle = `
-                                    <div class="hot">
-                                        <div class="hot_title">
-                                            <h3>`+ arrayone.wzzModel.name + `</h3>
-                                        </div>
-                                        <div class="mod-info-flow" >
-                                        `+ hotcontent + `
-                                        </div>
-                                    </div>
-                                    `;
-                    //将第一个模块的内容加载到轮播图旁边
-                    $("#right_Hot").append(hottitle);
-                    //加载其他模块
-                    if (result.length > 0) {
-                        //得到剩余模块个数/2最后向上取整
-                        var resultNumber = Math.ceil((result.length / 2));
-                        //如果resultNumber大于0表示还有模块
-                        if (resultNumber > 0) {
-                            //得到左边模块信息
-                            var leftModel = result.slice(0, resultNumber);
-                            for (var y = 0; y < resultNumber; y++) {
-                                result.shift();
-                            }
-                            //遍历加载每一个左边模块的信息
-                            for (var i = 0; i < leftModel.length; i++) {
-                                //定义左边模块的文章数
-                                var leftModelContentstr = ``;
-                                //如果文章数量大于5条，则只取前5条文章
-                                if (leftModel[i].articles.length > 5) {
-                                    //取出前5条文章
-                                    var articlesArr = leftModel[i].articles.slice(0, 5);
-                                    for (var x = 0; x < articlesArr.length; x++) {
-                                        leftModelContentstr += `
-                                                <div class="mod-b mod-art clearfix  d-flex justify-content-start">
-                                        <div class="mod-thumb pull-left img1 col-4 p-0">
-                                            <a class="transition" href="/Home/Index_Article?id=`+ articlesArr[x].id + `">
-                                                <img class="" alt="`+ articlesArr[x].title + `" src="` + articlesArr[x].imgurl + `" style="display: inline;">
-                                            </a>
-                                        </div>
-                                        <div class="mob-ctt index-article-list-yh col-6 pl-2">
-                                            <h2>
-                                                <a href="/Home/Index_Article?id=`+ articlesArr[x].id + `" class="transition msubstr-row2">` + articlesArr[x].title + `</a>
-                                            </h2>
-                                            <div class="mob-author">
-                                                <div class="author-face">
-                                                    <img src="~/public/Home/images/font/小猫.png">
-                                                </div>
-                                                <a href="/Home/Index_Article?id=`+ articlesArr[x].id + `" class="pl-4">
-                                                    <span class="author-name ">`+ articlesArr[x].source + `</span>
-                                                    <span class="time">`+ articlesArr[x].createTime + `</span>
-                                                </a>
-                                            </div>
-                                            <div class="mob-sub">
-                                                `+ articlesArr[x].author + `
-                                            </div>
-                                        </div>
-                                    </div>
-                                                `;
-                                    }
-                                } else {//如果文章数量不大于5条，则全部遍历出来
-                                    for (var x = 0; x < leftModel[i].articles.length; x++) {
-                                        leftModelContentstr += `
-                                                <div class="mod-b mod-art clearfix  d-flex justify-content-start">
-                                        <div class="mod-thumb pull-left img1 col-4 p-0">
-                                            <a class="transition" href="/Home/Index_Article?id=`+ leftModel[i].articles[x].id + `">
-                                                <img class="" alt="`+ leftModel[i].articles[x].title + `" src="` + leftModel[i].articles[x].imgurl + `" style="display: inline;">
-                                            </a>
-                                        </div>
-                                        <div class="mob-ctt index-article-list-yh col-6 pl-2">
-                                            <h2>
-                                                <a href="/Home/Index_Article?id=`+ leftModel[i].articles[x].id + `" class="transition msubstr-row2">` + leftModel[i].articles[x].title + `</a>
-                                            </h2>
-                                            <div class="mob-author">
-                                                <div class="author-face">
-                                                    <img src="~/public/Home/images/font/小猫.png">
-                                                </div>
-                                                <a href="/Home/Index_Article?id=`+ leftModel[i].articles[x].id + `" class="pl-4">
-                                                    <span class="author-name ">`+ leftModel[i].articles[x].source + `</span>
-                                                    <span class="time">`+ leftModel[i].articles[x].createTime + `</span>
-                                                </a>
-                                            </div>
-                                            <div class="mob-sub">
-                                                `+ leftModel[i].articles[x].author + `
-                                            </div>
-                                        </div>
-                                    </div>
-                                                `;
-                                    }
-
-                                }
-                                //定义左边模块的信息
-                                var leftModelstr = `
-                                                    <div class="hot">
-                                                        <div class="hot_title">
-                                                        <h3>`+ leftModel[i].wzzModel.name + `</h3>
-                                                        </div>
-                                                        <div class="mod-info-flow" >
-                                                        `+ leftModelContentstr + `
-                                                        </div>
-                                                    </div>
-                                                    `;
-                                //将每一个模块添加到左边模块
-                                $("#content_left").append(leftModelstr);
-
-                            }
-                            //如果result中还有模块，则将其他模块加载到右边
-                            if (result.length > 0) {
-                                for (var i = 0; i < result.length; i++) {
-                                    //定义左边模块的文章数
-                                    var rightModelContentstr = ``;
-                                    //如果模块中文章数量大于5
-                                    if (result[i].articles.length > 5) {
-                                        var articlesArr = result[i].articles.slice(0, 5);
-                                        for (var x = 0; x < articlesArr.length; x++) {
-                                            rightModelContentstr += `
-                                                <div class="mod-b mod-art clearfix  d-flex justify-content-start">
-                                        <div class="mod-thumb pull-left img1 col-4 p-0">
-                                            <a class="transition" href="/Home/Index_Article?id=`+ articlesArr[x].id + `">
-                                                <img class="" alt="`+ articlesArr[x].title + `" src="` + articlesArr[x].imgurl + `" style="display: inline;">
-                                            </a>
-                                        </div>
-                                        <div class="mob-ctt index-article-list-yh col-6 pl-2">
-                                            <h2>
-                                                <a href="/Home/Index_Article?id=`+ articlesArr[x].id + `" class="transition msubstr-row2">` + articlesArr[x].title + `</a>
-                                            </h2>
-                                            <div class="mob-author">
-                                                <div class="author-face">
-                                                    <img src="~/public/Home/images/font/小猫.png">
-                                                </div>
-                                                <a href="/Home/Index_Article?id=`+ articlesArr[x].id + `" class="pl-4">
-                                                    <span class="author-name ">`+ articlesArr[x].source + `</span>
-                                                    <span class="time">`+ articlesArr[x].createTime + `</span>
-                                                </a>
-                                            </div>
-                                            <div class="mob-sub">
-                                                `+ articlesArr[x].author + `
-                                            </div>
-                                        </div>
-                                    </div>
-                                                `;
-                                        }
-                                    } else {//如果不大于5
-                                        for (var x = 0; x < result[i].articles.length; x++) {
-                                            rightModelContentstr += `
-                                                <div class="mod-b mod-art clearfix  d-flex justify-content-start">
-                                        <div class="mod-thumb pull-left img1 col-4 p-0">
-                                            <a class="transition" href="/Home/Index_Article?id=`+ result[i].articles[x].id + `">
-                                                <img class="" alt="`+ result[i].articles[x].title + `" src="` + result[i].articles[x].imgurl + `" style="display: inline;">
-                                            </a>
-                                        </div>
-                                        <div class="mob-ctt index-article-list-yh col-6 pl-2">
-                                            <h2>
-                                                <a href="/Home/Index_Article?id=`+ result[i].articles[x].id + `" class="transition msubstr-row2">` + result[i].articles[x].title + `</a>
-                                            </h2>
-                                            <div class="mob-author">
-                                                <div class="author-face">
-                                                    <img src="~/public/Home/images/font/小猫.png">
-                                                </div>
-                                                <a href="/Home/Index_Article?id=`+ result[i].articles[x].id + `" class="pl-4">
-                                                    <span class="author-name ">`+ result[i].articles[x].source + `</span>
-                                                    <span class="time">`+ result[i].articles[x].createTime + `</span>
-                                                </a>
-                                            </div>
-                                            <div class="mob-sub">
-                                                `+ result[i].articles[x].author + `
-                                            </div>
-                                        </div>
-                                    </div>
-                                                `;
-                                        }
-                                    }
-
-                                    //定义右边模块的信息
-                                    var rightModelstr = `
-                                                    <div class="hot">
-                                                        <div class="hot_title">
-                                                        <h3>`+ result[i].wzzModel.name + `</h3>
-                                                        </div>
-                                                        <div class="mod-info-flow" >
-                                                        `+ rightModelContentstr + `
-                                                        </div>
-                                                    </div>
-                                                    `;
-                                    //将每一个模块添加到左边模块
-                                    $("#content_right").append(rightModelstr);
-                                }
-                            }
-
-                        }
-                    }
-                }
-            });
             //加载轮播图
             $.post("/Home/GetRotationCharts", { id: 11 }, function (result) {
+                var homedom = $("#Hometop");
+                var oldom = homedom.find("ol");
+                var carouseldom = homedom.find(".carousel-inner");
+
+                var active = ``;
+                var li = ``;
+                var imgdiv = ``;
                 for (var i = 0; i < result.length; i++) {
-                var listr = `
-                    <li class="banner_li">
-                        <a href=""><span>`+ result[i].title + `</span>
-                        <img src="`+ result[i].imgurl +`" width="100%" height="100%" />
-                        </a>
-                    </li>`;
-                    $("#lunbotu").append(listr);
+                    if (i > 0) {
+                        active = ``;
+                    } else {
+                        active = `active`;
+                    }
+                    li = `<li data-target="#HomeCarousel" data-slide-to="` + i + `" class="` + active + `"></li>`;
+                    oldom.append(li);
+                    var tit = result[i].title == null ? "" : result[i].title;
+                    imgdiv = `<div class="carousel-item ` + active + `">
+        <div class="carousel-caption d-none d-md-block">
+        <h5>`+ tit + `</h5>
+      </div>
+<img class="d-block w-100" src="http://localhost:62320`+ result[i].imgurl + `">
+</div>`;
+                    carouseldom.append(imgdiv);
                 }
-                
+                $('.carousel').carousel();
             });
         }
 

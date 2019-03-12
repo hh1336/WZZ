@@ -22,7 +22,7 @@ namespace WZZ.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return PartialView();
         }
 
         /// <summary>
