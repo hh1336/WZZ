@@ -56,7 +56,7 @@ namespace BLL.Services
         public async Task<WZZModel> GetById(int id)
         {
             
-            var result = await _db.WZZModels.SingleOrDefaultAsync(w => w.id == id);
+            var result = await _db.WZZModels.Include(a => a.Articles).SingleOrDefaultAsync(w => w.id == id);
             if(result == null)
             {
                 try
@@ -71,6 +71,18 @@ namespace BLL.Services
                 
             }
             return result;
+        }
+
+        public async Task<List<WZZModel>> GetModelByMainModelId(int id)
+        {
+            //var query = _db.WZZModels.Include(s => s.Articles).Include(s => s.Articles.Where(a => a.isShow == 1)).Where(s => s.Pid == id);
+            var query = from item in _db.WZZModels.Where(s => s.Pid == id)
+                        join arc in _db.Articles on item.id equals arc.WZZModelId into arclist
+                        from arc in arclist.DefaultIfEmpty()
+                        select item;
+
+
+            return await query.ToListAsync();
         }
 
         /// <summary>

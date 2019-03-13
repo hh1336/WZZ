@@ -51,5 +51,12 @@ namespace BLL.Interfaces
         /// <param name="data"></param>
         /// <returns></returns>
         Task<bool> SaveModel(WZZModel data);
+
+        /// <summary>
+        /// 根据主模块id获取所有子模块和对应的文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<List<WZZModel>> GetModelByMainModelId(int id);
     }
 }

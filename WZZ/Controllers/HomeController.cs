@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace WZZ.Controllers
 {
@@ -28,10 +29,10 @@ namespace WZZ.Controllers
             return View();
         }
 
-        public IActionResult GetModel(int id)
+        public async Task<IActionResult> GetModel(int id)
         {
-            var result = _WZZModelBLL.GetById(id);
-            return Json(result);
+            var result = await _WZZModelBLL.GetModelByMainModelId(id);
+            return Json(result, new JsonSerializerSettings() { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
         }
         //加载轮播图
         public IActionResult GetRotationCharts(int id)
