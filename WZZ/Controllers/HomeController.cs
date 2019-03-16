@@ -32,7 +32,9 @@ namespace WZZ.Controllers
         public async Task<IActionResult> GetModel(int id)
         {
             var result = await _WZZModelBLL.GetModelByMainModelId(id);
-            return Json(result, new JsonSerializerSettings() { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore });
+            return Json(result, new JsonSerializerSettings() {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        });
         }
         //加载轮播图
         public IActionResult GetRotationCharts(int id)

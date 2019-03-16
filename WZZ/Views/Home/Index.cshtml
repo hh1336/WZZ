@@ -97,73 +97,10 @@
 
 <div class="row" id="Homebottom">
     <div class="col-6 p-0 float-left mr-2" id="bottomleft">
-        <h4>最新资讯</h4>
-        <ul>
-            <li>
-                <div class="col-5 p-0">
-                    <img src="http://localhost:62320/ImageFiles/623banner4.jpg" width="190px" height="120px" />
-                </div>
-                <div class="col-5 p-0 ">
-                    <span style="font-weight:500; color:black;" class="col-12 p-0">珍惜与你喝茶之人</span>
-                    <div class="col-12 p-0 mt-2">
-                        <img src="~/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                        <span class="col-3">茶叶</span>
-                        <span class="col-2">时间</span>
-                    </div>
-                    <div class="col-12 p-0 mt-2"><span>生活大多无奈</span></div>
-                </div>
-            </li>
-            <li>
-                <div class="col-5 p-0">
-                    <img src="http://localhost:62320/ImageFiles/623banner4.jpg" width="190px" height="120px" />
-                </div>
-                <div class="col-5 p-0 ">
-                    <span style="font-weight:500; color:black;" class="col-12 p-0">珍惜与你喝茶之人</span>
-                    <div class="col-12 p-0 mt-2">
-                        <img src="~/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                        <span class="col-3">茶叶</span>
-                        <span class="col-2">时间</span>
-                    </div>
-                    <div class="col-12 p-0 mt-2"><span>生活大多无奈</span></div>
-                </div>
-            </li>
 
-        </ul>
     </div>
     <hr />
     <div class="col-5 p-0 float-left" id="bottomright">
-        <h4>最新资讯</h4>
-        <ul>
-            <li>
-                <div class="col-6 p-0">
-                    <img src="http://localhost:62320/ImageFiles/623banner4.jpg" width="190px" height="120px" />
-                </div>
-                <div class="col-5 p-0 ">
-                    <span style="font-weight:500; color:black;" class="col-12 p-0">珍惜与你喝茶之人</span>
-                    <div class="col-12 p-0 mt-2">
-                        <img src="~/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                        <span class="col-3">茶叶</span>
-                        <span class="col-2">时间</span>
-                    </div>
-                    <div class="col-12 p-0 mt-2"><span>生活大多无奈</span></div>
-                </div>
-            </li>
-            <li>
-                <div class="col-6 p-0">
-                    <img src="http://localhost:62320/ImageFiles/623banner4.jpg" width="190px" height="120px" />
-                </div>
-                <div class="col-5 p-0 ">
-                    <span style="font-weight:500; color:black;" class="col-12 p-0">珍惜与你喝茶之人</span>
-                    <div class="col-12 p-0 mt-2">
-                        <img src="~/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                        <span class="col-3">茶叶</span>
-                        <span class="col-2">时间</span>
-                    </div>
-                    <div class="col-12 p-0 mt-2"><span>生活大多无奈</span></div>
-                </div>
-            </li>
-
-        </ul>
 
     </div>
 </div>
@@ -171,11 +108,15 @@
 
 @section Scripts{
     <script>
+
+        function addleftdata(str) {
+
+        }
+
         //加载模块
         function load() {
             //加载模块信息
             $.post("/Home/GetModel", { id: 11 }, function (result) {
-                console.log(result);
                 var topnewspaper = $("#topnewspaper");
                 //渲染轮播图旁边的模块
                 if (result.length >= 1) {
@@ -183,8 +124,8 @@
                     topnewspaper.append(`<h4>` + oneobj.name + `</h4>`);
                     var li = ``;
                     for (var i = 0; i < oneobj.Articles.length; i++) {
-                        if (i > 3) {
-                            return;
+                        if (i >= 3) {
+                            continue;
                         }
                         li += `<li article-id="` + oneobj.Articles[i].id + `">
                         <div class="col-6 p-0">
@@ -200,9 +141,66 @@
                         </div>
                     </li>`;
                     }
-                    var ul = `<ul>` + li + `</ul><a href="#` + oneobj.id + `" class="right">查看更多>>></a>`;
+                    var ul = `<ul>` + li + `</ul><a href="#` + oneobj.id + `">查看更多>>></a>`;
                     topnewspaper.append(ul);
                 }
+                //渲染主体左边模块
+                if (result.length >= 1) {
+                    var leftmodel = result.slice(0, result.length / 2);
+                    result.splice(0, result.length / 2);
+                    for (var i = 0; i < leftmodel.length; i++) {
+                        $("#bottomleft").append(`<h4 class="mt-2">` + leftmodel[i].name + `</h4>`)
+                        var li = ``;
+                        for (var j = 0; j < leftmodel[i].Articles.length; j++) {
+                            if (j >= 5) {
+                            continue;
+                            }
+                            li += `<li>
+                <div class="col-5 p-0">
+                    <img src="http://localhost:62320`+ leftmodel[i].Articles[j].imgurl +`" width="190px" height="120px" />
+                </div>
+                <div class="col-5 p-0 ">
+                    <span style="font-weight:500; color:black;" class="col-12 p-0">`+ leftmodel[i].Articles[j].title +`</span>
+                    <div class="col-12 p-0 mt-2">
+                        <img src="/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
+                        <span class="col-3">`+ leftmodel[i].Articles[j].author +`</span>
+                    </div>
+                        <div class="col-12 p-0 mt-2">
+                        <span >`+ Common.ToDateTime(leftmodel[i].Articles[j].createTime) +`</span></div>
+                </div>
+            </li>`;
+                        }
+                        var ul = `<ul>` + li + ` </ul><a href="#` + leftmodel[i].id + `">查看更多>>></a></span>`;
+                        $("#bottomleft").append(ul);
+                    }
+
+                    for (var i = 0; i < result.length; i++) {
+                        $("#bottomright").append(`<h4 class="mt-2">` + result[i].name + `</h4>`)
+                        var li = ``;
+                        for (var j = 0; j < result[i].Articles.length; j++) {
+                            if (j >= 5) {
+                            continue;
+                            }
+                            li += `<li>
+                <div class="col-5 p-0">
+                    <img src="http://localhost:62320`+ result[i].Articles[j].imgurl +`" width="190px" height="120px" />
+                </div>
+                <div class="col-5 p-0 ">
+                    <span style="font-weight:500; color:black;" class="col-12 p-0">`+ result[i].Articles[j].title +`</span>
+                    <div class="col-12 p-0 mt-2">
+                        <img src="/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
+                        <span class="col-3">`+ result[i].Articles[j].author +`</span>
+                    </div>
+                        <div class="col-12 p-0 mt-2">
+                        <span >`+ Common.ToDateTime(result[i].Articles[j].createTime) +`</span></div>
+                </div>
+            </li>`;
+                        }
+                        var ul = `<ul>` + li + ` </ul><a href="#` + result[i].id + `">查看更多>>></a></span>`;
+                        $("#bottomright").append(ul);
+                    }
+                }
+
 
             })
 

@@ -57,6 +57,6 @@ namespace BLL.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<List<WZZModel>> GetModelByMainModelId(int id);
+        Task<List<WZZModelViewModel>> GetModelByMainModelId(int id);
     }
 }

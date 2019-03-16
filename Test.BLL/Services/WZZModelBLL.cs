@@ -73,16 +73,28 @@ namespace BLL.Services
             return result;
         }
 
-        public async Task<List<WZZModel>> GetModelByMainModelId(int id)
+        public async Task<List<WZZModelViewModel>> GetModelByMainModelId(int id)
         {
-            //var query = _db.WZZModels.Include(s => s.Articles).Include(s => s.Articles.Where(a => a.isShow == 1)).Where(s => s.Pid == id);
-            var query = from item in _db.WZZModels.Where(s => s.Pid == id)
-                        join arc in _db.Articles on item.id equals arc.WZZModelId into arclist
-                        from arc in arclist.DefaultIfEmpty()
-                        select item;
+            if (id == 0) return new List<WZZModelViewModel>();
+            var wzz = _db.WZZModels.Where(s => s.Pid == id);
+            var result = new List<WZZModelViewModel>();
+            foreach (var item in wzz)
+            {
+                var wzzmodel = new WZZModelViewModel()
+                {
+                    id = item.id,
+                    name = item.name,
+                    Pid = item.Pid,
+                    icon = item.icon,
+                    Subheading = item.Subheading
+                };
+                var arc = await _db.Articles.Where(s => s.WZZModelId == item.id && s.isShow == 1).OrderByDescending(s => s.createTime).Take(5).ToListAsync();
+                wzzmodel.Articles = arc;
+                result.Add(wzzmodel);
+            }
 
 
-            return await query.ToListAsync();
+            return result;
         }
 
         /// <summary>
