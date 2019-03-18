@@ -2,8 +2,8 @@
     ViewData["Title"] = "茶知识";
 }
 
-    <link rel="stylesheet" href="~/public/Home/css/Subpage.css" />
-    <link rel="stylesheet" href="~/public/Home/css/Subpage_meta.css" />
+<link rel="stylesheet" href="~/public/Home/css/Subpage.css" />
+<link rel="stylesheet" href="~/public/Home/css/Subpage_meta.css" />
 
 
 <!---------------------------------------------------------top-------------------------------------------------->
@@ -16,58 +16,54 @@
 </div>
 
 
-    <script>
-        //加载数据
-        function load() {
-            $.post("/Home/GetModel", { id: 12 }, function (result) {
-                console.log(result);
-                //循环模块信息
-                for (var i = 0; i < result.length; i++) {
-                    var articleulstr = ``;//初始化文章数量
-                    var articlestr = ``;//初始化文章内容
-                    
-                    //如果文章数量大于1条，则从第二条数据开始将文章加载到ul中
-                    if (result[i].Articles.length > 1) {
-                        for (var x = 1; x < result[i].Articles.length; x++) {
-                            articleulstr += `<li><a href="#" class="login_text">` + result[i].Articles[x].title + `</a></li>`;
-                        }
+<script>
+    //加载数据
+    function load() {
+        $.post("/Home/GetModel", { id: 12 }, function (result) {
+            console.log(result);
+            //循环模块信息
+            for (var i = 0; i < result.length; i++) {
+                var articleulstr = ``;//初始化文章数量
+                var articlestr = ``;//初始化文章内容
+
+                //渲染模块文章
+                for (var j = 0; j < result[i].Articles.length; j++) {
+                    if (j > 2) {
+                        continue;
                     }
-                    //如果该模块有文章，则将第一条文章图片和信息加载到页面上，并将其余的文章拼接到内容中
-                    if (result[i].Articles.length > 0) {
-                        articlestr = `
+                articlestr += `
                         <div class="news-box">
-                         <div data-scroll-reveal="enter left 100px over 0.5s after 0.4s" class="col-box  col-xs-12 col-sm-12 col-md-6 col-lg-4" data-scroll-reveal-id="35" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 0.5s ease-in-out 0.4s,  opacity 0.5s ease-in-out 0.4s;transition: transform 0.5s ease-in-out 0.4s, opacity 0.5s ease-in-out 0.4s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">
+                         <div data-scroll-reveal="enter left 100px over 0.5s after 0.4s" class="col-box  col-xs-12 col-sm-12" data-scroll-reveal-id="35" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 0.5s ease-in-out 0.4s,  opacity 0.5s ease-in-out 0.4s;transition: transform 0.5s ease-in-out 0.4s, opacity 0.5s ease-in-out 0.4s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">
                             <div class="pic-box">
                                 <a href="" class="login_text">
-                                    <img src="http://localhost:62320`+ result[i].Articles[0].imgurl + `" alt="">
-                                    <span><p>`+ result[i].Articles[0].title + `</p></span>
+                                    <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" alt="图片错误" style="width:350px;height:200px;">
+                                    <span><p>`+ result[i].Articles[j].title + `</p></span>
                                 </a>
                             </div>
-                            <ul class="news-list">
-                            `+ articleulstr + `
-                            </ul>
-                            </div>
-                            </div>
-                            `;
-                    }
-                    //将便利出来的模块信息进行渲染，并拼接文章内容
-                    var articletitlestr = `
+                        </div>
+                       </div>`;
+
+                }
+                //将便利出来的模块信息进行渲染，并拼接文章内容
+                var articletitlestr = `
                         <div data-scroll-reveal="enter top 100px over 0.5s" class="title-box1 col-3 col-sm-6 col-md-12 col-lg-12">
                             <p class="cn" id="tit">`+ result[i].name + `</p>
                             <p class="en">`+ result[i].Subheading + `</p>
                         </div>`+ articlestr;
-                    //将组装好的模块和文章拼接起来
-                    var modelstr = `<div class="layout row">` + articletitlestr + `</div>`;
-                    //将内容渲染到页面上
-                    $("#modelcontent").append(modelstr);
-                }
-            });
-        }
+                //将组装好的模块和文章拼接起来
+                var modelstr = `<div class="layout row">` + articletitlestr + `</div>`;
 
-        $(function () {
-            load();
 
-        })
-    </script>
+                //将内容渲染到页面上
+                $("#modelcontent").append(modelstr);
+            }
+        });
+    }
+
+    $(function () {
+        load();
+
+    })
+</script>
 
 

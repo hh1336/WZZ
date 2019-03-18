@@ -4,15 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace WZZ.Controllers
 {
     public class VarietiesController : Controller
     {
         private readonly ITeaTypeBLL _teaType;
-        public VarietiesController(ITeaTypeBLL teaTypeBLL)
+        private readonly IVarietiesBLL _bll;
+        public VarietiesController(ITeaTypeBLL teaTypeBLL, IVarietiesBLL bll)
         {
             _teaType = teaTypeBLL;
+            _bll = bll;
         }
         public IActionResult Index()
         {
@@ -25,10 +28,13 @@ namespace WZZ.Controllers
             return Json(result);
         }
 
-        public IActionResult GetAllTeaType()
+        public async Task<IActionResult> showArticle(int id)
         {
-            var result = _teaType.GetTeaTypeAndArticle();
-            return Json(result);
+            var result = await _bll.GetAcById(id);
+            return Json(result, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
         }
     }
 }

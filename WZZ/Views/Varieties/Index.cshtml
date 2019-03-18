@@ -2,140 +2,133 @@
     ViewData["Title"] = "茶品种";
 }
 
-    <link rel="stylesheet" href="~/public/Home/css/Varieties.css" />
-    <link rel="stylesheet" href="~/public/Home/css/Varieties_meta.css" />
+<link rel="stylesheet" href="~/public/Home/css/Varieties.css" />
+<link rel="stylesheet" href="~/public/Home/css/Varieties_meta.css" />
 
-@*<link rel="stylesheet" href="~/public/Home/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/public/Home/css/bootstrap.min.css" />
-
-    <script type="text/javascript" src="~/public/Home/js/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="~/public/Home/js/bootstrap.js"></script>
-    <script type="text/javascript" src="~/public/Home/js/bootstrap.min.js"></script>*@
+<div class="row">
+    <div id="demo" class="carousel slide col-12" data-ride="carousel">
 
 
+        <ol class="carousel-indicators"></ol>
 
-
-
-
-<div id="demo" class="carousel slide" data-ride="carousel">
-
-    <!-- 轮播图片 -->
-    <div class="carousel-inner">
-        <div class="carousel-item">
-            <img src="~/images/Varieties/v_banner.jpg">
-            <div class="carousel-caption">
-                <!--<h3>第一张图片描述标题</h3>
-                <p>描述文字!</p>-->
-            </div>
+        <!-- 轮播图片 -->
+        <div class="carousel-inner">
         </div>
-        <div class="carousel-item active">
-            <img src="~/images/Varieties/v_banner1.jpg">
-            <div class="carousel-caption">
-                <!--<h3>第二张图片描述标题</h3>
-                <p>描述文字!</p>-->
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="~/images/Varieties/v_banner2.jpg">
-            <div class="carousel-caption">
-                <!--<h3>第三张图片描述标题</h3>
-                <p>描述文字!</p>-->
-            </div>
-        </div>
+
+
+
+        <!-- 左右切换按钮 -->
+        <a class="carousel-control-prev" href="#demo" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#demo" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+
     </div>
 
-    <!-- 左右切换按钮 -->
-    <a class="carousel-control-prev" href="#demo" data-slide="prev">
-        <span class="carousel-control-prev-icon"></span>
-    </a>
-    <a class="carousel-control-next" href="#demo" data-slide="next">
-        <span class="carousel-control-next-icon"></span>
-    </a>
+    <div class="bg2 main1 pt-5 col-12">
 
-</div>
-
-<div class="bg2 main1 pt-5">
-    <div class="container">
-        <div class="title page3">
-            <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">绿茶</h2>
-            <p>123</p>
-        </div>
-        <div class="pinpai" style=" display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;">
-            <ul>
-                <li class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <a href="javascript:void(0);">
-                        <img src="~/images/Varieties/green/g1.jpg" width="156" height="154" class="radio">
-                        <div>
-                            <b>西湖龙井</b>
-                            <p>
-                                <span>外形扁平挺秀</span>
-                                <span>色泽绿翠</span>
-                                <span>内质清香味醇</span>
-                            </p>
-                            <button class="btn blue layer-btn">点击了解</button>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
 </div>
 
 
-<!-- 模态框 -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog  modal-lg	" style="margin: 0 auto;margin-top: 10%;">
-        <div class="modal-content">
 
-            <!-- 模态框头部 -->
-            <div class="modal-header">
-                <h2 class="modal-title">西湖龙井</h2>
-                <i class="close" data-dismiss="modal">×</i>
-            </div>
+<script>
 
-            <!-- 模态框主体 -->
-            <div class="modal-body">
-                <div class="modal_img">
-                    <img src="~/images/Varieties/green/g1.jpg">
-                </div>
-                <div class="modal_text">
-                    <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;西湖龙井，属绿茶，中国十大名茶之一。产于浙江省杭州市西湖龙井村周围群山，并因此得名。具有1200多年历史  。清乾隆游览杭州西湖时，盛赞西湖龙井茶，把狮峰山下胡公庙前的十八棵茶树封为“御茶”。西湖龙井按外形和内质的优次分作1～8级。
-                    <br><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;特级西湖龙井茶扁平光滑挺直，色泽嫩绿光润，香气鲜嫩清高，滋味鲜爽甘醇，叶底细嫩呈朵。清明节前采制的龙井茶简称明前龙井，美称女儿红，“院外风荷西子笑，明前龙井女儿红。”  西湖龙井茶与西湖一样，是人、自然、文化三者的完美结晶，是西湖地域文化的重要载体
-                    <br><br>
+    function showArticle(id) {
+        $.post("/Varieties/showArticle", { id: id }, function (result) {
+            console.log(result);
+            $("#myModal .modal-title").text(result.title);
+            $("#myModal .modal_img img").attr("src", "http://localhost:62320" + result.imgurl);
+            $("#myModal .modal_text").html("");
+            for (var i = 0; i < result.ArticleConTents.length; i++) {
+                var p = `<br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + result.ArticleConTents[i].articleText + `</span>`;
+                $("#myModal .modal_text").append(p);
+            }
+            $("#myModal").modal("show");
+        });
+    }
 
-                </div>
 
-            </div>
-        </div>
-    </div>
-</div>
 
-    <script>
-        function load() {
-            //加载轮播图
-            $.post("/Home/GetRotationCharts", { id: 13 }, function (result) {
-                var str = ``;
-                for (var i = 0; i < result.length; i++) {
-                    str += `
-                                    <div class="carousel-item">
-                                    <a href=""
-                            <img src="`+ result[i].imgurl + `">
-                            </a>
-                        </div>
-                                `;
+
+
+    function load() {
+        //加载轮播图
+        $.post("/Home/GetRotationCharts", { id: 13 }, function (result) {
+            var str = ``;
+            var active = `active`;
+            var point = ``;
+            for (var i = 0; i < result.length; i++) {
+                if (i > 0) {
+                    active = ``;
                 }
-                $(".carousel-inner").append(str);
-            });
+                point += `<li data-target="#demo" data-slide-to="` + i + `" class="` + active + `"></li>`;
 
-            $.get("/Varieties/GetAllTeaType", function (result) {
-                console.log(result);
+                var tit = result[i].title == null ? "" : result[i].title;
+                str += `
+                    <div class="carousel-item `+ active + `">
+                            <img class="d-block w-100" src="http://localhost:62320`+ result[i].imgurl + `" >
+                            <div class="carousel-caption d-none d-md-block" style="margin-top:-30px;">
+                                <h3>`+ tit + `</h3>
+                            </div>
+                        </div>`;
+            }
+            $(".carousel-indicators").html(point);
+            $(".carousel-inner").append(str);
+            $('#demo').carousel({
+                interval: 2000
             });
-        }
+        });
 
-        $(function () {
-            load();
-        })
-    </script>
+        $.post("/Home/GetModel", { id: 13 }, function (result) {
+            console.log(result);
+            var modeltitle = ``;
+            for (var i = 0; i < result.length; i++) {
+                var tit = result[i].Subheading == null ? "" : result[i].Subheading;
+                var modeltitle = `<div class="title page3 col-12">
+                <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">`+ result[i].name + `</h2>
+                <p>`+ tit + `</p>
+            </div>`;
+                var modelcontent = ``;
+                for (var j = 0; j < result[i].Articles.length; j++) {
+                    var author = result[i].Articles[j].author == null ? "" : result[i].Articles[j].author;
+                    var source = result[i].Articles[j].source == null ? "" : result[i].Articles[j].source;
+                    modelcontent += `<li class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6" onclick="showArticle(` + result[i].Articles[j].id + `)">
+                        <a href="javascript:void(0);">
+                            <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" width="156" height="154" class="radio">
+                            <div>
+                                <b>`+ result[i].Articles[j].title + `</b>
+                                <p>
+                                    <span>`+ author + `</span>
+                                    <span>`+ source + `</span>
+                                </p>
+                                <button type="button" class="btn blue layer-btn">点击了解</button>
+                            </div>
+                        </a>
+                    </li>`;
+                }
+
+                var content = `<div class="col-12">
+                    `+ modeltitle + `
+            <div class="pinpai col-12">
+                <ul>
+                    `+ modelcontent + `
+
+                </ul>
+            </div>
+        </div>`;
+
+                $(".main1").append(content);
+            }
+        });
+    }
+
+    $(function () {
+        load();
+    })
+</script>
 

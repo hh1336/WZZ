@@ -10,11 +10,9 @@
             @media (max-width:420px){
             	/*导航*/
             	.met-head.navbar-fixed-top{widows: 100%; !important;}
-            	/*banner*/
-            	.slide{margin-top: 30% !important;}
             	/*banner text*/
             	.carousel-caption{font-size: 12px;}
-            	.main1 .pinpai{width: 300px !important;float: left;}
+            	.main1 .pinpai{/*width: 300px !important;*/float: left;}
             	.carousel-inner .carousel-item .carousel-caption h3{font-size: 12px;}
             	
             	            	
@@ -25,7 +23,7 @@
             	.main1 .title>p{font-size: 12px !important;}
             	.main1 .title>p{font-size: 12px !important;;color: #999999;}
 
-            	.main1 .pinpai{width: 400px !important;float: left ;margin-top: 15%;text-align: center;}
+            	.main1 .pinpai{/*width: 400px !important;*/float: left ;margin-top: 15%;text-align: center;}
             	.main1 .pinpai>ul{float: left;width: 400px !important;margin-left: 0px;}
             	.main1 .pinpai>ul>li{width: 400px !important;margin-right: 0;}
             	.main1 .pinpai>ul>li a{width: 400px !important;margin: 0 auto !important;float: left;}
@@ -74,11 +72,9 @@
             @media (max-width:380px){
             	/*导航*/
             	.met-head.navbar-fixed-top{widows: 100%; !important;}
-            	/*banner*/
-            	.slide{margin-top: 30% !important;}
             	/*banner text*/
             	.carousel-caption{font-size: 12px;}
-            	.main1 .pinpai{width: 300px !important;float: left;}
+            	.main1 .pinpai{/*width: 300px !important;*/float: left;}
             	.carousel-inner .carousel-item .carousel-caption h3{font-size: 12px;}
             	
             	            	
@@ -89,7 +85,7 @@
             	.main1 .title>p{font-size: 12px !important;}
             	.main1 .title>p{font-size: 12px !important;;color: #999999;width: 375px;}
 
-            	.main1 .pinpai{width: 370px !important;float: left ;margin-top: 15%;text-align: center;}
+            	.main1 .pinpai{/*width: 370px !important;*/float: left ;margin-top: 15%;text-align: center;}
             	.main1 .pinpai>ul{float: left;width: 300px !important;margin-left: -0px;}
             	.main1 .pinpai>ul>li{width: 370px !important;margin-right: 0;}
             	.main1 .pinpai>ul>li a{width: 370px !important;margin: 0 auto !important;float: left;}
@@ -134,11 +130,9 @@
             @media (max-width:325px){
             	/*导航*/
             	.met-head.navbar-fixed-top{width:320px !important;}
-            	/*banner*/
-            	.slide{margin-top: 30% !important;}
             	/*banner text*/
             	.carousel-caption{font-size: 12px;}
-            	.main1 .pinpai{width: 300px !important;float: left;}
+            	.main1 .pinpai{/*width: 300px !important;*/float: left;}
             	.carousel-inner .carousel-item .carousel-caption h3{font-size: 12px;}
             	
             	            	
@@ -149,7 +143,7 @@
             	.main1 .title>p{font-size: 12px !important;}
             	.main1 .title>p{font-size: 12px !important;;color: #999999;width: 320px;}
 
-            	.main1 .pinpai{width: 310px !important;float: left ;margin-top: 15%;}
+            	.main1 .pinpai{/*width: 310px !important;*/float: left ;margin-top: 15%;}
             	.main1 .pinpai>ul{float: left;width: 300px !important;margin-left: 0px;}
             	.main1 .pinpai>ul>li{width: 300px !important;margin-right: 0;}
             	.main1 .pinpai>ul>li a{width: 300px !important;margin: 0 auto !important;float: left;}

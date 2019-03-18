@@ -330,20 +330,20 @@ a:hover{text-decoration:none;}
 .nav-height .navbar-collapse .navlist1{width:120%!important;}
 .nav-height .navbar-collapse .nav-item{width:90%;text-align:center;border-bottom:1px Dotted #999999;}
 }
-/*banner*/
-.slide{margin-top: 10%;}
+
 .carousel-inner img {width: 100%;height: 100%;}
 .carousel-inner .carousel-item .carousel-caption h3{color: #FFFFFF !important; }
 /*main*/
 		/*! CSS Used from: http://zt.epwk.com/1804uisheji/images/css.css */
 .main1{margin-top: -3%;}
-.main1 *{margin:0;padding:0;}
+.main1 *{/*margin:0;*/padding:0;}
 .main1 a{color:#333;}
 .main1 li,ul{list-style:none;}
 .main1 img{border:0;}
 .main1 a{text-decoration:none;}
 .main1 a:hover{color:#000;}
 .main1 .pinpai>ul>li a img{margin-left:20px;border-radius:50% ;}
+.main1 .pinpai>ul>li{margin-left:7%;}
 .main1 .blk80{height:40px;line-height:0;font-size:0;overflow:hidden;clear:both;}
 .main1 .blk80{height:45px;}
 .main1 .blk80{height:50px;}
@@ -366,14 +366,14 @@ a:hover{text-decoration:none;}
 .main1 .title>h2{font-size:60px;font-weight:700;}
 .main1 .title>h2.has_marks{line-height:1.5;}
 .main1 .title>p{font-size:20px;color:#333;text-align:center;line-height:1.2;}
-.main1 .pinpai{width:1200px;overflow:hidden;padding-bottom:40px;margin: 0 auto;}
+.main1 .pinpai{/*width:1200px;*/overflow:hidden;padding-bottom:40px;/*margin: 0 auto;*/}
 .main1 .pinpai>ul{width:100%;display:block;}
-.main1 .pinpai>ul>li{float:left;margin-right:20px;margin-bottom:20px;width: 580px;}
+.main1 .pinpai>ul>li{float:left;margin-bottom:20px;width: 580px;}
 .main1 .pinpai>ul>li a{display:block;width:600px;background:#fff;border-left:8px solid #b0d9ff;padding-bottom:30px;padding-top:30px;}
-.main1 .pinpai>ul>li a>div{width:372px;height:115px;display:inline-block;text-align:left;vertical-align:top;margin-left:20px;}
+.main1 .pinpai>ul>li a>div{width:372px;height:115px;display:inline-block;text-align:left;vertical-align:top;}
 .main1 .pinpai>ul>li a>div b{display:block;font-size:30px;height:35px;line-height:35px;color:#333;padding-top:5px;}
-.main1 .pinpai>ul>li a>div p{display:block;height:40px;line-height:20px;color:#fff;margin:0 auto;padding-top:14px;}
-.main1 .pinpai>ul>li a>div p span{font-size:12px;color:gray;display:inline-block;border:1px solid gray;margin-right:10px;padding:0 6px;margin-bottom:10px;}
+.main1 .pinpai>ul>li a>div p{display:block;height:40px;line-height:20px;color:#fff;padding-top:14px;}
+.main1 .pinpai>ul>li a>div p span{font-size:12px;color:gray;display:inline-block;border:1px solid gray;padding:0 6px;margin-bottom:10px;}
 .main1 .pinpai>ul>li a>div button.btn{height:50px;width:165px;font-size:20px;font-weight:700;}
 .main1 .pinpai>ul>li a:hover{border-left:8px solid #309cff;}
 .main1 .pinpai>ul>li a:hover button.btn{background:#309cff;color:#fff;}

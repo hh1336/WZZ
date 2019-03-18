@@ -127,6 +127,7 @@
                         if (i >= 3) {
                             continue;
                         }
+                        var author = oneobj.Articles[i].author == null ? "" : oneobj.Articles[i].author;
                         li += `<li article-id="` + oneobj.Articles[i].id + `">
                         <div class="col-6 p-0">
                             <img src="http://localhost:62320`+ oneobj.Articles[i].imgurl + `" width="190px" height="120px" />
@@ -135,7 +136,7 @@
                             <span style="font-weight:500; color:black;" class="col-12 p-0">`+ oneobj.Articles[i].title + `</span>
                             <div class="col-12 p-0 mt-2">
                                 <img src="/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                                <span class="col-3">`+ oneobj.Articles[i].author + `</span>
+                                <span class="col-3">`+ author + `</span>
                             </div>
                             <div class="col-12 p-0 mt-2"><span>`+ Common.ToDateTime(oneobj.Articles[i].createTime) + `</span></div>
                         </div>
@@ -155,6 +156,7 @@
                             if (j >= 5) {
                             continue;
                             }
+                            var author = leftmodel[i].Articles[j].author == null ? "" : leftmodel[i].Articles[j].author;
                             li += `<li>
                 <div class="col-5 p-0">
                     <img src="http://localhost:62320`+ leftmodel[i].Articles[j].imgurl +`" width="190px" height="120px" />
@@ -163,7 +165,7 @@
                     <span style="font-weight:500; color:black;" class="col-12 p-0">`+ leftmodel[i].Articles[j].title +`</span>
                     <div class="col-12 p-0 mt-2">
                         <img src="/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                        <span class="col-3">`+ leftmodel[i].Articles[j].author +`</span>
+                        <span class="col-3">`+ author +`</span>
                     </div>
                         <div class="col-12 p-0 mt-2">
                         <span >`+ Common.ToDateTime(leftmodel[i].Articles[j].createTime) +`</span></div>
@@ -181,6 +183,7 @@
                             if (j >= 5) {
                             continue;
                             }
+                            var author = result[i].Articles[j].author == null ? "" : result[i].Articles[j].author;
                             li += `<li>
                 <div class="col-5 p-0">
                     <img src="http://localhost:62320`+ result[i].Articles[j].imgurl +`" width="190px" height="120px" />
@@ -189,7 +192,7 @@
                     <span style="font-weight:500; color:black;" class="col-12 p-0">`+ result[i].Articles[j].title +`</span>
                     <div class="col-12 p-0 mt-2">
                         <img src="/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
-                        <span class="col-3">`+ result[i].Articles[j].author +`</span>
+                        <span class="col-3">`+ author +`</span>
                     </div>
                         <div class="col-12 p-0 mt-2">
                         <span >`+ Common.ToDateTime(result[i].Articles[j].createTime) +`</span></div>

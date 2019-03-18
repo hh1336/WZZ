@@ -1073,9 +1073,6 @@ h2 {
 }
 
 @media (max-width:420px) {
-    .slide {
-        margin-top: 30% !important;
-    }
 
     .carousel-caption {
         font-size: 12px;
@@ -1187,9 +1184,6 @@ h2 {
 }
 
 @media (max-width:380px) {
-    .slide {
-        margin-top: 30% !important;
-    }
 
     .carousel-caption {
         font-size: 12px;
@@ -1295,10 +1289,6 @@ h2 {
 }
 
 @media (max-width:325px) {
-    .slide {
-        margin-top: 30% !important;
-    }
-
     .carousel-caption {
         font-size: 12px;
     }
@@ -2366,10 +2356,6 @@ a {
 :-ms-input-placeholder {
     color: #ababab;
     opacity: 1;
-}
-
-.slide {
-    margin-top: 10%;
 }
 
 .carousel-inner img {

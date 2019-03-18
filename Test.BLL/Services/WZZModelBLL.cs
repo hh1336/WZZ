@@ -88,7 +88,7 @@ namespace BLL.Services
                     icon = item.icon,
                     Subheading = item.Subheading
                 };
-                var arc = await _db.Articles.Where(s => s.WZZModelId == item.id && s.isShow == 1).OrderByDescending(s => s.createTime).Take(5).ToListAsync();
+                var arc = await _db.Articles.Where(s => s.WZZModelId == item.id && s.isShow == 1).OrderByDescending(s => s.updateTime).ToListAsync();
                 wzzmodel.Articles = arc;
                 result.Add(wzzmodel);
             }
