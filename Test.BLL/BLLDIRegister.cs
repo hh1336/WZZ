@@ -25,6 +25,7 @@ namespace BLL
             services.AddTransient(typeof(IRecoveryServiceBLL), typeof(RecoveryServiceBLL));
             services.AddTransient(typeof(IRotationChartSettingBLL), typeof(RotationChartSettingBLL));
             services.AddTransient(typeof(IVarietiesBLL), typeof(VarietiesBLL));
+            services.AddTransient(typeof(IWebStationSettingBLL), typeof(WebStationSettingBLL));
 
         }
     }

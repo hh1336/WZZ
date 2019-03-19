@@ -1,4 +1,156 @@
 ﻿@{
     ViewData["Title"] = "茶故事";
 }
-123
+<style>
+    .topbody > div {
+        display: inline-block;
+        float: left;
+    }
+
+        .topbody > div:last-child {
+            border-top: 2px solid #fbe144;
+        }
+
+        .topbody > div > ul {
+            list-style-type: none;
+        }
+
+            .topbody > div > ul > li {
+                padding-top: 10px;
+                color: #808080;
+                padding-left: 10px;
+            }
+
+    .bottombody > div {
+        float: left;
+    }
+
+    .bottomright {
+        border-left: 1px solid #ffd800;
+    }
+
+        .bottomright > ul {
+            list-style-type: none;
+        }
+
+            .bottomright > ul > li {
+                padding-top: 13px;
+            }
+
+    .bottomleft {
+        border-right: 1px solid #ffd800;
+    }
+
+        .bottomleft > ul {
+            list-style-type: none;
+        }
+
+            .bottomleft > ul > li {
+                padding-top: 13px;
+            }
+</style>
+
+<div class="story container-fluid p-0">
+    <div class="row">
+        <div class="col-12 topbody p-0">
+            <div class="col-7 p-0 mr-1">
+                <div id="carousel" class="carousel slide " data-ride="carousel">
+                    <div class="carousel-inner">
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-4 topright">
+
+            </div>
+        </div>
+
+        <div class="col-12 bottombody">
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function load() {
+        //加载轮播图
+        $.post("/Home/GetRotationCharts", { id: 14 }, function (result) {
+            var str = ``;
+            var active = `active`;
+            for (var i = 0; i < result.length; i++) {
+                if (i > 0) {
+                    active = ``;
+                }
+                str += `<div class="carousel-item ` + active + `">
+                            <img class="img-fluid" src="http://localhost:62320`+ result[i].imgurl + `" alt="First slide">
+                        </div>`;
+            }
+            $("#carousel .carousel-inner").append(str);
+            $("#carousel").carousel({
+                interval: 2000
+            });
+        })
+        //加载文章内容
+        $.post("/Home/GetModel", { id: 14 }, function (result) {
+            var onedata = result.shift();
+            var topli = ``;
+            for (var i = 0; i < onedata.Articles.length; i++) {
+                topli += `<li>
+                        <img src="http://localhost:62320`+ onedata.Articles[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
+                        <span>`+ onedata.Articles[i].title + `</span>
+                    </li>`;
+            }
+            var topul = `<ul>
+                    `+ topli + `
+                    </ul>`;
+            var topstr = `<h4>` + onedata.name + `</h4>` + topul;
+            $(".topright").html(topstr);
+
+            for (var i = 0; i < result.length; i++) {
+                $(".bottombody").html(`<hr class="bg-warning" /><div class="bottomleft col-8"></div><div class="bottomright col-3"></div>`);
+                var leftarc = ``;
+                for (var j = 0; j < result[i].Articles.length; j++) {
+                    leftarc += `<li>
+                        <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" alt="Alternate Text" class="rounded-0 w-25" />
+                        <span>`+ result[i].Articles[j].title + `</span>
+                    </li>`;
+                }
+
+                var leftcontent = `<ul>` + leftarc + `</ul>`;
+                var h4content = `<h4>` + result[i].name + `</h4>` + leftcontent;
+                $(".bottombody .bottomleft").append(h4content);
+            }
+
+            if ($(".bottomright").length == 1) {
+                //加载推荐
+                $.post("/Story/GetNewArticle", {}, function (result) {
+                    var li = ``;
+                    for (var i = 0; i < result.length; i++) {
+                        li += `<li>
+                        <img src="http://localhost:62320`+ result[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
+                        <span>`+ result[i].title + `</span>
+                    </li>`;
+                    }
+                    var ul = `<ul>` + li + `</ul>`;
+                    $(".bottomright").append(ul);
+
+                });
+            }
+
+
+        })
+
+    }
+
+    $(function () {
+        load();
+    })
+</script>

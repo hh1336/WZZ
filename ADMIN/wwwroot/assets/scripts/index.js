@@ -35,6 +35,7 @@ function GetModel(pid, callback) {
                                 <li><a href="/recovery/Index" >回收站</a></li>
                                 <li><a href="/RotationChartSetting/Index" >轮播图设置</a></li>
                                 <li><a href="/ModelManager/Index" >模块管理</a></li>
+                                <li><a href="/WebStationSetting/Index" >网站设置</a></li>
                             </ul>
                         </div>
                     </a>

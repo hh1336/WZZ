@@ -25,6 +25,11 @@ namespace BLL.Interfaces
 
         IQueryable<Article> GetArticleByModelId(int id);
 
+        /// <summary>
+        /// 获取最新更新的文章
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Article>> GetNewArticle();
         Task<IPageList<Article>> GetArticlePageList(SearchViewModel model);
         Task<int> AddOrUpdate(Article data);
         Task<bool> Show(int id);

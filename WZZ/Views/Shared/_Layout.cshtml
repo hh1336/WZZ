@@ -9,6 +9,11 @@
     <link href="~/public/Layout/css/_Layout.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/public/Home/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/public/Home/css/font-awesome.css" />
+    <style>
+        li:focus{
+
+        }
+    </style>
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -19,7 +24,7 @@
                 <div class="col-5">
                     <img src="~/public/Home/images/index/head/1523865923.png" alt="">
                     <span>加盟电话：</span>
-                    <em>155-7780-7079</em>
+                    <em id="phone"></em>
                 </div>
                 <div class="col-7">
                     <ul>
@@ -44,7 +49,7 @@
                 <div class="row">
                     <div class="col-3">
                         <a href="">
-                            <img src="~/public/Home/images/test/壶1.png" alt="logo" width="160" height="80">
+                            <img src="" alt="logo" width="160" height="80" class="logimg">
                         </a>
                     </div>
 
@@ -77,13 +82,11 @@
         <div class="row">
             <div class="col-4 footerleft">
                 <a href="/Home/Index">
-                    <img src="~/public/Home/images/test/壶1.png" width="280" height="119" />
+                    <img src="" width="280" height="119" class="logimg" />
                 </a>
             </div>
             <div class="col-8 footerright">
-                <span class="introduce">
-                    本网站是非盈利型网站，只为志同道合的爱茶人、懂茶人、赏茶人提供一个平台，丰富茶知识，增长茶文化、提高茶品味。
-                    站内文章一律来源其他网站，如有没注明清楚的地方，多多谅解。
+                <span class="introduce footersubheading">
                 </span>
             </div>
         </div>

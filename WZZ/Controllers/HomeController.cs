@@ -12,11 +12,13 @@ namespace WZZ.Controllers
     {
         private readonly IWZZModelBLL _WZZModelBLL;
         private readonly IRotationChartBLL _rotationChartBLL;
+        private readonly IWebStationSettingBLL _webbll;
 
-        public HomeController(IWZZModelBLL wZZModelBLL,IRotationChartBLL rotationChartBLL)
+        public HomeController(IWZZModelBLL wZZModelBLL,IRotationChartBLL rotationChartBLL,IWebStationSettingBLL webbll)
         {
             _WZZModelBLL = wZZModelBLL;
             _rotationChartBLL = rotationChartBLL;
+            _webbll = webbll;
         }
 
         //首页
@@ -40,6 +42,13 @@ namespace WZZ.Controllers
         public IActionResult GetRotationCharts(int id)
         {
             var result = _rotationChartBLL.GetImgByModelId(id);
+            return Json(result);
+        }
+
+        //加载网站信息
+        public async Task<IActionResult> GetWebInfo(int id)
+        {
+            var result = await _webbll.GetInfoById(id);
             return Json(result);
         }
 

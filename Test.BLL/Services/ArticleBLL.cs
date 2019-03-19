@@ -176,6 +176,12 @@ namespace BLL.Services
 
         }
 
+        public async Task<List<Article>> GetNewArticle()
+        {
+            var result = _db.Articles.Where(s => s.isShow == 1).OrderByDescending(a => a.updateTime).Take(6);
+            return await result.ToListAsync();
+        }
+
         /// <summary>
         /// 显示数据
         /// </summary>
