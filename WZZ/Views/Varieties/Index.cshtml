@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="~/public/Home/css/Varieties.css" />
 <link rel="stylesheet" href="~/public/Home/css/Varieties_meta.css" />
 
-<div class="row">
+<div class="row ">
     <div id="demo" class="carousel slide col-12" data-ride="carousel">
 
 
@@ -90,7 +90,7 @@
             for (var i = 0; i < result.length; i++) {
                 var tit = result[i].Subheading == null ? "" : result[i].Subheading;
                 var modeltitle = `<div class="title page3 col-12">
-                <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12">`+ result[i].name + `</h2>
+                <h2 class="has_marks t_c col-xs-12 col-sm-12 col-md-12 col-lg-12" ><span onclick="ModalArticle(`+ result[i].id + `)"> ` + result[i].name + `</span></h2>
                 <p>`+ tit + `</p>
             </div>`;
                 var modelcontent = ``;

@@ -1,0 +1,91 @@
+﻿@using DAL.Entitys
+@model IQueryable<Article>
+
+<style>
+    .modalaclist > ul {
+        height: 700px;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        overflow-y: auto;
+    }
+
+        .modalaclist > ul > li {
+            width: 100%;
+            float: left;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            border-bottom: 1px solid #eaeaea;
+            cursor: pointer;
+        }
+
+            .modalaclist > ul > li div {
+                display: inline-block;
+                float: left;
+                color: #b7b7b7;
+                
+            }
+
+    .newspaper {
+        border-left: 1px solid #ffd800;
+    }
+
+        .newspaper > ul {
+            list-style-type: none;
+        }
+
+            .newspaper > ul > li {
+                padding-top: 13px;
+                cursor: pointer;
+            }
+</style>
+<div class="row">
+
+    <div class="col-7 modalaclist">
+        <ul>
+            @{
+                foreach (var item in Model)
+                {
+                    <li article-id="@item.id">
+                        <div class="col-4 p-0">
+                            <img src="http://localhost:62320/@item.imgurl" width="190px" height="120px" />
+                        </div>
+                        <div class="col-5 p-0 ">
+                            <span style="font-weight:500; color:black;" class="col-12 p-0">@item.title</span>
+                            <div class="col-12 p-0 mt-2">
+                                <img src="/images/font/小猫.png" width="40" height="40" class="col-2 p-0" />
+                                <span class="col-3">@item.author</span>
+                            </div>
+                            <div class="col-12 p-0 mt-2"><span>发布时间：@item.createTime</span></div>
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+
+    <div class="col-4 col-pull-2 newspaper">
+        <h5>推荐文章</h5>
+    </div>
+</div>
+
+<script>
+    function loadnewspaper() {
+        //加载推荐
+        $.post("/Story/GetNewArticle", {}, function (result) {
+            var li = ``;
+            for (var i = 0; i < result.length; i++) {
+                li += `<li>
+                        <img src="http://localhost:62320`+ result[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
+                        <span>`+ result[i].title + `</span>
+                    </li>`;
+            }
+            var ul = `<ul>` + li + `</ul>`;
+            $(".newspaper").append(ul);
+
+        });
+    }
+    $(function () {
+        loadnewspaper();
+    })
+</script>

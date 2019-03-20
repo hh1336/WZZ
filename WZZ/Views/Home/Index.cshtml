@@ -108,11 +108,6 @@
 
 @section Scripts{
     <script>
-
-        function addleftdata(str) {
-
-        }
-
         //加载模块
         function load() {
             //加载模块信息
@@ -128,7 +123,7 @@
                             continue;
                         }
                         var author = oneobj.Articles[i].author == null ? "" : oneobj.Articles[i].author;
-                        li += `<li article-id="` + oneobj.Articles[i].id + `">
+                        li += `<li onclick="SelectArticle(` + oneobj.Articles[i].id +`)">
                         <div class="col-6 p-0">
                             <img src="http://localhost:62320`+ oneobj.Articles[i].imgurl + `" width="190px" height="120px" />
                         </div>
@@ -142,7 +137,7 @@
                         </div>
                     </li>`;
                     }
-                    var ul = `<ul>` + li + `</ul><a href="#` + oneobj.id + `">查看更多>>></a>`;
+                    var ul = `<ul>` + li + `</ul><a href="#` + oneobj.id + `" onclick="ModalArticle(` + oneobj.id +`)">查看更多>>></a>`;
                     topnewspaper.append(ul);
                 }
                 //渲染主体左边模块
@@ -157,7 +152,7 @@
                             continue;
                             }
                             var author = leftmodel[i].Articles[j].author == null ? "" : leftmodel[i].Articles[j].author;
-                            li += `<li>
+                            li += `<li onclick="SelectArticle(` + leftmodel[i].Articles[j].id +`)">
                 <div class="col-5 p-0">
                     <img src="http://localhost:62320`+ leftmodel[i].Articles[j].imgurl +`" width="190px" height="120px" />
                 </div>
@@ -172,7 +167,7 @@
                 </div>
             </li>`;
                         }
-                        var ul = `<ul>` + li + ` </ul><a href="#` + leftmodel[i].id + `">查看更多>>></a></span>`;
+                        var ul = `<ul>` + li + ` </ul><a href="#` + leftmodel[i].id + `" onclick="ModalArticle(` + leftmodel[i].id +`)">查看更多>>></a></span>`;
                         $("#bottomleft").append(ul);
                     }
 
@@ -184,7 +179,7 @@
                             continue;
                             }
                             var author = result[i].Articles[j].author == null ? "" : result[i].Articles[j].author;
-                            li += `<li>
+                            li += `<li onclick="SelectArticle(` + result[i].Articles[j].id +`)">
                 <div class="col-5 p-0">
                     <img src="http://localhost:62320`+ result[i].Articles[j].imgurl +`" width="190px" height="120px" />
                 </div>
@@ -199,7 +194,7 @@
                 </div>
             </li>`;
                         }
-                        var ul = `<ul>` + li + ` </ul><a href="#` + result[i].id + `">查看更多>>></a></span>`;
+                        var ul = `<ul>` + li + ` </ul><a href="#` + result[i].id + `" onclick="ModalArticle(` + result[i].id +`)" >查看更多>>></a></span>`;
                         $("#bottomright").append(ul);
                     }
                 }
@@ -223,14 +218,14 @@
                     } else {
                         active = `active`;
                     }
-                    li = `<li data-target="#HomeCarousel" data-slide-to="` + i + `" class="` + active + `"></li>`;
+                    li = `<li data-target="#HomeCarousel" data-slide-to="` + i + `" class="` + active + `" ></li>`;
                     oldom.append(li);
                     var tit = result[i].title == null ? "" : result[i].title;
                     imgdiv = `<div class="carousel-item ` + active + `">
                     <div class="carousel-caption d-none d-md-block">
                     <h5>`+ tit + `</h5>
                   </div>
-<img class="d-block w-100" src="http://localhost:62320`+ result[i].imgurl + `">
+<img class="d-block w-100" src="http://localhost:62320`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId + `)">
 </div>`;
                     carouseldom.append(imgdiv);
                 }

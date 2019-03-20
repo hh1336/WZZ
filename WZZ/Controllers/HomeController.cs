@@ -13,12 +13,14 @@ namespace WZZ.Controllers
         private readonly IWZZModelBLL _WZZModelBLL;
         private readonly IRotationChartBLL _rotationChartBLL;
         private readonly IWebStationSettingBLL _webbll;
+        private readonly IArticleBLL _article;
 
-        public HomeController(IWZZModelBLL wZZModelBLL,IRotationChartBLL rotationChartBLL,IWebStationSettingBLL webbll)
+        public HomeController(IWZZModelBLL wZZModelBLL, IRotationChartBLL rotationChartBLL, IWebStationSettingBLL webbll,IArticleBLL article)
         {
             _WZZModelBLL = wZZModelBLL;
             _rotationChartBLL = rotationChartBLL;
             _webbll = webbll;
+            _article = article;
         }
 
         //首页
@@ -34,9 +36,10 @@ namespace WZZ.Controllers
         public async Task<IActionResult> GetModel(int id)
         {
             var result = await _WZZModelBLL.GetModelByMainModelId(id);
-            return Json(result, new JsonSerializerSettings() {
+            return Json(result, new JsonSerializerSettings()
+            {
                 ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-        });
+            });
         }
         //加载轮播图
         public IActionResult GetRotationCharts(int id)
@@ -50,6 +53,28 @@ namespace WZZ.Controllers
         {
             var result = await _webbll.GetInfoById(id);
             return Json(result);
+        }
+
+        /// <summary>
+        /// 根据模块id获取文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> GetModelArc(int id)
+        {
+            var result = _article.GetArticleByModelId(id);
+            return PartialView(result);
+        }
+
+        /// <summary>
+        /// 查看文章
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> SelectArticle(int id)
+        {
+            return View("Index_Article");
         }
 
     }

@@ -7,7 +7,7 @@
 
 
 <!---------------------------------------------------------top-------------------------------------------------->
-<div class="container-fluid">
+<div class="container-fluid ">
     <div class="in-news" style="margin-top: 4%; display: flex;flex-wrap:wrap ;-ms-flex-wrap:wrap ;" id="modelcontent">
 
 
@@ -20,7 +20,6 @@
     //加载数据
     function load() {
         $.post("/Home/GetModel", { id: 12 }, function (result) {
-            console.log(result);
             //循环模块信息
             for (var i = 0; i < result.length; i++) {
                 var articleulstr = ``;//初始化文章数量
@@ -35,7 +34,7 @@
                         <div class="news-box">
                          <div data-scroll-reveal="enter left 100px over 0.5s after 0.4s" class="col-box  col-xs-12 col-sm-12" data-scroll-reveal-id="35" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 0.5s ease-in-out 0.4s,  opacity 0.5s ease-in-out 0.4s;transition: transform 0.5s ease-in-out 0.4s, opacity 0.5s ease-in-out 0.4s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">
                             <div class="pic-box">
-                                <a href="" class="login_text">
+                                <a href="#" class="login_text" onclick="SelectArticle(`+ result[i].Articles[j].id +`)">
                                     <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" alt="图片错误" style="width:350px;height:200px;">
                                     <span><p>`+ result[i].Articles[j].title + `</p></span>
                                 </a>
@@ -47,7 +46,7 @@
                 //将便利出来的模块信息进行渲染，并拼接文章内容
                 var articletitlestr = `
                         <div data-scroll-reveal="enter top 100px over 0.5s" class="title-box1 col-3 col-sm-6 col-md-12 col-lg-12">
-                            <p class="cn" id="tit">`+ result[i].name + `</p>
+                            <p class="cn" id="tit" onclick="ModalArticle(`+ result[i].id + `)">` + result[i].name + `</p>
                             <p class="en">`+ result[i].Subheading + `</p>
                         </div>`+ articlestr;
                 //将组装好的模块和文章拼接起来

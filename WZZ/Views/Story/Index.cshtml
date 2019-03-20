@@ -50,7 +50,7 @@
             }
 </style>
 
-<div class="story container-fluid p-0">
+<div class="story container-fluid p-0 ">
     <div class="row">
         <div class="col-12 topbody p-0">
             <div class="col-7 p-0 mr-1">
@@ -111,7 +111,7 @@
             var topul = `<ul>
                     `+ topli + `
                     </ul>`;
-            var topstr = `<h4>` + onedata.name + `</h4>` + topul;
+            var topstr = `<h4 onclick="ModalArticle(` + onedata.id + `)">` + onedata.name + `</h4>` + topul;
             $(".topright").html(topstr);
 
             for (var i = 0; i < result.length; i++) {
@@ -125,7 +125,7 @@
                 }
 
                 var leftcontent = `<ul>` + leftarc + `</ul>`;
-                var h4content = `<h4>` + result[i].name + `</h4>` + leftcontent;
+                var h4content = `<h4 onclick="ModalArticle(` + result[i].id + `)">` + result[i].name + `</h4>` + leftcontent;
                 $(".bottombody .bottomleft").append(h4content);
             }
 

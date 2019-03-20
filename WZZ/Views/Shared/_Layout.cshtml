@@ -6,13 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edeg" />
     <title>@ViewData["Title"]</title>
 
-    <link href="~/public/Layout/css/_Layout.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/public/Home/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/public/Home/css/font-awesome.css" />
+    <link href="~/lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/public/Layout/css/_Layout.css" rel="stylesheet" />
     <style>
-        li:focus{
-
-        }
     </style>
     @RenderSection("Styles", required: false)
 </head>
@@ -27,20 +25,7 @@
                     <em id="phone"></em>
                 </div>
                 <div class="col-7">
-                    <ul>
-                        <li>
-                            <img src="~/public/Home/images/index/head/1523608984.png">
-                            <span>红茶</span>
-                        </li>
-                        <li>
-                            <img src="~/public/Home/images/index/head/1523608984.png">
-                            <span>红茶</span>
-                        </li>
-                        <li>
-                            <img src="~/public/Home/images/index/head/1523608984.png">
-                            <span>红茶</span>
-                        </li>
-
+                    <ul class="topicon">
                     </ul>
                 </div>
             </div>
@@ -120,7 +105,7 @@
     <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script type="text/javascript" src="~/public/Home/js/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="~/public/Home/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/public/Home/js/Layout.js"></script>
+    <<script type="text/javascript" src="~/public/Home/js/Layout.js"></script>
     <script src="~/js/site.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
