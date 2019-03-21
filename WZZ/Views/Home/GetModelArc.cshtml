@@ -46,7 +46,7 @@
             @{
                 foreach (var item in Model)
                 {
-                    <li article-id="@item.id">
+                    <li onclick="SelectArticle(@item.id)">
                         <div class="col-4 p-0">
                             <img src="http://localhost:62320/@item.imgurl" width="190px" height="120px" />
                         </div>
@@ -75,8 +75,8 @@
         $.post("/Story/GetNewArticle", {}, function (result) {
             var li = ``;
             for (var i = 0; i < result.length; i++) {
-                li += `<li>
-                        <img src="http://localhost:62320`+ result[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
+                li += `<li onclick="SelectArticle(` + result[i].id +`)">
+                        <img src="http://localhost:62320`+ result[i].imgurl + `" alt="Alternate Text"    class="rounded-0 w-50" />
                         <span>`+ result[i].title + `</span>
                     </li>`;
             }

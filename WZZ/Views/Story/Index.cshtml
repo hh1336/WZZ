@@ -2,6 +2,9 @@
     ViewData["Title"] = "茶故事";
 }
 <style>
+    li{
+        cursor: pointer;
+    }
     .topbody > div {
         display: inline-block;
         float: left;
@@ -90,7 +93,7 @@
                     active = ``;
                 }
                 str += `<div class="carousel-item ` + active + `">
-                            <img class="img-fluid" src="http://localhost:62320`+ result[i].imgurl + `" alt="First slide">
+                            <img class="img-fluid" src="http://localhost:62320`+ result[i].imgurl + `" alt="First slide" onclick="SelectArticle(` + result[i].articleId +`)" >
                         </div>`;
             }
             $("#carousel .carousel-inner").append(str);
@@ -98,12 +101,13 @@
                 interval: 2000
             });
         })
+
         //加载文章内容
         $.post("/Home/GetModel", { id: 14 }, function (result) {
             var onedata = result.shift();
             var topli = ``;
             for (var i = 0; i < onedata.Articles.length; i++) {
-                topli += `<li>
+                topli += `<li onclick="SelectArticle(` + onedata.Articles[i].id +`)" >
                         <img src="http://localhost:62320`+ onedata.Articles[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
                         <span>`+ onedata.Articles[i].title + `</span>
                     </li>`;
@@ -118,7 +122,7 @@
                 $(".bottombody").html(`<hr class="bg-warning" /><div class="bottomleft col-8"></div><div class="bottomright col-3"></div>`);
                 var leftarc = ``;
                 for (var j = 0; j < result[i].Articles.length; j++) {
-                    leftarc += `<li>
+                    leftarc += `<li onclick="SelectArticle(` + result[i].Articles[i].id +`)">
                         <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" alt="Alternate Text" class="rounded-0 w-25" />
                         <span>`+ result[i].Articles[j].title + `</span>
                     </li>`;
@@ -134,7 +138,7 @@
                 $.post("/Story/GetNewArticle", {}, function (result) {
                     var li = ``;
                     for (var i = 0; i < result.length; i++) {
-                        li += `<li>
+                        li += `<li onclick="SelectArticle(` + result[i].id +`)">
                         <img src="http://localhost:62320`+ result[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
                         <span>`+ result[i].title + `</span>
                     </li>`;

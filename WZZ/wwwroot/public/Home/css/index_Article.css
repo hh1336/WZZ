@@ -176,7 +176,7 @@ a:hover{color:#4e97d9;}
 .wb-eye:before{content:'';}
 .ore{width: auto;}
 a:hover,a:active{text-decoration:none;}
-.news_list_detail_met_16_3{float: left; width: 65%;margin-left: 5%;margin-top: 13%;}
+.news_list_detail_met_16_3{float: left;margin-left: 5%;}
 .news_list_detail_met_16_3.met-shownews{padding:30px 0;}
 .news_list_detail_met_16_3.met-shownews .met-shownews-body{background:transparent;-webkit-box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);-o-box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);-ms-box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:0 1px 1px rgba(0, 0, 0, 0.05);}
 .news_list_detail_met_16_3.met-shownews .met-shownews-body .row{margin:0;}

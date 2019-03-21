@@ -84,20 +84,28 @@ namespace BLL.Services
             //判断传入的数据是否有错
             if (id == 0) return new ArticleInfoModel();
 
+            var ac = await _db.Articles.SingleOrDefaultAsync(s => s.id == id && s.isShow == 1);
+            if (ac == null) return new ArticleInfoModel();
             //得到小节标题内容
             var achead = _db.Subheadings
                 .Include(w => w.ArticleConTents)
                 .ThenInclude(img => img.ArticleImage)
                 .Where(s => s.Articleid == id);
-           
-            
 
             //找到没有小节标题的所有内容
             var nullheadAc = _db.ArticleConTents
                 .Include(img => img.ArticleImage)
                 .Where(a => a.ArticleId == id && a.Subheadingid == null);
 
-            ArticleInfoModel result = new ArticleInfoModel();
+            ArticleInfoModel result = new ArticleInfoModel() {
+                id = ac.id,
+                author = ac.author,
+                createTime = ac.createTime,
+                imgurl = ac.imgurl,
+                source = ac.source,
+                title = ac.title,
+                updateTime = ac.updateTime                
+            };
             result.ArticleConTents = await nullheadAc.ToListAsync();
             result.Subheadings = await achead.ToListAsync();
 

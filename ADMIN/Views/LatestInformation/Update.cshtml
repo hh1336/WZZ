@@ -43,7 +43,7 @@
                     @if (!string.IsNullOrEmpty(Model.imgurl))
                     {
                         <input type='hidden' name='imgurl' value="@Model.imgurl">
-                        <img src="@Model.imgurl" class="imgurl delimg" title="点击图片进行删除" />
+                        <img src="@Model.imgurl" class="imgurl delimg" title="点击图片进行删除" style="width:300px;" />
                     }
                     else
                     {
@@ -59,17 +59,7 @@
             <h3>文章主体</h3>
             <hr />
 
-            @*<div class="layui-form-item layui-anim layui-anim-upbit">
-                    <div class="layui-input-block" style="margin-left:0;">
-                        <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
-                        <div class="showimg">
-                            <img src="~/ImageFiles/779user-medium.png" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="" onclick="delacimg(this)" />
-                        </div>
-                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                        <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
-                    </div>
-                </div>*@
+
 
             <input type="button" class="btn btn-danger btn-xs paragraph" id="addAContent" value="插入一个段落" />
         </div>
@@ -128,7 +118,7 @@
             maxFileCount: 5,//允许最大同时上传数
             uploadAsync: true,//上传方式使用异步
             showClose: false,//是否显示右上角关闭按钮
-            showPreview: true,//关闭预览
+            showPreview: false,//关闭预览
             validateInitialCount: true,
             showCaption: true,//关闭信息简介
             fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
@@ -237,9 +227,10 @@
                     _data.url = data.response[0].filePath;
                     $.post("/LatestInformation/SaveArticleImage", { data: _data }, function (result) {
                         if (result.code) {
-                            var imghtml = `<img src="` + _data.url + `" class="btn btn-default layui-anim layui-anim-scale" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + result.aid + `" onclick="delacimg(this)" />`;
+                            var imghtml = `<img src="` + _data.url + `" class="btn btn-default layui-anim layui-anim-scale" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + result.aid + `" onclick="delacimg(this)" style="width:300px;" />`;
                             $(dom).parents(".layui-form-item").find(".showimg").append(imghtml);
                             layer.msg('上传成功');
+                             $("[data-toggle='tooltip']").tooltip();
                         }
                     });
                 }
@@ -359,7 +350,7 @@
                     var acimg = ``;
                     var acimgtitle = "";
                     for (var x = 0; x < actontent.ArticleConTents[i].ArticleImage.length; x++) {
-                        acimg += `<img src="` + actontent.ArticleConTents[i].ArticleImage[x].url + `" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + actontent.ArticleConTents[i].ArticleImage[x].id + `" onclick="delacimg(this)" />`;
+                        acimg += `<img src="` + actontent.ArticleConTents[i].ArticleImage[x].url + `" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + actontent.ArticleConTents[i].ArticleImage[x].id + `" onclick="delacimg(this)" style="width:300px;" />`;
                         if (acimgtitle == "") acimgtitle = actontent.ArticleConTents[i].ArticleImage[x].title;
                     }
 
@@ -398,7 +389,7 @@
                         var acimg = ``;
                         //得到每一张图片
                         for (var y = 0; y < actontent.Subheadings[i].ArticleConTents[x].ArticleImage.length; y++) {
-                            acimg += `<img src="` + actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].url + `" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].id + `" onclick="delacimg(this)" />`;
+                            acimg += `<img src="` + actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].url + `" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].id + `" onclick="delacimg(this)" style="width:300px;" />`;
                             if (acimgtitle == ``) acimgtitle = actontent.Subheadings[i].ArticleConTents[x].ArticleImage[y].title;
                         }
                         if (x >= 1) acititle = ``;

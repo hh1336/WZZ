@@ -74,7 +74,9 @@ namespace WZZ.Controllers
         [HttpGet]
         public async Task<IActionResult> SelectArticle(int id)
         {
-            return View("Index_Article");
+            var acdata = await _article.GetAcByAcid(id);
+            if (acdata.id == 0) return NotFound();
+            return View("Index_Article", acdata);
         }
 
     }
