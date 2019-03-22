@@ -37,7 +37,7 @@ namespace WZZ
             //var sqlConnection = Configuration.GetConnectionString("SqlServer");
             //services.AddDbContext<MyDbcontext>(option => option.UseSqlServer(sqlConnection));
 
-            var sqlConnection = @"Data Source=MYWORK\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
+            var sqlConnection = @"Data Source=DESKTOP-I9S42KC\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
 
             BLLDIRegister sdr = new BLLDIRegister();
@@ -65,6 +65,9 @@ namespace WZZ
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseStaticFiles(new StaticFileOptions() {
+                ServeUnknownFileTypes = true
             });
         }
     }

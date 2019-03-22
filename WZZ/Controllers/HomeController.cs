@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
@@ -15,7 +16,7 @@ namespace WZZ.Controllers
         private readonly IWebStationSettingBLL _webbll;
         private readonly IArticleBLL _article;
 
-        public HomeController(IWZZModelBLL wZZModelBLL, IRotationChartBLL rotationChartBLL, IWebStationSettingBLL webbll,IArticleBLL article)
+        public HomeController(IWZZModelBLL wZZModelBLL, IRotationChartBLL rotationChartBLL, IWebStationSettingBLL webbll, IArticleBLL article)
         {
             _WZZModelBLL = wZZModelBLL;
             _rotationChartBLL = rotationChartBLL;
@@ -26,6 +27,15 @@ namespace WZZ.Controllers
         //首页
         public IActionResult Index()
         {
+            var address = Request.HttpContext.Connection.RemoteIpAddress;
+            var ipaddress = System.Text.Encoding.UTF8.GetBytes(address.ToString());
+            using (FileStream stream = new FileStream(@"C:\Users\admin\Desktop\ipaddress.txt", FileMode.OpenOrCreate))
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                stream.Write(ipaddress, 0, ipaddress.Length);
+            }
+            
+            Console.WriteLine(address);
             return View();
         }
         public IActionResult Index_Article()
