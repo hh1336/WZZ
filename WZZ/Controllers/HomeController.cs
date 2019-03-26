@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
+using DAL.Entitys;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -15,27 +16,26 @@ namespace WZZ.Controllers
         private readonly IRotationChartBLL _rotationChartBLL;
         private readonly IWebStationSettingBLL _webbll;
         private readonly IArticleBLL _article;
+        private readonly IVisitAmountBLL _visit;
 
-        public HomeController(IWZZModelBLL wZZModelBLL, IRotationChartBLL rotationChartBLL, IWebStationSettingBLL webbll, IArticleBLL article)
+        public HomeController(
+            IWZZModelBLL wZZModelBLL,
+            IRotationChartBLL rotationChartBLL,
+            IWebStationSettingBLL webbll,
+            IArticleBLL article,
+            IVisitAmountBLL visit)
         {
             _WZZModelBLL = wZZModelBLL;
             _rotationChartBLL = rotationChartBLL;
             _webbll = webbll;
             _article = article;
+            _visit = visit;
         }
 
         //首页
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var address = Request.HttpContext.Connection.RemoteIpAddress;
-            var ipaddress = System.Text.Encoding.UTF8.GetBytes(address.ToString());
-            using (FileStream stream = new FileStream(@"C:\Users\admin\Desktop\ipaddress.txt", FileMode.OpenOrCreate))
-            {
-                stream.Seek(0, SeekOrigin.Begin);
-                stream.Write(ipaddress, 0, ipaddress.Length);
-            }
-            
-            Console.WriteLine(address);
+            await VisitUser();
             return View();
         }
         public IActionResult Index_Article()
@@ -86,7 +86,48 @@ namespace WZZ.Controllers
         {
             var acdata = await _article.GetAcByAcid(id);
             if (acdata.id == 0) return NotFound();
+            await VisitUser(id);
             return View("Index_Article", acdata);
+        }
+
+
+        /// <summary>
+        /// 记录用户浏览
+        /// </summary>
+        /// <returns></returns>
+        private async Task VisitUser(int? id = 0)
+        {
+            //var ipaddress = Request.HttpContext.Connection.RemoteIpAddress;
+            var userHostAddress = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
+            if (userHostAddress == "::1") return;
+
+            if (id.Value == 0)
+            {
+                //判断是否浏览过
+                bool isNull = _visit.IsAddress(userHostAddress);
+                //如果浏览过
+                if (isNull) return;
+                var visitinfo = new VisitAmount()
+                {
+                    ipaddress = userHostAddress,
+                    visitDateTime = DateTime.Now
+                };
+                await _visit.SaveAddress(visitinfo);
+
+            }
+            else
+            {
+                //判断用户是否浏览过这篇文章
+                bool isVisitAc = await _visit.IsVisitAc(userHostAddress,id.Value);
+                if (isVisitAc) return;
+                var visitinfo = new VisitAmount()
+                {
+                    ipaddress = userHostAddress,
+                    visitDateTime = DateTime.Now,
+                    ArticleId = id
+                };
+                await _visit.SaveAddress(visitinfo);
+            }
         }
 
     }

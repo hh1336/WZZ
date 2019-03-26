@@ -34,7 +34,8 @@ namespace ADMIN
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var sqlConnection = @"Data Source=DESKTOP-I9S42KC\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
+
+            var sqlConnection = @"Data Source=120.78.198.92;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=Woshimayu1998;";
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
 
             BLLDIRegister sdr = new BLLDIRegister();
@@ -58,7 +59,8 @@ namespace ADMIN
 
             //给登陆注解设置路径
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(o => {
+                .AddCookie(o =>
+                {
                     o.LoginPath = "/Admin_Login/Index";
                 });
 
@@ -68,7 +70,7 @@ namespace ADMIN
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            
+
 
             if (env.IsDevelopment())
             {

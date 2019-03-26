@@ -37,7 +37,7 @@ namespace WZZ
             //var sqlConnection = Configuration.GetConnectionString("SqlServer");
             //services.AddDbContext<MyDbcontext>(option => option.UseSqlServer(sqlConnection));
 
-            var sqlConnection = @"Data Source=DESKTOP-I9S42KC\SQLEXPRESS;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=root;";
+            var sqlConnection = @"Data Source=120.78.198.92;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=Woshimayu1998;";
             services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
 
             BLLDIRegister sdr = new BLLDIRegister();
