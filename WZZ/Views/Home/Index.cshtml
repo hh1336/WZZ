@@ -125,7 +125,7 @@
                         var author = oneobj.Articles[i].author == null ? "" : oneobj.Articles[i].author;
                         li += `<li onclick="SelectArticle(` + oneobj.Articles[i].id +`)">
                         <div class="col-6 p-0">
-                            <img src="http://localhost:62320`+ oneobj.Articles[i].imgurl + `" width="190px" height="120px" />
+                            <img src="http://120.78.198.92`+ oneobj.Articles[i].imgurl + `" width="190px" height="120px" />
                         </div>
                         <div class="col-5 p-0 ">
                             <span style="font-weight:500; color:black;" class="col-12 p-0">`+ oneobj.Articles[i].title + `</span>
@@ -154,7 +154,7 @@
                             var author = leftmodel[i].Articles[j].author == null ? "" : leftmodel[i].Articles[j].author;
                             li += `<li onclick="SelectArticle(` + leftmodel[i].Articles[j].id +`)">
                 <div class="col-5 p-0">
-                    <img src="http://localhost:62320`+ leftmodel[i].Articles[j].imgurl +`" width="190px" height="120px" />
+                    <img src="http://120.78.198.92`+ leftmodel[i].Articles[j].imgurl +`" width="190px" height="120px" />
                 </div>
                 <div class="col-5 p-0 ">
                     <span style="font-weight:500; color:black;" class="col-12 p-0">`+ leftmodel[i].Articles[j].title +`</span>
@@ -181,7 +181,7 @@
                             var author = result[i].Articles[j].author == null ? "" : result[i].Articles[j].author;
                             li += `<li onclick="SelectArticle(` + result[i].Articles[j].id +`)">
                 <div class="col-5 p-0">
-                    <img src="http://localhost:62320`+ result[i].Articles[j].imgurl +`" width="190px" height="120px" />
+                    <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl +`" width="190px" height="120px" />
                 </div>
                 <div class="col-5 p-0 ">
                     <span style="font-weight:500; color:black;" class="col-12 p-0">`+ result[i].Articles[j].title +`</span>
@@ -225,7 +225,7 @@
                     <div class="carousel-caption d-none d-md-block">
                     <h5>`+ tit + `</h5>
                   </div>
-<img class="d-block w-100" src="http://localhost:62320`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId + `)">
+<img class="d-block w-100" src="http://120.78.198.92`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId + `)">
 </div>`;
                     carouseldom.append(imgdiv);
                 }

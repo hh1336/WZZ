@@ -42,7 +42,7 @@
         $.post("/Varieties/showArticle", { id: id }, function (result) {
             console.log(result);
             $("#myModal .modal-title").text(result.title);
-            $("#myModal .modal_img img").attr("src", "http://localhost:62320" + result.imgurl);
+            $("#myModal .modal_img img").attr("src", "http://120.78.198.92" + result.imgurl);
             $("#myModal .modal_text").html("");
             for (var i = 0; i < result.ArticleConTents.length; i++) {
                 var p = `<br /><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;` + result.ArticleConTents[i].articleText + `</span>`;
@@ -72,7 +72,7 @@
                 var tit = result[i].title == null ? "" : result[i].title;
                 str += `
                     <div class="carousel-item `+ active + `">
-                            <img class="d-block w-100" src="http://localhost:62320`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId +`)" >
+                            <img class="d-block w-100" src="http://120.78.198.92`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId +`)" >
                             <div class="carousel-caption d-none d-md-block" style="margin-top:-30px;">
                                 <h3>`+ tit + `</h3>
                             </div>
@@ -100,7 +100,7 @@
                     var source = result[i].Articles[j].source == null ? "" : result[i].Articles[j].source;
                     modelcontent += `<li class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6" onclick="showArticle(` + result[i].Articles[j].id + `)">
                         <a href="javascript:void(0);">
-                            <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" width="156" height="154" class="radio">
+                            <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" width="156" height="154" class="radio">
                             <div>
                                 <b>`+ result[i].Articles[j].title + `</b>
                                 <p>

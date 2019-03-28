@@ -3,7 +3,7 @@
         $("#phone").text(result.phone);
         var imgdiv = $(".logimg");
         $(imgdiv).each(function (index, dom) {
-            $(dom).attr("src", "http://localhost:62320" + result.imgurl);
+            $(dom).attr("src", "http://120.78.198.92" + result.imgurl);
         });
         $(".footersubheading").text(result.subheading);
     });

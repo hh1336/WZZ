@@ -39,6 +39,7 @@ namespace BLL.Services
         public async Task SaveAddress(VisitAmount visitinfo)
         {
             await _db.VisitAmounts.AddAsync(visitinfo);
+            await _db.SaveChangesAsync();
         }
     }
 }

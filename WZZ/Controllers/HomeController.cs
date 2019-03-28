@@ -97,28 +97,26 @@ namespace WZZ.Controllers
         /// <returns></returns>
         private async Task VisitUser(int? id = 0)
         {
-            //var ipaddress = Request.HttpContext.Connection.RemoteIpAddress;
             var userHostAddress = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
-            if (userHostAddress == "::1") return;
+            var ipaddress = userHostAddress.Substring(7);
 
             if (id.Value == 0)
             {
                 //判断是否浏览过
-                bool isNull = _visit.IsAddress(userHostAddress);
+                bool isNull = _visit.IsAddress(ipaddress);
                 //如果浏览过
                 if (isNull) return;
-                var visitinfo = new VisitAmount()
+                await _visit.SaveAddress(new VisitAmount()
                 {
                     ipaddress = userHostAddress,
                     visitDateTime = DateTime.Now
-                };
-                await _visit.SaveAddress(visitinfo);
-
+                });
+                return;
             }
             else
             {
                 //判断用户是否浏览过这篇文章
-                bool isVisitAc = await _visit.IsVisitAc(userHostAddress,id.Value);
+                bool isVisitAc = await _visit.IsVisitAc(userHostAddress, id.Value);
                 if (isVisitAc) return;
                 var visitinfo = new VisitAmount()
                 {
@@ -127,6 +125,7 @@ namespace WZZ.Controllers
                     ArticleId = id
                 };
                 await _visit.SaveAddress(visitinfo);
+                return;
             }
         }
 

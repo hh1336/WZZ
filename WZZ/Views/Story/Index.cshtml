@@ -93,7 +93,7 @@
                     active = ``;
                 }
                 str += `<div class="carousel-item ` + active + `">
-                            <img class="img-fluid" src="http://localhost:62320`+ result[i].imgurl + `" alt="First slide" onclick="SelectArticle(` + result[i].articleId +`)" >
+                            <img class="img-fluid" src="http://120.78.198.92`+ result[i].imgurl + `" alt="First slide" onclick="SelectArticle(` + result[i].articleId +`)" >
                         </div>`;
             }
             $("#carousel .carousel-inner").append(str);
@@ -108,7 +108,7 @@
             var topli = ``;
             for (var i = 0; i < onedata.Articles.length; i++) {
                 topli += `<li onclick="SelectArticle(` + onedata.Articles[i].id +`)" >
-                        <img src="http://localhost:62320`+ onedata.Articles[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
+                        <img src="http://120.78.198.92`+ onedata.Articles[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
                         <span>`+ onedata.Articles[i].title + `</span>
                     </li>`;
             }
@@ -123,7 +123,7 @@
                 var leftarc = ``;
                 for (var j = 0; j < result[i].Articles.length; j++) {
                     leftarc += `<li onclick="SelectArticle(` + result[i].Articles[i].id +`)">
-                        <img src="http://localhost:62320`+ result[i].Articles[j].imgurl + `" alt="Alternate Text" class="rounded-0 w-25" />
+                        <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" alt="Alternate Text" class="rounded-0 w-25" />
                         <span>`+ result[i].Articles[j].title + `</span>
                     </li>`;
                 }
@@ -139,7 +139,7 @@
                     var li = ``;
                     for (var i = 0; i < result.length; i++) {
                         li += `<li onclick="SelectArticle(` + result[i].id +`)">
-                        <img src="http://localhost:62320`+ result[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
+                        <img src="http://120.78.198.92`+ result[i].imgurl + `" alt="Alternate Text" class="rounded-0 w-50" />
                         <span>`+ result[i].title + `</span>
                     </li>`;
                     }

@@ -39,7 +39,7 @@
 
                                             @foreach (var imgs in item.ArticleImage)
                                             {
-                                                <img src="http://localhost:62320/@imgs.url" style="width: 200px; padding-left:10px; display: inline-block;" alt="@imgs.title">
+                                                <img src="http://120.78.198.92/@imgs.url" style="width: 200px; padding-left:10px; display: inline-block;" alt="@imgs.title">
                                                 if (!string.IsNullOrEmpty(imgs.title))
                                                 {
                                                     imgtit = imgs.title;
@@ -64,7 +64,7 @@
 
                                                 @foreach (var imgs in item.ArticleImage)
                                                 {
-                                                    <img src="http://localhost:62320/@imgs.url" style="width: 200px; padding-left:10px; display: inline-block;" alt="@imgs.title">
+                                                    <img src="http://120.78.198.92/@imgs.url" style="width: 200px; padding-left:10px; display: inline-block;" alt="@imgs.title">
                                                     imgtit = imgs.title;
                                                 }
                                                 <br />
@@ -112,7 +112,7 @@
                     li += `<li class="article-item">
                             <a href="/Home/SelectArticle?id=`+ result[i].Articles[j].id +`" target="_blank" class="news-link">
                                 <div class="module-pic news-pic">
-                                    <img src="http://localhost:62320`+ result[i].Articles[j].imgurl +`" lazy="loaded">
+                                    <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl +`" lazy="loaded">
                                 </div>
                                 <div class="news-inner">
                                     <p class="module-title">`+ result[i].Articles[j].title +`</p>
