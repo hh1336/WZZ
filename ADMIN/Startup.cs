@@ -34,9 +34,14 @@ namespace ADMIN
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            #region 连接字符串
+            //连接SQL server
+            //var sqlConnection = @"Data Source=120.78.198.92;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=Woshimayu1998;";
+            //services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
+            services.AddDbContext<MyDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("MysqlConnection")));
 
-            var sqlConnection = @"Data Source=120.78.198.92;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=Woshimayu1998;";
-            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
+            #endregion
+
 
             BLLDIRegister sdr = new BLLDIRegister();
             sdr.DIRegister_DAL(services);

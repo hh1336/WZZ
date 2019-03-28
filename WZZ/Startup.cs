@@ -32,14 +32,17 @@ namespace WZZ
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            #region 连接字符串
             //连接字符串
             //var sqlConnection = Configuration.GetConnectionString("SqlServer");
             //services.AddDbContext<MyDbcontext>(option => option.UseSqlServer(sqlConnection));
 
-            var sqlConnection = @"Data Source=120.78.198.92;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=Woshimayu1998;";
-            services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
+            //var sqlConnection = @"Data Source=120.78.198.92;Initial Catalog=WZZ;Persist Security Info=True;User ID=sa;Password=Woshimayu1998;";
+            //services.AddDbContext<MyDbContext>(option => option.UseSqlServer(sqlConnection));
+            services.AddDbContext<MyDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("MysqlConnection")));
 
+
+            #endregion
             BLLDIRegister sdr = new BLLDIRegister();
             sdr.DIRegister_DAL(services);
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

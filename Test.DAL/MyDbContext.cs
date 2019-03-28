@@ -23,5 +23,19 @@ namespace DAL
         public virtual DbSet<User> Users { set; get; }
         public virtual DbSet<WebStationSetting> WebStationSettings { set; get; }
         public virtual DbSet<VisitAmount> VisitAmounts { set; get; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Article>().ToTable("articles");
+            modelBuilder.Entity<WZZModel>().ToTable("wzzmodels");
+            modelBuilder.Entity<RotationChart>().ToTable("rotationcharts");
+            modelBuilder.Entity<TeaType>().ToTable("teatypes");
+            modelBuilder.Entity<ArticleConTent>().ToTable("articlecontents");
+            modelBuilder.Entity<ArticleImage>().ToTable("articleimages");
+            modelBuilder.Entity<Subheading>().ToTable("subheadings");
+            modelBuilder.Entity<User>().ToTable("users");
+            modelBuilder.Entity<WebStationSetting>().ToTable("webstationsettings");
+            modelBuilder.Entity<VisitAmount>().ToTable("visitamounts");
+        }
     }
 }
