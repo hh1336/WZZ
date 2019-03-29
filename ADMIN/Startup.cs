@@ -55,7 +55,7 @@ namespace ADMIN
             //});
             services.AddSession(o =>
             {
-                o.IdleTimeout = TimeSpan.FromMinutes(20);
+                o.IdleTimeout = TimeSpan.FromMinutes(30);
                 o.Cookie.HttpOnly = true;
                 o.Cookie.IsEssential = true;
             });

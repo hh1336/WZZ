@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Entitys;
+using DAL.ViewModels;
 
 namespace BLL.Interfaces
 {
@@ -29,5 +30,13 @@ namespace BLL.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         Task<bool> IsVisitAc(string userHostAddress, int acid);
+
+        /// <summary>
+        /// 根据传入的时间来获取对应时间的数据
+        /// </summary>
+        /// <param name="startTime"></param>
+        /// <param name="endTime"></param>
+        /// <returns></returns>
+        Task<VisitamountOutViewModel> GetVisiByTime(VisitAmountInputViewModel data);
     }
 }

@@ -36,6 +36,11 @@ namespace DAL.Entitys
         public DateTime? updateTime { set; get; }
 
         /// <summary>
+        /// 修改的用户
+        /// </summary>
+        public int? updateuser { set; get; }
+
+        /// <summary>
         /// 作者
         /// </summary>
         [StringLength(30)]
@@ -90,7 +95,14 @@ namespace DAL.Entitys
         /// </summary>
         public ICollection<RotationChart> RotationCharts { set; get; }
 
+        /// <summary>
+        /// 删除时间
+        /// </summary>
+        public DateTime? deltime { set; get; }
 
-
+        /// <summary>
+        /// 删除人
+        /// </summary>
+        public int? deluser { set; get; }
     }
 }

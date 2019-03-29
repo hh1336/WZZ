@@ -27,6 +27,7 @@ namespace ADMIN.Controllers
         private readonly ILoginBLL _login;
         private readonly IWZZModelBLL _wzzmodel;
         private readonly IUserBLL _user;
+        private readonly IVisitAmountBLL _visitamount;
 
         /// <summary>
         /// 通过构造函数注入需要使用到的BLL
@@ -34,16 +35,22 @@ namespace ADMIN.Controllers
         /// <param name="login"></param>
         /// <param name="wzzmodel"></param>
         /// <param name="user"></param>
-        public HomeController(ILoginBLL login, IWZZModelBLL wzzmodel, IUserBLL user)
+        public HomeController(ILoginBLL login, IWZZModelBLL wzzmodel, IUserBLL user, IVisitAmountBLL visitAmountBLL)
         {
             _login = login;
             _wzzmodel = wzzmodel;
             _user = user;
+            _visitamount = visitAmountBLL;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View("Visitamount");
+        }
+
+        public async Task<IActionResult> UserInfo()
+        {
+            return View("Index");
         }
 
         /// <summary>
@@ -158,6 +165,14 @@ namespace ADMIN.Controllers
         {
             var value = HttpContext.Session.GetString(key);
             return Json(value);
+        }
+
+
+        public async Task<IActionResult> GetVisitamount(VisitAmountInputViewModel data)
+        {
+            var result = await _visitamount.GetVisiByTime(data);
+
+            return Json(result);
         }
 
     }

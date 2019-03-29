@@ -26,7 +26,7 @@ namespace BLL.Commons
         /// <returns></returns>
         public static async Task<IPageList<TSource>> ToPageList<TSource>(this IQueryable<TSource> source, int limit, int page) where TSource : class, new()
         {
-            if (source.Count() == 0) return new IPageList<TSource>() { code = 200, message = "无数据", data = source, total = 1, count = 0 };
+            if (source.Count() == 0) return new IPageList<TSource>() { code = 0, message = "无数据", data = source, total = 1, count = 0 };
             //计算取第几页的值
             int skip = (page - 1) * limit;
             //计算取几条
@@ -39,7 +39,7 @@ namespace BLL.Commons
             {
                 data = query,
                 total = source.Count() / limit < 1 ? 1 : source.Count() / limit,
-                code = 200,
+                code = query.Count() > 0 ? 200 : -1,
                 count = source.Count(),
                 message = query.Count() > 0 ? "加载成功" : "没有数据"
             };

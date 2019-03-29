@@ -1,6 +1,7 @@
 ﻿using BLL.Interfaces;
 using DAL;
 using DAL.Entitys;
+using DAL.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,26 @@ namespace BLL.Services
         public VisitAmountBLL(MyDbContext db)
         {
             _db = db;
+        }
+
+        public async Task<VisitamountOutViewModel> GetVisiByTime(VisitAmountInputViewModel data)
+        {
+            if (!data.startTime.HasValue) data.startTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            if (!data.endTime.HasValue) data.endTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+            var result = new VisitamountOutViewModel();
+            var query = from visi in _db.VisitAmounts
+                        where visi.visitDateTime > data.startTime.Value && visi.visitDateTime <= data.endTime.Value
+                        select visi;
+            var ipGroup = query.GroupBy(s => s.ipaddress);
+            foreach (var item in ipGroup)
+            {
+                result.categories.Add(item.Key);
+            }
+
+            //result.categories = iplist;
+
+            return result;
+            ;
         }
 
         public bool IsAddress(string userHostAddress)

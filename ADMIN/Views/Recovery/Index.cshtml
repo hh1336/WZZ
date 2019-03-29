@@ -7,7 +7,7 @@
 <script type="text/html" id="toolbar">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-sm" id="reload">刷新</button>
-        <button class="layui-btn layui-btn-sm" id="clear">清空回收站</button>
+        <!--<button class="layui-btn layui-btn-sm" id="clear">清空回收站</button>-->
     </div>
 </script>
 
@@ -199,26 +199,7 @@
         //清空回收站
         $(document).on("click", "#clear", function (e) {
             e.preventDefault();
-            var index = Common.alert("提示", "慎重操作!所有回收站的数据将会被清除", function () {
-                layer.close(index);
-                var loadindex = layer.open({
-                    content: "系统操作中,请误刷新页面",
-                    type: 3
-                });
-                $.post("/Recovery/Clear", {}, function (result) {
-                    for (var i = 0; i < result.length; i++) {
-                        $.post("/Home/DelFile", { url: result[i] });
-                    }
-                    layer.close(loadindex);
-                    layer.msg("删除成功!", { icon: 1 });
-                    //刷新数据
-                    reload({
-                        field: _sortField,
-                        type: _sortType
-                    });
-
-                })
-            })
+            layer.msg("别乱搞这个按钮啊", { icon: 2 });
         })
 
         //删除数据的方法

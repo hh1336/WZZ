@@ -69,6 +69,29 @@ namespace ADMIN.Controllers
         public async Task<IActionResult> Clear()
         {
             var result = await _bll.Clear();
+            #region 清空回收站的js
+            //var index = Common.alert("提示", "慎重操作!所有回收站的数据将会被清除", function() {
+            //    layer.close(index);
+            //    var loadindex = layer.open({
+            //    content: "系统操作中,请误刷新页面",
+            //        type: 3
+            //    });
+            //    $.post("/Recovery/Clear", { }, function(result) {
+            //        for (var i = 0; i < result.length; i++)
+            //        {
+            //            $.post("/Home/DelFile", { url: result[i] });
+            //    }
+            //    layer.close(loadindex);
+            //    layer.msg("删除成功!", { icon: 1 });
+            //    //刷新数据
+            //    reload({
+            //    field: _sortField,
+            //            type: _sortType
+            //        });
+
+            //})
+            //})
+            #endregion
             return Json(result);
         }
 
