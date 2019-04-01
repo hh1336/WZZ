@@ -28,34 +28,63 @@
                     <div class="layui-inline">
                         <label class="layui-form-label" style="padding:3% 0 0 0;">开始时间：</label>
                         <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="startTime" placeholder="yyyy-MM-dd">
+                            <input type="text" class="layui-input" id="startTime" placeholder="yyyy-MM-dd" value="@monthstart.ToString("yyyy-MM-dd") ">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="padding:3% 0 0 0;">结束时间：</label>
                         <div class="layui-input-inline">
-                            <input type="text" class="layui-input" id="endTime" placeholder="yyyy-MM-dd">
+                            <input type="text" class="layui-input" id="endTime" placeholder="yyyy-MM-dd" value="@monthend.ToString("yyyy-MM-dd")">
                         </div>
                     </div>
-                    <input type="button" class="layui-btn" value="查看" />
+                    <input type="button" class="layui-btn" id="search" value="查看" />
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="padding:3% 0 0 0;">查看某年：</label>
+                        <div class="layui-input-inline">
+                            <select id="selectYear">
+                                @{
+                                    for (int i = 0; i < 10; i++)
+                                    {
+                                        var year = DateTime.Now.Year - i;
+                                        <option value="@year">@year</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="padding:3% 0 0 0;">查看某月：</label>
+                        <div class="layui-input-inline">
+                            <select id="selectMother">
+                                <option value="0">不选择则看整年情况</option>
+                                @for (int i = 1; i <= 12; i++)
+                                {
+                                    <option value="@i">@i 月</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <input type="button" class="layui-btn" id="searchMother" value="查看" />
                 </div>
             </div>
             <hr class="layui-bg-blue">
         </div>
     </div>
 
-    <div class="col-lg-12 jinsantian">
+    <div class="col-lg-12 jinsantian" id="todayvisi">
         <div class="col-lg-3">
             <h3>今日浏览</h3>
-            <h1>13</h1>
+            <h1></h1>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
+        <div class="col-lg-3 col-lg-offset-1" id="toweekvisi">
             <h3>本周总浏览</h3>
-            <h1>13</h1>
+            <h1></h1>
         </div>
-        <div class="col-lg-3 col-lg-offset-1">
+        <div class="col-lg-3 col-lg-offset-1" id="tomonthvisi">
             <h3>本月总浏览</h3>
-            <h1>13</h1>
+            <h1></h1>
         </div>
     </div>
     <div class="col-lg-12">
@@ -70,15 +99,41 @@
     <script>
 
         var _startTime =" @monthstart.ToString("yyyy-MM-dd") ";
-        var _endTime =" @monthend.ToString("yyyy-MM-dd") ";
-        function loadChart(starttime, endtime) {
+        var _endTime = " @monthend.ToString("yyyy-MM-dd") ";
+        var _visitAountEnum = 1;
+
+        //点击查看不固定的时间时
+        $(document).on("click", "#search", function (e) {
+            e.preventDefault();
+            _startTime = $("#startTime").val();
+            _endTime = $("#endTime").val();
+            _visitAountEnum = 3;
+            loadChart();
+        })
+
+        //按照年月日方式查看
+        $(document).on("click", "#searchMother", function () {
+            var mother = $("#selectMother").val();
+            var year = $("#selectYear").val();
+            var lastDay;
+            if (mother != 0 && mother != "") {
+                lastDay = new Date(year, mother, 0).getDate();
+            }
+            _startTime = mother == "" || mother == 0 ? year + "-1-1" : year + "-" + mother + "-1";
+            _endTime = mother == "" || mother == 0 ? year + "-12-31" : year + "-" + mother + "-" + lastDay;
+            _visitAountEnum = mother == "" || mother == 0 ? 2 : 1;
+            loadChart();
+        })
+
+
+        function loadChart() {
             //初始化
             var myChart = echarts.init(document.getElementById('echart'));
 
             // 使用刚指定的配置项和数据显示图表。
             myChart.setOption({
                 title: {
-                    text: '本月浏览情况'
+                    text: _visitAountEnum == 0 ? "该周情况" : _visitAountEnum == 1 ? "该月情况" : _visitAountEnum == 2 ? "该年情况" : "其他情况"
                 },
                 tooltip: {},
                 legend: {
@@ -95,23 +150,36 @@
                 }]
             });
             var data = {
-                startTime: starttime,
-                endtime: endtime
+                startTime: _startTime,
+                endtime: _endTime,
+                visitAountEnum: _visitAountEnum
             };
             $.post("/Home/GetVisitamount", data, function (result) {
-                console.log(result);
+                var xarr = [];
+                var yarr = [];
+                $.each(result.data, function (key, value) {
+                    xarr.push(key);
+                    yarr.push(value);
+                });
+
                 myChart.setOption({
                     xAxis: {
-                        data: result.categories
+                        data: xarr
                     },
                     series: [{
                         // 根据名字对应到相应的系列
-                        name: '销量',
-                        data: result.data
+                        data: yarr
                     }]
                 });
             })
 
+            //渲染三个方块
+            $.post("/Home/LoadNewData", function (result) {
+                console.log(result);
+                $("#todayvisi h1").text(result.toDayVisi);
+                $("#toweekvisi h1").text(result.toWeekVisi);
+                $("#tomonthvisi h1").text(result.toMonthVisi);
+            })
         }
 
 
@@ -126,7 +194,7 @@
                 elem: "#endTime"
             })
 
-            loadChart(_startTime,_endTime);
+            loadChart();
 
 
         })

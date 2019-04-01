@@ -167,11 +167,25 @@ namespace ADMIN.Controllers
             return Json(value);
         }
 
-
+        /// <summary>
+        /// 检索浏览量
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public async Task<IActionResult> GetVisitamount(VisitAmountInputViewModel data)
         {
             var result = await _visitamount.GetVisiByTime(data);
 
+            return Json(result);
+        }
+
+        /// <summary>
+        /// 加载方块中最新数据
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> LoadNewData()
+        {
+            var result = await _visitamount.LoadNewData();
             return Json(result);
         }
 

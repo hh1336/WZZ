@@ -38,5 +38,11 @@ namespace BLL.Interfaces
         /// <param name="endTime"></param>
         /// <returns></returns>
         Task<VisitamountOutViewModel> GetVisiByTime(VisitAmountInputViewModel data);
+
+        /// <summary>
+        /// 获取当天，当周，当月的浏览总量，以及一篇点击量最高的文章
+        /// </summary>
+        /// <returns></returns>
+        Task<VisitamountNewDataViewModal> LoadNewData();
     }
 }
