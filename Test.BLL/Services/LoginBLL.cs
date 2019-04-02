@@ -1,6 +1,7 @@
 ﻿using BLL.Commons;
 using BLL.Interfaces;
 using DAL;
+using DAL.enums;
 using DAL.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace BLL.Services
         {
             var user = _db.Users.FirstOrDefault(u => u.Email == email);
             var info = new LoginInfo();
-            if (user == null)
+            if (user == null||user.userstate == UserState.删除)
             {
                 info.code = 0;
                 info.msg = "登陆失败，没有找到用户";
@@ -45,6 +46,12 @@ namespace BLL.Services
             {
                 info.code = 0;
                 info.msg = "登陆失败，密码错误";
+                return info;
+            }
+            if(user.userstate == UserState.冻结)
+            {
+                info.code = 0;
+                info.msg = "登陆失败，您的账号已被冻结，请联系管理员";
                 return info;
             }
             info.email = user.Email;

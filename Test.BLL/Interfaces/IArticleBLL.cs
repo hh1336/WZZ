@@ -31,9 +31,10 @@ namespace BLL.Interfaces
         /// <returns></returns>
         Task<List<Article>> GetNewArticle();
         Task<IPageList<Article>> GetArticlePageList(SearchViewModel model);
-        Task<int> AddOrUpdate(Article data);
+        Task<int> AddOrUpdate(Article data,string username);
         Task<bool> Show(int id);
-        Task<bool> SoftDel(int id);
+        Task<bool> SoftDel(int id,string username);
         Task<ArticleInfoModel> GetAcByAcid(int id);
+        Task<Article> UserEditTheAc(int value, string username);
     }
 }

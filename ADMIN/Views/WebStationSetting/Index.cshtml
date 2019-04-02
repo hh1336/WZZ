@@ -34,7 +34,6 @@
 
         function load() {
             $.post("/WebStationSetting/GetWebInfo", { id: 1 }, function (result) {
-                console.log(result);
                 $("#webSettingForm [name=phone]").val(result.phone);
                 $("#webSettingForm [name=Subheading]").val(result.subheading);
                 $("#webSettingForm [name=imgurl]:hidden").val(result.imgurl);

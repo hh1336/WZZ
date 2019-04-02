@@ -29,11 +29,13 @@ namespace BLL.Services
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
-        public async Task<int> AddOrUpdate(Article data)
+        public async Task<int> AddOrUpdate(Article data,string username)
         {
+            var user = await _db.Users.SingleOrDefaultAsync(s => s.Email == username);
             if (data.id == 0)
             {//判断是0就为新增
                 data.createTime = DateTime.Now;
+                data.createuser = user.Id;
                 await _db.Articles.AddAsync(data);
                 var result = await _db.SaveChangesAsync();
                 if (result > 0)
@@ -209,13 +211,26 @@ namespace BLL.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<bool> SoftDel(int id)
+        public async Task<bool> SoftDel(int id,string username)
         {
             var article = await _db.Articles.SingleOrDefaultAsync(a => a.id == id);
             if (article == null) return false;
+            var user = await _db.Users.SingleOrDefaultAsync(s => s.Email == username);
             article.isShow = 0;
+            article.deluser = user.Id;
+            article.deltime = DateTime.Now;
             await _db.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<Article> UserEditTheAc(int value, string username)
+        {
+            var result = await this.GetById(value);
+            var user = await _db.Users.SingleOrDefaultAsync(s => s.Email == username);
+            result.updateuser = user.Id;
+            result.updateTime = DateTime.Now;
+            await _db.SaveChangesAsync();
+            return result;
         }
     }
 }

@@ -104,5 +104,10 @@ namespace DAL.Entitys
         /// 删除人
         /// </summary>
         public int? deluser { set; get; }
+
+        /// <summary>
+        /// 创建人
+        /// </summary>
+        public int? createuser { set; get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,5 +20,6 @@ namespace DAL.ViewModels
         public string Email { set; get; }
 
         public string PortraitUrl { set; get; }
+
     }
 }

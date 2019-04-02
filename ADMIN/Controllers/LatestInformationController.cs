@@ -1,7 +1,10 @@
 ﻿using BLL.Interfaces;
 using DAL.Entitys;
 using DAL.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -68,11 +71,13 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> AddOrEdit(int? id)
         {
             if (id.HasValue)
             {
-                Article data = await _article.GetById(id.Value);
+                var username = HttpContext.Session.GetString("username");
+                var data = await _article.UserEditTheAc(id.Value,username);
                 return View("Update", data);
             }
             return View();
@@ -83,9 +88,11 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> SaveArticleTitle(Article data)
         {
-            var articleid = await _article.AddOrUpdate(data);
+            var username = HttpContext.Session.GetString("username");
+            var articleid = await _article.AddOrUpdate(data,username);
             return Json(new { code = articleid == 0 ? false : true, aid = articleid });
         }
 
@@ -94,6 +101,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> SaveArticleContent(ArticleConTent data)
         {
             int aid = await _articleConTent.AddOrUpdate(data);
@@ -105,6 +113,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> SaveArticleImage(ArticleImage data)
         {
             int aid = await _articleImage.Add(data);
@@ -116,6 +125,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> SaveArticleImgTitle(ArticleImage data)
         {
             bool result = await _articleImage.UpdateTitle(data);
@@ -127,6 +137,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> SaveSubheading(Subheading data)
         {
             int aid = await _subheading.AddOrUpdate(data);
@@ -138,6 +149,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> DelSubheading(int id)
         {
             bool result = await _subheading.Del(id);
@@ -149,6 +161,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> Show(int id)
         {
             bool result = await _article.Show(id);
@@ -160,9 +173,11 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> SoftDel(int id)
         {
-            bool result = await _article.SoftDel(id);
+            var username = HttpContext.Session.GetString("username");
+            bool result = await _article.SoftDel(id,username);
             return Json(new { msg = result ? "删除成功" : "删除失败" });
         }
 
@@ -171,6 +186,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> LoadAcByAcId(int aid)
         {
             var result = await _article.GetAcByAcid(aid);
@@ -186,6 +202,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="actId"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> LoadImg(int actId)
         {
             //得到需要的图片
@@ -205,6 +222,7 @@ namespace ADMIN.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [Authorize]
         public async Task<IActionResult> DelImg(int id)
         {
             bool result = await _articleImage.DelById(id);

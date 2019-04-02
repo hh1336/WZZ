@@ -40,7 +40,6 @@
 
     function showArticle(id) {
         $.post("/Varieties/showArticle", { id: id }, function (result) {
-            console.log(result);
             $("#myModal .modal-title").text(result.title);
             $("#myModal .modal_img img").attr("src", "http://120.78.198.92" + result.imgurl);
             $("#myModal .modal_text").html("");
@@ -59,7 +58,6 @@
     function load() {
         //加载轮播图
         $.post("/Home/GetRotationCharts", { id: 13 }, function (result) {
-            console.log(result);
             var str = ``;
             var active = `active`;
             var point = ``;
@@ -86,7 +84,6 @@
         });
 
         $.post("/Home/GetModel", { id: 13 }, function (result) {
-            console.log(result);
             var modeltitle = ``;
             for (var i = 0; i < result.length; i++) {
                 var tit = result[i].Subheading == null ? "" : result[i].Subheading;

@@ -11,6 +11,10 @@
                 margin-top: 10%;
                 margin-bottom: 10%;
             }
+
+        #toweekvisi, #tomonthvisi {
+            cursor: pointer;
+        }
     </style>
 }
 @{
@@ -125,6 +129,24 @@
             loadChart();
         })
 
+        //方块中按周和月查看
+        $(document).on("click", "#toweekvisi,#tomonthvisi", function () {
+            var isWeekOrMonth = $(this).children("h3").text() === "本周总浏览" ? "Week" : "Month";
+             _startTime = $(this).children("h1").attr("startTime");
+             _endTime = $(this).children("h1").attr("endTime");
+            if (isWeekOrMonth === "Week")
+            {
+                _visitAountEnum = 0;
+                
+            } else if (isWeekOrMonth === "Month")
+            {
+                _visitAountEnum = 1;
+            } else
+            {
+                return;
+            }
+            loadChart();
+        })
 
         function loadChart() {
             //初始化
@@ -175,10 +197,9 @@
 
             //渲染三个方块
             $.post("/Home/LoadNewData", function (result) {
-                console.log(result);
                 $("#todayvisi h1").text(result.toDayVisi);
-                $("#toweekvisi h1").text(result.toWeekVisi);
-                $("#tomonthvisi h1").text(result.toMonthVisi);
+                $("#toweekvisi h1").text(result.toWeekVisi).attr("startTime", result.toWeek).attr("endTime", result.lastWeekDay);
+                $("#tomonthvisi h1").text(result.toMonthVisi).attr("startTime", result.toMonthFirst).attr("endTime", result.toMonthLast);
             })
         }
 

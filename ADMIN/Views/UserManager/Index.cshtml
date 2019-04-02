@@ -1,0 +1,262 @@
+﻿
+@section Styles{
+    <style>
+    </style>
+}
+<div class="row">
+    <!--工具栏模板：-->
+    <script type="text/html" id="toolbar">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" id="AddUser">添加用户</button>
+            <button class="layui-btn layui-btn-sm" id="reload">刷新</button>
+        </div>
+    </script>
+    <div class="col-lg-12">
+        <table id="usertable" lay-filter="usertable"></table>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+        var table;
+        var _sortField = "Id";
+        var _sortType = "desc";
+
+
+        function LoadUserTable() {
+            table.render({
+                elem: "#usertable",
+                url: "/UserManager/GetAllList",
+                toolbar: "#toolbar",//开启工具栏
+                defaultToolbar: ['exports', '#toolbar'],//定义工具栏的工具位置
+                page: true,//开启分页,可传入dom元素自定义分页样式
+                loading: true,//加载时出现等待条
+                contentType: "json",//接收内容为json类型
+                id: 'Reload',//定义标识，用于刷新
+                method: "GET",//请求方式为post
+                title: "用户信息",//标题
+                limit: 10,//每页显示条数
+                limits: [10, 20, 50],//一次显示多条
+                autoSort: false,//false为服务器来进行排序
+                initSort: {//初始排序状态
+                    field: 'Id',
+                    type: 'desc'
+                },
+                where: {//加载表格时需要传入的参数
+                    field: _sortField,
+                    order: _sortType
+                },
+                response: {//定义后台返回json时的格式
+                    statusName: "code",//定义返回的状态码名称
+                    statusCode: 200,//定义成功时应返回的状态码
+                },
+                cols: [[
+                    {
+                        field: 'Id',//数据名称
+                        title: 'ID',//显示名称
+                        //sort: true,//排序开启
+                        fixed: 'left',//固定在左侧
+                        unresize: true,//不可拖动的列宽
+                        align: "center",//内容居中
+                        templet: function (data) {//data里面存放着一整条数据
+                            return data.LAY_INDEX;//返回当前数据的索引
+                        }
+                    },
+                    {
+                        field: 'action',
+                        title: '操作',
+                        unresize: true,
+                        align: "center",
+                        templet: function (data) {
+                            var btn = "";
+                            var edit = "<a class='layui-btn layui-btn-xs layui-btn-primary'name='edit' data-id='" + data.id + "' accound=" + data.email + " ><i class='layui-icon'>&#xe642;</i></a> <span></span>";
+                            var del = "<a class='layui-btn layui-btn-xs layui-btn-primary' name='del' data-id='" + data.id + "' accound=" + data.email + " ><i class='layui-icon'>&#xe640;</i></a>";
+                            btn = edit + del;
+                            return btn;
+                        }
+                    },
+                    {
+                        field: 'nickname',
+                        title: '用户名',
+                        unresize: true,
+                        align: "center"
+                    },
+                    {
+                        field: 'email',
+                        title: '登陆账号',
+                        unresize: true,
+                        align: "center"
+                    },
+                    {
+                        field: 'userstate',
+                        title: '账号状态',
+                        unresize: true,
+                        align: "center",
+                        templet: function (data) {
+                            var state = data.userstate == 1 ? "正常" : "冻结";
+                            return "<span>" + state + "</span>";
+                        }
+                    },
+                    {
+                        field: 'createtime',
+                        title: '创建时间',
+                        unresize: true,
+                        align: "center",
+                        templet: function (data) {
+                            if (data.createtime == null) return "";
+                            var dateTime = Common.ToDateTime(data.createtime);
+                            return dateTime;
+                        }
+                    },
+                    {
+                        field: 'portraitUrl',
+                        title: '用户头像',
+                        unresize: true,
+                        align: "center",
+                        templet: function (data) {
+                            var img = "无";
+                            if (data.portraitUrl != null && data.portraitUrl != "" && data.portraitUrl != undefined) img = "<a href='#' class='selectimg layui-icon' imgurl='" + data.portraitUrl + "'>&#xe615;</a>";
+
+                            return img;
+                        }
+                    }
+
+                ]]
+            });
+            //监听排序字段
+            table.on("sort(filter)", function (obj) {
+                //排序发生改变时将排序字段赋值记录到全局
+                _sortField = obj.field;
+                _sortType = obj.type;
+
+                //触发刷新事件，将当前初始化的表格传入
+                reload(obj);
+            });
+        }
+
+
+        //删除数据的方法
+        $(document).on("click", "a[name=del]", function (e) {
+            e.preventDefault();
+            var _id = $(this).attr("data-id");
+            var _accound = $(this).attr("accound");
+            Common.alert("删除数据", "请问您确定要删除这条数据吗？", () => {
+                $.ajax({
+                    url: "/UserManager/DelUser",
+                    type: "post",
+                    dataType: "json",
+                    data: { id: _id, Email: _accound }
+                }).done(function (result) {
+                    layer.msg(result.msg, { icon: result.code ? 1 : 2 });
+                    //刷新数据
+                    reload({
+                        field: _sortField,
+                        type: _sortType
+                    });
+                    return 1;
+                })
+            });
+
+        })
+
+        //添加用户
+        $(document).on("click", "#AddUser", function () {
+            var app = new appModal({
+                title: "添加用户",
+                url: "/UserManager/AddOrEdit",
+                yes: function () {
+                    var form = $("#userinfoform");
+                    var data = {};
+                    data.Id = $(form).find("input[name=id]:hidden").val();
+                    data.Nickname = $(form).find("input[name=NiceName]").val();
+                    data.Email = $(form).find("input[name=Email]").val();
+                    data.Pwd = $(form).find("input[name=Pwd]").val();
+                    data.userstate = $(form).find("input[name=userstate]:checked").val();
+                    data.PortraitUrl = $(form).find("input[name=PortraitUrl]").val();
+                    if (data.Email == undefined || data.Email == "") return layer.msg("账号不能为空", { icon: 2 });
+                    if (data.Pwd == undefined || data.Pwd == "") return layer.msg("密码不能为空", { icon: 2 });
+                    $.post("/UserManager/Save", data, function (result) {
+                        layer.msg(result.msg, { icon: result.code ? 1 : 2 });
+                        $("#reload").click();
+                    })
+                }
+            });
+            app.open({ width: "60%" });
+        })
+
+        //编辑按钮
+        $(document).on("click", "a[name=edit]", function (e) {
+            e.preventDefault();
+            var _id = $(this).attr("data-id");
+            var _accound = $(this).attr("accound");
+            var app = new appModal({
+                title: "编辑用户",
+                url: "/UserManager/AddOrEdit",
+                data: { id: _id },
+                yes: function () {
+                    var form = $("#userinfoform");
+                    var data = {};
+                    data.Id = $(form).find("input[name=id]:hidden").val();
+                    data.Nickname = $(form).find("input[name=NiceName]").val();
+                    data.Email = $(form).find("input[name=Email]").val();
+                    data.Pwd = $(form).find("input[name=Pwd]").val();
+                    data.userstate = $(form).find("input[name=userstate]:checked").val();
+                    data.PortraitUrl = $(form).find("input[name=PortraitUrl]").val();
+                    if (data.Email == undefined || data.Email == "") return layer.msg("账号不能为空", { icon: 2 });
+                    if (data.Pwd == undefined || data.Pwd == "") return layer.msg("密码不能为空", { icon: 2 });
+                    $.post("/UserManager/Save", {
+                        user: data,
+                        Email: _accound
+                    }, function(result) {
+                        layer.msg(result.msg, { icon: result.code ? 1 : 2 });
+                        $("#reload").click();
+                    })
+                }
+            });
+            app.open({
+                width: "60%"
+            });
+        })
+
+        //刷新表格，需要接收一个初始化后的表格
+        function reload(obj) {
+            if (obj == undefined || obj == "") {
+                obj = {
+                    field: "id",
+                    type: "desc"
+                };
+            }
+            //刷新事件,第一个参数为标识id
+            table.reload("Reload", {
+                initSort: obj,
+                where: {
+                    field: obj.field,
+                    order: obj.type
+                }
+            });
+        }
+
+        //刷新按钮
+        $(document).on("click", "#reload", function (e) {
+            e.preventDefault();
+            //调用刷新方法
+            reload({
+                field: _sortField,
+                type: _sortType
+            });
+        });
+
+        //用户点击查看图片时
+        $(document).on("click", ".selectimg", function () {
+            var url = $(this).attr("imgurl");//得到这张图片的url
+            var img = '<img src="' + url + '" style="margin:0 auto;" />';
+            Common.alert("文章图片", img);
+        });
+
+
+        $(function () {
+            table = layui.table;
+            LoadUserTable();
+        })
+    </script>
+}

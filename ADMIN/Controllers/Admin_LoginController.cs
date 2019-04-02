@@ -48,8 +48,7 @@ namespace ADMIN.Controllers
         public IActionResult OutLogin()
         {
             HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            HttpContext.Session.SetString("username", null);
-            return Redirect("Index");
+            return Redirect("/Home/Index");
         }
 
     }

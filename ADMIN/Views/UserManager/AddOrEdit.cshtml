@@ -1,0 +1,101 @@
+﻿@using DAL.Entitys
+@using DAL.enums
+@model User
+
+
+<form class="layui-form" id="userinfoform">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称:</label>
+        <div class="layui-input-block">
+            <input type="text" name="NiceName" required lay-verify="required" placeholder="昵称" autocomplete="off" class="layui-input" value="@Model.Nickname">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号:</label>
+        <div class="layui-input-block">
+            @{ 
+                var disable = "disabled";
+                if (string.IsNullOrEmpty(Model.Email))
+                {
+                    disable = "";
+                }
+            }
+            <input type="text" name="Email" lay-verify="required" placeholder="登陆账号" autocomplete="off" class="layui-input" value="@Model.Email" @disable>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码:</label>
+        <div class="layui-input-block">
+            <input type="password" name="Pwd" lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input" >
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="padding:1% 0 0 0;">账号状态:</label>
+        <div class="layui-input-block" id="check">
+            @{
+                var state = Model.userstate == UserState.冻结 ? 2 : 1;
+            }
+            <input type="hidden" name="userstatehidden" value="@state" />
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">头像:</label>
+        <div class="layui-input-block">
+            @{
+                if (!string.IsNullOrEmpty(Model.PortraitUrl))
+                {
+                    <img src="@Model.PortraitUrl" class="img-circle" id="PortraitUrl" style="width:7rem;"/>
+                }
+
+                <input type="hidden" name="PortraitUrl" value="@Model.PortraitUrl" />
+                <input type="file" class="file-loading upimg" data-browse-on-zone-click="true" />
+            }
+        </div>
+    </div>
+
+</form>
+
+<script>
+    var form;
+
+    $(function () {
+        form = layui.form;
+        var userstate = $("input[name=userstatehidden]:hidden").val();
+        var checkbtn = `<input type="radio" name="userstate" value="1" title="正常" checked> <input type="radio" name="userstate" value="2" title="冻结" >`;
+        if (userstate == 2) {
+            checkbtn = `<input type="radio" name="userstate" value="1" title="正常"  >`;
+            checkbtn += `<input type="radio" name="userstate" value="2" title="冻结" checked >`;
+        }
+        $("#check").append(checkbtn);
+        form.render();
+        //文件上传配置(单图上传)
+        var fileopt = {
+            language: 'zh',//设置语言为中文
+            uploadUrl: "/Home/UpFile",//文件上传路径
+            showUpload: true,//是否显示上传按钮
+            browseClass: "btn btn-primary", //按钮样式
+            maxFileCount: 1,//允许最大同时上传数
+            uploadAsync: true,//上传方式使用异步
+            showClose: false,//是否显示右上角关闭按钮
+            showPreview: false,//是否显示预览区域
+            validateInitialCount: true,
+            fileActionSettings: { showUpload: false },//设置图片上的按钮，现在为不显示单个图片上传的按钮
+            maxFileSizenumber: 1024 * 3,//设置最大上传大小
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            allowedFileExtensions: ['jpg', 'gif', 'png'],//接收的文件后缀
+        }
+        $(".upimg").fileinput(fileopt).on("fileuploaded", function (even, data) {
+            if (data.response) {
+                $("input[name=PortraitUrl]:hidden").val(data.response[0].filePath);
+                if ($("#PortraitUrl").length > 0) {
+                    $("#PortraitUrl").attr("src", data.response[0].filePath);
+                } else {
+                    $("input[name=PortraitUrl]:hidden").parent().append('<img src="' + data.response[0].filePath + '" class="img-circle" id="PortraitUrl"/>');
+                }
+            }
+        })
+
+    })
+</script>
