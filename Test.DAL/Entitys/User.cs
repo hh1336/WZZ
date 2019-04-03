@@ -69,5 +69,10 @@ namespace DAL.Entitys
         /// 修改时间
         /// </summary>
         public DateTime? updatetime { set; get; }
+
+        /// <summary>
+        /// 关联文章
+        /// </summary>
+        public ICollection<Article> Articles { set; get; }
     }
 }

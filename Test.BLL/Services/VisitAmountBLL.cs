@@ -94,7 +94,7 @@ namespace BLL.Services
 
         public bool IsAddress(string userHostAddress)
         {
-            var result = _db.VisitAmounts.Where(v => v.ipaddress == userHostAddress && v.visitDateTime > DateTime.Today);
+            var result = _db.VisitAmounts.Where(v => v.ipaddress == userHostAddress && v.visitDateTime == DateTime.Now.Date);
             if (result.Count() > 0)
             {
                 return true;
@@ -104,7 +104,7 @@ namespace BLL.Services
 
         public async Task<bool> IsVisitAc(string userHostAddress, int acid)
         {
-            var visit = await _db.VisitAmounts.SingleOrDefaultAsync(v => v.ipaddress == userHostAddress && v.visitDateTime >= DateTime.Today && v.ArticleId == acid);
+            var visit = await _db.VisitAmounts.SingleOrDefaultAsync(v => v.ipaddress == userHostAddress && v.visitDateTime == DateTime.Now.Date && v.ArticleId == acid);
             if (visit != null) return true;
             return false;
         }

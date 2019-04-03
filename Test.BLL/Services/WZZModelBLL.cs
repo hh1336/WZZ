@@ -88,8 +88,24 @@ namespace BLL.Services
                     icon = item.icon,
                     Subheading = item.Subheading
                 };
-                var arc = await _db.Articles.Where(s => s.WZZModelId == item.id && s.isShow == 1).OrderByDescending(s => s.updateTime).ToListAsync();
-                wzzmodel.Articles = arc;
+                var query = from arc in _db.Articles.Where(s => s.WZZModelId == item.id && s.isShow == 1)
+                            orderby arc.createTime descending
+                            select new Article {
+                                author = arc.author,
+                                createTime = arc.createTime,
+                                id = arc.id,
+                                imgurl = arc.imgurl,
+                                source = arc.source,
+                                title = arc.title,
+                                User = new User()
+                                {
+                                    PortraitUrl = _db.Users.SingleOrDefault(s => s.Id == arc.createuser.Value).PortraitUrl
+                                }
+                            };
+
+
+
+                wzzmodel.Articles = await query.ToListAsync();
                 result.Add(wzzmodel);
             }
 

@@ -108,6 +108,12 @@ namespace DAL.Entitys
         /// <summary>
         /// 创建人
         /// </summary>
+        [ForeignKey("User")]
         public int? createuser { set; get; }
+
+        /// <summary>
+        /// 关联用户
+        /// </summary>
+        public User User { set; get; }
     }
 }

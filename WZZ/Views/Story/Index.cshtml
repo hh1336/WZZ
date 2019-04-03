@@ -56,7 +56,7 @@
 <div class="story container-fluid p-0 ">
     <div class="row">
         <div class="col-12 topbody p-0">
-            <div class="col-7 p-0 mr-1">
+            <div class="col-lg-7 col-sm-12 col-xs-12 p-0 mr-1">
                 <div id="carousel" class="carousel slide " data-ride="carousel">
                     <div class="carousel-inner">
 
@@ -71,7 +71,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-4 topright">
+            <div class="col-lg-4 col-sm-12 col-xs-12 topright">
 
             </div>
         </div>
@@ -119,7 +119,7 @@
             $(".topright").html(topstr);
 
             for (var i = 0; i < result.length; i++) {
-                $(".bottombody").html(`<hr class="bg-warning" /><div class="bottomleft col-8"></div><div class="bottomright col-3"></div>`);
+                $(".bottombody").html(`<hr class="bg-warning" /><div class="bottomleft col-lg-8 col-sm-12 col-xs-12"></div><div class="bottomright col-lg-3 col-sm-12 col-xs-12"></div>`);
                 var leftarc = ``;
                 for (var j = 0; j < result[i].Articles.length; j++) {
                     leftarc += `<li onclick="SelectArticle(` + result[i].Articles[i].id +`)">

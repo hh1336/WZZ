@@ -98,8 +98,9 @@ namespace WZZ.Controllers
         private async Task VisitUser(int? id = 0)
         {
             var userHostAddress = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
-            var ipaddress = userHostAddress.Substring(7);
-
+            var ipaddress = userHostAddress.Replace("::ffff:", "");
+            Console.WriteLine(ipaddress);
+            if (ipaddress == "::1") return;
             if (id.Value == 0)
             {
                 //判断是否浏览过
@@ -108,7 +109,7 @@ namespace WZZ.Controllers
                 if (isNull) return;
                 await _visit.SaveAddress(new VisitAmount()
                 {
-                    ipaddress = userHostAddress,
+                    ipaddress = ipaddress,
                     visitDateTime = DateTime.Now
                 });
                 return;
@@ -116,11 +117,11 @@ namespace WZZ.Controllers
             else
             {
                 //判断用户是否浏览过这篇文章
-                bool isVisitAc = await _visit.IsVisitAc(userHostAddress, id.Value);
+                bool isVisitAc = await _visit.IsVisitAc(ipaddress, id.Value);
                 if (isVisitAc) return;
                 var visitinfo = new VisitAmount()
                 {
-                    ipaddress = userHostAddress,
+                    ipaddress = ipaddress,
                     visitDateTime = DateTime.Now,
                     ArticleId = id
                 };

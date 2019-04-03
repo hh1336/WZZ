@@ -13,7 +13,9 @@ header {
         width: 80%;
     }
 
-
+a{
+    color:#938f8f;
+}
 
 header nav .navtop {
     height: 30%;
@@ -90,3 +92,63 @@ footer {
         text-indent: 2em;
         color:#938f8f;
     }
+
+
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+    /*layout页的内容适配*/
+    .navtop>div{
+        padding:0;
+    }
+    .navtop > div:last-child{
+        display:none;
+    }
+    .navbottom .row{
+        font-size:10px;
+    }
+    .navbottom .row > div:first-child {
+        display: none;
+    }
+    #nav{
+        padding-top:0;
+    }
+    #nav li{
+        margin-left:5%;
+    }
+
+    footer{
+        display:none;
+    }
+
+    /*首页的内容适配*/
+    #topnewspaper{
+        padding:0;
+    }
+    #Hometop {
+        padding: 0;
+    }
+    ul li > div:first-child img {
+        width: 11rem;
+    }
+    /*适配茶故事*/
+    .topright{
+        padding:0;
+    }
+    .bottomright{
+        border-top:1px solid #ff0000;
+    }
+}
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1366px) {
+    #topnewspaper ul li:first-child img {
+        width:11rem;
+    }
+    footer {
+        position:absolute;
+        bottom:0px;
+        display: block !important;
+    }
+}
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    footer{
+        display:none;
+    }
+}
