@@ -39,7 +39,7 @@
 
                                             @foreach (var imgs in item.ArticleImage)
                                             {
-                                                <img src="http://120.78.198.92/@imgs.url" style="width: 200px; padding-left:10px; display: inline-block;" alt="@imgs.title">
+                                                <img src="http://120.78.198.92/@imgs.url" style="padding-left:10px; display: block;" alt="@imgs.title" class="col-12">
                                                 if (!string.IsNullOrEmpty(imgs.title))
                                                 {
                                                     imgtit = imgs.title;
@@ -64,7 +64,7 @@
 
                                                 @foreach (var imgs in item.ArticleImage)
                                                 {
-                                                    <img src="http://120.78.198.92/@imgs.url" style="width: 200px; padding-left:10px; display: inline-block;" alt="@imgs.title">
+                                                    <img src="http://120.78.198.92/@imgs.url" style="padding-left:10px; display: block;" alt="@imgs.title" class="col-12">
                                                     imgtit = imgs.title;
                                                 }
                                                 <br />

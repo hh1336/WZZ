@@ -159,7 +159,7 @@ namespace BLL.Services
         /// <returns></returns>
         public IQueryable<Article> GetArticleByModelId(int id)
         {
-            var result = _db.Articles.Where(a => a.WZZModelId == id && a.isShow == 1);
+            var result = _db.Articles.Include(s => s.User).Where(a => a.WZZModelId == id && a.isShow == 1);
             return result;
         }
 
