@@ -9,6 +9,19 @@
         <a class="layui-btn layui-btn-sm" asp-action="AddOrEdit">添加数据</a>
         <button class="layui-btn layui-btn-sm" id="reload">刷新</button>
     </div>
+    <form class="form-inline">
+        <div class="form-group">
+            <label>标题：</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="请输入标题">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail2">请选择发布时间：</label>
+            <input type="text" class="form-control" id="actiontime" placeholder="">
+            <label for="exampleInputEmail2">-</label>
+            <input type="text" class="form-control" id="endtime" placeholder="">
+        </div>
+        <button class="layui-btn layui-btn-sm" id="serach">查找</button>
+    </form>
 </script>
 
 @section Scripts{
@@ -136,7 +149,10 @@
                     where: {//加载表格时需要传入的参数
                         ModelId: ModelId,
                         field: _sortField,
-                        order: _sortType
+                        order: _sortType,
+                        title: $("input[name=title]").val(),
+                        actiontime: $("#actiontime").val(),
+                        endtime: $("#endtime").val()
                     },
                     response: {//定义后台返回json时的格式
                         statusName: "code",//定义返回的状态码名称
@@ -181,19 +197,29 @@
                 where: {
                     ModelId: ModelId,
                     field: obj.field,
-                    order: obj.type
+                    order: obj.type,
+                    title: $("input[name=title]").val(),
+                    actiontime: $("#actiontime").val(),
+                    endtime: $("#endtime").val()
                 }
             });
         }
 
         //刷新按钮
-        $(document).on("click", "#reload", function (e) {
+        $(document).on("click", "#reload,#serach", function (e) {
             e.preventDefault();
             //调用刷新方法
             reload({
                 field: _sortField,
                 type: _sortType
             });
+            var layerdate = layui.laydate;
+            layerdate.render({
+                elem: "#actiontime"
+            });
+            layerdate.render({
+                elem: "#endtime"
+            })
         });
 
         //删除数据的方法
@@ -242,6 +268,13 @@
         }
 
         $(function () {
+            var layerdate = layui.laydate;
+            layerdate.render({
+                elem: "#actiontime"
+            });
+            layerdate.render({
+                elem: "#endtime"
+            })
             load();
             loadTitle(ModelId);
         })

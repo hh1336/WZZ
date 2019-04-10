@@ -73,7 +73,22 @@ namespace WZZ.Controllers
         public async Task<IActionResult> GetModelArc(int id)
         {
             var result = _article.GetArticleByModelId(id);
+            ViewData["ModelId"] = id;
             return PartialView(result);
+        }
+
+        /// <summary>
+        /// 加载面包屑
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<IActionResult> Breadcrumb(int id)
+        {
+            var result = await _WZZModelBLL.GetById(id);
+            return Json(result, new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
         }
 
         /// <summary>
@@ -85,6 +100,7 @@ namespace WZZ.Controllers
         public async Task<IActionResult> SelectArticle(int id)
         {
             var acdata = await _article.GetAcByAcid(id);
+            ViewData["ModelId"] = acdata.WZZModel.id;
             if (acdata.id == 0) return NotFound();
             await VisitUser(id);
             return View("Index_Article", acdata);

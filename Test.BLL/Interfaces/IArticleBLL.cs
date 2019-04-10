@@ -36,5 +36,7 @@ namespace BLL.Interfaces
         Task<bool> SoftDel(int id,string username);
         Task<ArticleInfoModel> GetAcByAcid(int id);
         Task<Article> UserEditTheAc(int value, string username);
+
+        IQueryable<Article> GetArticleAllByModelId(int id);
     }
 }

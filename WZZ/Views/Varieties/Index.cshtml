@@ -4,9 +4,14 @@
 
 <link rel="stylesheet" href="~/public/Home/css/Varieties.css" />
 <link rel="stylesheet" href="~/public/Home/css/Varieties_meta.css" />
+<style>
+    #demo{
+        margin:0 auto;
+    }
 
+</style>
 <div class="row ">
-    <div id="demo" class="carousel slide col-12" data-ride="carousel">
+    <div id="demo" class="carousel slide col-9" data-ride="carousel">
 
 
         <ol class="carousel-indicators"></ol>
@@ -70,7 +75,7 @@
                 var tit = result[i].title == null ? "" : result[i].title;
                 str += `
                     <div class="carousel-item `+ active + `">
-                            <img class="d-block w-100" src="http://120.78.198.92`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId +`)" >
+                            <img class="img-fluid w-100" src="http://120.78.198.92`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId +`)" >
                             <div class="carousel-caption d-none d-md-block" style="margin-top:-30px;">
                                 <h3>`+ tit + `</h3>
                             </div>

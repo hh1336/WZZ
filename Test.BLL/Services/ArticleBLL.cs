@@ -86,7 +86,7 @@ namespace BLL.Services
             //判断传入的数据是否有错
             if (id == 0) return new ArticleInfoModel();
 
-            var ac = await _db.Articles.SingleOrDefaultAsync(s => s.id == id && s.isShow == 1);
+            var ac = await _db.Articles.Include(s => s.WZZModel).SingleOrDefaultAsync(s => s.id == id && s.isShow == 1);
             if (ac == null) return new ArticleInfoModel();
             //得到小节标题内容
             var achead = _db.Subheadings
@@ -106,7 +106,8 @@ namespace BLL.Services
                 imgurl = ac.imgurl,
                 source = ac.source,
                 title = ac.title,
-                updateTime = ac.updateTime                
+                updateTime = ac.updateTime,
+                WZZModel = ac.WZZModel
             };
             result.ArticleConTents = await nullheadAc.ToListAsync();
             result.Subheadings = await achead.ToListAsync();
@@ -159,7 +160,7 @@ namespace BLL.Services
         /// <returns></returns>
         public IQueryable<Article> GetArticleByModelId(int id)
         {
-            var result = _db.Articles.Include(s => s.User).Where(a => a.WZZModelId == id && a.isShow == 1);
+            var result = _db.Articles.Include(s => s.User).Include(s => s.WZZModel).ThenInclude(a => a.WZZModels).Where(a => a.WZZModelId == id && a.isShow == 1);
             return result;
         }
 
@@ -170,7 +171,27 @@ namespace BLL.Services
         /// <returns></returns>
         public async Task<IPageList<Article>> GetArticlePageList(SearchViewModel model)
         {
-            var result = await GetArticleByModelId(model.ModelId).Sort(model.field, model.order).ToPageList(model.limit, model.page);
+            var result = GetArticleAllByModelId(model.ModelId);
+            if (!string.IsNullOrEmpty(model.title))
+            {
+                result = result.Where(s => s.title.Contains(model.title));
+            }
+            if (model.actiontime.HasValue)
+            {
+                result = result.Where(s => s.createTime >= model.actiontime.Value.Date);
+            }
+            if (model.endtime.HasValue)
+            {
+                result = result.Where(s => s.createTime <= model.endtime.Value.Date.AddDays(1));
+            }
+
+            var resultlist = await result.Sort(model.field, model.order).ToPageList(model.limit, model.page);
+            return resultlist;
+        }
+
+        public IQueryable<Article> GetArticleAllByModelId(int id)
+        {
+            var result = _db.Articles.Where(a => a.WZZModelId == id && a.isShow == 1);
             return result;
         }
 

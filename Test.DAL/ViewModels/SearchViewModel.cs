@@ -35,5 +35,20 @@ namespace DAL.ViewModels
         /// 排序方式
         /// </summary>
         public string order { set; get; }
+
+        /// <summary>
+        /// 筛选的标题
+        /// </summary>
+        public string title { set; get; }
+
+        /// <summary>
+        /// 筛选发布时间
+        /// </summary>
+        public DateTime? actiontime { set; get; }
+
+        /// <summary>
+        /// 筛选发布时间
+        /// </summary>
+        public DateTime? endtime { set; get; }
     }
 }

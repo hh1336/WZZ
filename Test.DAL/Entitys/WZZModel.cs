@@ -20,13 +20,13 @@ namespace DAL.Entitys
         /// 模块名
         /// </summary>
         [Required]
-        [StringLength(50)]
+        [StringLength(10)]
         public string name { set; get; }
 
         /// <summary>
         /// 模块的副标题
         /// </summary>
-        [StringLength(50)]
+        [StringLength(10)]
         public string Subheading { set; get; }
 
         /// <summary>

@@ -38,12 +38,12 @@
             <div class="layui-form-item">
                 <label class="layui-form-label"><b>来源:</b></label>
                 <div class="layui-input-inline" style="margin-left:30px;">
-                    <input type="text" name="source" required lay-verify="required" placeholder="请输入来源" autocomplete="off" class="layui-input">
+                    <input type="text" name="source" required lay-verify="required" placeholder="请输入来源" autocomplete="off" class="layui-input" maxlength="6">
                 </div>
 
                 <label class="layui-form-label"><b>作者:</b></label>
                 <div class="layui-input-inline">
-                    <input type="text" name="author" required lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input">
+                    <input type="text" name="author" required lay-verify="required" placeholder="请输入作者" autocomplete="off" class="layui-input" maxlength="8">
                 </div>
 
                 <label class="layui-form-label" style="width:71px;padding:9px 10px 0 0;"><b>发布时间:</b></label>
@@ -173,6 +173,7 @@
                             if (result) {
                                 //清空id
                                 dom.attr("Subheading-id", "");
+                                dom.siblings("textarea.ArticleContent").attr("Subheading-id", "");
                                 //清空文章内容所保存的id
                                 dom.siblings("textarea.ArticleContent").attr("Subheading-id", dom.parent().parent().prev().find(".ArticleContent").attr("Subheading-id"));
 
@@ -322,8 +323,13 @@
                     click: function (type) {
                         if (type === 'bar1') {
                             var aid = $("input[name=title]").attr("title-id");
+                            var imgurl = $("input[name=imgurl]:hidden").val();
                             if (aid == "") {
                                 layer.msg("请完善文章内容");
+                                return false;
+                            }
+                            if (imgurl == "") {
+                                layer.msg("文章图片不能为空");
                                 return false;
                             }
                             $.post("/LatestInformation/Show", { id: aid }, function (result) {

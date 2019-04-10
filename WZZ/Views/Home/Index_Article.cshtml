@@ -8,88 +8,94 @@
 
 
 
+
 <div class="container-fluid main11 row">
     <div class="leftac col-9" style="padding:0;">
-    <main class="news_list_detail_met_16_3 col-12">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9 met-shownews-body pright" m-id="29" style="flex: 0 0 100%;
+        <main class="news_list_detail_met_16_3 col-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 met-shownews-body pright" m-id="29" style="flex: 0 0 100%;
     max-width: 90%;">
-                    <div class="row ore">
-                        <div class="met-shownews-content col-12">
-                            <section class="details-title border-bottom1">
-                                <h1 class="m-t-10 m-b-5">@Model.title</h1>
-                                <div class="info font-weight-300">
-                                    <span>@Model.createTime</span>
-                                    <span>来源：@Model.source</span>
-                                    <span>编辑：@Model.author</span>
-                                    <span>
-                                        <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
-                                        0
-                                    </span>
-                                </div>
-                            </section>
-                            <section class="met-editor clearfix" style="font-size: 14px !important;">
-                                @{
-                                    foreach (var item in Model.ArticleConTents)
-                                    {
-                                        var imgtit = "";
-                                        <p style="text-indent: 2em;">@item.articleText</p>
-                                        <p style="text-align:center;">
-
-                                            @foreach (var imgs in item.ArticleImage)
+                        <div class="row ore">
+                            <div class="met-shownews-content col-12">
+                                <div class="col-lg-12 modalaclist col-md-12 col-sm-12 col-xs-12">
+                                    <nav aria-label="breadcrumb">
+                                        <ol class="breadcrumb"></ol>
+                                    </nav>
+                                    <section class="details-title border-bottom1 pt-0">
+                                        <h1 class="m-t-10 m-b-5">@Model.title</h1>
+                                        <div class="info font-weight-300">
+                                            <span>@Model.createTime</span>
+                                            <span>来源：@Model.source</span>
+                                            <span>编辑：@Model.author</span>
+                                            <span>
+                                                <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
+                                                0
+                                            </span>
+                                        </div>
+                                    </section>
+                                    <section class="met-editor clearfix" style="font-size: 14px !important;">
+                                        @{
+                                            foreach (var item in Model.ArticleConTents)
                                             {
-                                                <img src="http://120.78.198.92/@imgs.url" style="padding-left:10px; display: block;" alt="@imgs.title" class="col-12">
-                                                if (!string.IsNullOrEmpty(imgs.title))
-                                                {
-                                                    imgtit = imgs.title;
+                                                var imgtit = "";
+                                                <p style="text-indent: 2em;">@item.articleText</p>
+                                                <p style="text-align:center;">
 
+                                                    @foreach (var imgs in item.ArticleImage)
+                                                    {
+                                                        <img src="http://120.78.198.92/@imgs.url" style="padding-left:10px; display: block;" alt="@imgs.title" class="col-12">
+                                                        if (!string.IsNullOrEmpty(imgs.title))
+                                                        {
+                                                            imgtit = imgs.title;
+
+                                                        }
+                                                    }
+                                                    <br />
+                                                    <span style="text-indent:2em;font-weight:600;text-align:center;">@imgtit</span>
+                                                </p>
+                                            }
+                                        }
+
+                                        @{
+                                            foreach (var subheadings in Model.Subheadings)
+                                            {
+                                                <h5 class="text-center">@subheadings.head</h5>
+                                                @foreach (var item in subheadings.ArticleConTents)
+                                                {
+                                                    var imgtit = "";
+                                                    <p style="text-indent: 2em;">@item.articleText</p>
+                                                    <p style="text-align:center;">
+
+                                                        @foreach (var imgs in item.ArticleImage)
+                                                        {
+                                                            <img src="http://120.78.198.92/@imgs.url" style="padding-left:10px; display: block;" alt="@imgs.title" class="col-12">
+                                                            imgtit = imgs.title;
+                                                        }
+                                                        <br />
+                                                        <span style="text-indent:2em;font-weight:600;text-align:center;">@imgtit</span>
+                                                    </p>
                                                 }
                                             }
-                                            <br />
-                                            <span style="text-indent:2em;font-weight:600;text-align:center;">@imgtit</span>
-                                        </p>
-                                    }
-                                }
-
-                                @{
-                                    foreach (var subheadings in Model.Subheadings)
-                                    {
-                                        <h5 class="text-center">@subheadings.head</h5>
-                                        @foreach (var item in subheadings.ArticleConTents)
-                                        {
-                                            var imgtit = "";
-                                            <p style="text-indent: 2em;">@item.articleText</p>
-                                            <p style="text-align:center;">
-
-                                                @foreach (var imgs in item.ArticleImage)
-                                                {
-                                                    <img src="http://120.78.198.92/@imgs.url" style="padding-left:10px; display: block;" alt="@imgs.title" class="col-12">
-                                                    imgtit = imgs.title;
-                                                }
-                                                <br />
-                                                <span style="text-indent:2em;font-weight:600;text-align:center;">@imgtit</span>
-                                            </p>
                                         }
-                                    }
-                                }
 
 
-                            </section>
+                                    </section>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-
             </div>
-        </div>
-    </main>
-        </div>
+        </main>
+    </div>
     <div class="rightac col-3" style="padding:0;">
 
     </div>
 
 </div>
-@section Scripts{ 
+@section Scripts{
     <script>
     //加载推荐内容
     function loadOrtherAc() {
@@ -136,10 +142,15 @@
                 $(".rightac").append(htmlstr);
             }
         })
+        $.post("/Home/Breadcrumb", { id:@ViewData["ModelId"]}, function (result) {
+            var li = `<li class="breadcrumb-item">` + result.WZZModels.name + `</li>
+<li class="breadcrumb-item active" aria-current="page">`+ result.name + `</li>`;
+            $(".breadcrumb").html(li);
+        })
     }
 
     $(function () {
         loadOrtherAc();
     })
-</script>
+    </script>
 }

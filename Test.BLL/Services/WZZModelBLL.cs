@@ -56,7 +56,7 @@ namespace BLL.Services
         public async Task<WZZModel> GetById(int id)
         {
             
-            var result = await _db.WZZModels.Include(a => a.Articles).SingleOrDefaultAsync(w => w.id == id);
+            var result = await _db.WZZModels.Include(a => a.Articles).Include(a => a.WZZModels).SingleOrDefaultAsync(w => w.id == id);
             if(result == null)
             {
                 try

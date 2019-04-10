@@ -11,7 +11,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">模块名：</label>
         <div class="layui-input-block">
-            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入模块名" class="layui-input" value="@Model.name">
+            <input type="text" name="name" lay-verify="title" autocomplete="off" placeholder="请输入模块名" class="layui-input" value="@Model.name" maxlength="10">
         </div>
     </div>
     @{ var hid = Model.Pid.HasValue ? "" : "hidden"; }
@@ -24,7 +24,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">副标题：</label>
         <div class="layui-input-block">
-            <input type="text" name="Subheading" lay-verify="Subheading" autocomplete="off" placeholder="请输入副标题" class="layui-input" value="@Model.Subheading">
+            <input type="text" name="Subheading" lay-verify="Subheading" autocomplete="off" placeholder="请输入副标题" class="layui-input" value="@Model.Subheading" maxlength="10">
         </div>
     </div>
     <input type="hidden" value="@Model.Pid" id="pid" />
