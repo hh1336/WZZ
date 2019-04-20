@@ -123,7 +123,7 @@
                 //渲染轮播图旁边的模块
                 if (result.length >= 1) {
                     var oneobj = result.shift();
-                    topnewspaper.append(`<h4 onclick="ModalArticle(` + oneobj.id + `)">` + oneobj.name + `</h4>`);
+                    topnewspaper.append(`<h4 onclick="ModalArticle(` + oneobj.id + `)">` + oneobj.name + ` <a href="#" onclick="ModalArticle(` + oneobj.id + `)" style="font-size:1rem; float:right;" >查看更多>></a></h4>`);
                     var li = ``;
                     for (var i = 0; i < oneobj.Articles.length; i++) {
                         if (i >= 3) {
@@ -152,7 +152,7 @@
                     var leftmodel = result.slice(0, result.length / 2);
                     result.splice(0, result.length / 2);
                     for (var i = 0; i < leftmodel.length; i++) {
-                        $("#bottomleft").append(`<h4 class="mt-2" onclick="ModalArticle(` + leftmodel[i].id + `)">` + leftmodel[i].name + `</h4>`)
+                        $("#bottomleft").append(`<h4 class="mt-2" onclick="ModalArticle(` + leftmodel[i].id + `)">` + leftmodel[i].name + ` <a href="#" onclick="ModalArticle(` + leftmodel[i].id + `)" style="font-size:1rem; float:right;" >查看更多>></a> </h4>`)
                         var li = ``;
                         for (var j = 0; j < leftmodel[i].Articles.length; j++) {
                             if (j >= 5) {
@@ -179,7 +179,7 @@
                     }
 
                     for (var i = 0; i < result.length; i++) {
-                        $("#bottomright").append(`<h4 class="mt-2" onclick="` + result[i].id + `">` + result[i].name + `</h4>`)
+                        $("#bottomright").append(`<h4 class="mt-2" onclick="ModalArticle(` + result[i].id + `)">` + result[i].name + ` <a href="#" onclick="ModalArticle(` + result[i].id + `)" style="font-size:1rem; float:right;" >查看更多>></a></h4>`)
                         var li = ``;
                         for (var j = 0; j < result[i].Articles.length; j++) {
                             if (j >= 5) {

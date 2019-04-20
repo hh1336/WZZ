@@ -255,7 +255,7 @@
         //用户点击查看图片时
         $(document).on("click", ".selectimg", function () {
             var url = $(this).attr("imgurl");//得到这张图片的url
-            var img = '<img src="' + url + '" style="margin:0 auto;" />';
+            var img = '<img src="' + url + '" style="margin:0 auto; width:20rem;" />';
             Common.alert("文章图片", img);
         });
 

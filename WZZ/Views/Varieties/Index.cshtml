@@ -5,10 +5,18 @@
 <link rel="stylesheet" href="~/public/Home/css/Varieties.css" />
 <link rel="stylesheet" href="~/public/Home/css/Varieties_meta.css" />
 <style>
-    #demo{
-        margin:0 auto;
+    #demo {
+        margin: 0 auto;
     }
 
+    .pinpai > ul > li > a > div > b {
+        display: inline-block;
+        width: 90%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size:24px !important;
+    }
 </style>
 <div class="row ">
     <div id="demo" class="carousel slide col-9" data-ride="carousel">
@@ -75,7 +83,7 @@
                 var tit = result[i].title == null ? "" : result[i].title;
                 str += `
                     <div class="carousel-item `+ active + `">
-                            <img class="img-fluid w-100" src="http://120.78.198.92`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId +`)" >
+                            <img class="img-fluid w-100" src="http://120.78.198.92`+ result[i].imgurl + `" onclick="SelectArticle(` + result[i].articleId + `)" >
                             <div class="carousel-caption d-none d-md-block" style="margin-top:-30px;">
                                 <h3>`+ tit + `</h3>
                             </div>
@@ -100,7 +108,7 @@
                 for (var j = 0; j < result[i].Articles.length; j++) {
                     var author = result[i].Articles[j].author == null ? "" : result[i].Articles[j].author;
                     var source = result[i].Articles[j].source == null ? "" : result[i].Articles[j].source;
-                    modelcontent += `<li class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6" onclick="showArticle(` + result[i].Articles[j].id + `)">
+                    modelcontent += `<li class="col-6 col-xs-6 col-sm-6 col-md-6 col-lg-6" onclick="showArticle(` + result[i].Articles[j].id + `)" title="` + result[i].Articles[j].title +`">
                         <a href="javascript:void(0);">
                             <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" width="156" height="154" class="radio">
                             <div>

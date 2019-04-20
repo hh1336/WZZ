@@ -1,7 +1,7 @@
 ﻿@using DAL.Entitys
 @model RotationChart
 
-<div class="btn btn-default imginfo layui-anim layui-anim-scale" style="width:400px;height:320px;" data-toggle="tooltip" data-placement="top" title="双击替换图片" wzzid="@Model.WZZModelId">
+<div class="btn btn-default imginfo layui-anim layui-anim-scale" style="width:30rem;" data-toggle="tooltip" data-placement="top" title="双击替换图片" wzzid="@Model.WZZModelId">
     <img src="@Model.imgurl" class="img-responsive" data-id="@Model.id" />
     <input type="text" value="@Model.title" placeholder="轮播图描述（可空）" class="form-control" name="rotitle" />
     <div class="form-group">
