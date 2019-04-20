@@ -5,8 +5,16 @@
 <link rel="stylesheet" href="~/public/Home/css/Subpage.css" />
 <link rel="stylesheet" href="~/public/Home/css/Subpage_meta.css" />
 <style>
-    .in-news .col-box .pic-box{
-        background:#ffffff;
+    .in-news .col-box .pic-box {
+        background: #ffffff;
+    }
+
+    .news-box ul li a{
+        display: inline-block;
+        width: 50%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
 </style>
 
@@ -30,29 +38,67 @@
                 var articlestr = ``;//初始化文章内容
 
                 //渲染模块文章
-                for (var j = 0; j < result[i].Articles.length; j++) {
-                    if (j > 2) {
-                        continue;
+                if (result[i].Articles.length <= 3) {
+                    for (var j = 0; j < result[i].Articles.length; j++) {
+                        articlestr += `
+                <div class="news-box">
+                 <div data-scroll-reveal="enter left 100px over 0.5s after 0.4s" class="col-box  col-xs-12 col-sm-12" data-scroll-reveal-id="35" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 0.5s ease-in-out 0.4s,  opacity 0.5s ease-in-out 0.4s;transition: transform 0.5s ease-in-out 0.4s, opacity 0.5s ease-in-out 0.4s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">
+                    <div class="pic-box">
+                        <a href="#" class="login_text" onclick="SelectArticle(` + result[i].Articles[j].id + `)">
+                            <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" alt="图片错误" style="width:350px;height:200px;">
+                            <span><p>`+ result[i].Articles[j].title + `</p></span>
+                        </a>
+                    </div>
+                </div>
+               </div>`;
                     }
-                articlestr += `
-                        <div class="news-box">
-                         <div data-scroll-reveal="enter left 100px over 0.5s after 0.4s" class="col-box  col-xs-12 col-sm-12" data-scroll-reveal-id="35" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 0.5s ease-in-out 0.4s,  opacity 0.5s ease-in-out 0.4s;transition: transform 0.5s ease-in-out 0.4s, opacity 0.5s ease-in-out 0.4s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">
-                            <div class="pic-box">
-                                <a href="#" class="login_text" onclick="SelectArticle(` + result[i].Articles[j].id +`)">
-                                    <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" alt="图片错误" style="width:350px;height:200px;">
-                                    <span><p>`+ result[i].Articles[j].title + `</p></span>
-                                </a>
-                            </div>
-                        </div>
-                       </div>`;
-
+                } else {
+                    //取出三条
+                    var articletitArr = [];
+                    for (var y = 0; y < 3; y++) {
+                        articletitArr.push(result[i].Articles.shift());
+                    }
+                    //遍历三条
+                    for (var y = 0; y < articletitArr.length; y++) {
+                        //再取三5条
+                        var acctontentArr = [];
+                        if (result[i].Articles.length <= 5) {
+                            for (var x = 0; x < result[i].Articles.length; x++) {
+                                acctontentArr.push(result[i].Articles.shift());
+                            }
+                        } else {
+                            for (var x = 0; x < 5; x++) {
+                                acctontentArr.push(result[i].Articles.shift());
+                            }
+                        }
+                        var accontentstr = ``;
+                        for (var a = 0; a < acctontentArr.length; a++) {
+                            accontentstr += `<li><a href="#" class="login_text" onclick="SelectArticle(` + acctontentArr[a].id + `)" >` + acctontentArr[a].title + `</a></li>`;
+                        }
+                        articlestr += `
+                <div class="news-box">
+                 <div data-scroll-reveal="enter left 100px over 0.5s after 0.4s" class="col-box  col-xs-12 col-sm-12" data-scroll-reveal-id="35" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 0.5s ease-in-out 0.4s,  opacity 0.5s ease-in-out 0.4s;transition: transform 0.5s ease-in-out 0.4s, opacity 0.5s ease-in-out 0.4s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">
+                    <div class="pic-box">
+                        <a href="#" class="login_text" onclick="SelectArticle(` + articletitArr[y].id + `)">
+                            <img src="http://120.78.198.92`+ articletitArr[y].imgurl + `" alt="图片错误" style="width:350px;height:200px;"/>
+                            <span><p>`+ articletitArr[y].title + `</p></span>
+                        </a>
+                    </div>
+                    <ul class="news-list">`+ accontentstr + `</ul>
+                </div>
+               </div>`;
+                        console.log(articlestr);
+                    }
                 }
+
+
+
                 //将便利出来的模块信息进行渲染，并拼接文章内容
                 var articletitlestr = `
-                        <div data-scroll-reveal="enter top 100px over 0.5s" class="title-box1 col-3 col-sm-6 col-md-12 col-lg-12">
-                            <p class="cn" id="tit" onclick="ModalArticle(`+ result[i].id + `)">` + result[i].name + `</p>
-                            <p class="en">`+ result[i].Subheading + `</p>
-                        </div>`+ articlestr;
+                <div data-scroll-reveal="enter top 100px over 0.5s" class="title-box1 col-3 col-sm-6 col-md-12 col-lg-12">
+                    <p class="cn" id="tit" onclick="ModalArticle(`+ result[i].id + `)">` + result[i].name + `</p>
+                    <p class="en">`+ result[i].Subheading + `</p>
+                </div>`+ articlestr;
                 //将组装好的模块和文章拼接起来
                 var modelstr = `<div class="layout row">` + articletitlestr + `</div>`;
 
