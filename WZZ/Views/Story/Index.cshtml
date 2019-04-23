@@ -9,6 +9,7 @@
     .topbody > div {
         display: inline-block;
         float: left;
+        
     }
 
         .topbody > div:last-child {
@@ -86,7 +87,7 @@
         </div>
 
         <div class="col-12 bottombody">
-
+            
         </div>
     </div>
 </div>
@@ -131,9 +132,8 @@
                 $(".bottombody").html(`<hr class="bg-warning" /><div class="bottomleft col-lg-8 col-sm-12 col-xs-12"></div><div class="bottomright col-lg-3 col-sm-12 col-xs-12"></div>`);
                 var leftarc = ``;
                 for (var j = 0; j < result[i].Articles.length; j++) {
-                    console.log(result);
                     leftarc += `<li onclick="SelectArticle(` + result[i].Articles[j].id + `)">
-                        <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" alt="Alternate Text" class="rounded-0 w-25" />
+                        <img src="http://120.78.198.92`+ result[i].Articles[j].imgurl + `" alt="Alternate Text" class="rounded-0 w-25" style="height:8rem;" />
                         <span title="`+ result[i].Articles[j].title + `">`+ result[i].Articles[j].title + `</span>
                     </li>`;
                 }
