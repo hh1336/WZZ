@@ -23,16 +23,16 @@
             	.main1 .title>p{font-size: 12px !important;}
             	.main1 .title>p{font-size: 12px !important;;color: #999999;}
 
-            	.main1 .pinpai{/*width: 400px !important;*/float: left ;margin-top: 15%;text-align: center;}
+            	.main1 .pinpai{/*width: 400px !important;*/float: left ;/*margin-top: 15%;*/text-align: center;}
             	.main1 .pinpai>ul{float: left;width: 400px !important;margin-left: 0px;}
             	.main1 .pinpai>ul>li{width: 400px !important;margin-right: 0;}
             	.main1 .pinpai>ul>li a{width: 400px !important;margin: 0 auto !important;float: left;}
             	
-            	.main1 .pinpai>ul>li a img{margin: 0 70px !important;}      
+            	/*.main1 .pinpai>ul>li a img{margin: 0 70px !important;}*/      
             	.main1 .pinpai>ul>li a>div{width: 400px !important;margin: 0 auto !important;}
             	.main1 .pinpai>ul>li a>div b{font-size: 14px !important;text-align: center !important; width: 370px;}
             	.main1 .pinpai>ul>li a>div p{width: 400px !important;margin: 0 auto !important; text-align: center;}
-            	.main1 .pinpai>ul>li a>div button{float:left;width:390px !important;height:30px !important;font-size: 14px !important;margin: 5px 0px !important;} 
+            	.main1 .pinpai>ul>li a>div button{float:left;/*width:390px !important;height:30px !important;*/font-size: 14px !important;margin: 5px 0px !important;} 
             	
             	/*底部*/
 		.footer_box {
@@ -85,16 +85,16 @@
             	.main1 .title>p{font-size: 12px !important;}
             	.main1 .title>p{font-size: 12px !important;;color: #999999;width: 375px;}
 
-            	.main1 .pinpai{/*width: 370px !important;*/float: left ;margin-top: 15%;text-align: center;}
+            	.main1 .pinpai{/*width: 370px !important;*/float: left ;/*margin-top: 15%;*/text-align: center;}
             	.main1 .pinpai>ul{float: left;width: 300px !important;margin-left: -0px;}
             	.main1 .pinpai>ul>li{width: 370px !important;margin-right: 0;}
-            	.main1 .pinpai>ul>li a{width: 370px !important;margin: 0 auto !important;float: left;}
+            	/*.main1 .pinpai>ul>li a{width: 370px !important;margin: 0 auto !important;float: left;}*/
             	
-            	.main1 .pinpai>ul>li a img{margin: 0 70px !important;}      
+            	/*.main1 .pinpai>ul>li a img{margin: 0 70px !important;}*/      
             	.main1 .pinpai>ul>li a>div{width: 370px !important;margin: 0 auto !important;}
             	.main1 .pinpai>ul>li a>div b{font-size: 16px !important;text-align: center !important; width: 370px;}
             	.main1 .pinpai>ul>li a>div p{width: 370px !important;margin: 0 auto !important; text-align: center;}
-            	.main1 .pinpai>ul>li a>div button{float:left;width:350px !important;height:30px !important;font-size: 14px !important;margin: 5px 2px !important;} 
+            	.main1 .pinpai>ul>li a>div button{float:left;font-size: 14px !important;margin: 5px 2px !important;} 
             	
             	.footer_box {
 				width: 360px !important;
@@ -143,16 +143,16 @@
             	.main1 .title>p{font-size: 12px !important;}
             	.main1 .title>p{font-size: 12px !important;;color: #999999;width: 320px;}
 
-            	.main1 .pinpai{/*width: 310px !important;*/float: left ;margin-top: 15%;}
+            	.main1 .pinpai{/*width: 310px !important;*/float: left ;/*margin-top: 15%;*/}
             	.main1 .pinpai>ul{float: left;width: 300px !important;margin-left: 0px;}
             	.main1 .pinpai>ul>li{width: 300px !important;margin-right: 0;}
             	.main1 .pinpai>ul>li a{width: 300px !important;margin: 0 auto !important;float: left;}
             	
-            	.main1 .pinpai>ul>li a img{margin: 0 70px !important;}      
+            	/*.main1 .pinpai>ul>li a img{margin: 0 70px !important;}     */ 
             	.main1 .pinpai>ul>li a>div{width: 310px;margin: 0 auto !important;}
             	.main1 .pinpai>ul>li a>div b{font-size: 16px !important;text-align: center;width: 300px;}
             	.main1 .pinpai>ul>li a>div p{width: 300px !important;margin: 0px 0px !important;padding: 10px 0px !important;}
-            	.main1 .pinpai>ul>li a>div button.btn{width:300px !important;height:30px !important;font-size: 14px !important;margin-top: 25px;margin-left: 95px;} 
+            	.main1 .pinpai>ul>li a>div button.btn{font-size: 14px !important;margin-top: 25px;margin-left: 95px;} 
             	
             	/*回到顶部*/
             	.gotoTOP{right: 10% !important;}

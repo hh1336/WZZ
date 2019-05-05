@@ -134,10 +134,10 @@
                         <div class="col-6 p-0">
                             <img src="http://120.78.198.92`+ oneobj.Articles[i].imgurl + `" width="190px" height="120px" />
                         </div>
-                        <div class="col-6 p-0 ">
+                        <div class="col-6 p-0 col-md-5 offset-md-1">
                             <span style="font-weight:500; color:black;" class="col-lg-12 p-0" title="`+ oneobj.Articles[i].title + `">` + oneobj.Articles[i].title + `</span>
                             <div class="col-lg-12 p-0 mt-2">
-                                <img src="http://120.78.198.92`+ oneobj.Articles[i].User.PortraitUrl + `" width="40" height="40" class=" col-2 p-0 rounded-circle" />
+                                <img src="http://120.78.198.92`+ oneobj.Articles[i].Portrait + `" width="40" height="40" class=" col-2 p-0 rounded-circle" />
                                 <span class="col-lg-3 p-0">`+ author + `</span>
                             </div>
                             <div class="col-lg-12 p-0 mt-2"><span>`+ Common.ToDateTime(oneobj.Articles[i].createTime) + `</span></div>
@@ -166,7 +166,7 @@
                 <div class="col-6 p-0 ">
                     <span style="font-weight:500; color:black;" class="col-12 p-0" title="`+ leftmodel[i].Articles[j].title +`">`+ leftmodel[i].Articles[j].title +`</span>
                     <div class="col-12 p-0 mt-2">
-                        <img src="http://120.78.198.92`+ leftmodel[i].Articles[j].User.PortraitUrl +`" width="40" height="40" class="col-2 p-0 rounded-circle" />
+                        <img src="http://120.78.198.92`+ leftmodel[i].Articles[j].Portrait +`" width="40" height="40" class="col-2 p-0 rounded-circle" />
                         <span class="col-3">`+ author +`</span>
                     </div>
                         <div class="col-12 p-0 mt-2">
@@ -193,7 +193,7 @@
                 <div class="col-6 p-0 ">
                     <span style="font-weight:500; color:black;" class="col-12 p-0" title="`+ result[i].Articles[j].title +`">`+ result[i].Articles[j].title +`</span>
                     <div class="col-12 p-0 mt-2">
-                        <img src="http://120.78.198.92`+ result[i].Articles[j].User.PortraitUrl +`" width="40" height="40" class="col-2 p-0 rounded-circle" />
+                        <img src="http://120.78.198.92`+ result[i].Articles[j].Portrait +`" width="40" height="40" class="col-2 p-0 rounded-circle" />
                         <span class="col-3">`+ author +`</span>
                     </div>
                         <div class="col-12 p-0 mt-2">

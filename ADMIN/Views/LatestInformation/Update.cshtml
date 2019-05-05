@@ -38,6 +38,14 @@
                         <input type="text" name="updateTime" class="layui-input" disabled value="@Model.updateTime">
                     </div>
                 </div>
+                <label class="layui-form-label" style="width:71px;padding:9px 10px 0 0;"><b> 作者头像:</b></label>
+                <div class="layui-input-inline">
+                    <input type="hidden" name="portrait" value="@Model.Portrait" />
+                    <img src="@Model.Portrait" alt="Alternate Text" width="40px" height="40px" />
+                    <button type="button" class="layui-btn" id="portrait">
+                        <i class="layui-icon">&#xe67c;</i>上传头像
+                    </button>
+                </div>
                 <div class="layui-form-item">
                     <label class="layui-form"><b>文章图片:</b></label>
                     @if (!string.IsNullOrEmpty(Model.imgurl))
@@ -142,6 +150,7 @@
             data.author = $("input[name=author]").val();
             data.imgurl = $("input[name=imgurl]:hidden").val();
             data.createTime = $("input[name=createTime]").val();
+            data.Portrait = $("input[name=portrait]:hidden").val();
             data.WZZModelId = _modelId;
             data.isShow = 1;
             if (data.title == "") {
@@ -230,7 +239,7 @@
                             var imghtml = `<img src="` + _data.url + `" class="btn btn-default layui-anim layui-anim-scale" data-toggle="tooltip" data-placement="top" title="点击删除图片" img-id="` + result.aid + `" onclick="delacimg(this)" style="width:300px;" />`;
                             $(dom).parents(".layui-form-item").find(".showimg").append(imghtml);
                             layer.msg('上传成功');
-                             $("[data-toggle='tooltip']").tooltip();
+                            $("[data-toggle='tooltip']").tooltip();
                         }
                     });
                 }
@@ -356,17 +365,17 @@
                     }
 
                     var achtml = `<div class="layui-form-item layui-anim layui-anim-upbit">
-                                            <div class="layui-input-block" style="margin-left:0;">
-                                                <hr class="layui-bg-blue">
-                                                <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                                                <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id="`+ actontent.ArticleConTents[i].id + `">` + actontent.ArticleConTents[i].articleText + `</textarea>
-                                                <div class="showimg">
-                                                    `+ acimg + `
-                                                </div>
-                                                <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                                                <input type="text" value="`+ acimgtitle + `" class="layui-input subheading" placeholder="图片描述-长度不能超过16个" autocomplete="off" ArticleContent-id="` + actontent.ArticleConTents[i].id + `" maxlength="16" />
-                                            </div>
-                                        </div>`;
+                                                    <div class="layui-input-block" style="margin-left:0;">
+                                                        <hr class="layui-bg-blue">
+                                                        <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                                                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id="`+ actontent.ArticleConTents[i].id + `">` + actontent.ArticleConTents[i].articleText + `</textarea>
+                                                        <div class="showimg">
+                                                            `+ acimg + `
+                                                        </div>
+                                                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                                        <input type="text" value="`+ acimgtitle + `" class="layui-input subheading" placeholder="图片描述-长度不能超过16个" autocomplete="off" ArticleContent-id="` + actontent.ArticleConTents[i].id + `" maxlength="16" />
+                                                    </div>
+                                                </div>`;
 
                     //将内容插入页面
                     $("#addAContent").before(achtml);
@@ -395,17 +404,17 @@
                         }
                         if (x >= 1) acititle = ``;
                         var achtml = `<div class="layui-form-item layui-anim layui-anim-upbit">
-                                    <div class="layui-input-block" style="margin-left:0;">
-                                        <hr class="layui-bg-blue">
-                                        <input type="text" value="`+ acititle + `" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="` + actontent.Subheadings[i].ArticleId + `" Subheading-id="` + actontent.Subheadings[i].id + `" />
-                                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="` + actontent.Subheadings[i].id + `" ArticleContent-id="` + actontent.Subheadings[i].ArticleConTents[x].id + `">` + actontent.Subheadings[i].ArticleConTents[x].articleText + `</textarea>
-                                        <div class="showimg">
-                                            `+ acimg + `
-                                        </div>
-                                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                                        <input type="text" value="`+ acimgtitle + `" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="` + actontent.Subheadings[i].ArticleConTents[x].id + `" />
-                                    </div>
-                                </div>`;
+                                            <div class="layui-input-block" style="margin-left:0;">
+                                                <hr class="layui-bg-blue">
+                                                <input type="text" value="`+ acititle + `" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="` + actontent.Subheadings[i].ArticleId + `" Subheading-id="` + actontent.Subheadings[i].id + `" />
+                                                <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="` + actontent.Subheadings[i].id + `" ArticleContent-id="` + actontent.Subheadings[i].ArticleConTents[x].id + `">` + actontent.Subheadings[i].ArticleConTents[x].articleText + `</textarea>
+                                                <div class="showimg">
+                                                    `+ acimg + `
+                                                </div>
+                                                <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                                <input type="text" value="`+ acimgtitle + `" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="` + actontent.Subheadings[i].ArticleConTents[x].id + `" />
+                                            </div>
+                                        </div>`;
                         //将内容插入页面
                         $("#addAContent").before(achtml);
                         var dom = $("#addAContent").prev();
@@ -427,19 +436,19 @@
         $(document).on("click", "#addAContent", function (e) {
             e.preventDefault();
             var achtml = `
-            <div class="layui-form-item layui-anim layui-anim-upbit">
-                            <div class="layui-input-block" style="margin-left:0;">
-                                <hr class="layui-bg-blue">
-                                <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
-                                <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
-                                <div class="showimg">
-                                    
+                    <div class="layui-form-item layui-anim layui-anim-upbit">
+                                    <div class="layui-input-block" style="margin-left:0;">
+                                        <hr class="layui-bg-blue">
+                                        <input type="text" value="" class="layui-input mainSubheading" placeholder="请输入标题" autocomplete="off" Article-id="" Subheading-id="" />
+                                        <textarea placeholder="请输入文章内容" class="layui-textarea ArticleContent" Subheading-id="" ArticleContent-id=""></textarea>
+                                        <div class="showimg">
+
+                                        </div>
+                                        <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
+                                        <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
+                                    </div>
                                 </div>
-                                <input type="file" class="file-loading upimg" multiple data-browse-on-zone-click="true" />
-                                <input type="text" value="" class="layui-input subheading" placeholder="请输入图片描述" autocomplete="off" ArticleContent-id="" />
-                            </div>
-                        </div>
-            `;
+                    `;
             //将内容插入页面
             $(this).before(achtml);
             var dom = $("#addAContent").prev();
@@ -455,6 +464,19 @@
             //初始化leyui
             layui.use(["util", "upload"], () => {
                 var util = layui.util;
+                var upload = layui.upload;
+
+                var uploadInst = upload.render({
+                    elem: '#portrait' //绑定元素
+                    , url: '/Home/UpFile' //上传接口
+                    , done: function (res) {
+                        console.log(res);
+                        $("input[name=portrait]").val(res[0].filePath).next().removeClass("hidden").attr("src", res[0].filePath);
+                    }
+                    , error: function () {
+                        //请求异常回调
+                    }
+                });
 
                 //初始化固定块
                 util.fixbar({

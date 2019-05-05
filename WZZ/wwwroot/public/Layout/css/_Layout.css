@@ -13,8 +13,8 @@ header {
         width: 80%;
     }
 
-a{
-    color:#938f8f;
+a {
+    color: #938f8f;
 }
 
 header nav .navtop {
@@ -72,7 +72,7 @@ footer {
     margin: 0 auto;
     width: 80%;
     box-shadow: 0px -1px 0px #e8e8e8;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
     footer .footerleft:after {
@@ -86,14 +86,149 @@ footer {
         width: 2px;
         background-color: #cc9d32;
     }
+
     footer .footerright {
-        font-size:18px;
-        padding-top:2%;
+        font-size: 18px;
+        padding-top: 2%;
         text-indent: 2em;
-        color:#938f8f;
+        color: #938f8f;
     }
 
-/*小于1024尺寸时改变样式*/
-@media only screen and (max-width: 1024px)  {
 
+/*小于1200尺寸时改变样式*/
+@media only screen and (max-width: 1200px) {
+}
+
+/*小于992px尺寸时改变样式*/
+@media only screen and (max-width: 992px) {
+}
+
+/*小于768px尺寸时改变样式*/
+@media only screen and (max-width: 768px) {
+    .topicon, .modal-header {
+        display: none;
+    }
+
+    #bottomleft, .topbody > div:last-child, .bottomleft, .bottomright {
+        border: none !important;
+    }
+
+    #modelcontent > div > .news-box {
+        margin: 0 auto;
+    }
+
+    .footersubheading {
+        font-size: 12px;
+    }
+
+    .footerleft img {
+        width: 13rem;
+        text-align: center;
+    }
+
+    .modal_text {
+        overflow-y: auto;
+    }
+
+    .bottomright img {
+        width: 10rem !important;
+    }
+}
+/*小于414px尺寸时改变样式*/
+@media only screen and (max-width: 414px) {
+    .navbottom .row > div:first-child, .footerright {
+        display: none;
+    }
+    #nav{
+        padding-top:0 !important;
+    }
+        #nav li {
+            margin-left: 1rem;
+        }
+
+    footer .footerleft:after {
+        background: none !important;
+    }
+
+    .bottomleft ul > li img {
+        width: 10rem !important;
+    }
+
+    .newspaper {
+        border: none !important;
+    }
+
+    .modalaclist ul > li > div:first-child img {
+        width: 10rem !important;
+    }
+
+    .modalaclist ul > li > div:last-child {
+        padding-left:3rem !important;
+    }
+    .modalaclist ul > li > div:last-child img{
+        width:2rem !important;
+    }
+    .news_list_detail_met_16_3 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+}
+
+/*小于320px尺寸时改变样式*/
+@media only screen and (max-width: 320px) {
+    .bottomright img, .bottomleft img {
+        width: 5rem !important;
+    }
+
+    .navbottom > div > div:first-child {
+        display: none;
+    }
+
+    #nav {
+        margin: 0 auto;
+        padding-top: 0px;
+        font-size: 16px;
+    }
+
+        #nav li {
+            margin-left: 1rem;
+        }
+
+    #topnewspaper > ul > li > div:first-child img, #bottomleft > ul > li > div:first-child img, #bottomright > ul > li > div:first-child img {
+        width: 8rem;
+    }
+
+    .footerright {
+        display: none;
+    }
+
+    footer .footerleft:after {
+        background: none !important;
+    }
+
+    .pinpai li > a > img {
+        margin: 0 !important;
+        width: 8rem;
+    }
+
+    .pinpai li button {
+        width: 10rem !important;
+    }
+
+    .newspaper {
+        border: none !important;
+    }
+
+    .modalaclist ul li > div:first-child img {
+        width: 8rem !important;
+    }
+
+    .modalaclist ul li > div:last-child {
+        padding-left: 3rem !important;
+    }
+
+    .news_list_detail_met_16_3 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
 }

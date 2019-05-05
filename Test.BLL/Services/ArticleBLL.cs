@@ -63,6 +63,7 @@ namespace BLL.Services
                 article.updateTime = DateTime.Now;
                 article.WZZModelId = data.WZZModelId;
                 article.isShow = data.isShow;
+                article.Portrait = data.Portrait;
                 var result = await _db.SaveChangesAsync();
                 if (result == 1)
                 {

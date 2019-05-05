@@ -115,5 +115,10 @@ namespace DAL.Entitys
         /// 关联用户
         /// </summary>
         public User User { set; get; }
+
+        /// <summary>
+        /// 头像
+        /// </summary>
+        public string Portrait { set; get; }
     }
 }

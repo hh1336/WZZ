@@ -44,5 +44,12 @@ namespace BLL.Interfaces
         /// </summary>
         /// <returns></returns>
         Task<VisitamountNewDataViewModal> LoadNewData();
+
+        /// <summary>
+        /// 根据文章id获取对应浏览量
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        Task<int> GetVisitByArcId(int id);
     }
 }

@@ -92,6 +92,12 @@ namespace BLL.Services
             return result;
         }
 
+        public async Task<int> GetVisitByArcId(int id)
+        {
+            var number = await _db.VisitAmounts.Where(s => s.ArticleId == id).CountAsync();
+            return number;
+        }
+
         public bool IsAddress(string userHostAddress)
         {
             var result = _db.VisitAmounts.Where(v => v.ipaddress == userHostAddress && v.visitDateTime == DateTime.Now.Date);

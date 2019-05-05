@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -144,6 +145,16 @@ namespace WZZ.Controllers
                 await _visit.SaveAddress(visitinfo);
                 return;
             }
+        }
+
+        /// <summary>
+        /// 根据文章获取对应的浏览量
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> GetArcVisit(int id)
+        {
+            int result = await _visit.GetVisitByArcId(id);
+            return Json(result);
         }
 
     }

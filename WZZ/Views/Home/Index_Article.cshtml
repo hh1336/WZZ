@@ -20,11 +20,11 @@
 
 
 <div class="container-fluid main11 row">
-    <div class="leftac col-9" style="padding:0;">
+    <div class="leftac col-9 col-xs-12 col-sm-12" style="padding:0;">
         <main class="news_list_detail_met_16_3 col-12">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 met-shownews-body pright" m-id="29" style="flex: 0 0 100%;
+                    <div class="col-md-9 col-xs-12 col-sm-12 met-shownews-body pright" m-id="29" style="flex: 0 0 100%;
     max-width: 90%;">
                         <div class="row ore">
                             <div class="met-shownews-content col-12">
@@ -40,7 +40,7 @@
                                             <span>编辑：@Model.author</span>
                                             <span>
                                                 <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
-                                                0
+                                                <span id="Visit">0</span>
                                             </span>
                                         </div>
                                     </section>
@@ -100,7 +100,7 @@
             </div>
         </main>
     </div>
-    <div class="rightac col-3" style="padding:0;">
+    <div class="rightac col-3 col-sm-12 col-xs-12" style="padding:0;">
 
     </div>
 
@@ -156,6 +156,9 @@
             var li = `<li class="breadcrumb-item">` + result.WZZModels.name + `</li>
 <li class="breadcrumb-item active" aria-current="page">`+ result.name + `</li>`;
             $(".breadcrumb").html(li);
+        })
+        $.post("/Home/GetArcVisit", { id:@Model.id}, function (result) {
+            $("#Visit").html(result);
         })
     }
 

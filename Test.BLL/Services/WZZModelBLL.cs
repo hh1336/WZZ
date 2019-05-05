@@ -97,6 +97,7 @@ namespace BLL.Services
                                 imgurl = arc.imgurl,
                                 source = arc.source,
                                 title = arc.title,
+                                Portrait = arc.Portrait,
                                 User = new User()
                                 {
                                     PortraitUrl = _db.Users.SingleOrDefault(s => s.Id == arc.createuser.Value).PortraitUrl

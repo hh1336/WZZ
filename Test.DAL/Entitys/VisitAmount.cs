@@ -14,7 +14,7 @@ namespace DAL.Entitys
         /// 主键
         /// </summary>
         [Key]
-        public int id { set; get; }
+        public long id { set; get; }
 
         /// <summary>
         /// IP地址
