@@ -101,6 +101,15 @@ footer {
 
 /*小于992px尺寸时改变样式*/
 @media only screen and (max-width: 992px) {
+    .rightac {
+        display: none;
+    }
+    .footerright {
+        font-size: 8px !important;
+    }
+    .footerleft img{
+        width:13rem;
+    }
 }
 
 /*小于768px尺寸时改变样式*/
